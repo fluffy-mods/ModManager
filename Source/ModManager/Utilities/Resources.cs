@@ -1,0 +1,50 @@
+﻿// Resources.cs
+// Copyright Karel Kroeze, 2018-2018
+
+using UnityEngine;
+using Verse;
+
+namespace ModManager
+{
+    [StaticConstructorOnStartup]
+    public class Resources
+    {
+        public static Color SlightlyDarkBackground;
+
+        public static Texture2D Close,
+            EyeOpen,
+            EyeClosed,
+            Search,
+            Steam,
+            Ludeon,
+            Folder,
+            File,
+            Warning,
+            Status_Cross,
+            Status_Down,
+            Status_Up,
+            Status_Plus;
+
+        static Resources()
+        {
+            SlightlyDarkBackground = new Color( 0f, 0f, 0f, .2f );
+            Close = ContentFinder<Texture2D>.Get( "UI/Icons/Close" );
+            EyeOpen = ContentFinder<Texture2D>.Get( "UI/Icons/EyeOpen" );
+            EyeClosed = ContentFinder<Texture2D>.Get( "UI/Icons/EyeClosed" );
+            Search = ContentFinder<Texture2D>.Get( "UI/Icons/Search" );
+            Steam = ContentFinder<Texture2D>.Get( "UI/Icons/ContentSources/SteamWorkshop" );
+            Ludeon = ContentFinder<Texture2D>.Get( "UI/Icons/Ludeon" );
+            File = ContentFinder<Texture2D>.Get( "UI/Icons/File" );
+            Folder = ContentFinder<Texture2D>.Get( "UI/Icons/ContentSources/LocalFolder" );
+            Warning = ContentFinder<Texture2D>.Get( "UI/Icons/Warning" );
+
+            Status_Cross = ContentFinder<Texture2D>.Get("UI/Icons/Status/Cross");
+            Status_Down = ContentFinder<Texture2D>.Get("UI/Icons/Status/Down");
+            Status_Up = ContentFinder<Texture2D>.Get("UI/Icons/Status/Up");
+            Status_Plus = ContentFinder<Texture2D>.Get("UI/Icons/Status/Plus");
+
+        }
+    }
+
+    
+}

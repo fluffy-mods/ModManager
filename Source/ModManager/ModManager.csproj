@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>../../Assemblies</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -32,8 +32,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Assembly-CSharp, Version=0.18.6527.35959, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\..\..\Games\steamapps\common\RimWorld\RimWorldWin_Data\Managed\Assembly-CSharp.dll</HintPath>
+    <Reference Include="0Harmony">
+      <HintPath>..\..\..\..\..\harmony\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>..\..\..\..\..\dlls\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -41,13 +48,40 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\..\..\..\..\Games\steamapps\common\RimWorld\RimWorldWin_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\..\..\..\dlls\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Manifest\OnlineManifest.cs" />
+    <Compile Include="Windows\Dialog_Rename_ModList.cs" />
+    <Compile Include="Manifest\Dependency.cs" />
+    <Compile Include="Manifest\ModSync.cs" />
+    <Compile Include="ModButton\ModButton.cs" />
+    <Compile Include="ModButton\ModButtonManager.cs" />
+    <Compile Include="ModButton\ModButton_Missing.cs" />
+    <Compile Include="Manifest\Manifest.cs" />
+    <Compile Include="ModIssue\ModIssue.cs" />
+    <Compile Include="ModIssue\ModIssue_Resolvers.cs" />
+    <Compile Include="ModList\ModList.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\Debug.cs" />
+    <Compile Include="Utilities\DraggingManager.cs" />
+    <Compile Include="Utilities\Extensions.cs" />
+    <Compile Include="Utilities\I18n.cs" />
+    <Compile Include="Utilities\IO.cs" />
+    <Compile Include="ModButton\ModButton_Installed.cs" />
+    <Compile Include="ModManager.cs" />
+    <Compile Include="Patches\Patch_Page_ModsConfig_NotifySteamItemUnsubscribed.cs" />
+    <Compile Include="Patches\Patch_Replace_Page_ModsConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows\Dialog_ResolveModIssues.cs" />
+    <Compile Include="Windows\Page_BetterModConfig.cs" />
+    <Compile Include="ModList\ModListManager.cs" />
+    <Compile Include="Utilities\Resources.cs" />
+    <Compile Include="Utilities\Utilities.cs" />
+    <Compile Include="Utilities\VersionStatus.cs" />
+    <Compile Include="Utilities\Workshop.cs" />
   </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>mod update -x -n "Mod Manager"</PostBuildEvent>
