@@ -4,13 +4,14 @@
         "alpha": 18,
         "major": 0,
         "minor": 1,
-        "build": 467
+        "build": 468
     },
     "visibility": 0,
     "git_repo": "ModManager",
     "git_user": "FluffierThanThou",
     "contributors": {
-        "erdelf": "invaluable help with Harmony transpilers"
+        "erdelf": "invaluable help with Harmony transpilers",
+        "FluffierThanThou": ""
     },
     "changenote": "",
     "tags": [],

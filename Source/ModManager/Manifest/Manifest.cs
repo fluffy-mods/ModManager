@@ -340,7 +340,7 @@ namespace ModManager
                 }
                 catch ( Exception e )
                 {
-                    Log.Warning( $"Failed to parse version string '{version}': {e.Message}\n\n{e.StackTrace}" );
+                    Log.Warning( $"Failed to parse version string '{version}' for {mod?.Name ?? "??"}: {e.Message}\n\n{e.StackTrace}" );
                     return null;
                 }
             }
