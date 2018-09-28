@@ -272,5 +272,18 @@ namespace ModManager
         {
             return Key("DialogConfirmIssuesTitle").Translate(count);
         }
+
+        // manifest
+        public static string ManifestNotImplemented = Key( "ManifestNotImplemented" ).Translate();
+        public static string FetchingOnlineManifest = Key( "FetchingOnlineManifest" ).Translate();
+        public static string FetchingOnlineManifestFailed( string error)
+        {
+            return Key( "FetchingOnlineManifestFailed" ).Translate( error );
+        }
+        public static string NewVersionAvailable( Version current, Version latest )
+        {
+            return Key( "NewVersionAvailable" ).Translate( current, latest );
+        }
+        public static string LatestVersion = Key( "LatestVersion" ).Translate();
     }
 }

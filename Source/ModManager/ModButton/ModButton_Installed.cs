@@ -416,15 +416,23 @@ namespace ModManager
                 versionRect.xMin += labelWidth + SmallMargin;
                 var versionIconRect = new Rect( versionRect.xMax - SmallIconSize, 0f, SmallIconSize, SmallIconSize )
                     .CenteredOnYIn( versionRect );
+
+                GUI.color = Manifest.Color;
                 GUI.DrawTexture( versionIconRect, Manifest.Icon );
+                GUI.color = Color.white;
+                TooltipHandler.TipRegion(versionRect, Manifest.Tip);
+                if (Manifest.Resolver != null)
+                {
+                    Utilities.ActionButton(versionRect, Manifest.Resolver);
+                }
 
                 if ( Manifest.Version != null )
                 {
-                    GUI.color = Color.white;
                     Widgets.Label( versionRect, Manifest.Version.ToString() );
                 }
                 else
                 {
+                    GUI.color = Color.grey;
                     Widgets.Label( versionRect, I18n.Unknown );
                     GUI.color = Color.white;
                 }

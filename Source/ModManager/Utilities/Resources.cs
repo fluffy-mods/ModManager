@@ -1,6 +1,7 @@
 ﻿// Resources.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System.Linq;
 using UnityEngine;
 using Verse;
 
@@ -20,10 +21,13 @@ namespace ModManager
             Folder,
             File,
             Warning,
+            Question,
             Status_Cross,
             Status_Down,
             Status_Up,
             Status_Plus;
+
+        public static Texture2D[] Spinner;
 
         static Resources()
         {
@@ -37,14 +41,14 @@ namespace ModManager
             File = ContentFinder<Texture2D>.Get( "UI/Icons/File" );
             Folder = ContentFinder<Texture2D>.Get( "UI/Icons/ContentSources/LocalFolder" );
             Warning = ContentFinder<Texture2D>.Get( "UI/Icons/Warning" );
+            Question = ContentFinder<Texture2D>.Get( "UI/Icons/Question" );
 
             Status_Cross = ContentFinder<Texture2D>.Get("UI/Icons/Status/Cross");
             Status_Down = ContentFinder<Texture2D>.Get("UI/Icons/Status/Down");
             Status_Up = ContentFinder<Texture2D>.Get("UI/Icons/Status/Up");
             Status_Plus = ContentFinder<Texture2D>.Get("UI/Icons/Status/Plus");
 
+            Spinner = ContentFinder<Texture2D>.GetAllInFolder( "UI/Icons/Spinner" ).ToArray();
         }
     }
-
-    
 }

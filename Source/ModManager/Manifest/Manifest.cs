@@ -35,11 +35,11 @@ namespace ModManager
             {
                 // own version unknown, not implemented.
                 if ( Version == null )
-                    return Resources.Status_Cross;
+                    return Resources.Question;
 
                 // no manifest uri, not implemented.
                 if ( manifestUri.NullOrEmpty() )
-                    return Resources.Status_Cross;
+                    return Resources.Question;
 
                 // manifest uri set, onlineManifest status.
                 if ( OnlineManifest.Status != OnlineManifest.WWWStatus.Done )
@@ -49,10 +49,77 @@ namespace ModManager
                 if ( OnlineManifest.manifest.Version == null )
                     return Resources.Warning;
 
-                if ( OnlineManifest.manifest.Version >= Version )
+                if ( OnlineManifest.manifest.Version > Version )
                     return Resources.Status_Up;
 
                 return Widgets.CheckboxOnTex;
+            }
+        }
+
+        public Color Color
+        {
+            get
+            {
+                // own version unknown, not implemented.
+                if (Version == null)
+                    return Color.grey;
+
+                // no manifest uri, not implemented.
+                if (manifestUri.NullOrEmpty())
+                    return Color.grey;
+
+                // manifest uri set, onlineManifest status.
+                if (OnlineManifest.Status != OnlineManifest.WWWStatus.Done)
+                    return OnlineManifest.Color;
+
+                // onlineManifest done, version status.
+                if (OnlineManifest.manifest.Version == null)
+                    return Color.red;
+
+                if (OnlineManifest.manifest.Version > Version)
+                    return GenUI.MouseoverColor;
+
+                return Color.white; // texture is green.
+            }
+        }
+
+        public string Tip
+        {
+            get
+            {
+                // own version unknown, not implemented.
+                if ( Version == null )
+                    return I18n.ManifestNotImplemented;
+
+                // no manifest uri, not implemented.
+                if (manifestUri.NullOrEmpty())
+                    return I18n.ManifestNotImplemented;
+
+                // manifest uri set, onlineManifest status.
+                if ( OnlineManifest.Status != OnlineManifest.WWWStatus.Done )
+                    return I18n.FetchingOnlineManifest;
+
+                // onlineManifest done, version status.
+                if ( OnlineManifest.manifest.Version == null )
+                    return I18n.FetchingOnlineManifestFailed( OnlineManifest.error );
+
+                if ( OnlineManifest.manifest.Version > Version )
+                    return I18n.NewVersionAvailable( Version, OnlineManifest.manifest.Version );
+
+                return I18n.LatestVersion;
+            }
+        }
+
+        public Action Resolver
+        {
+            get
+            {
+                if ( Version != null
+                     && OnlineManifest?.manifest?.Version != null
+                     && OnlineManifest.manifest.Version > Version
+                     && !OnlineManifest.manifest.downloadUri.NullOrEmpty() )
+                    return () => Application.OpenURL( OnlineManifest.manifest.downloadUri );
+                return null;
             }
         }
 

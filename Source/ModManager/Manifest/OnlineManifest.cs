@@ -34,20 +34,36 @@ namespace ModManager
             }
         }
 
+        private int _progress;
+        private const int _ticksPerFrame = 20;
         public Texture2D Icon
         {
             get
             {
                 switch ( Status )
                 {
-                    case WWWStatus.Done:
-                        return Widgets.CheckboxOnTex;
                     case WWWStatus.Downloading:
-                        return Widgets.CheckboxPartialTex;
+                        return Resources.Spinner[ _progress++ / _ticksPerFrame % Resources.Spinner.Length];
                     case WWWStatus.Error:
                         return Widgets.CheckboxOffTex;
                     default:
                         return Resources.Warning;
+                }
+            }
+        }
+
+        public Color Color
+        {
+            get
+            {
+                switch ( Status )
+                {
+                    case WWWStatus.Error:
+                        return Color.red;
+                    case WWWStatus.NotImplemented:
+                        return Color.grey;
+                    default:
+                        return Color.white;
                 }
             }
         }
@@ -58,16 +74,19 @@ namespace ModManager
                 return;
             if ( www == null )
             {
+                Debug.Log( "manifestUri not implemented, quitting." );
                 _status = WWWStatus.NotImplemented;
                 finished = true;
                 return;
             }
             if ( !www.isDone )
             {
+                Debug.Log("downloading...");
                 _status = WWWStatus.Downloading;
             }
             if ( !www.error.NullOrEmpty() )
             {
+                Debug.Log( $"error: {www.error}" );
                 _status = WWWStatus.Error;
                 error = www.error;
                 finished = true;
@@ -79,6 +98,7 @@ namespace ModManager
                 try
                 {
                     manifest = IO.ItemFromXmlString<Manifest>( www.text );
+                    manifest.SetVersion( false );
                     _status = WWWStatus.Done;
                 }
                 catch ( Exception e )
