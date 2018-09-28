@@ -1,6 +1,8 @@
 ﻿// Workshop.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System.Collections;
+using System.Collections.Generic;
 using Harmony;
 using RimWorld;
 using Steamworks;
@@ -21,9 +23,15 @@ namespace ModManager
             }, true ) );
         }
 
-        public static void Subscribe( PublishedFileId_t id )
+        public static void Subscribe( string identifier )
         {
-            
+            SteamUGC.SubscribeItem( new PublishedFileId_t( ulong.Parse( identifier ) ) );
+        }
+
+        public static void Subscribe( IEnumerable<string> identifiers )
+        {
+            foreach ( var identifier in identifiers )
+                Subscribe( identifier );
         }
 
         public static void Upload( ModMetaData mod )

@@ -95,5 +95,11 @@ namespace ModManager
         {
             return str.Replace( " ", "" );
         }
+
+        public static bool IsSteamWorkshopIdentifier( this string identifier )
+        {
+            ulong dump;
+            return ulong.TryParse( identifier, out dump );
+        }
     }
 }

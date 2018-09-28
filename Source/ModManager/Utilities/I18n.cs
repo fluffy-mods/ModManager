@@ -293,5 +293,11 @@ namespace ModManager
         {
             return Key( "ModInstalled" ).Translate( name );
         }
+        public static string Subscribe( string name, string pfid )
+        {
+            return Key( "Subscribe" ).Translate( name, pfid );
+        }
+
+        public static string SubscribeAllMissing = Key( "SubscribeAllMissing" ).Translate();
     }
 }

@@ -185,17 +185,17 @@ namespace ModManager
                     {
                         case DependencyStatus.UnknownVersion:
                             issues.Add( new ModIssue( Severity.Minor, Subject.Dependency,
-                                ModButton_Installed.For( mod ), dependency.Identifier,
+                                Button, dependency.Identifier,
                                 I18n.DependencyUnknownVersion( dependency, dependency.Target ) ) );
                             break;
                         case DependencyStatus.WrongVersion:
                             issues.Add( new ModIssue( Severity.Major, Subject.Dependency,
-                                ModButton_Installed.For( mod ), dependency.Identifier,
+                                Button, dependency.Identifier,
                                 I18n.DependencyWrongVersion( dependency, dependency.Target ) ) );
                             break;
                         case DependencyStatus.NotFound:
                             issues.Add( new ModIssue( Severity.Critical, Subject.Dependency,
-                                ModButton_Installed.For( mod ), dependency.Identifier,
+                                Button, dependency.Identifier,
                                 I18n.DependencyNotFound( dependency.Identifier ) ) );
                             break;
                     }

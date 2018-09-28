@@ -94,4 +94,6 @@
     <!-- workshop -->
     <Fluffy.ModManager.DownloadPending>Download pending...</Fluffy.ModManager.DownloadPending>
     <Fluffy.ModManager.ModInstalled>{0} installation completed.</Fluffy.ModManager.ModInstalled>
+    <Fluffy.ModManager.Subscribe>Subscribe to {0} ({1}) on the Workshop.</Fluffy.ModManager.Subscribe>
+    <Fluffy.ModManager.SubscribeAllMissing>Subscribe to all missing Workshop mods.</Fluffy.ModManager.SubscribeAllMissing>
 </LanguageData>

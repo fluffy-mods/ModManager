@@ -167,11 +167,25 @@ namespace ModManager
             button?.Notify_VersionRemoved( mod );
         }
 
-        public static void Notify_DownloadCompleted( string publishedFileId )
+        public static void Notify_DownloadCompleted( ModMetaData mod )
         {
-            var button = AllButtons.OfType<ModButton_Downloading>()
-                .FirstOrDefault( b => b.Identifier == publishedFileId );
-            TryRemove( button );
+            var downloading = AllButtons.OfType<ModButton_Downloading>()
+                .FirstOrDefault( b => b.Identifier == mod.Identifier );
+
+            var missing = AllButtons.OfType<ModButton_Missing>()
+                .FirstOrDefault( b => b.Identifier == mod.Identifier );
+
+            // add installed item to MBM
+            var installed = ModButton_Installed.For(mod);
+            if ( missing != null && missing.Active )
+                Insert( installed, ActiveButtons.IndexOf( missing ) );
+            else
+                TryAdd( installed );
+
+            Page_BetterModConfig.Instance.Selected = installed;
+            TryRemove(downloading);
+            TryRemove(missing);
+
             Page_BetterModConfig.Instance.Notify_ModsListChanged();
         }
 

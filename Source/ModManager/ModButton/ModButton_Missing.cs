@@ -24,6 +24,7 @@ namespace ModManager
 
         public override string Identifier => _identifier;
 
+
         public override bool MatchesIdentifier( string identifier )
         {
             return false;

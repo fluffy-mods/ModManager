@@ -76,7 +76,6 @@
     <Compile Include="ModManager.cs" />
     <Compile Include="Patches\Patch_Replace_Page_ModsConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Windows\Dialog_ResolveModIssues.cs" />
     <Compile Include="Windows\Page_BetterModConfig.cs" />
     <Compile Include="ModList\ModListManager.cs" />
     <Compile Include="Utilities\Resources.cs" />

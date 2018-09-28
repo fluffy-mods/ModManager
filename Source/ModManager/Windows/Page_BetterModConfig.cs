@@ -206,15 +206,24 @@ namespace ModManager
             if ( ModButtonManager.ActiveMods.Any( mod => mod.Source == ContentSource.SteamWorkshop ) )
                 if ( Utilities.ButtonIcon( ref iconRect, Folder, I18n.CreateLocalCopies, Status_Plus ) )
                     IO.CreateLocalCopies( ModButtonManager.ActiveMods );
+            if ( ModButtonManager.ActiveButtons.OfType<ModButton_Missing>()
+                .Any( b => b.Identifier.IsSteamWorkshopIdentifier() ) )
+                if ( Utilities.ButtonIcon( ref iconRect, Steam, I18n.SubscribeAllMissing, Status_Plus, Direction8Way.NorthWest ) )
+                    Workshop.Subscribe( ModButtonManager.ActiveButtons.OfType<ModButton_Missing>()
+                        .Where( b => b.Identifier.IsSteamWorkshopIdentifier() ).Select( b => b.Identifier ) );
 
             if ( ModButtonManager.AnyIssue )
             {
                 var issueRect = new Rect( canvas.xMin + SmallMargin, canvas.yMin, IconSize, IconSize );
-                var buttons = ModButtonManager.ActiveButtons.Where( b => b.Issues.Any() );
+
+
+                var buttons = ModButtonManager.ActiveButtons
+                    .Where( b => b.Issues.Any() && b.Issues.Max( i => i.severity ) > Severity.Notice )
+                    .OrderByDescending( b => b.Issues.Max( i => i.severity ) );
                 foreach ( var button in buttons )
                 {
                     var tip = $"<b>{button.Name}</b>";
-                    tip += button.Issues.Select( i => $"\n{i.tip}" ).StringJoin( "" );
+                    tip += button.Issues.Select( i => $"\n<color={ColorUtility.ToHtmlStringRGBA(i.Color)}>{i.tip}</color>" ).StringJoin( "" );
                     TooltipHandler.TipRegion(issueRect, tip);
                 }
                 var color = buttons.SelectMany( b => b.Issues ).MaxBy( i => i.severity ).Color;

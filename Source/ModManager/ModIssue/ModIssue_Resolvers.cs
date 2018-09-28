@@ -1,13 +1,14 @@
 ﻿// ModIssue_Resolvers.cs
 // Copyright Karel Kroeze, 2018-2018
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
+using Steamworks;
 using UnityEngine;
 using Verse;
 using static ModManager.Utilities;
+using Version = System.Version;
 
 namespace ModManager
 {
@@ -29,6 +30,12 @@ namespace ModManager
         {
             return new FloatMenuOption( I18n.DeactivateMod( mod ),
                 () => mod.Active = false );
+        }
+
+        private static FloatMenuOption SubscribeOption( string name, string identifier )
+        {
+            return new FloatMenuOption( I18n.Subscribe( name, identifier ),
+                () => Workshop.Subscribe( identifier ) );
         }
 
         public static void ResolveFindMod( Dependency dependency, ModButton_Installed requester )
@@ -77,6 +84,8 @@ namespace ModManager
                 else
                     options.Add( new FloatMenuOption( I18n.NoMatchingModInstalled( identifier ), null ) );
             }
+            if ( requester is ModButton_Missing missing && missing.Identifier.IsSteamWorkshopIdentifier())
+                options.Add( SubscribeOption( missing.Name, missing.Identifier ) );
             options.Add( WorkshopSearchOption( identifier ) );
             options.Add( ForumSearchOption( identifier ) );
             FloatMenu( options );
