@@ -15,11 +15,11 @@
     <Fluffy.ModManager.Later>Later</Fluffy.ModManager.Later>
 
     <Fluffy.ModManager.InvalidVersion>Malformed version string: "{0}".</Fluffy.ModManager.InvalidVersion>
-    <Fluffy.ModManager.DifferentVersion>Wrong game version, {0}: {1}, game: {2}.</Fluffy.ModManager.DifferentVersion>
-    <Fluffy.ModManager.DifferentBuild>Different game build, {0}: {1}, game: {2}.</Fluffy.ModManager.DifferentBuild>
+    <Fluffy.ModManager.DifferentVersion>Wrong game version. Current version is {2}, but {0} is for version {1}.</Fluffy.ModManager.DifferentVersion>
+    <Fluffy.ModManager.DifferentBuild>Different game build. Current build is {2}, but {0} specifies build {1} as target version.</Fluffy.ModManager.DifferentBuild>
     <Fluffy.ModManager.CurrentVersion>Versions match</Fluffy.ModManager.CurrentVersion>
     <Fluffy.ModManager.UpdateAvailable>An update is available to version {1} (current: {0}).</Fluffy.ModManager.UpdateAvailable>
-    <Fluffy.ModManager.MissingMod>{0} ({1}) is not installed, and will be ignored.</Fluffy.ModManager.MissingMod>
+    <Fluffy.ModManager.MissingMod>{0} (id: {1}) is not installed, and will be ignored.</Fluffy.ModManager.MissingMod>
     <Fluffy.ModManager.CoreNotFirst>'Core' should be the first mod loaded.</Fluffy.ModManager.CoreNotFirst>
 
     <Fluffy.ModManager.DependencyUnknownVersion>Depends on {0}, but its version is unknown.</Fluffy.ModManager.DependencyUnknownVersion>
@@ -90,4 +90,8 @@
     <Fluffy.ModManager.FetchingOnlineManifestFailed>Checking latest version failed: {0}.</Fluffy.ModManager.FetchingOnlineManifestFailed>
     <Fluffy.ModManager.NewVersionAvailable>A new version is available! Current: {0}, latest: {1}.</Fluffy.ModManager.NewVersionAvailable>
     <Fluffy.ModManager.LatestVersion>This is the latest version.</Fluffy.ModManager.LatestVersion>
+
+    <!-- workshop -->
+    <Fluffy.ModManager.DownloadPending>Download pending...</Fluffy.ModManager.DownloadPending>
+    <Fluffy.ModManager.ModInstalled>{0} installation completed.</Fluffy.ModManager.ModInstalled>
 </LanguageData>

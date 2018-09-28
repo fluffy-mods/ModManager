@@ -81,7 +81,6 @@ namespace ModManager
             Text.Font = GameFont.Small;
         }
 
-
         public static void ActionButton(Rect canvas, Action resolve)
         {
             Widgets.DrawHighlightIfMouseover(canvas);

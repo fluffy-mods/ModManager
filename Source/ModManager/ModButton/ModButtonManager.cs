@@ -12,7 +12,7 @@ namespace ModManager
     {
         private static List<ModButton> _allButtons;
         private static List<ModButton> _activeButtons;
-        private static List<ModButton_Installed> _availableButtons;
+        private static List<ModButton> _availableButtons;
         public static List<ModButton> AllButtons 
         {
             get
@@ -33,7 +33,7 @@ namespace ModManager
             }
         }
 
-        public static List<ModButton_Installed> AvailableButtons
+        public static List<ModButton> AvailableButtons
         {
             get
             {
@@ -51,27 +51,29 @@ namespace ModManager
         public static IEnumerable<ModMetaData> AvailableMods => AllMods.Where( m => !m.Active );
         public static bool AnyIssue => ActiveButtons.Any( b => b.Issues.Any( i => i.severity > Severity.Notice ) );
 
-        public static void Add( ModButton button )
+        public static void TryAdd( ModButton button, bool notify_orderChanged = true )
         {
             _allButtons.TryAdd( button );
             if ( button.Active )
             {
                 _activeButtons.TryAdd( button );
-                _availableButtons.TryRemove( button as ModButton_Installed );
+                _availableButtons.TryRemove( button );
+                if (notify_orderChanged)
+                    Notify_ModOrderChanged();
             }
             else
             {
-                _availableButtons.TryAdd( button as ModButton_Installed );
+                _availableButtons.TryAdd( button );
                 _activeButtons.TryRemove( button );
                 SortAvailable();
             }
         }
 
-        public static void Remove( ModButton mod )
+        public static void TryRemove( ModButton mod )
         {
             _allButtons.TryRemove( mod );
             _activeButtons.TryRemove( mod );
-            _availableButtons.TryRemove( mod as ModButton_Installed );
+            _availableButtons.TryRemove( mod );
             Notify_ModOrderChanged();
         }
 
@@ -80,11 +82,11 @@ namespace ModManager
             Debug.Log( "Recaching ModButtons" );
             _allButtons = new List<ModButton>();
             _activeButtons = new List<ModButton>();
-            _availableButtons = new List<ModButton_Installed>();
+            _availableButtons = new List<ModButton>();
 
             // create all the buttons
             foreach ( var mods in ModLister.AllInstalledMods.GroupBy( m => m.Name ) )
-                Add( new ModButton_Installed( mods ) );
+                TryAdd( new ModButton_Installed( mods ), false );
             
             SortActive();
             SortAvailable();
@@ -93,7 +95,7 @@ namespace ModManager
         private static void SortAvailable()
         {
             _availableButtons = _availableButtons
-                .OrderByDescending( b => b.Selected.Compatibility() )
+                .OrderByDescending( b => b.SortOrder )
                 .ThenBy( b => b.Name )
                 .ToList();
         }
@@ -121,7 +123,7 @@ namespace ModManager
 
         public static void Insert( ModButton button, int to )
         {
-            AvailableButtons.TryRemove( button as ModButton_Installed );
+            AvailableButtons.TryRemove( button );
             if ( ActiveButtons.Contains( button ) )
             {
                 if ( ActiveButtons.IndexOf( button ) < to )
@@ -136,14 +138,14 @@ namespace ModManager
         {
             if ( active )
             {
-                _availableButtons.TryRemove( mod as ModButton_Installed );
+                _availableButtons.TryRemove( mod );
                 _activeButtons.TryAdd( mod );
                 Notify_ModOrderChanged();
             }
             else
             {
                 _activeButtons.TryRemove( mod );
-                _availableButtons.TryAdd( mod as ModButton_Installed );
+                _availableButtons.TryAdd( mod );
                 Notify_ModOrderChanged();
                 SortAvailable();
             }
@@ -157,9 +159,20 @@ namespace ModManager
 
         public static void Notify_Unsubscribed( string publishedFileId )
         {
-            var mod = ModLister.GetModWithIdentifier( publishedFileId );
-            var button = ModButton_Installed.For( mod );
-            button.Notify_VersionRemoved( mod );
+            var button = AllButtons.OfType<ModButton_Installed>()
+                .FirstOrDefault( b => b.Versions.Any( m => m.Source == ContentSource.SteamWorkshop &&
+                                                           m.Identifier == publishedFileId ) );
+            var mod = button?.Versions.First( m => m.Source == ContentSource.SteamWorkshop &&
+                                                  m.Identifier == publishedFileId );
+            button?.Notify_VersionRemoved( mod );
+        }
+
+        public static void Notify_DownloadCompleted( string publishedFileId )
+        {
+            var button = AllButtons.OfType<ModButton_Downloading>()
+                .FirstOrDefault( b => b.Identifier == publishedFileId );
+            TryRemove( button );
+            Page_BetterModConfig.Instance.Notify_ModsListChanged();
         }
 
         public static void DeactivateAll()

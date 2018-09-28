@@ -17,11 +17,11 @@ namespace ModManager
 {
     public class ModButton_Installed : ModButton
     {
-        private List<ModMetaData> _versions = new List<ModMetaData>();
         private VersionStatus? _version;
         private ModMetaData _selected;
         private Vector2 _previewScrollPosition = Vector2.zero;
         private Vector2 _descriptionScrollPosition = Vector2.zero;
+        public override int SortOrder => Selected.Compatibility();
 
         public ModButton_Installed( ModMetaData mod )
         {
@@ -36,7 +36,7 @@ namespace ModManager
             if ( mods == null || !mods.Any() )
                 throw new ArgumentNullException( nameof( mods ) );
 
-            _versions = mods.ToList();
+            Versions = mods.ToList();
         }
 
         public static ModButton_Installed For( ModMetaData mod )
@@ -87,7 +87,7 @@ namespace ModManager
             }
         }
 
-        public IEnumerable<ModMetaData> VersionsOrdered => _versions
+        public IEnumerable<ModMetaData> VersionsOrdered => Versions
             .OrderByDescending( mod => mod.Compatibility() )
             .ThenBy( mod => mod.Source );
 
@@ -100,14 +100,14 @@ namespace ModManager
 
         public override bool Active
         {
-            get => _versions.Any( mod => mod.Active );
+            get => Versions.Any( mod => mod.Active );
             set {
                 Selected.Active = value;
                 ModButtonManager.Notify_Activated( this, value );
             }
         }
 
-        public List<ModMetaData> Versions => _versions;
+        public List<ModMetaData> Versions { get; } = new List<ModMetaData>();
         public Manifest Manifest => Manifest.For( Selected );
         
         public ModMetaData Selected
@@ -139,24 +139,7 @@ namespace ModManager
             bool deemphasizeFiltered = false,
             string filter = null )
         {
-
-#if DEBUG
-            clickAction += () => Log.Message("clicked: " + Selected.Name);
-            doubleClickAction += () => Log.Message("doubleClicked: " + Selected.Name);
-#endif
-
-            if (alternate)
-                Widgets.DrawBoxSolid(canvas, SlightlyDarkBackground);
-            if (Page_BetterModConfig.Instance.Selected == this)
-            {
-                if (Page_BetterModConfig.Instance.SelectedHasFocus)
-                    Widgets.DrawHighlightSelected(canvas);
-                else
-                    Widgets.DrawHighlight(canvas);
-            }
-            if (!DraggingManager.Dragging)
-                HandleInteractions( canvas, clickAction, doubleClickAction );
-
+            base.DoModButton( canvas, alternate, clickAction, doubleClickAction, deemphasizeFiltered, filter );
 
             canvas = canvas.ContractedBy(SmallMargin / 2f);
 
@@ -185,12 +168,14 @@ namespace ModManager
                 ( SmallIconSize + SmallMargin ) * Versions.Count,
                 nameRect.height);
 
-            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && !Matches(filter);
+            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && !MatchesFilter(filter);
             GUI.color = ( deemphasized || !Selected.enabled ) ? Color.white.Desaturate() : Color.white;
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
             Widgets.Label(nameRect, Selected.Name.Truncate(nameRect.width, _modNameTruncationCache));
+            if ( Mouse.IsOver( nameRect ) && Selected.Name != Selected.Name.Truncate( nameRect.width, _modNameTruncationCache ) )
+                TooltipHandler.TipRegion( nameRect, Selected.Name );
 
             if (!Selected.IsCoreMod)
             {
@@ -276,7 +261,7 @@ namespace ModManager
 
         internal bool Matches(Dependency dep, bool strict = false )
         {
-            return Matches( dep.Identifier )
+            return MatchesFilter( dep.Identifier )
                    && dep.MatchesVersion( Selected, false );
         }
 
@@ -487,12 +472,15 @@ namespace ModManager
 
         public void Notify_VersionRemoved( ModMetaData version )
         {
-            _versions.TryRemove( version );
-            Selected = null;
-            if ( !_versions.Any() )
+            Versions.TryRemove( version );
+            if ( Selected == version )
             {
-                ModButtonManager.Remove( this );
-                Page_BetterModConfig.Instance.Selected = ModButtonManager.AllButtons.First();
+                _selected = null;
+                if (!Versions.Any())
+                {
+                    ModButtonManager.TryRemove(this);
+                    Page_BetterModConfig.Instance.Selected = ModButtonManager.AllButtons.First();
+                }
             }
             else
                 Selected.Active = version.Active;   

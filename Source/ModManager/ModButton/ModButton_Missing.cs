@@ -35,37 +35,18 @@ namespace ModManager
             set
             {
                 if ( value == false )
-                    ModButtonManager.Remove( this );
+                    ModButtonManager.TryRemove( this );
             }
         }
 
         public override void DoModButton( Rect canvas, bool alternate = false, Action clickAction = null, Action doubleClickAction = null,
             bool deemphasizeFiltered = false, string filter = null )
         {
-
-#if DEBUG
-            clickAction += () => Log.Message("clicked: " + Name);
-            doubleClickAction += () => Log.Message("doubleClicked: " + Name);
-#endif
-
-            if ( alternate )
-                Widgets.DrawBoxSolid( canvas, SlightlyDarkBackground );
-            if (Page_BetterModConfig.Instance.Selected == this)
-            {
-                if (Page_BetterModConfig.Instance.SelectedHasFocus)
-                    Widgets.DrawHighlightSelected(canvas);
-                else
-                    Widgets.DrawHighlight(canvas);
-            }
-            if (!DraggingManager.Dragging)
-                HandleInteractions(canvas, clickAction, doubleClickAction);
-
-
+            base.DoModButton(canvas, alternate, clickAction, doubleClickAction, deemphasizeFiltered, filter);
             canvas = canvas.ContractedBy( SmallMargin / 2f);
 
             /**
-             * NAME                    | Local
-             * version | targetVersion | Workshop
+             * NAME                   
              */
             var nameRect = new Rect(
                 canvas.xMin,
@@ -73,7 +54,7 @@ namespace ModManager
                 canvas.width - SmallIconSize * 2 - SmallMargin,
                 canvas.height * 2 / 3f);
 
-            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && !Matches(filter);
+            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && !MatchesFilter(filter);
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
@@ -82,6 +63,9 @@ namespace ModManager
             GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
             Text.Font = GameFont.Small;
+
+            if (Mouse.IsOver(nameRect) && Name != Name.Truncate(nameRect.width, _modNameTruncationCache))
+                TooltipHandler.TipRegion(nameRect, Name);
         }
 
         public override bool IsCoreMod => false;

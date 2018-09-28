@@ -17,13 +17,35 @@ namespace ModManager
         public abstract string Identifier { get; }
         public abstract bool MatchesIdentifier( string identifier );
         public abstract bool Active { get; set; }
-        public abstract void DoModButton( Rect canvas, bool alternate = false, Action clickAction = null,
-            Action doubleClickAction = null, bool deemphasizeFiltered = false, string filter = null );
+
+        public virtual void DoModButton( Rect canvas, bool alternate = false, Action clickAction = null,
+            Action doubleClickAction = null, bool deemphasizeFiltered = false, string filter = null )
+        {
+
+#if DEBUG
+            clickAction += () => Debug.Log( "clicked: " + Name );
+            doubleClickAction += () => Debug.Log( "doubleClicked: " + Name );
+#endif
+
+            if ( alternate )
+                Widgets.DrawBoxSolid( canvas, Resources.SlightlyDarkBackground );
+            if ( Page_BetterModConfig.Instance.Selected == this )
+            {
+                if ( Page_BetterModConfig.Instance.SelectedHasFocus )
+                    Widgets.DrawHighlightSelected( canvas );
+                else
+                    Widgets.DrawHighlight( canvas );
+            }
+            if ( !DraggingManager.Dragging )
+                HandleInteractions( canvas, clickAction, doubleClickAction );
+        }
+
         public abstract bool IsCoreMod { get; }
-        public virtual bool Matches( string filter ) => filter.NullOrEmpty() || Name.ToUpper().Contains( filter.ToUpper() );
+        public virtual bool MatchesFilter( string filter ) => filter.NullOrEmpty() || Name.ToUpper().Contains( filter.ToUpper() );
         internal abstract void DoModActionButtons( Rect canvas );
         internal abstract void DoModDetails( Rect canvas );
         public virtual int LoadOrder => -1;
+        public virtual int SortOrder => -1;
         public abstract IEnumerable<ModIssue> Issues { get; }
         internal virtual void HandleInteractions(Rect canvas, Action clickAction, Action doubleClickAction)
         {

@@ -3,6 +3,7 @@
 
 using Harmony;
 using RimWorld;
+using Steamworks;
 using Verse;
 using Verse.Sound;
 
@@ -20,6 +21,11 @@ namespace ModManager
             }, true ) );
         }
 
+        public static void Subscribe( PublishedFileId_t id )
+        {
+            
+        }
+
         public static void Upload( ModMetaData mod )
         {
             if ( !VersionControl.IsWellFormattedVersionString( mod.TargetVersion ) )
@@ -35,7 +41,7 @@ namespace ModManager
                         I18n.ConfirmContentAuthor, delegate
                         {
                             SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                            AccessTools.Method( typeof( Workshop ), "Upload" )
+                            AccessTools.Method( typeof( Verse.Steam.Workshop ), "Upload" )
                                 .Invoke( null, new object[] {mod} );
                         }, true );
                     dialog_MessageBox.buttonAText = I18n.Yes;

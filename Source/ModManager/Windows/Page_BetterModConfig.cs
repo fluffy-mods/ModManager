@@ -70,7 +70,7 @@ namespace ModManager
                 if ( !value.Active )
                 {
                     _focusArea = FocusArea.Available;
-                    if ( FilteredAvailableButtons.Contains( value as ModButton_Installed ) )
+                    if ( FilteredAvailableButtons.Contains( value ) )
                     {
                         _focusElement = FilteredAvailableButtons.FirstIndexOf( mod => mod == value );
                         EnsureVisible(ref _availableScrollPosition, _focusElement);
@@ -98,7 +98,7 @@ namespace ModManager
 
         public bool SelectedHasFocus =>
             _focusArea == FocusArea.Active && ModButtonManager.ActiveButtons.Contains( Selected ) ||
-            _focusArea == FocusArea.Available && ModButtonManager.AvailableButtons.Contains( Selected as ModButton_Installed );
+            _focusArea == FocusArea.Available && ModButtonManager.AvailableButtons.Contains( Selected );
         
         public override void ExtraOnGUI()
         {
@@ -491,8 +491,8 @@ namespace ModManager
             }
         }
 
-        public List<ModButton_Installed> FilteredAvailableButtons => ModButtonManager.AvailableButtons
-                        .Where( b => !FilterAvailable || b.Matches( _availableFilter ) )
+        public List<ModButton> FilteredAvailableButtons => ModButtonManager.AvailableButtons
+                        .Where( b => !FilterAvailable || b.MatchesFilter( _availableFilter ) )
                         .ToList();
 
         public void DoAvailableMods( Rect canvas )
@@ -563,7 +563,7 @@ namespace ModManager
         private bool _draggingOverAvailable = false;
         private int _lastHoverIndex;
         public List<ModButton> FilteredActiveButtons => ModButtonManager.ActiveButtons
-                        .Where( b => !FilterActive || b.Matches( _activeFilter ) )
+                        .Where( b => !FilterActive || b.MatchesFilter( _activeFilter ) )
                         .ToList();
 
         public void DoActiveMods( Rect canvas )
@@ -755,7 +755,7 @@ namespace ModManager
                 }
             }
 
-            var available = Selected as ModButton_Installed;
+            var available = Selected;
             if ( available == null ) return;
             if ( ModButtonManager.AvailableButtons.Contains( available ) )
             {

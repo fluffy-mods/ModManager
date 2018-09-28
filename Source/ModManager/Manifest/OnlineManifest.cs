@@ -80,7 +80,6 @@ namespace ModManager
             }
             if ( !www.isDone )
             {
-                Debug.Log("downloading...");
                 _status = WWWStatus.Downloading;
             }
             if ( !www.error.NullOrEmpty() )

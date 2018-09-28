@@ -172,6 +172,7 @@ namespace ModManager
         public static string NeedsWellFormattedTargetVersion = "MessageModNeedsWellFormattedTargetVersion".Translate(
             VersionControl.CurrentVersionString );
 
+        // Modlists
         public static string InvalidName( string name, string invalidChars )
         {
             return Key( "InvalidName" ).Translate( name, invalidChars );
@@ -285,5 +286,12 @@ namespace ModManager
             return Key( "NewVersionAvailable" ).Translate( current, latest );
         }
         public static string LatestVersion = Key( "LatestVersion" ).Translate();
+
+        // workshop
+        public static string DownloadPending = Key( "DownloadPending" ).Translate();
+        public static string ModInstalled( string name)
+        {
+            return Key( "ModInstalled" ).Translate( name );
+        }
     }
 }

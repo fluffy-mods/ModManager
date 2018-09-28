@@ -98,11 +98,11 @@ namespace ModManager
                 if ( mod != null )
                 {
                     mod.Active = true;
-                    ModButtonManager.Add( ModButton_Installed.For( mod ) );
+                    ModButtonManager.TryAdd( ModButton_Installed.For( mod ) );
                 }
                 else
                 {
-                    ModButtonManager.Add( new ModButton_Missing( id, name ) );
+                    ModButtonManager.TryAdd( new ModButton_Missing( id, name ) );
                 }
             }
 
