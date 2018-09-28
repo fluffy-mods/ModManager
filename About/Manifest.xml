@@ -11,5 +11,5 @@
         <li>HugsLib</li>
     </incompatibleWith>
     <manifestUri>https://rawgit.com/FluffierThanThou/ModManager/master/About/Manifest.xml</manifestUri>
-    <downloadUri>https://github.com/FluffierThanThou/ModManager/Releases/Latest</downloadUri>
+    <downloadUri>https://github.com/FluffierThanThou/ModManager/releases/latest</downloadUri>
 </Manifest>
