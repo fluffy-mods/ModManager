@@ -48,7 +48,7 @@ namespace ModManager
             var mods = ModButtonManager.AvailableMods
                 .Where( m => m.MatchesIdentifier( identifier ) )
                 .Where( m => m.VersionCompatible )
-                .Where( m => desired == null || Dependency.Satisfies( m, op, desired, true ) )
+                .Where( m => desired == null || Dependency.MatchesVersion( m, op, desired, true ) )
                 .Where( m => current == null || Manifest.For( m )?.Version > current )
                 .OrderByDescending( m => Manifest.For( m )?.Version );
 

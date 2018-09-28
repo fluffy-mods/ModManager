@@ -158,7 +158,12 @@ namespace ModManager
             }
         }
 
-        public static bool Satisfies( ModMetaData mod, EqualityOperator op, Version version, bool unknownResult = false )
+        public bool MatchesVersion( ModMetaData mod, bool strict = true )
+        {
+            return MatchesVersion( mod, Operator, Version, !strict );
+        }
+
+        public static bool MatchesVersion( ModMetaData mod, EqualityOperator op, Version version, bool unknownResult = false )
         {
             var modVersion = Manifest.For( mod )?.Version;
             if ( modVersion == null || version == null )

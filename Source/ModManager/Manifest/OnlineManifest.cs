@@ -2,7 +2,6 @@
 // Copyright Karel Kroeze, 2018-2018
 
 using System;
-using System.Collections;
 using UnityEngine;
 using Verse;
 
@@ -19,10 +18,10 @@ namespace ModManager
         private WWWStatus _status = WWWStatus.NotImplemented;
         private bool finished;
 
-        public OnlineManifest( string url )
+        public OnlineManifest( Uri uri )
         {
-            if ( !url.NullOrEmpty() )
-                www = new WWW( url );
+            if ( uri != null )
+                www = new WWW( uri.AbsoluteUri );
         }
 
         public WWWStatus Status
@@ -99,6 +98,17 @@ namespace ModManager
                 {
                     manifest = IO.ItemFromXmlString<Manifest>( www.text );
                     manifest.SetVersion( false );
+                    if (!manifest.downloadUri.NullOrEmpty())
+                    {
+                        try
+                        {
+                            manifest.DownloadUri = new Uri(manifest.downloadUri);
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Warning($"Error parsing downloadUri: {e.Message}\n\n{e.StackTrace}");
+                        }
+                    }
                     _status = WWWStatus.Done;
                 }
                 catch ( Exception e )

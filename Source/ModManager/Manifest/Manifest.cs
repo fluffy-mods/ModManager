@@ -7,7 +7,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using RimWorld;
 using UnityEngine;
 using Verse;
 using static ModManager.Constants;
@@ -20,14 +19,15 @@ namespace ModManager
         private ModMetaData mod;
         public Version Version { get; private set; }
         public string identifier;
-        public string manifestUri;
-        public string downloadUri;
-        public string changenote;
         public List<Dependency> dependencies = new List<Dependency>();
         public List<Dependency> incompatibleWith = new List<Dependency>();
-        public List<string> loadBefore = new List<string>();
-        public List<string> loadAfter = new List<string>();
+        public List<Dependency> loadBefore = new List<Dependency>();
+        public List<Dependency> loadAfter = new List<Dependency>();
         private OnlineManifest _onlineManifest;
+        private string manifestUri;
+        internal string downloadUri;
+        public Uri ManifestUri;
+        public Uri DownloadUri;
 
         public Texture2D Icon
         {
@@ -38,7 +38,7 @@ namespace ModManager
                     return Resources.Question;
 
                 // no manifest uri, not implemented.
-                if ( manifestUri.NullOrEmpty() )
+                if ( ManifestUri == null )
                     return Resources.Question;
 
                 // manifest uri set, onlineManifest status.
@@ -65,7 +65,7 @@ namespace ModManager
                     return Color.grey;
 
                 // no manifest uri, not implemented.
-                if (manifestUri.NullOrEmpty())
+                if (ManifestUri == null)
                     return Color.grey;
 
                 // manifest uri set, onlineManifest status.
@@ -92,7 +92,7 @@ namespace ModManager
                     return I18n.ManifestNotImplemented;
 
                 // no manifest uri, not implemented.
-                if (manifestUri.NullOrEmpty())
+                if (ManifestUri == null)
                     return I18n.ManifestNotImplemented;
 
                 // manifest uri set, onlineManifest status.
@@ -117,8 +117,8 @@ namespace ModManager
                 if ( Version != null
                      && OnlineManifest?.manifest?.Version != null
                      && OnlineManifest.manifest.Version > Version
-                     && !OnlineManifest.manifest.downloadUri.NullOrEmpty() )
-                    return () => Application.OpenURL( OnlineManifest.manifest.downloadUri );
+                     && OnlineManifest.manifest.DownloadUri != null )
+                    return () => Application.OpenURL( OnlineManifest.manifest.DownloadUri.AbsoluteUri );
                 return null;
             }
         }
@@ -128,7 +128,7 @@ namespace ModManager
             get
             {
                 if ( _onlineManifest == null )
-                    _onlineManifest = new OnlineManifest( manifestUri );
+                    _onlineManifest = new OnlineManifest( ManifestUri );
                 return _onlineManifest;
             }
         }
@@ -226,14 +226,13 @@ namespace ModManager
             {
                 var issues = new List<ModIssue>();
                 var order = mod.LoadOrder();
-                foreach ( var id in loadAfter
+                foreach ( var dep in loadAfter
                     .Concat( dependencies
-                    .Where( d => d.Met == DependencyStatus.Met || d.Met == DependencyStatus.UnknownVersion )
-                    .Select( d => d.Identifier ) ) )
+                    .Where( d => d.Met == DependencyStatus.Met || d.Met == DependencyStatus.UnknownVersion ) ) )
                 {
                     var otherMod = ModButtonManager.ActiveButtons
                         .OfType<ModButton_Installed>()
-                        .FirstOrDefault( m => m.MatchesIdentifier( id ) );
+                        .FirstOrDefault( m => m.Matches( dep ) );
                     var otherOrder = otherMod?.LoadOrder;
                     if ( otherOrder > order )
                         issues.Add( new ModIssue( Severity.Major, Subject.LoadOrder,
@@ -241,11 +240,12 @@ namespace ModManager
                             I18n.ShouldBeLoadedAfter( otherMod.Name ),
                             () => Resolvers.ResolveShouldLoadAfter( Button, otherMod ) ) );
                 }
-                foreach ( var id in loadBefore )
+
+                foreach ( var dep in loadBefore )
                 {
                     var otherMod = ModButtonManager.ActiveButtons
                         .OfType<ModButton_Installed>()
-                        .FirstOrDefault(m => m.MatchesIdentifier(id));
+                        .FirstOrDefault(m => m.Matches( dep ));
                     var otherOrder = otherMod?.LoadOrder;
                     if ( otherOrder >= 0 && otherOrder < order )
                         issues.Add( new ModIssue( Severity.Major, Subject.LoadOrder,
@@ -260,9 +260,8 @@ namespace ModManager
         public override string ToString()
         {
             var str = $"Manifest for: {mod.Name} ({Version?.ToString() ?? "unknown" })";
-            if ( manifestUri != null ) str += $"\n\tmanifestUri: {manifestUri}";
-            if (downloadUri != null ) str += $"\n\tdownloadUri: {downloadUri}";
-            if (changenote != null ) str += $"\n\tchangenote: {changenote}";
+            if ( ManifestUri != null ) str += $"\n\tmanifestUri: {ManifestUri}";
+            if (DownloadUri != null ) str += $"\n\tdownloadUri: {DownloadUri}";
             if (!dependencies.NullOrEmpty())
                 dependencies.ForEach(d => str += $"\n\tdependency: {d}");
             if (!incompatibleWith.NullOrEmpty())
@@ -295,6 +294,19 @@ namespace ModManager
                     manifest = DirectXmlLoader.ItemFromXmlFile<Manifest>( manifestPath );
                     manifest.mod = mod;
                     manifest.dependencies.ForEach( d => d.Owner = manifest );
+                    manifest.loadBefore.ForEach( d => d.Owner = manifest );
+                    manifest.loadAfter.ForEach( d => d.Owner = manifest );
+                    if ( !manifest.manifestUri.NullOrEmpty() )
+                    {
+                        try
+                        {
+                            manifest.ManifestUri = new Uri( manifest.manifestUri );
+                        }
+                        catch (Exception e)
+                        {
+                            Log.Warning( $"Error parsing manifestUri: {e.Message}\n\n{e.StackTrace}" );
+                        }
+                    }
                 }
                 catch ( Exception e )
                 {

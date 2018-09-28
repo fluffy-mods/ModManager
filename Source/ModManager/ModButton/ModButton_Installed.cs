@@ -274,6 +274,12 @@ namespace ModManager
             }
         }
 
+        internal bool Matches(Dependency dep, bool strict = false )
+        {
+            return Matches( dep.Identifier )
+                   && dep.MatchesVersion( Selected, false );
+        }
+
         private List<FloatMenuOption> _titleLinkOptions;
 
         private List<FloatMenuOption> TitleLinkOptions

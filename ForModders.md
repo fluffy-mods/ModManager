@@ -19,7 +19,7 @@ Mod Manager tries to read version information from a `Manifest.xml` file. This f
         <li>SomeOtherMod</li>
     </incompatibleWith>
     <loadBefore>
-        <li>HowManyModsDoesOneNeed</li>
+        <li>HowManyModsDoesOneNeed >= 9000.1</li>
     </loadBefore>
     <loadAfter>
         <li>ToModOrNotToMod</li>
@@ -55,16 +55,16 @@ Any number of dependencies may be given in the format `identifier [operator vers
 A dependency can use one of the following operators; `==`, `>=` or `<=` to specify an *exact* version, *greater or equal* version or *lesser or equal* version respectively. You can use multiple dependencies on the same mod to specify a specific range.
 
 ## incompatibleWith
-A list of mod identifiers that your mods conflict with, and that never should be loaded together. See [resolving identifiers](#resolving-identifiers) on how mods are matched to identifiers.
+A list of [dependencies](#dependencies) that your mods conflict with, and that never should be loaded together. See [resolving identifiers](#resolving-identifiers) on how mods are matched to identifiers.
 
 ## loadBefore
-A list of mod identifiers that should be loaded _after_ your mod (i.e. your mod should load _before_ these mods), if they are present. Can be used to help resolve potential mod conflicts, without creating an explicit dependency. See [resolving identifiers](#resolving-identifiers) on how mods are matched to identifiers.
+A list of optional [dependencies](#dependencies) that should be loaded _after_ your mod (i.e. your mod should load _before_ these mods), if they are present. Can be used to help resolve potential mod conflicts, without creating an explicit dependency. See [resolving identifiers](#resolving-identifiers) on how mods are matched to identifiers.
 
 ## loadAfter
-A list of mod identifiers that should be loaded _before_ your mod (i.e. your mod should load _after_ these mods), if they are present. Can be used to help resolve potential mod conflicts, without creating an explicit dependency. See [resolving identifiers](#resolving-identifiers) on how mods are matched to identifiers.
+A list of optional [dependencies](#dependencies) that should be loaded _before_ your mod (i.e. your mod should load _after_ these mods), if they are present. Can be used to help resolve potential mod conflicts, without creating an explicit dependency. See [resolving identifiers](#resolving-identifiers) on how mods are matched to identifiers.
 
 ## manifestUri
-URI to an online, up-to-date version of the `Manifest.xml`. Typically, this will be in your mods' github repository, but Mod Manager makes no assumptions on where the manifest is located - as long as it can be downloaded directly, and is not hidden behind a login, paywall, etc.
+[URI](https://docs.microsoft.com/en-us/dotnet/api/system.uri?view=netframework-3.5) to an online, up-to-date version of the `Manifest.xml`. Typically, this will be in your mods' github repository, but Mod Manager makes no assumptions on where the manifest is located - as long as it can be downloaded directly, and is not hidden behind a login, paywall, etc.
 
 ## downloadUri
-URI to a download location for the latest version of this mod. Mod Manager does not (yet) download, extract or install mods directly, but will open a browser tab to this location (if requested by the user).
+[URI](https://docs.microsoft.com/en-us/dotnet/api/system.uri?view=netframework-3.5) to a download location for the latest version of this mod. Mod Manager does not (yet) download, extract or install mods directly, but will open a browser tab to this location (if requested by the user).
