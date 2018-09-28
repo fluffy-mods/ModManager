@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
+    <identifier>ModManager</identifier>
     <version>0.1.0.6</version>
-    <dependencies>
-        <li>WorkTab</li>
-        <li>ColonyManager >= 4.0</li>
-        <li>NonExistantMod</li>
-        <li>Apparello2 >= 2.0</li>
-    </dependencies>
-    <incompatibleWith>
-        <li>HugsLib</li>
-    </incompatibleWith>
     <manifestUri>https://rawgit.com/FluffierThanThou/ModManager/master/About/Manifest.xml</manifestUri>
     <downloadUri>https://github.com/FluffierThanThou/ModManager/releases/latest</downloadUri>
 </Manifest>
