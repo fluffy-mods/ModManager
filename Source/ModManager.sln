@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModManager", "ModManager\ModManager.csproj", "{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}"
 EndProject
 Global
@@ -12,5 +15,11 @@ Global
 		{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8CF7D966-F2E4-4F4C-A5AC-2C24781A2366}
 	EndGlobalSection
 EndGlobal

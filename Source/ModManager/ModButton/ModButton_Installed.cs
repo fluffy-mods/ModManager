@@ -80,13 +80,15 @@ namespace ModManager
                     if ( Manifest != null )
                         _issues.AddRange( Manifest.Issues );
 
-                    if ( IsCoreMod && Selected.LoadOrder() != 0 )
-                        _issues.Add( ModIssue.CoreNotFirst( this ) );
+                    if ( !Active )
+                        _issues = _issues
+                            .Where( i => i.subject == Subject.Other || i.subject == Subject.Version )
+                            .ToList();
                 }
                 return _issues;
             }
         }
-
+        
         public IEnumerable<ModMetaData> VersionsOrdered => Versions
             .OrderByDescending( mod => mod.Compatibility() )
             .ThenBy( mod => mod.Source );
@@ -473,17 +475,16 @@ namespace ModManager
         public void Notify_VersionRemoved( ModMetaData version )
         {
             Versions.TryRemove( version );
-            if ( Selected == version )
+            if ( !Versions.Any() )
             {
-                _selected = null;
-                if (!Versions.Any())
-                {
-                    ModButtonManager.TryRemove(this);
-                    Page_BetterModConfig.Instance.Selected = ModButtonManager.AllButtons.First();
-                }
+                ModButtonManager.TryRemove(this);
+                if ( Page_BetterModConfig.Instance.Selected == this )
+                    Page_BetterModConfig.Instance.Selected = null;
+                return;
             }
-            else
-                Selected.Active = version.Active;   
+            if ( Selected == version )
+                _selected = null;
+            Selected.Active = version.Active;   
         }
     }
 }

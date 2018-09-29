@@ -55,6 +55,8 @@
   <ItemGroup>
     <Compile Include="Manifest\OnlineManifest.cs" />
     <Compile Include="ModButton\ModButton_Downloading.cs" />
+    <Compile Include="ModIssue\ModIssue.cs" />
+    <Compile Include="ModIssue\ModIssue_Resolvers.cs" />
     <Compile Include="Patches\Patch_WorkshopItems_Events.cs" />
     <Compile Include="Windows\Dialog_Rename_ModList.cs" />
     <Compile Include="Manifest\Dependency.cs" />
@@ -63,8 +65,6 @@
     <Compile Include="ModButton\ModButtonManager.cs" />
     <Compile Include="ModButton\ModButton_Missing.cs" />
     <Compile Include="Manifest\Manifest.cs" />
-    <Compile Include="ModIssue\ModIssue.cs" />
-    <Compile Include="ModIssue\ModIssue_Resolvers.cs" />
     <Compile Include="ModList\ModList.cs" />
     <Compile Include="Utilities\Constants.cs" />
     <Compile Include="Utilities\Debug.cs" />

@@ -28,6 +28,20 @@ namespace ModManager
         public Version Version { get; private set; }
         public string Identifier { get; private set; }
 
+        public Dependency() { }
+
+        public Dependency( string id)
+        {
+            Identifier = id;
+        }
+
+        public Dependency( string id, EqualityOperator op, Version version )
+        {
+            Identifier = id;
+            Operator = op;
+            Version = version;
+        }
+
         public static string OperatorToString( EqualityOperator op )
         {
             switch (op)

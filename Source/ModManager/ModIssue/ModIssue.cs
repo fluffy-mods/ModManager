@@ -75,7 +75,7 @@ namespace ModManager
                 () => Resolvers.ResolveFindMod( button.Name, button, replace: true ) );
         }
 
-        public static ModIssue CoreNotFirst( ModButton_Installed core )
+        public static ModIssue CoreNotFirst( ModButton core )
         {
             return new ModIssue( Severity.Critical, Subject.LoadOrder, core, core.Identifier,
                 I18n.CoreNotFirst, () => Resolvers.ResolveCoreShouldLoadFirst( core ) );

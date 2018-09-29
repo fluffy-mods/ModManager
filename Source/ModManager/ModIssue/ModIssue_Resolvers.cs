@@ -137,7 +137,7 @@ namespace ModManager
             FloatMenu( options );
         }
 
-        public static void ResolveCoreShouldLoadFirst(ModButton_Installed core)
+        public static void ResolveCoreShouldLoadFirst(ModButton core)
         {
             var options = new List<FloatMenuOption>();
             options.Add( new FloatMenuOption( I18n.MoveCoreToFirst, () => ModButtonManager.Insert( core, 0 ) ) );

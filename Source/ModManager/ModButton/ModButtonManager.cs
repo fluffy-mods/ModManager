@@ -4,6 +4,7 @@
 using System.Collections.Generic;
 using Verse;
 using System.Linq;
+using System.Security.Policy;
 using UnityEngine;
 
 namespace ModManager
@@ -49,7 +50,7 @@ namespace ModManager
             .Select( b => b.Selected );
 
         public static IEnumerable<ModMetaData> AvailableMods => AllMods.Where( m => !m.Active );
-        public static bool AnyIssue => ActiveButtons.Any( b => b.Issues.Any( i => i.severity > Severity.Notice ) );
+        public static bool AnyIssue => Issues.Any( i => i.severity > Severity.Notice );
 
         public static void TryAdd( ModButton button, bool notify_orderChanged = true )
         {
@@ -110,8 +111,20 @@ namespace ModManager
         public static void Notify_ModOrderChanged()
         {
             ModsConfig.SetActiveToList( ActiveMods.Select( m => m.Identifier ).ToList() );
-            foreach ( var button in AllButtons )
+            Notify_RecacheIssues();
+        }
+
+        public static ModButton_Installed CoreMod => AllButtons.First( b => b.IsCoreMod ) as ModButton_Installed;
+
+        public static void Notify_RecacheIssues()
+        {
+            foreach (var button in AllButtons)
                 button.Notify_RecacheIssues();
+            _issues = ActiveButtons.SelectMany( b => b.Issues ).ToList();
+
+            if ( !CoreMod.Active )
+                // core not loaded
+                _issues.Add( ModIssue.CoreNotFirst( CoreMod ) );
         }
 
         public static void Reorder( int from, int to )
@@ -176,7 +189,7 @@ namespace ModManager
                 .FirstOrDefault( b => b.Identifier == mod.Identifier );
 
             // add installed item to MBM
-            var installed = ModButton_Installed.For(mod);
+            var installed = ModButton_Installed.For( mod );
             if ( missing != null && missing.Active )
                 Insert( installed, ActiveButtons.IndexOf( missing ) );
             else
@@ -187,6 +200,17 @@ namespace ModManager
             TryRemove(missing);
 
             Page_BetterModConfig.Instance.Notify_ModsListChanged();
+        }
+
+        private static List<ModIssue> _issues;
+        public static List<ModIssue> Issues
+        {
+            get
+            {
+                if ( _issues == null )
+                    Notify_RecacheIssues();
+                return _issues;
+            }
         }
 
         public static void DeactivateAll()

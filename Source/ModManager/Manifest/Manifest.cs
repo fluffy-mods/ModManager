@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Harmony;
 using UnityEngine;
 using Verse;
 using static ModManager.Constants;
@@ -166,10 +167,12 @@ namespace ModManager
             get
             {
                 if ( _issues == null )
+                {
                     _issues = DependencyIsues
-                        .Concat( LoadOrderIssues )
-                        .Concat( IncompatibilityIssues )
+                        .Concat(LoadOrderIssues)
+                        .Concat(IncompatibilityIssues)
                         .ToList();
+                }
                 return _issues;
             }
         }
@@ -212,7 +215,7 @@ namespace ModManager
                 foreach ( var dependency in incompatibleWith )
                 {
                     if ( dependency.Met == DependencyStatus.Met || dependency.Met == DependencyStatus.UnknownVersion )
-                        issues.Add( new ModIssue( Severity.Major, Subject.Other, Button, dependency.Identifier,
+                        issues.Add( new ModIssue( Severity.Major, Subject.Dependency, Button, dependency.Identifier,
                             I18n.IncompatibleMod( mod.Name, dependency.Identifier ),
                             () => Resolvers.ResolveIncompatible( Button, dependency.Target ) ) );
                 }
@@ -226,9 +229,30 @@ namespace ModManager
             {
                 var issues = new List<ModIssue>();
                 var order = mod.LoadOrder();
-                foreach ( var dep in loadAfter
-                    .Concat( dependencies
-                    .Where( d => d.Met == DependencyStatus.Met || d.Met == DependencyStatus.UnknownVersion ) ) )
+                bool loadBeforeCore = false;
+                
+                foreach (var dep in loadBefore)
+                {
+                    var otherMod = ModButtonManager.ActiveButtons
+                        .OfType<ModButton_Installed>()
+                        .FirstOrDefault(m => m.Matches(dep));
+                    if ( otherMod == ModButtonManager.CoreMod )
+                        loadBeforeCore = true;
+                    var otherOrder = otherMod?.LoadOrder;
+                    if (otherOrder >= 0 && otherOrder < order)
+                        issues.Add(new ModIssue(Severity.Major, Subject.LoadOrder,
+                            Button, otherMod.Identifier,
+                            I18n.ShouldBeLoadedBefore(otherMod.Name),
+                            () => Resolvers.ResolveShouldLoadBefore(Button, otherMod)));
+                }
+
+                var _loadAfter = new List<Dependency>( loadAfter );
+                _loadAfter.AddRange( dependencies.Where( d => d.Met == DependencyStatus.Met ||
+                                                              d.Met == DependencyStatus.UnknownVersion ) );
+                if ( !loadBeforeCore )
+                    _loadAfter.Add( new Dependency( "Core" ) );
+
+                foreach ( var dep in _loadAfter )
                 {
                     var otherMod = ModButtonManager.ActiveButtons
                         .OfType<ModButton_Installed>()
@@ -241,18 +265,6 @@ namespace ModManager
                             () => Resolvers.ResolveShouldLoadAfter( Button, otherMod ) ) );
                 }
 
-                foreach ( var dep in loadBefore )
-                {
-                    var otherMod = ModButtonManager.ActiveButtons
-                        .OfType<ModButton_Installed>()
-                        .FirstOrDefault(m => m.Matches( dep ));
-                    var otherOrder = otherMod?.LoadOrder;
-                    if ( otherOrder >= 0 && otherOrder < order )
-                        issues.Add( new ModIssue( Severity.Major, Subject.LoadOrder,
-                            Button, otherMod.Identifier,
-                            I18n.ShouldBeLoadedBefore( otherMod.Name ),
-                            () => Resolvers.ResolveShouldLoadBefore( Button, otherMod ) ) );
-                }
                 return issues;
             }
         }

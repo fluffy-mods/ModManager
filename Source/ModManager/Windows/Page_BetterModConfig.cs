@@ -215,23 +215,23 @@ namespace ModManager
             if ( ModButtonManager.AnyIssue )
             {
                 var issueRect = new Rect( canvas.xMin + SmallMargin, canvas.yMin, IconSize, IconSize );
-
-
-                var buttons = ModButtonManager.ActiveButtons
-                    .Where( b => b.Issues.Any() && b.Issues.Max( i => i.severity ) > Severity.Notice )
-                    .OrderByDescending( b => b.Issues.Max( i => i.severity ) );
-                foreach ( var button in buttons )
+                var groupedIssues = ModButtonManager.Issues
+                    .Where( i => i.severity > Severity.Notice )
+                    .GroupBy( i => i.button )
+                    .OrderByDescending( bi => bi.Max( i => i.severity ) )
+                    .ThenBy( bi => bi.Key.Name );
+                foreach ( var buttonIssues in groupedIssues)
                 {
-                    var tip = $"<b>{button.Name}</b>";
-                    tip += button.Issues.Select( i => $"\n<color={ColorUtility.ToHtmlStringRGBA(i.Color)}>{i.tip}</color>" ).StringJoin( "" );
+                    var tip = $"<b>{buttonIssues.Key.Name}</b>";
+                    tip += buttonIssues.Select( i => $"\n<color={ColorUtility.ToHtmlStringRGBA(i.Color)}>{i.tip}</color>" ).StringJoin( "" );
                     TooltipHandler.TipRegion(issueRect, tip);
                 }
-                var color = buttons.SelectMany( b => b.Issues ).MaxBy( i => i.severity ).Color;
+                var color = ModButtonManager.Issues.MaxBy( i => i.severity ).Color;
 
                 if ( Widgets.ButtonImage( issueRect, Warning, color ) )
                 {
-                    _issueIndex = Utilities.Modulo( _issueIndex, buttons.Count() );
-                    Selected = buttons.ElementAt( _issueIndex++ );
+                    _issueIndex = Utilities.Modulo( _issueIndex, groupedIssues.Count() );
+                    Selected = groupedIssues.ElementAt( _issueIndex++ ).Key;
                 }
             }
         }
@@ -810,24 +810,20 @@ namespace ModManager
 
         public void ConfirmModIssues()
         {
-            var buttons = ModButtonManager.ActiveButtons
-                .Where( b => b.Issues.Any( i => i.severity > Severity.Notice ) );
-
-            var issueCount = 0;
-            var issueList = "";
-            foreach ( var button in buttons )
+            var issues = ModButtonManager.Issues.Where( i => i.severity > Severity.Notice );
+            string issueList = "";
+            foreach ( var buttonIssues in issues.GroupBy( i => i.button )
+                .OrderByDescending( bi => bi.Max( i => i.severity ) )
+                .ThenBy( bi => bi.Key.Name  ) )
             {
-                issueList += $"{button.Name}\n";
-                foreach ( var issue in button.Issues.Where( i => i.severity > Severity.Notice ).OrderByDescending( i => i.severity ) )
-                {
+                issueList += $"{buttonIssues.Key.Name}\n";
+                foreach ( var issue in buttonIssues.Where( i => i.severity > Severity.Notice ).OrderByDescending( i => i.severity ) )
                     issueList += $"<i><color=#{ColorUtility.ToHtmlStringRGBA(issue.Color)}>{issue.tip}</color></i>\n";
-                    issueCount++;
-                }
                 issueList += "\n";
             }
 
             Action close = () => Find.WindowStack.TryRemove( this );
-            var title = I18n.DialogConfirmIssuesTitle( issueCount );
+            var title = I18n.DialogConfirmIssuesTitle( issues.Count() );
             var text = I18n.DialogConfirmIssues( issueList );
             Find.WindowStack.Add( Dialog_MessageBox.CreateConfirmation( text, close, true, title ) );
         }
