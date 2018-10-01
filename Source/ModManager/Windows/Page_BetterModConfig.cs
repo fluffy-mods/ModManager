@@ -501,7 +501,8 @@ namespace ModManager
         }
 
         public List<ModButton> FilteredAvailableButtons => ModButtonManager.AvailableButtons
-                        .Where( b => !FilterAvailable || b.MatchesFilter( _availableFilter ) )
+                        .Where( b => !FilterAvailable || b.MatchesFilter( _availableFilter ) > 0 )
+                        .OrderBy( b => FilterAvailable ? b.MatchesFilter( _availableFilter ) : 0 )
                         .ToList();
 
         public void DoAvailableMods( Rect canvas )
@@ -572,7 +573,7 @@ namespace ModManager
         private bool _draggingOverAvailable = false;
         private int _lastHoverIndex;
         public List<ModButton> FilteredActiveButtons => ModButtonManager.ActiveButtons
-                        .Where( b => !FilterActive || b.MatchesFilter( _activeFilter ) )
+                        .Where( b => !FilterActive || b.MatchesFilter( _activeFilter ) > 0 )
                         .ToList();
 
         public void DoActiveMods( Rect canvas )
@@ -727,7 +728,7 @@ namespace ModManager
             // code is a handy shortcut for mouseOver interactions.
             if ( !filter.NullOrEmpty() )
             {
-                if ( Widgets.ButtonImage( iconRect, Resources.Close ) )
+                if ( Widgets.ButtonImage( iconRect, Status_Cross ) )
                 {
                     filter = string.Empty;
                     Notify_FilterChanged();

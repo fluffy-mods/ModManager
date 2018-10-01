@@ -55,7 +55,7 @@ namespace ModManager
                 canvas.width - SmallIconSize * 2 - SmallMargin,
                 canvas.height * 2 / 3f);
 
-            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && !MatchesFilter(filter);
+            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && MatchesFilter(filter) <= 0;
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;

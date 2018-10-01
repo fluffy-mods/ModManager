@@ -41,7 +41,16 @@ namespace ModManager
         }
 
         public abstract bool IsCoreMod { get; }
-        public virtual bool MatchesFilter( string filter ) => filter.NullOrEmpty() || Name.ToUpper().Contains( filter.ToUpper() );
+
+        public virtual int MatchesFilter( string filter )
+        {
+            if ( filter.NullOrEmpty() || Name.ToUpper().Contains( filter.ToUpper() ) )
+            {
+                return 1;
+            }
+            return 0;
+        }
+
         internal abstract void DoModActionButtons( Rect canvas );
         internal abstract void DoModDetails( Rect canvas );
         public virtual int LoadOrder => -1;

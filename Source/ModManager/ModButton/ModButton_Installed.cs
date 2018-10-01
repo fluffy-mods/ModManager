@@ -51,6 +51,18 @@ namespace ModManager
 
         public override int LoadOrder => Selected?.LoadOrder() ?? base.LoadOrder;
 
+        public override int MatchesFilter( string filter )
+        {
+            if ( base.MatchesFilter( filter ) > 0 )
+                return 1;
+            if ( Selected.Author.ToUpperInvariant().Contains( filter.ToUpperInvariant() ) )
+                return 2;
+            // too many false positives.
+            //if ( Selected.Description.ToUpperInvariant().Contains( filter.ToUpperInvariant() ) )
+            //    return 3;
+            return 0;
+        }
+
         private List<ModIssue> _issues;
         public override void Notify_RecacheIssues()
         {
@@ -170,7 +182,7 @@ namespace ModManager
                 ( SmallIconSize + SmallMargin ) * Versions.Count,
                 nameRect.height);
 
-            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && !MatchesFilter(filter);
+            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && MatchesFilter( filter ) <= 0;
             GUI.color = ( deemphasized || !Selected.enabled ) ? Color.white.Desaturate() : Color.white;
 
             Text.Anchor = TextAnchor.MiddleLeft;
@@ -263,7 +275,7 @@ namespace ModManager
 
         internal bool Matches(Dependency dep, bool strict = false )
         {
-            return MatchesFilter( dep.Identifier )
+            return base.MatchesFilter( dep.Identifier ) > 0
                    && dep.MatchesVersion( Selected, false );
         }
 
