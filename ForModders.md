@@ -1,5 +1,5 @@
 # Modder Info
-Mod Manager tries to read version information from a `Manifest.xml` file. This file should be located in the `About` folder, next to `About.xml`. A manifest will look something like this;
+Mod Manager tries to read version information from a `Manifest.xml` file. This file should be located in the `About` folder, next to `About.xml`. All elements in the manifest are optional. A manifest will look something like this;
 
 ``` xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -31,12 +31,12 @@ Mod Manager tries to read version information from a `Manifest.xml` file. This f
 
 # Manifest properties
 ## identifier
-A unique identifier for your mod. We need this because the mod's name might be too long, and the in-game identifier is based on the mod's folder name - which is different for steam and local mods, as well as for local copies made by Mod Manager. 
+A unique identifier for your mod. We may need this because the mod's name might be too long, and the in-game identifier is based on the mod's folder name - which is different for steam and local mods, as well as for local copies made by Mod Manager. 
 
 *NOTE: Identifiers should never contain spaces.*
 
 ### resolving identifiers
-Most of the manifests' properties use identifiers to identify other mods. Since not all mods will have a manifest, we have to be creative in resolving identifiers. Mod Manager attempts to match mods to identifiers in this order;
+Most of the manifests' properties use identifiers to identify other mods. Since not all mods will have a manifest - and not all manifests will have an identifier, we have to be creative in resolving identifiers. Mod Manager attempts to match mods to identifiers in this order;
  - their manifest identifier.
  - their name, stripped of all spaces.
  - their mod identifier (folder name), stripped of all spaces.
