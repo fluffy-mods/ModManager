@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
-  <version>0.10.543</version>
-  <manifestUri>https://github.com/FluffierThanThou/ModManager/About/Manifest.xml</manifestUri>
-  <downloadUri>https://github.com/FluffierThanThou/ModManager/releases/v0.10.543</downloadUri>
+  <version>0.11.544</version>
+  <manifestUri>https://rawgit.com/FluffierThanThou/ModManager/master/About/Manifest.xml</manifestUri>
+  <downloadUri>https://github.com/FluffierThanThou/ModManager/releases/v0.11.544</downloadUri>
 </Manifest>
