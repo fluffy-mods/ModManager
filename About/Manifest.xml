@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
-  <identifier>ModManager</identifier>
-  <version>0.9.542</version>
+  <version>0.10.543</version>
   <manifestUri>https://github.com/FluffierThanThou/ModManager/About/Manifest.xml</manifestUri>
-  <downloadUri>https://github.com/FluffierThanThou/ModManager/releases/v0.9.542</downloadUri>
-  <manifest>https://github.com/FluffierThanThou/ModManager/About/Manifest.xml</manifest>
-  <download>https://github.com/FluffierThanThou/ModManager/releases/v0.8.541</download>
+  <downloadUri>https://github.com/FluffierThanThou/ModManager/releases/v0.10.543</downloadUri>
 </Manifest>
