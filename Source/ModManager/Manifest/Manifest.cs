@@ -19,6 +19,7 @@ namespace ModManager
         private string version;
         private ModMetaData mod;
         public Version Version { get; private set; }
+        public List<string> tags = new List<string>();
         public string identifier;
         public List<Dependency> dependencies = new List<Dependency>();
         public List<Dependency> incompatibleWith = new List<Dependency>();
@@ -272,6 +273,8 @@ namespace ModManager
         public override string ToString()
         {
             var str = $"Manifest for: {mod.Name} ({Version?.ToString() ?? "unknown" })";
+            if (!tags.NullOrEmpty())
+                tags.ForEach(d => str += $"\n\ttag: {d}");
             if ( ManifestUri != null ) str += $"\n\tmanifestUri: {ManifestUri}";
             if (DownloadUri != null ) str += $"\n\tdownloadUri: {DownloadUri}";
             if (!dependencies.NullOrEmpty())
