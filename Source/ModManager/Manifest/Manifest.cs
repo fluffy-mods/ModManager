@@ -19,6 +19,7 @@ namespace ModManager
         private string version;
         private ModMetaData mod;
         public Version Version { get; private set; }
+        public List<string> tags = new List<string>();
         public string identifier;
         public List<Dependency> dependencies = new List<Dependency>();
         public List<Dependency> incompatibleWith = new List<Dependency>();
