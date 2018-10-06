@@ -136,31 +136,32 @@ namespace ModManager
             DraggingManager.Update();
             
             var iconBarHeight = IconSize + SmallMargin;
+            var colWidth = Mathf.FloorToInt( canvas.width / 5 );
 
             var availableRect = new Rect( 
                 canvas.xMin, 
-                canvas.yMin, 
-                canvas.width * 1/5f, 
+                canvas.yMin,
+                colWidth, 
                 canvas.height - SmallMargin - iconBarHeight );
             var moreModButtonsRect = new Rect(
                 canvas.xMin,
                 availableRect.yMax + SmallMargin,
-                canvas.width * 1/5f,
+                colWidth,
                 iconBarHeight );
             var activeRect = new Rect( 
                 availableRect.xMax + SmallMargin,
                 canvas.yMin,
-                canvas.width * 1 / 5f,
+                colWidth,
                 canvas.height - SmallMargin - iconBarHeight);
             var modSetButtonsRect = new Rect(
                 activeRect.xMin,
                 activeRect.yMax + SmallMargin,
-                canvas.width * 1 / 5f,
+                colWidth,
                 iconBarHeight );
             var detailRect = new Rect( 
                 activeRect.xMax + SmallMargin, 
                 canvas.yMin, 
-                canvas.width * 3 / 5f - SmallMargin * 2,
+                canvas.width - ( colWidth + SmallMargin ) * 2,
                 canvas.height - SmallMargin - iconBarHeight);
             var modButtonsRect = new Rect(
                 detailRect.xMin,

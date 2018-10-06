@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 0,
         "minor": 14,
-        "build": 569
+        "build": 570
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "FluffierThanThou": "",
         "Andreas Pardeike": ""
     },
-    "changenote": "",
+    "changenote": "refactor mod list button, add renaming\nadd reset all button\nuse question icon for notices",
     "tags": [],
     "publishedfileid": "1507748539"
 }
