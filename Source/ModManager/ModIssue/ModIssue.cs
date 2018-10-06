@@ -34,7 +34,8 @@ namespace ModManager
         public string targetId;
         public Action resolver;
 
-        public ModIssue( Severity severity, Subject subject, ModButton button, string targetId, string tip = null, Action resolver = null )
+        public ModIssue( Severity severity, Subject subject, ModButton button, string targetId, string tip = null,
+            Action resolver = null )
         {
             this.severity = severity;
             this.subject = subject;
@@ -53,7 +54,7 @@ namespace ModManager
         public static ModIssue UpdateAvailable( ModButton_Installed button )
         {
             return new ModIssue( Severity.Minor, Subject.Version, button, button.Identifier,
-                I18n.UpdateAvailable( button.Manifest.Version, button.Manifest.Version));
+                I18n.UpdateAvailable( button.Manifest.Version, button.Manifest.Version ) );
         }
 
         public static ModIssue DifferentVersion( ModButton_Installed button )
@@ -95,6 +96,20 @@ namespace ModManager
                         return new Color( 1f, .55f, 0f );
                     default:
                         return Color.red;
+                }
+            }
+        }
+
+        public Texture2D Icon
+        {
+            get
+            {
+                switch ( severity )
+                {
+                    case Severity.Notice:
+                        return Resources.Question;
+                    default:
+                        return Resources.Warning;
                 }
             }
         }
