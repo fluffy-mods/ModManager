@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 0,
-        "minor": 14,
-        "build": 570
+        "minor": 15,
+        "build": 571
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "FluffierThanThou": "",
         "Andreas Pardeike": ""
     },
-    "changenote": "refactor mod list button, add renaming\nadd reset all button\nuse question icon for notices",
+    "changenote": "pixel perfect text, please.\nrefactor mod list button, add renaming\nadd reset all button\nuse question icon for notices",
     "tags": [],
     "publishedfileid": "1507748539"
 }
