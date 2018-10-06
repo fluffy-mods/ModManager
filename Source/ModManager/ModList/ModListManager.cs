@@ -53,9 +53,16 @@ namespace ModManager
             }
         }
 
-        public static List<FloatMenuOption> SavedModListOptions 
+        public static List<FloatMenuOption> SavedModListsOptions => ModLists.Select( SavedModListOption ).ToList();
+
+        public static FloatMenuOption SavedModListOption( ModList list )
         {
-            get { return ModLists.Select( list => new FloatMenuOption( list.Name, () => list.Apply( Event.current.shift ) ) ).ToList(); }
+            var options = Utilities.NewOptions;
+            options.Add( new FloatMenuOption( I18n.LoadModList, () => list.Apply( false ) ) );
+            options.Add( new FloatMenuOption( I18n.AddModList, () => list.Apply( true ) ) );
+            options.Add( new FloatMenuOption( I18n.RenameModList, () => Find.WindowStack.Add( new Dialog_Rename_ModList( list ) ) ) );
+            options.Add( new FloatMenuOption( I18n.DeleteModList, () => TryDelete( list ) ) );
+            return new FloatMenuOption( list.Name, () => Utilities.FloatMenu( options ) );
         }
 
         public static List<FloatMenuOption> SaveFileOptions
@@ -101,9 +108,11 @@ namespace ModManager
 
             try
             {
-                File.Move( FilePath( oldName ), FilePath( list) );
-                Messages.Message( I18n.ModListRenamed( oldName, list.Name ), MessageTypeDefOf.TaskCompletion, false );
-                return true;
+                File.Delete( FilePath( oldName ) );
+                var success = list.Save();
+                if ( success )
+                    Messages.Message( I18n.ModListRenamed( oldName, list.Name ), MessageTypeDefOf.TaskCompletion, false );
+                return success;
             }
             catch ( Exception e )
             {
@@ -114,27 +123,10 @@ namespace ModManager
 
         public static bool TryCreate( ModList list, bool force = false )
         {
-            var path = FilePath( list );
-            if ( File.Exists( path ) && !force)
-            {
-                Log.Error("File exists: " + path );
-                return false;
-            }
-
-            try
-            {
-                Scribe.saver.InitSaving( path, RootElement );
-                list.ExposeData();
-                Scribe.saver.FinalizeSaving();
-                Messages.Message(I18n.ModListCreated( list.Name ), MessageTypeDefOf.TaskCompletion, false);
-                ModLists.Add( list );
-                return true;
-            }
-            catch (Exception e)
-            {
-                Log.Error(e.Message);
-                return false;
-            }
+            var success = list.Save( force );
+            if ( success )
+                Messages.Message( I18n.ModListCreated( list.Name ), MessageTypeDefOf.TaskCompletion, false );
+            return success;
         }
 
         private static bool TryDelete(ModList list)
@@ -159,12 +151,5 @@ namespace ModManager
                 return false;
             }
         }
-
-        public static void DoDeleteModListFloatMenu()
-        {
-            var options = ModLists.Select( l => new FloatMenuOption( l.Name, () => TryDelete( l ) ) ).ToList();
-            Find.WindowStack.Add( new FloatMenu( options ) );
-        }
-
     }
 }

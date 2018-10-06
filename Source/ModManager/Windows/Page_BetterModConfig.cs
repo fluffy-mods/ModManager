@@ -214,13 +214,8 @@ namespace ModManager
                 canvas.yMin,
                 IconSize,
                 IconSize);
-            if ( Utilities.ButtonIcon( ref iconRect, File, I18n.LoadModList, Status_Up ) )
-                DoLoadModListFloatMenu();
-            if ( Utilities.ButtonIcon( ref iconRect, File, I18n.SaveModList, Status_Down ) )
-                new ModList( ModButtonManager.ActiveButtons );
-            if ( ModListManager.ModLists.Any() )
-                if ( Utilities.ButtonIcon( ref iconRect, File, I18n.DeleteModList, Status_Cross, mouseOverColor: Color.red ) )
-                    ModListManager.DoDeleteModListFloatMenu();
+            if ( Utilities.ButtonIcon( ref iconRect, File, I18n.ModListsTip ) )
+                DoModListFloatMenu();
             if ( ModButtonManager.ActiveMods.Any( mod => mod.Source == ContentSource.SteamWorkshop ) )
                 if ( Utilities.ButtonIcon( ref iconRect, Folder, I18n.CreateLocalCopies, Status_Plus ) )
                     IO.CreateLocalCopies( ModButtonManager.ActiveMods );
@@ -230,9 +225,9 @@ namespace ModManager
                     Workshop.Subscribe( ModButtonManager.ActiveButtons.OfType<ModButton_Missing>()
                         .Where( b => b.Identifier.IsSteamWorkshopIdentifier() ).Select( b => b.Identifier ) );
 
+            iconRect.x = canvas.xMin + SmallMargin; 
             if ( ModButtonManager.AnyIssue )
             {
-                var issueRect = new Rect( canvas.xMin + SmallMargin, canvas.yMin, IconSize, IconSize );
                 var groupedIssues = ModButtonManager.Issues
                     .Where( i => i.severity > Severity.Notice )
                     .GroupBy( i => i.button )
@@ -242,23 +237,33 @@ namespace ModManager
                 {
                     var tip = $"<b>{buttonIssues.Key.Name}</b>";
                     tip += buttonIssues.Select( i => $"\n<color={ColorUtility.ToHtmlStringRGBA(i.Color)}>{i.tip}</color>" ).StringJoin( "" );
-                    TooltipHandler.TipRegion(issueRect, tip);
+                    TooltipHandler.TipRegion(iconRect, tip);
                 }
-                var color = ModButtonManager.Issues.MaxBy( i => i.severity ).Color;
 
-                if ( Widgets.ButtonImage( issueRect, Warning, color ) )
+
+                var worstIssue = ModButtonManager.Issues.MaxBy(i => i.severity);
+                var color = worstIssue.Color;
+
+                if ( Widgets.ButtonImage(iconRect, worstIssue.Icon, color ) )
                 {
                     _issueIndex = Utilities.Modulo( _issueIndex, groupedIssues.Count() );
                     Selected = groupedIssues.ElementAt( _issueIndex++ ).Key;
                 }
+                iconRect.x += IconSize + SmallMargin;
             }
+            if ( ModButtonManager.ActiveButtons.Count >= 2 ||
+                 ( !ModButtonManager.ActiveButtons.FirstOrDefault()?.IsCoreMod ?? true ) )
+                if ( Utilities.ButtonIcon( ref iconRect, Spinner[0], I18n.ResetMods, mouseOverColor: Color.red ) )
+                    ModButtonManager.Reset();
+
         }
 
-        private void DoLoadModListFloatMenu()
+        private void DoModListFloatMenu()
         {
-            var options = new List<FloatMenuOption>();
+            var options = Utilities.NewOptions;
+            options.Add( new FloatMenuOption( I18n.SaveModList, () => new ModList( ModButtonManager.ActiveButtons ) ) );
             options.Add( new FloatMenuOption( I18n.LoadModListFromSave, DoLoadModListFromSaveFloatMenu ) );
-            options.AddRange( ModListManager.SavedModListOptions );
+            options.AddRange( ModListManager.SavedModListsOptions );
             Find.WindowStack.Add( new FloatMenu( options ) );
         }
 
@@ -266,7 +271,6 @@ namespace ModManager
         {
             Find.WindowStack.Add( new FloatMenu( ModListManager.SaveFileOptions ) );
         }
-
 
         private int _lastControlID = 0;
         public void HandleKeyboardNavigation()

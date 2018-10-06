@@ -1,7 +1,9 @@
 ﻿// ModList.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using RimWorld;
 using Verse;
@@ -88,7 +90,7 @@ namespace ModManager
         public void Apply( bool add )
         {
             if (!add)
-                ModButtonManager.DeactivateAll();
+                ModButtonManager.Reset();
 
             for ( int i = 0; i < _modIds.Count; i++ )
             {
@@ -97,8 +99,10 @@ namespace ModManager
                 var mod = ModLister.GetModWithIdentifier( id );
                 if ( mod != null )
                 {
+                    var button = ModButton_Installed.For( mod );
+                    button.Notify_ResetSelected();
                     mod.Active = true;
-                    ModButtonManager.TryAdd( ModButton_Installed.For( mod ) );
+                    ModButtonManager.TryAdd( button, false );
                 }
                 else
                 {
@@ -107,7 +111,7 @@ namespace ModManager
             }
 
             // reset selected versions for all these mods
-            ModButtonManager.Notify_ModListApplied();
+            ModButtonManager.Notify_ModOrderChanged();
         }
 
         public override string ToString()
@@ -126,6 +130,32 @@ namespace ModManager
                 foreach (var name in _modNames)
                     str += "\t" + name + "\n";
             return str;
+        }
+
+        public bool Save( bool force = false )
+        {
+
+            var path = ModListManager.FilePath( this );
+            if (File.Exists(path) && !force)
+            {
+                Log.Error("File exists: " + path);
+                return false;
+            }
+
+            try
+            {
+                Scribe.saver.InitSaving( path, ModListManager.RootElement );
+                ExposeData();
+                Scribe.saver.FinalizeSaving();
+                if ( !ModListManager.ModLists.Contains( this ) )
+                    ModListManager.ModLists.Add( this );
+                return true;
+            }
+            catch (Exception e)
+            {
+                Log.Error(e.Message);
+                return false;
+            }
         }
     }
 }

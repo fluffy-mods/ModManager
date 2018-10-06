@@ -83,8 +83,9 @@ namespace ModManager
                 return;
 
             TooltipHandler.TipRegion( canvas, string.Join( "\n", Issues.Select( i => i.tip ).ToArray() ) );
-            GUI.color = Issues.MaxBy( i => i.severity ).Color;
-            GUI.DrawTexture( canvas, Resources.Warning );
+            var worstIssue = Issues.MaxBy( i => i.severity );
+            GUI.color = worstIssue.Color;
+            GUI.DrawTexture( canvas, worstIssue.Icon );
             GUI.color = Color.white;
         }
 

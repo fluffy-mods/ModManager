@@ -35,19 +35,23 @@
     <Fluffy.ModManager.GetMoreMods_LudeonForums>Get more mods from the Ludeon Forums</Fluffy.ModManager.GetMoreMods_LudeonForums>
     <Fluffy.ModManager.SteamWorkshop.UnSubscribe>Unsubscribe from this mod on the Steam Workshop</Fluffy.ModManager.SteamWorkshop.UnSubscribe>
 
-    <Fluffy.ModManager.LoadModList>Load mod list\n\nYou can load previously saved mod lists, or load the list used in a save game.\n\nHold [[shift]] to add mods to your current list, otherwise your current list will be replaced.</Fluffy.ModManager.LoadModList>
-    <Fluffy.ModManager.SaveModList>Save mod list\n\nSave a modlist so you can quickly restore it later.</Fluffy.ModManager.SaveModList>`
-    <Fluffy.ModManager.DeleteModList>Delete mod list\n\nChoose and delete mod lists you no longer need.</Fluffy.ModManager.DeleteModList>
+    <Fluffy.ModManager.ModListsTip>Create, apply and manage mod lists.\n\nMod Lists allow you to quickly switch sets of mods.</Fluffy.ModManager.ModListsTip>
+    <Fluffy.ModManager.LoadModList>Load mod list</Fluffy.ModManager.LoadModList>
+    <Fluffy.ModManager.AddModList>Add to current list</Fluffy.ModManager.AddModList>
+    <Fluffy.ModManager.SaveModList>Save current list</Fluffy.ModManager.SaveModList>
+    <Fluffy.ModManager.DeleteModList>Delete saved list</Fluffy.ModManager.DeleteModList>
+    <Fluffy.ModManager.RenameModList>Rename list</Fluffy.ModManager.RenameModList>
     <Fluffy.ModManager.RebuildingModList>Rebuilding mod list</Fluffy.ModManager.RebuildingModList>
 
     <Fluffy.ModManager.InvalidName>{0} is not a valid name. The name may not contain any of these characters: {1}.</Fluffy.ModManager.InvalidName>
-    <Fluffy.ModManager.ModListExists>{0} already exists. Please use a different name, or delete the existing modlist.</Fluffy.ModManager.ModListExists>
+    <Fluffy.ModManager.ModListExists>{0} already exists. Please use a different name, or delete or rename the existing modlist.</Fluffy.ModManager.ModListExists>
     <Fluffy.ModManager.NameTooShort>Mod list must have a name.</Fluffy.ModManager.NameTooShort>
     <Fluffy.ModManager.ModListRenamed>Mod list {0} renamed to {1}.</Fluffy.ModManager.ModListRenamed>
     <Fluffy.ModManager.ModListCreated>Mod list {0} created.</Fluffy.ModManager.ModListCreated>
     <Fluffy.ModManager.ModListLoaded>Mod list {0} loaded.</Fluffy.ModManager.ModListLoaded>
     <Fluffy.ModManager.ModListDeleted>Mod list {0} deleted.</Fluffy.ModManager.ModListDeleted>
     <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
+    <Fluffy.ModManager.ResetMods>Reset mod list.</Fluffy.ModManager.ResetMods>
 
     <Fluffy.ModManager.CreateLocalCopies>Create local copies of all Steam mods in your active mod list\n\nLocal copies will be stored in the mods folder, and will not get automatic updates.</Fluffy.ModManager.CreateLocalCopies>
     <Fluffy.ModManager.CreateLocalCopy>Create a local copy of {0}\n\nLocal copies will be stored in the mods folder, and will not get automatic updates.</Fluffy.ModManager.CreateLocalCopy>

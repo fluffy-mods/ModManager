@@ -120,8 +120,10 @@ namespace ModManager
         public static string RebuildingModList_Key = Key( "RebuildingModList" );
 
         public static string LoadModList = Key( "LoadModList" ).Translate();
+        public static string AddModList = Key( "AddModList" ).Translate();
         public static string SaveModList = Key( "SaveModList" ).Translate();
         public static string DeleteModList = Key( "DeleteModList" ).Translate();
+        public static string RenameModList = Key( "RenameModList" ).Translate();
 
         public static string CreateLocalCopies = Key( "CreateLocalCopies" ).Translate();
 
@@ -174,6 +176,7 @@ namespace ModManager
             VersionControl.CurrentVersionString );
 
         // Modlists
+        public static string ModListsTip = Key( "ModListsTip" ).Translate();
         public static string InvalidName( string name, string invalidChars )
         {
             return Key( "InvalidName" ).Translate( name, invalidChars );
@@ -300,5 +303,6 @@ namespace ModManager
         }
 
         public static string SubscribeAllMissing = Key( "SubscribeAllMissing" ).Translate();
+        public static string ResetMods = Key( "ResetMods" ).Translate();
     }
 }

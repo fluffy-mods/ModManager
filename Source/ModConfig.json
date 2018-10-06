@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 0,
         "minor": 14,
-        "build": 556
+        "build": 569
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "FluffierThanThou": "",
         "Andreas Pardeike": ""
     },
-    "changenote": "allow resizing mod config window\nturn of harmony debug in releases\nmaintain order of available mods if not filtering",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }
