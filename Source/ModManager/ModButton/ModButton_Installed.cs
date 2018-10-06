@@ -76,7 +76,7 @@ namespace ModManager
                 if ( _issues == null )
                 {
                     _issues = new List<ModIssue>();
-                    switch ( Selected.VersionStatus().match )
+                    switch ( Selected.GetVersionStatus().match )
                     {
                         case VersionMatch.DifferentVersion:
                             _issues.Add( ModIssue.DifferentVersion( this ));
@@ -222,7 +222,7 @@ namespace ModManager
             foreach ( var mod in VersionsOrdered )
             {
                 var icon = mod.Source.GetIcon();
-                var status = mod.VersionStatus();
+                var status = mod.GetVersionStatus();
                 GUI.color = status.Color();
                 if ( singleVersion )
                     GUI.DrawTexture( iconRect, icon );
@@ -233,7 +233,7 @@ namespace ModManager
                         Selected = mod;
                 }
 
-                mod.VersionStatus().Tooltip( iconRect );
+                mod.GetVersionStatus().Tooltip( iconRect );
                 iconRect.x -= SmallIconSize + SmallMargin;
             }
         }
@@ -409,8 +409,8 @@ namespace ModManager
                 GUI.color = Color.grey;
                 Widgets.Label(labelRect, I18n.TargetVersion);
                 targetVersionRect.xMin += labelWidth + SmallMargin;
-                mod.VersionStatus().Label(targetVersionRect);
-                if ( mod.VersionStatus().match != VersionMatch.CurrentVersion )
+                mod.GetVersionStatus().Label(targetVersionRect);
+                if ( mod.GetVersionStatus().match != VersionMatch.CurrentVersion )
                     Utilities.ActionButton( targetVersionRect,
                         () => Resolvers.ResolveFindMod( mod.Name.StripSpaces(), this, replace: true ) );
 

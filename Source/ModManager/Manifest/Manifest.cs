@@ -29,6 +29,8 @@ namespace ModManager
         internal string downloadUri;
         public Uri ManifestUri;
         public Uri DownloadUri;
+        private List<string> targetVersions;
+        public List<Version> TargetVersions;
 
         public Texture2D Icon
         {
@@ -271,17 +273,19 @@ namespace ModManager
 
         public override string ToString()
         {
-            var str = $"Manifest for: {mod.Name} ({Version?.ToString() ?? "unknown" })";
+            var str = $"Manifest for: {mod.Name} ({Version?.ToString() ?? "unknown"})";
             if ( ManifestUri != null ) str += $"\n\tmanifestUri: {ManifestUri}";
-            if (DownloadUri != null ) str += $"\n\tdownloadUri: {DownloadUri}";
-            if (!dependencies.NullOrEmpty())
-                dependencies.ForEach(d => str += $"\n\tdependency: {d}");
-            if (!incompatibleWith.NullOrEmpty())
-                incompatibleWith.ForEach(d => str += $"\n\tincompatibleWith: {d}");
-            if (!loadBefore.NullOrEmpty())
-                loadBefore.ForEach(d => str += $"\n\tloadBefore: {d}");
-            if (!loadAfter.NullOrEmpty())
-                loadAfter.ForEach(d => str += $"\n\tloadAfter: {d}");
+            if ( DownloadUri != null ) str += $"\n\tdownloadUri: {DownloadUri}";
+            if ( !dependencies.NullOrEmpty() )
+                dependencies.ForEach( d => str += $"\n\tdependency: {d}" );
+            if ( !incompatibleWith.NullOrEmpty() )
+                incompatibleWith.ForEach( d => str += $"\n\tincompatibleWith: {d}" );
+            if ( !loadBefore.NullOrEmpty() )
+                loadBefore.ForEach( d => str += $"\n\tloadBefore: {d}" );
+            if ( !loadAfter.NullOrEmpty() )
+                loadAfter.ForEach( d => str += $"\n\tloadAfter: {d}" );
+            if ( !TargetVersions.NullOrEmpty() )
+                TargetVersions.ForEach( v => str += $"\n\ttargetVersions: {v}" );
             return str;
         }
 
@@ -319,6 +323,12 @@ namespace ModManager
                             Log.Warning( $"Error parsing manifestUri: {e.Message}\n\n{e.StackTrace}" );
                         }
                     }
+                    if ( !manifest.targetVersions.NullOrEmpty() )
+                    {
+                        manifest.TargetVersions = new List<Version>();
+                        foreach ( var targetVersion in manifest.targetVersions )
+                            manifest.TargetVersions.Add( manifest.ParseVersion( targetVersion ) );
+                    }
                 }
                 catch ( Exception e )
                 {
@@ -351,20 +361,25 @@ namespace ModManager
 
         private Version ParseVersion( string version )
         {
+            return ParseVersion( version, mod );
+        }
+
+        internal static Version ParseVersion( string version, ModMetaData mod )
+        {
             try
             {
-                return new Version( version );
+                return new Version(version);
             }
             catch
             {
                 try
                 {
                     var pattern = @"[^0-9\.]";
-                    return new Version( Regex.Replace( version, pattern, "" ) );
+                    return new Version(Regex.Replace(version, pattern, ""));
                 }
-                catch ( Exception e )
+                catch (Exception e)
                 {
-                    Log.Warning( $"Failed to parse version string '{version}' for {mod?.Name ?? "??"}: {e.Message}\n\n{e.StackTrace}" );
+                    Log.Warning($"Failed to parse version string '{version}' for {mod?.Name ?? "??"}: {e.Message}\n\n{e.StackTrace}");
                     return null;
                 }
             }

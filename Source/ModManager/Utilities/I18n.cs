@@ -47,18 +47,20 @@ namespace ModManager
             return Key( "InvalidVersion" ).Translate( version );
         }
 
-        public static string DifferentVersion( ModMetaData mod )
+        public static string DifferentVersion( ModMetaData mod, string versionString = null )
         {
-            var version = new Version( mod.TargetVersion );
+            var version = new Version( versionString ?? mod.TargetVersion );
             return Key( "DifferentVersion" ).Translate( mod.Name, version.Major + "." + version.Minor,
                 VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor );
         }
 
-        public static string DifferentBuild( ModMetaData mod )
+        public static string DifferentBuild( ModMetaData mod, string versionString = null )
         {
-            var version = new Version( mod.TargetVersion );
+            var version = new Version(versionString ?? mod.TargetVersion );
             return Key( "DifferentBuild" ).Translate( mod.Name, version.Build, VersionControl.CurrentBuild );
         }
+
+        public static string CurrentVersion = Key("CurrentVersion").Translate();
 
         public static string UpdateAvailable( Version current, Version latest )
         {
@@ -107,7 +109,6 @@ namespace ModManager
             return Key( "ShouldBeLoadedAfter" ).Translate( identifier );
         }
 
-        public static string CurrentVersion = Key( "CurrentVersion" ).Translate();
 
         public static string GetMoreMods_SteamWorkshop = Key( "GetMoreMods_SteamWorkshop" ).Translate();
         public static string GetMoreMods_LudeonForums = Key( "GetMoreMods_LudeonForums" ).Translate();

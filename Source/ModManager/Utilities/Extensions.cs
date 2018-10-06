@@ -44,12 +44,12 @@ namespace ModManager
         }
 
         private static Dictionary<ModMetaData, VersionStatus> _versionStatusCache = new Dictionary<ModMetaData, VersionStatus>();
-        public static VersionStatus VersionStatus( this ModMetaData mod )
+        public static VersionStatus GetVersionStatus( this ModMetaData mod )
         {
             VersionStatus status;
             if ( _versionStatusCache.TryGetValue( mod, out status ) )
                 return status;
-            status = new VersionStatus( mod );
+            status = VersionStatus.For( mod );
             _versionStatusCache.Add( mod, status );
             return status;
         }

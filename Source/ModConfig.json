@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 0,
-        "minor": 12,
-        "build": 545
+        "minor": 13,
+        "build": 548
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -13,7 +13,7 @@
         "erdelf": "invaluable help with Harmony transpilers",
         "FluffierThanThou": ""
     },
-    "changenote": "add manifest",
+    "changenote": "maintain order of available mods if not filtering",
     "tags": [],
     "publishedfileid": "1507748539"
 }
