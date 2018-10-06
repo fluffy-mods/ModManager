@@ -136,6 +136,7 @@ namespace ModManager
 
         public static void Insert( ModButton button, int to )
         {
+            AllButtons.TryAdd( button );
             AvailableButtons.TryRemove( button );
             if ( ActiveButtons.Contains( button ) )
             {
@@ -162,12 +163,6 @@ namespace ModManager
                 Notify_ModOrderChanged();
                 SortAvailable();
             }
-        }
-
-        public static void Notify_ModListApplied()
-        {
-            ActiveButtons.ForEach( b => b.Notify_ResetSelected() );
-            Notify_ModOrderChanged();
         }
 
         public static void Notify_Unsubscribed( string publishedFileId )
@@ -213,10 +208,15 @@ namespace ModManager
             }
         }
 
-        public static void DeactivateAll()
+        public static void Reset( bool activateCore = true )
         {
             foreach ( var button in new List<ModButton>( ActiveButtons ) )
                 button.Active = false;
+
+            if ( activateCore )
+                CoreMod.Active = true;
+
+            Notify_ModOrderChanged();
         }
     }
 }
