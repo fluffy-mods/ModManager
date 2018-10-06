@@ -4,14 +4,15 @@
         "alpha": 18,
         "major": 0,
         "minor": 13,
-        "build": 548
+        "build": 554
     },
     "visibility": 0,
     "git_repo": "ModManager",
     "git_user": "FluffierThanThou",
     "contributors": {
         "erdelf": "invaluable help with Harmony transpilers",
-        "FluffierThanThou": ""
+        "FluffierThanThou": "",
+        "Andreas Pardeike": ""
     },
     "changenote": "maintain order of available mods if not filtering",
     "tags": [],

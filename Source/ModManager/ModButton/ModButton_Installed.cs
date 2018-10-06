@@ -323,7 +323,7 @@ namespace ModManager
                     canvas.xMin,
                     canvas.yMin,
                     canvas.width,
-                    Mathf.Min( viewRect.height, canvas.width / GoldenRatio ) );
+                    Mathf.Min( viewRect.height, canvas.width / GoldenRatio, Page.StandardSize.x * 3/5f / GoldenRatio ) );
                 if ( viewRect.height > outRect.height )
                     viewRect.xMax -= 18f;
 

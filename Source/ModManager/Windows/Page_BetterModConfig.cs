@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Harmony;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -43,13 +44,19 @@ namespace ModManager
             doCloseButton = false;
             doCloseX = true;
             absorbInputAroundWindow = false;
+            resizeable = true;
+            AccessTools.Field( typeof( Window ), "resizer" )
+                .SetValue( this, new WindowResizer {minWindowSize = MinimumSize} );
         }
 
         public bool FilterAvailable => !_availableFilterVisible && !_availableFilter.NullOrEmpty();
         public bool FilterActive => !_activeFilterVisible && !_activeFilter.NullOrEmpty();
 
         public static Page_BetterModConfig Instance => _instance;
-            
+
+        public override Vector2 InitialSize => StandardSize;
+        public static Vector2 MinimumSize => StandardSize * 2 / 3f;
+
         public ModButton Selected
         {
             get => _selected;
@@ -124,35 +131,36 @@ namespace ModManager
 
         public override void DoWindowContents( Rect canvas )
         {
+            CheckResized();
             HandleKeyboardNavigation();
             DraggingManager.Update();
-
+            
             var iconBarHeight = IconSize + SmallMargin;
 
             var availableRect = new Rect( 
                 canvas.xMin, 
                 canvas.yMin, 
-                ModButtonWidth, 
+                canvas.width * 1/5f, 
                 canvas.height - SmallMargin - iconBarHeight );
             var moreModButtonsRect = new Rect(
                 canvas.xMin,
                 availableRect.yMax + SmallMargin,
-                ModButtonWidth,
+                canvas.width * 1/5f,
                 iconBarHeight );
             var activeRect = new Rect( 
                 availableRect.xMax + SmallMargin,
-                canvas.yMin, 
-                ModButtonWidth,
+                canvas.yMin,
+                canvas.width * 1 / 5f,
                 canvas.height - SmallMargin - iconBarHeight);
             var modSetButtonsRect = new Rect(
                 activeRect.xMin,
                 activeRect.yMax + SmallMargin,
-                ModButtonWidth,
+                canvas.width * 1 / 5f,
                 iconBarHeight );
             var detailRect = new Rect( 
                 activeRect.xMax + SmallMargin, 
                 canvas.yMin, 
-                canvas.width - ( ModButtonWidth + SmallMargin ) * 2,
+                canvas.width * 3 / 5f - SmallMargin * 2,
                 canvas.height - SmallMargin - iconBarHeight);
             var modButtonsRect = new Rect(
                 detailRect.xMin,
@@ -167,6 +175,16 @@ namespace ModManager
             DoMoreModButtons( moreModButtonsRect );
             DoModSetButtons( modSetButtonsRect );
             Selected?.DoModActionButtons( modButtonsRect );
+        }
+
+        private float _width;
+        private void CheckResized()
+        {
+            if ( windowRect.width != _width )
+            {
+                ModButton.Notify_ModButtonSizeChanged();
+                _width = windowRect.width;
+            }
         }
 
         private void DoMoreModButtons( Rect canvas )

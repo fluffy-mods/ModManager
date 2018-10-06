@@ -121,6 +121,11 @@ namespace ModManager
             }
             GUI.color = Color.white;
         }
+
+        public static void Notify_ModButtonSizeChanged()
+        {
+            _modNameTruncationCache.Clear();
+        }
         internal static Dictionary<string, string> _modNameTruncationCache = new Dictionary<string, string>();
         public virtual void Notify_ResetSelected(){}
         public virtual void Notify_RecacheIssues(){}
