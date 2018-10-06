@@ -500,10 +500,18 @@ namespace ModManager
             }
         }
 
-        public List<ModButton> FilteredAvailableButtons => ModButtonManager.AvailableButtons
-                        .Where( b => !FilterAvailable || b.MatchesFilter( _availableFilter ) > 0 )
-                        .OrderBy( b => FilterAvailable ? b.MatchesFilter( _availableFilter ) : 0 )
+        public List<ModButton> FilteredAvailableButtons
+        {
+            get
+            {
+                if ( FilterAvailable )
+                    return ModButtonManager.AvailableButtons
+                        .Where( b => b.MatchesFilter( _availableFilter ) > 0 )
+                        .OrderBy( b => b.MatchesFilter( _availableFilter ) )
                         .ToList();
+                return ModButtonManager.AvailableButtons;
+            }
+        }
 
         public void DoAvailableMods( Rect canvas )
         {
