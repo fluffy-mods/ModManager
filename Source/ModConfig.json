@@ -3,18 +3,20 @@
     "version": {
         "alpha": 18,
         "major": 0,
-        "minor": 15,
-        "build": 571
+        "minor": 16,
+        "build": 572
     },
     "visibility": 0,
     "git_repo": "ModManager",
     "git_user": "FluffierThanThou",
     "contributors": {
         "erdelf": "invaluable help with Harmony transpilers",
+        "Brrainz": "multi-version targetting",
         "FluffierThanThou": "",
-        "Andreas Pardeike": ""
+        "Andreas Pardeike": "",
+        "b606": ""
     },
-    "changenote": "pixel perfect text, please.\nrefactor mod list button, add renaming\nadd reset all button\nuse question icon for notices",
+    "changenote": "French language for ModManager (#10)",
     "tags": [],
     "publishedfileid": "1507748539"
 }
