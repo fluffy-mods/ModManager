@@ -19,7 +19,7 @@
     <Fluffy.ModManager.DifferentBuild>Différente compilation du jeu. La compilation courante est {2}, mais {0} spécifie le numéro de compilation {1} comme version cible.</Fluffy.ModManager.DifferentBuild>
     <Fluffy.ModManager.CurrentVersion>Versions match</Fluffy.ModManager.CurrentVersion>
     <Fluffy.ModManager.UpdateAvailable>Une mise à jour est disponible pour la version {1} (version courante: {0}).</Fluffy.ModManager.UpdateAvailable>
-    <Fluffy.ModManager.MissingMod>{0} (id: {1}) n'est pas istallé, et sera ignoré.</Fluffy.ModManager.MissingMod>
+    <Fluffy.ModManager.MissingMod>{0} (id: {1}) n'est pas installé, et sera ignoré.</Fluffy.ModManager.MissingMod>
     <Fluffy.ModManager.CoreNotFirst>'Core' doit être le premier mod chargé.</Fluffy.ModManager.CoreNotFirst>
 
     <Fluffy.ModManager.DependencyUnknownVersion>Dépend de {0}, mais sa version est inconnue.</Fluffy.ModManager.DependencyUnknownVersion>
