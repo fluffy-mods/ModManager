@@ -35,15 +35,51 @@ namespace ModManager
 
             try
             {
+                // copy mod
                 mod.RootDir.Copy( targetDir, true );
                 copy = new ModMetaData( targetDir );
                 ( ModLister.AllInstalledMods as List<ModMetaData> )?.Add( copy );
+
+                // copy settings
+                TryCopySettings( mod, copy );
                 return true;
             }
             catch ( Exception e )
             {
                 Log.Error( "Creating local copy failed: " + e.Message );
                 return false;
+            }
+        }
+
+        private static Regex SettingsMask( string identifier )
+        {
+            return new Regex( $@"Mod_{GenText.SanitizeFilename( identifier )}_(.*)\.xml" );
+        }
+
+        private static string NewSettingsFilePath( string source, Regex mask, string targetIdentifier )
+        {
+            var match = mask.Match( source );
+            return Path.Combine( GenFilePaths.ConfigFolderPath,
+                GenText.SanitizeFilename( $"Mod_{targetIdentifier}_{match.Groups[1].Value}.xml" ) );
+        }
+
+        private static void TryCopySettings( ModMetaData source, ModMetaData target )
+        {
+            // find any settings files that belong to the source mod
+            var mask = SettingsMask( source.Identifier );
+            var settings = Directory.GetFiles( GenFilePaths.ConfigFolderPath )
+                .Where( f => mask.IsMatch( f ) )
+                .Select( f => new
+                {
+                    source = f,
+                    target = NewSettingsFilePath( f, mask, target.Identifier )
+                } );
+
+            // copy settings files, overwriting existing - if any.
+            foreach ( var setting in settings )
+            {
+                Debug.Log( $"Copying settings :: {setting.source} => {setting.target}"  );
+                File.Copy( setting.source, setting.target, true );
             }
         }
 

@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 0,
         "minor": 16,
-        "build": 572
+        "build": 585
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -12,11 +12,11 @@
     "contributors": {
         "erdelf": "invaluable help with Harmony transpilers",
         "Brrainz": "multi-version targetting",
+        "b606": "French translation",
         "FluffierThanThou": "",
-        "Andreas Pardeike": "",
-        "b606": ""
+        "Andreas Pardeike": ""
     },
-    "changenote": "French language for ModManager (#10)",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }
