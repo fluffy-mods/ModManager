@@ -52,8 +52,6 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  - erdelf:	invaluable help with Harmony transpilers
  - Brrainz:	multi-version targetting
  - b606:	French translation
- - FluffierThanThou:	
- - Andreas Pardeike:	
 
 # Think you found a bug? 
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
@@ -74,4 +72,4 @@ Show your appreciation by buying me a coffee (or contribute towards a nice singl
 [![Buy Me a Coffee](http://i.imgur.com/EjWiUwx.gif)](https://ko-fi.com/fluffymods)
 
 # Version
-This is version 0.16.585, for RimWorld 0.19.2009.
+This is version 0.17.586, for RimWorld 0.19.2009.

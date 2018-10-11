@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 0,
-        "minor": 16,
-        "build": 585
+        "minor": 17,
+        "build": 586
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -12,11 +12,9 @@
     "contributors": {
         "erdelf": "invaluable help with Harmony transpilers",
         "Brrainz": "multi-version targetting",
-        "b606": "French translation",
-        "FluffierThanThou": "",
-        "Andreas Pardeike": ""
+        "b606": "French translation"
     },
-    "changenote": "",
+    "changenote": "copy settings when creating local copy",
     "tags": [],
     "publishedfileid": "1507748539"
 }
