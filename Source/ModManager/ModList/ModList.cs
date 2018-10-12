@@ -132,9 +132,37 @@ namespace ModManager
             return str;
         }
 
+        public void Add( ModMetaData mod )
+        {
+            _modIds.Add( mod.Identifier );
+            _modNames.Add( mod.Name );
+
+            Save( true );
+            ModListManager.Notify_ModListChanged();
+        }
+
+        public void Remove( ModMetaData mod )
+        {
+            // remove by index because mods might have duplicate names.
+            var index = _modIds.IndexOf( mod.Identifier );
+            if ( index < 0 )
+                return; // not found
+            if ( _modNames[index] != mod.Name )
+            {
+                Log.Warning( $"Tried to remove mod {mod.Name} (id: {mod.Identifier}) from mod list," +
+                             $" but the mod with that identifier in the ModList is named {_modNames[index]}!" );
+                return;
+            }
+
+            _modIds.RemoveAt( index );
+            _modNames.RemoveAt( index );
+
+            Save( true );
+            ModListManager.Notify_ModListChanged();
+        }
+
         public bool Save( bool force = false )
         {
-
             var path = ModListManager.FilePath( this );
             if (File.Exists(path) && !force)
             {
@@ -148,7 +176,7 @@ namespace ModManager
                 ExposeData();
                 Scribe.saver.FinalizeSaving();
                 if ( !ModListManager.ModLists.Contains( this ) )
-                    ModListManager.ModLists.Add( this );
+                    ModListManager.Notify_ModListsChanged();
                 return true;
             }
             catch (Exception e)

@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 0,
         "minor": 17,
-        "build": 586
+        "build": 590
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "copy settings when creating local copy",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }

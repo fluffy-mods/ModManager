@@ -211,6 +211,18 @@ namespace ModManager
             return Key( "ModListDeleted" ).Translate( name );
         }
 
+        public static string AddToModList = Key( "AddToModList" ).Translate();
+        public static string RemoveFromModList = Key( "RemoveFromModList" ).Translate();
+
+        public static string AddToModListX(string name)
+        {
+            return Key("AddToModListX").Translate(name);
+        }
+        public static string RemoveFromModListX(string name)
+        {
+            return Key("RemoveFromModListX").Translate(name);
+        }
+
 
         // resolvers
         public static string MoveCoreToFirst = Key( "MoveCoreToFirst" ).Translate();

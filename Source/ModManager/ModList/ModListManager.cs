@@ -25,10 +25,61 @@ namespace ModManager
             }
         }
 
+        public static List<ModList> ListsFor( ModButton_Installed button )
+        {
+            return ListsFor( button?.Selected );
+        }
+
+        private static Dictionary<ModMetaData, List<ModList>> _modModListsCache = new Dictionary<ModMetaData, List<ModList>>();
+
+        public static List<ModList> ListsFor( ModMetaData mod )
+        {
+            // garbage in, garbage out.
+            if ( mod == null )
+                return null;
+
+            // get from cache
+            List<ModList> lists;
+            if ( _modModListsCache.TryGetValue( mod, out lists ) )
+                return lists;
+
+            // add to cache
+            lists = ModLists
+                .Where( l => l._modIds.Contains( mod.Identifier ) )
+                .ToList();
+            _modModListsCache.Add( mod, lists );
+            return lists;
+        }
+
+        public static void DoAddToModListFloatMenu( ModButton_Installed mod )
+        {
+            var cur = ListsFor( mod );
+            var options = ModLists
+                .Where( l => !cur.Contains( l ) )
+                .Select( l => new FloatMenuOption( I18n.AddToModListX( l.Name ), () => l.Add( mod.Selected ) ) )
+                .ToList();
+            Utilities.FloatMenu( options );
+        }
+
+        public static void DoRemoveFromModListFloatMenu( ModButton_Installed mod )
+        {
+            var options = ListsFor( mod )
+                .Select( l => new FloatMenuOption( I18n.RemoveFromModListX( l.Name ), () => l.Remove( mod.Selected ) ) )
+                .ToList();
+            Utilities.FloatMenu( options );
+        }
+
         public static void Notify_ModListsChanged()
         {
             _modLists = null;
+            _modModListsCache.Clear();
         }
+
+        public static void Notify_ModListChanged()
+        {
+            _modModListsCache.Clear();
+        }
+
         private static List<ModList> _modLists;
         public static List<ModList> ModLists
         {

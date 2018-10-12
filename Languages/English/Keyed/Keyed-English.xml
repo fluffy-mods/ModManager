@@ -53,6 +53,11 @@
     <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
     <Fluffy.ModManager.ResetMods>Reset mod list.</Fluffy.ModManager.ResetMods>
 
+    <Fluffy.ModManager.AddToModList>Add mod to a mod list</Fluffy.ModManager.AddToModList>
+    <Fluffy.ModManager.RemoveFromModList>Remove mod from a mod list</Fluffy.ModManager.RemoveFromModList>
+    <Fluffy.ModManager.AddToModListX>Add to '{0}'</Fluffy.ModManager.AddToModListX>
+    <Fluffy.ModManager.RemoveFromModListX>Remove from '{0}'</Fluffy.ModManager.RemoveFromModListX>
+
     <Fluffy.ModManager.CreateLocalCopies>Create local copies of all Steam mods in your active mod list\n\nLocal copies will be stored in the mods folder, and will not get automatic updates.</Fluffy.ModManager.CreateLocalCopies>
     <Fluffy.ModManager.CreateLocalCopy>Create a local copy of {0}\n\nLocal copies will be stored in the mods folder, and will not get automatic updates.</Fluffy.ModManager.CreateLocalCopy>
     <Fluffy.ModManager.CreateLocalSucceeded>Succesfully created a local copy of {0}</Fluffy.ModManager.CreateLocalSucceeded>

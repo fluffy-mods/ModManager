@@ -22,6 +22,7 @@ namespace ModManager
         private Vector2 _previewScrollPosition = Vector2.zero;
         private Vector2 _descriptionScrollPosition = Vector2.zero;
         public override int SortOrder => Selected.Compatibility();
+        public List<ModList> Lists => ModListManager.ListsFor( this );
 
         public ModButton_Installed( ModMetaData mod )
         {
@@ -252,6 +253,19 @@ namespace ModManager
                 IconSize,
                 IconSize);
 
+            if ( ModListManager.ListsFor( this ).Count < ModListManager.ModLists.Count )
+            {
+                if ( Utilities.ButtonIcon( ref iconRect, File, I18n.AddToModList, Status_Plus ) )
+                    ModListManager.DoAddToModListFloatMenu( this );
+            }
+
+            if ( ModListManager.ListsFor( this ).Any() )
+            {
+                if ( Utilities.ButtonIcon( ref iconRect, File, I18n.RemoveFromModList, Status_Cross,
+                    mouseOverColor: Color.red ) )
+                    ModListManager.DoRemoveFromModListFloatMenu( this );
+            }
+            
             if (Selected.Source == ContentSource.SteamWorkshop)
             {
                 if ( Utilities.ButtonIcon( ref iconRect, Steam, I18n.UnSubscribe, Status_Cross, Direction8Way.NorthWest,
