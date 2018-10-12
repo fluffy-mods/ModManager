@@ -344,6 +344,12 @@ namespace ModManager
                         case KeyCode.DownArrow:
                             SelectNext( FilteredAvailableButtons );
                             break;
+                        case KeyCode.PageUp:
+                            SelectFirst( FilteredAvailableButtons );
+                            break;
+                        case KeyCode.PageDown:
+                            SelectLast( FilteredAvailableButtons );
+                            break;
                         case KeyCode.Return:
                         case KeyCode.KeypadEnter:
                             Log.Message( $"{Selected.Name} active?: {Selected.Active}"  );
@@ -393,6 +399,18 @@ namespace ModManager
                             else
                                 SelectNext( FilteredActiveButtons );
                             break;
+                        case KeyCode.PageUp:
+                            if ( shift )
+                                MoveTop();
+                            else 
+                                SelectFirst(FilteredActiveButtons);
+                            break;
+                        case KeyCode.PageDown:
+                            if ( shift )
+                                MoveBottom();
+                            else
+                                SelectLast(FilteredActiveButtons);
+                            break;
                         case KeyCode.Return:
                         case KeyCode.KeypadEnter:
                         case KeyCode.Delete:
@@ -432,6 +450,18 @@ namespace ModManager
             // is only called from active.
             ModButtonManager.Insert( Selected, ModButtonManager.ActiveButtons.IndexOf( FilteredActiveButtons.ElementAt( _focusElement - 1 ) ) );
             Selected = Selected; // sets _focusElement, plays sound.
+        }
+
+        private void MoveTop()
+        {
+            ModButtonManager.Insert( Selected, 0 );
+            Selected = Selected;
+        }
+
+        private void MoveBottom()
+        {
+            ModButtonManager.Insert( Selected, ModButtonManager.ActiveButtons.Count );
+            Selected = Selected;
         }
 
         private void MoveDown()
@@ -499,6 +529,13 @@ namespace ModManager
             Selected = mods.ElementAt( index );
         }
 
+        private void SelectFirst<T>( IEnumerable<T> mods ) where T : ModButton
+        {
+            if ( !mods.Any() )
+                return;
+            Selected = mods.ElementAt( 0 );
+        }
+
         private void SelectPrevious<T>( IEnumerable<T> mods ) where T: ModButton
         {
             if (!mods.Any())
@@ -507,6 +544,13 @@ namespace ModManager
             Selected = mods.ElementAt( index );
         }
 
+        private void SelectLast<T>( IEnumerable<T> mods ) where T : ModButton
+        {
+            if ( !mods.Any() )
+                return;
+            var index = mods.Count() - 1;
+            Selected = mods.ElementAt( index );
+        }
 
         private void EnsureVisible( ref Vector2 scrollPosition, int index )
         {

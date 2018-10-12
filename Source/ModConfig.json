@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 0,
         "minor": 17,
-        "build": 590
+        "build": 591
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "",
+    "changenote": "add/remove individual mods to/from mod lists",
     "tags": [],
     "publishedfileid": "1507748539"
 }
