@@ -199,10 +199,18 @@ namespace ModManager
             }, null, true, null);
         }
 
-        internal static void CreateLocalCopies( IEnumerable<ModMetaData> mods )
+        internal static void CreateLocalCopies( IEnumerable<ModMetaData> mods, bool force = false )
         {
-            foreach (var mod in mods.Where(mod => mod.Source == ContentSource.SteamWorkshop))
-                CreateLocalCopy( mod, true);
+            var steamMods = mods.Where( m => m.Source == ContentSource.SteamWorkshop );
+            if ( !force && steamMods.Count() > 5 )
+            {
+                Find.WindowStack.Add( Dialog_MessageBox.CreateConfirmation(
+                    I18n.CreateLocalCopiesConfirmation( steamMods.Count() ),
+                    () => CreateLocalCopies( steamMods, true ) ) );
+                return;
+            }
+            foreach ( var mod in steamMods )
+                CreateLocalCopy( mod, true );
             FinishBatchCreate();
         }
 

@@ -127,6 +127,11 @@ namespace ModManager
 
         public static string CreateLocalCopies = Key( "CreateLocalCopies" ).Translate();
 
+        public static string CreateLocalCopiesConfirmation( int count )
+        {
+            return Key( "CreateLocalCopiesConfirmation" ).Translate( count );
+        }
+
         public static string CreateLocalCopy( string name )
         {
             return Key( "CreateLocalCopy" ).Translate( name );
