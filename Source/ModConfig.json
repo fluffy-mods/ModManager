@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 0,
-        "minor": 19,
-        "build": 634
+        "minor": 20,
+        "build": 636
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "",
+    "changenote": "implement list colours",
     "tags": [],
     "publishedfileid": "1507748539"
 }
