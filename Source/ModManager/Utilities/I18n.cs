@@ -281,7 +281,8 @@ namespace ModManager
         public static string ChangeColour = Key( "ChangeColour" ).Translate();
         public static string ChangeModColour( string name ) => Key( "ChangeModColour" ).Translate( name );
         public static string ChangeButtonColour( string name ) => Key( "ChangeButtonColour" ).Translate( name );
-        
+        public static string ChangeListColour = Key( "ChangeListColour" ).Translate();
+
         public static string ModHomePage( string url )
         {
             return Key( "ModHomePage" ).Translate( url );

@@ -1,5 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
+using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ModManager
@@ -7,10 +9,12 @@ namespace ModManager
     public class Dialog_Rename_ModList : Dialog_Rename
     {
         private ModList list;
+        private bool _focusedRenameField;
 
         public Dialog_Rename_ModList( ModList list )
         {
             this.list = list;
+            this.curName = list.Name;
             absorbInputAroundWindow = true;
         }
 

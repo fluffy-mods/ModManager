@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using ColourPicker;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -112,6 +113,7 @@ namespace ModManager
             options.Add( new FloatMenuOption( I18n.LoadModList, () => list.Apply( false ) ) );
             options.Add( new FloatMenuOption( I18n.AddModList, () => list.Apply( true ) ) );
             options.Add( new FloatMenuOption( I18n.RenameModList, () => Find.WindowStack.Add( new Dialog_Rename_ModList( list ) ) ) );
+            options.Add( new FloatMenuOption( I18n.ChangeListColour, () => Find.WindowStack.Add( new Dialog_ColourPicker( list.Color, color => list.Color = color ) ) ) );
             options.Add( new FloatMenuOption( I18n.DeleteModList, () => TryDelete( list ) ) );
             return new FloatMenuOption( list.Name, () => Utilities.FloatMenu( options ) );
         }

@@ -163,8 +163,21 @@ namespace ModManager
                 if ( ModManager.Attributes[Selected].Color != Color.white )
                     return ModManager.Attributes[Selected].Color;
 
-                // fall back on button colour
-                return ModManager.Attributes[this].Color;
+                // then button colour
+                if ( ModManager.Attributes[this].Color != Color.white )
+                    return ModManager.Attributes[this].Color;
+
+                // if this mod is included in any lists, use that colour
+                if ( !Lists.NullOrEmpty() )
+                {
+                    var colours = Lists.Select( l => l.Color )
+                        .Where( c => c != Color.white );
+                    if (colours.Any())
+                        return colours.Aggregate((a, b) => a + b) / colours.Count();
+                }
+
+                // if nothing stuck, use default
+                return Color.white;
             }
             set => ModManager.Attributes[this].Color = value;
         }

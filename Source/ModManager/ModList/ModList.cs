@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using RimWorld;
+using UnityEngine;
 using Verse;
 
 namespace ModManager
@@ -15,6 +16,7 @@ namespace ModManager
         public List<string> _modIds;
         public List<string> _modNames;
         private string _name;
+        private Color _color;
 
         public string Name
         {
@@ -35,6 +37,16 @@ namespace ModManager
                 if ( !success )
                     _name = oldName;
             }   
+        }
+
+        public Color Color
+        {
+            get => _color;
+            set
+            {
+                _color = value;
+                Save( true );
+            }
         }
 
         private ModList()
@@ -83,6 +95,7 @@ namespace ModManager
         public void ExposeData()
         {
             Scribe_Values.Look( ref _name, "Name" );
+            Scribe_Values.Look( ref _color, "Color", Color.white );
             Scribe_Collections.Look( ref _modIds, "modIds" );
             Scribe_Collections.Look( ref _modNames, "modNames" );
         }
@@ -163,6 +176,10 @@ namespace ModManager
 
         public bool Save( bool force = false )
         {
+            // if not yet given a valid name, don't save the ruddy thing.
+            if ( Name.NullOrEmpty() )
+                return false;
+
             var path = ModListManager.FilePath( this );
             if (File.Exists(path) && !force)
             {

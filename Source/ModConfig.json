@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 0,
         "minor": 19,
-        "build": 628
+        "build": 634
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "mod and button colour changing\nkeep track of steam updates for local copies of mods\nadd confirmation dialog when copying 5+ mods",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }
