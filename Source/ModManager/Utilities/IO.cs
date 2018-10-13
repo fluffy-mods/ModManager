@@ -5,9 +5,10 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
-using Harmony;
 using RimWorld;
 using Verse;
 
@@ -33,6 +34,23 @@ namespace ModManager
             while ( Directory.Exists( targetDir ) )
                 targetDir = $"{baseTargetDir} ({i++})";
 
+            return TryCopyMod( mod, ref copy, targetDir );
+        }
+
+        public static bool TryUpdateLocalCopy( ModMetaData source, ModMetaData local )
+        {
+            // delete and re-copy mod.
+            var updateResult = TryRemoveLocalCopy( local ) && TryCopyMod( source, ref local, local.RootDir.FullName );
+            if ( !updateResult )
+                return false;
+
+            // update version 
+            ModButton_Installed.For( source ).Notify_VersionUpdated( local );
+            return true;
+        }
+
+        private static bool TryCopyMod( ModMetaData mod, ref ModMetaData copy, string targetDir )
+        {
             try
             {
                 // copy mod
@@ -42,11 +60,15 @@ namespace ModManager
 
                 // copy settings
                 TryCopySettings( mod, copy );
+
+                // set source attribute
+                ModManager.Attributes[copy].Source = mod;
+
                 return true;
             }
             catch ( Exception e )
             {
-                Log.Error( "Creating local copy failed: " + e.Message );
+                Log.Error( $"Creating local copy failed: {e.Message} \n\n{e.StackTrace}" );
                 return false;
             }
         }
@@ -249,6 +271,32 @@ namespace ModManager
                     ModButton_Installed.For( mod ).Notify_VersionRemoved( mod );
 
                 }, true));
+        }
+
+        internal static string GetFolderHash( this DirectoryInfo folder )
+        {
+            var files = folder.GetFiles( "*", SearchOption.AllDirectories )
+                .OrderBy( p => p.FullName );
+
+            using ( var md5 = MD5.Create() )
+            {
+                foreach ( var file in files )
+                {
+                    // hash path
+                    byte[] pathBytes = Encoding.UTF8.GetBytes( file.FullName.Substring( folder.FullName.Length ) );
+                    md5.TransformBlock( pathBytes, 0, pathBytes.Length, pathBytes, 0 );
+
+                    // hash contents
+                    byte[] contentBytes = File.ReadAllBytes( file.FullName );
+
+                    md5.TransformBlock( contentBytes, 0, contentBytes.Length, contentBytes, 0 );
+                }
+
+                //Handles empty filePaths case
+                md5.TransformFinalBlock( new byte[0], 0, 0 );
+
+                return BitConverter.ToString( md5.Hash ).Replace( "-", "" ).ToLower();
+            }
         }
 
         public static T ItemFromXmlString<T>(string xml, bool resolveCrossRefs = true) where T : new()

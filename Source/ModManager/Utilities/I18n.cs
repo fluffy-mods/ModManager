@@ -109,16 +109,12 @@ namespace ModManager
             return Key( "ShouldBeLoadedAfter" ).Translate( identifier );
         }
 
-
         public static string GetMoreMods_SteamWorkshop = Key( "GetMoreMods_SteamWorkshop" ).Translate();
         public static string GetMoreMods_LudeonForums = Key( "GetMoreMods_LudeonForums" ).Translate();
-
         public static string UnSubscribe = Key( "SteamWorkshop.UnSubscribe" ).Translate();
         public static string ConfirmSteamWorkshopUpload = "ConfirmSteamWorkshopUpload".Translate(); // core
         public static string ConfirmContentAuthor = "ConfirmContentAuthor".Translate(); // core
-
         public static string RebuildingModList_Key = Key( "RebuildingModList" );
-
         public static string LoadModList = Key( "LoadModList" ).Translate();
         public static string AddModList = Key( "AddModList" ).Translate();
         public static string SaveModList = Key( "SaveModList" ).Translate();
@@ -273,6 +269,13 @@ namespace ModManager
         public static string MoveAfter(ModButton_Installed from, ModButton_Installed to)
         {
             return Key("MoveAfter").Translate(from.Name, to.Name);
+        }
+
+        public static string SourceModChanged = Key( "SourceModChanged" ).Translate();
+
+        public static string UpdateLocalCopy( string name )
+        {
+            return Key("UpdateLocalCopy").Translate( name );
         }
 
         public static string ModHomePage( string url )

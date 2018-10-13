@@ -18,6 +18,7 @@ namespace ModManager
         public abstract bool MatchesIdentifier( string identifier );
         public abstract bool Active { get; set; }
 
+
         public virtual void DoModButton( Rect canvas, bool alternate = false, Action clickAction = null,
             Action doubleClickAction = null, bool deemphasizeFiltered = false, string filter = null )
         {

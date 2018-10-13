@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 0,
         "minor": 18,
-        "build": 595
+        "build": 620
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "",
+    "changenote": "add confirmation dialog when copying 5+ mods",
     "tags": [],
     "publishedfileid": "1507748539"
 }

@@ -139,8 +139,15 @@ namespace ModManager
 
         public static void ResolveCoreShouldLoadFirst(ModButton core)
         {
-            var options = new List<FloatMenuOption>();
+            var options = NewOptions;
             options.Add( new FloatMenuOption( I18n.MoveCoreToFirst, () => ModButtonManager.Insert( core, 0 ) ) );
+            FloatMenu( options );
+        }
+
+        public static void ResolveUpdateLocalCopy( ModMetaData source, ModMetaData local )
+        {
+            var options = NewOptions;
+            options.Add( new FloatMenuOption( I18n.UpdateLocalCopy( local.Name ), () => IO.TryUpdateLocalCopy( source, local ) ) );
             FloatMenu( options );
         }
     }

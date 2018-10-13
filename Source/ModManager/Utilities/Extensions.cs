@@ -82,6 +82,11 @@ namespace ModManager
 
         public static string AboutDir( this ModMetaData mod ) => Path.Combine( mod.RootDir.FullName, "About" );
 
+        public static ModAttributes Attributes( this ModMetaData mod )
+        {
+            return ModManager.Attributes[mod];
+        }
+
         public static bool MatchesIdentifier( this ModMetaData mod, string identifier )
         {
             identifier = identifier.StripSpaces();

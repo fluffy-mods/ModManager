@@ -90,6 +90,14 @@ namespace ModManager
                             break;
                     }
 
+                    var attributes = ModManager.Attributes[Selected];
+                    if ( attributes.Source != null && attributes.SourceHash != attributes.Source.RootDir.GetFolderHash() )
+                    {
+                        _issues.Add( new ModIssue( Severity.Update, Subject.Other, this, Identifier,
+                            I18n.SourceModChanged,
+                            () => Resolvers.ResolveUpdateLocalCopy( attributes.Source, Selected ) ) );
+                    }
+
                     if ( Manifest != null )
                         _issues.AddRange( Manifest.Issues );
 
@@ -490,6 +498,7 @@ namespace ModManager
 
         public void Notify_VersionAdded( ModMetaData version, bool active = false )
         {
+            Versions.TryAdd( version );
             if ( active && Selected.Active )
                 Selected.Active = false;
 
@@ -511,6 +520,13 @@ namespace ModManager
             if ( Selected == version )
                 _selected = null;
             Selected.Active = version.Active;   
+        }
+
+        public void Notify_VersionUpdated( ModMetaData local )
+        {
+            var old = Versions.FirstOrDefault( m => m.Identifier == local.Identifier );
+            if ( Versions.TryRemove( old ) )
+                Notify_VersionAdded( local, true );
         }
     }
 }

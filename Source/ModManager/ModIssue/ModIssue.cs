@@ -11,6 +11,7 @@ namespace ModManager
     public enum Severity
     {
         Notice,
+        Update,
         Minor,
         Major,
         Critical
@@ -53,7 +54,7 @@ namespace ModManager
 
         public static ModIssue UpdateAvailable( ModButton_Installed button )
         {
-            return new ModIssue( Severity.Minor, Subject.Version, button, button.Identifier,
+            return new ModIssue( Severity.Update, Subject.Version, button, button.Identifier,
                 I18n.UpdateAvailable( button.Manifest.Version, button.Manifest.Version ) );
         }
 
@@ -90,6 +91,8 @@ namespace ModManager
                 {
                     case Severity.Notice:
                         return Color.grey;
+                    case Severity.Update:
+                        return GenUI.MouseoverColor;
                     case Severity.Minor:
                         return Color.yellow;
                     case Severity.Major:
@@ -108,6 +111,8 @@ namespace ModManager
                 {
                     case Severity.Notice:
                         return Resources.Question;
+                    case Severity.Update:
+                        return Resources.Status_Up;
                     default:
                         return Resources.Warning;
                 }
