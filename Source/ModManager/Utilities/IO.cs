@@ -58,8 +58,9 @@ namespace ModManager
                 copy = new ModMetaData( targetDir );
                 ( ModLister.AllInstalledMods as List<ModMetaData> )?.Add( copy );
 
-                // copy settings
+                // copy settings and color attribute
                 TryCopySettings( mod, copy );
+                ModManager.Attributes[copy].Color = ModManager.Attributes[mod].Color;
 
                 // set source attribute
                 ModManager.Attributes[copy].Source = mod;

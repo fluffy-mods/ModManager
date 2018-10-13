@@ -12,6 +12,7 @@ using Verse;
 using Verse.Steam;
 using static ModManager.Constants;
 using static ModManager.Resources;
+using static ModManager.Utilities;
 
 namespace ModManager
 {
@@ -154,6 +155,20 @@ namespace ModManager
             }
         }
 
+        public override Color Color
+        {
+            get
+            {
+                // use version colour if set
+                if ( ModManager.Attributes[Selected].Color != Color.white )
+                    return ModManager.Attributes[Selected].Color;
+
+                // fall back on button colour
+                return ModManager.Attributes[this].Color;
+            }
+            set => ModManager.Attributes[this].Color = value;
+        }
+
         public override void DoModButton( 
             Rect canvas, 
             bool alternate = false, 
@@ -192,7 +207,7 @@ namespace ModManager
                 nameRect.height);
 
             var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && MatchesFilter( filter ) <= 0;
-            GUI.color = ( deemphasized || !Selected.enabled ) ? Color.white.Desaturate() : Color.white;
+            GUI.color = ( deemphasized || !Selected.enabled ) ? Color.Desaturate() : Color;
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
@@ -263,35 +278,44 @@ namespace ModManager
 
             if ( ModListManager.ListsFor( this ).Count < ModListManager.ModLists.Count )
             {
-                if ( Utilities.ButtonIcon( ref iconRect, File, I18n.AddToModList, Status_Plus ) )
+                if ( ButtonIcon( ref iconRect, File, I18n.AddToModList, Status_Plus ) )
                     ModListManager.DoAddToModListFloatMenu( this );
             }
 
             if ( ModListManager.ListsFor( this ).Any() )
             {
-                if ( Utilities.ButtonIcon( ref iconRect, File, I18n.RemoveFromModList, Status_Cross,
+                if ( ButtonIcon( ref iconRect, File, I18n.RemoveFromModList, Status_Cross,
                     mouseOverColor: Color.red ) )
                     ModListManager.DoRemoveFromModListFloatMenu( this );
             }
             
             if (Selected.Source == ContentSource.SteamWorkshop)
             {
-                if ( Utilities.ButtonIcon( ref iconRect, Steam, I18n.UnSubscribe, Status_Cross, Direction8Way.NorthWest,
+                if ( ButtonIcon( ref iconRect, Steam, I18n.UnSubscribe, Status_Cross, Direction8Way.NorthWest,
                     Color.red ) )
                     Workshop.Unsubscribe( Selected );
-                if ( Utilities.ButtonIcon( ref iconRect, Folder, I18n.CreateLocalCopy( Selected.Name ), Status_Plus ) )
+                if ( ButtonIcon( ref iconRect, Folder, I18n.CreateLocalCopy( Selected.Name ), Status_Plus ) )
                     IO.CreateLocalCopy( Selected );
             }
             if (Selected.Source == ContentSource.LocalFolder && !Selected.IsCoreMod)
             {
-                if ( Utilities.ButtonIcon( ref iconRect, Folder, I18n.DeleteLocalCopy( Selected.Name ),
+                if ( ButtonIcon( ref iconRect, Folder, I18n.DeleteLocalCopy( Selected.Name ),
                     Status_Cross, Direction8Way.NorthEast, Color.red ) )
                     IO.DeleteLocal( Selected );
             }
             if (Prefs.DevMode && SteamManager.Initialized && Selected.CanToUploadToWorkshop())
             {
-                if (Utilities.ButtonIcon(ref iconRect, Steam, Verse.Steam.Workshop.UploadButtonLabel( Selected.GetPublishedFileId() ), Status_Up, Direction8Way.NorthWest))
+                if (ButtonIcon(ref iconRect, Steam, Verse.Steam.Workshop.UploadButtonLabel( Selected.GetPublishedFileId() ), Status_Up, Direction8Way.NorthWest))
                     Workshop.Upload( Selected );
+            }
+            if ( ButtonIcon( ref iconRect, Palette, I18n.ChangeColour ) )
+            {
+                var options = NewOptions;
+                options.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
+                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Attributes[Selected].Color = color ) ) ) );
+                options.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
+                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Attributes[this].Color = color ) ) ) );
+                FloatMenu( options );
             }
         }
 
@@ -309,7 +333,7 @@ namespace ModManager
             {
                 if ( _titleLinkOptions == null )
                 {
-                    _titleLinkOptions = Utilities.NewOptions;
+                    _titleLinkOptions = NewOptions;
                     if ( !Selected?.Url.NullOrEmpty() ?? false )
                     {
                         _titleLinkOptions.Add( new FloatMenuOption( I18n.ModHomePage( Selected.Url ),
@@ -332,7 +356,7 @@ namespace ModManager
             var mod = Selected;
             if ( mod.previewImage != null )
             {
-                Utilities.DoLabel( ref canvas, I18n.Preview );
+                DoLabel( ref canvas, I18n.Preview );
                 var width = mod.previewImage.width;
                 var height = mod.previewImage.height;
                 var scale = canvas.width / width;
@@ -356,7 +380,7 @@ namespace ModManager
             }
             else
             {
-                Utilities.DoLabel( ref canvas, I18n.Details );
+                DoLabel( ref canvas, I18n.Details );
             }
 
             if (!mod.IsCoreMod)
@@ -394,7 +418,7 @@ namespace ModManager
                 Rect labelRect;
 
                 // title
-                var labelWidth = Utilities.MaxWidth( I18n.Title, I18n.Author );
+                var labelWidth = MaxWidth( I18n.Title, I18n.Author );
                 Text.Font = GameFont.Small;
                 Text.Anchor = TextAnchor.UpperLeft;
                 var titleLabelRect = new Rect(titleRect) { width = labelWidth };
@@ -404,7 +428,7 @@ namespace ModManager
                 titleRect.xMin += labelWidth + SmallMargin;
                 Widgets.Label(titleRect, mod.Name.Truncate(titleRect.width));
                 if (TitleLinkOptions.Any())
-                    Utilities.ActionButton( titleRect, () => Utilities.FloatMenu( TitleLinkOptions ) );
+                    ActionButton( titleRect, () => FloatMenu( TitleLinkOptions ) );
 
                 // author
                 if (!mod.Author.NullOrEmpty())
@@ -420,20 +444,20 @@ namespace ModManager
                         var authorId = Traverse.Create( mod.GetWorkshopItemHook() )
                             .Field( "steamAuthor" )
                             .GetValue<CSteamID>();
-                        Utilities.ActionButton( authorRect,
+                        ActionButton( authorRect,
                             () => SteamUtility.OpenUrl( $"https://steamcommunity.com/profiles/{authorId}/myworkshopfiles/" ) );
                     }
                 }
 
                 // targetVersion
-                labelWidth = Utilities.MaxWidth(I18n.TargetVersion, I18n.Version);
+                labelWidth = MaxWidth(I18n.TargetVersion, I18n.Version);
                 labelRect = new Rect(targetVersionRect) { width = labelWidth };
                 GUI.color = Color.grey;
                 Widgets.Label(labelRect, I18n.TargetVersion);
                 targetVersionRect.xMin += labelWidth + SmallMargin;
                 mod.GetVersionStatus().Label(targetVersionRect);
                 if ( mod.GetVersionStatus().match != VersionMatch.CurrentVersion )
-                    Utilities.ActionButton( targetVersionRect,
+                    ActionButton( targetVersionRect,
                         () => Resolvers.ResolveFindMod( mod.Name.StripSpaces(), this, replace: true ) );
 
                 // version
@@ -450,7 +474,7 @@ namespace ModManager
                 TooltipHandler.TipRegion(versionRect, Manifest.Tip);
                 if (Manifest.Resolver != null)
                 {
-                    Utilities.ActionButton(versionRect, Manifest.Resolver);
+                    ActionButton(versionRect, Manifest.Resolver);
                 }
 
                 if ( Manifest.Version != null )

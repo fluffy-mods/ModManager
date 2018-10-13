@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="0ColourPicker">
+      <HintPath>..\..\..\..\TOOLS\ColourPicker\0ColourPicker.dll</HintPath>
+    </Reference>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\..\harmony\0Harmony.dll</HintPath>
     </Reference>
@@ -54,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manifest\OnlineManifest.cs" />
+    <Compile Include="ModButton\ButtonAttributes.cs" />
     <Compile Include="ModButton\ModAttributes.cs" />
     <Compile Include="ModButton\ModButton_Downloading.cs" />
     <Compile Include="ModIssue\ModIssue.cs" />

@@ -40,6 +40,8 @@ namespace ModManager
             }
         }
 
+        public override Color Color => Color.gray;
+
         public override void DoModButton( Rect canvas, bool alternate = false, Action clickAction = null, Action doubleClickAction = null,
             bool deemphasizeFiltered = false, string filter = null )
         {
@@ -59,7 +61,7 @@ namespace ModManager
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
-            GUI.color = deemphasized ? Color.grey.Desaturate() : Color.grey;
+            GUI.color = deemphasized ? Color.Desaturate() : Color;
             Widgets.Label(nameRect, Name.Truncate(nameRect.width, _modNameTruncationCache));
             GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;

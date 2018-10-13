@@ -107,4 +107,9 @@
     <Fluffy.ModManager.ModInstalled>{0} installation completed.</Fluffy.ModManager.ModInstalled>
     <Fluffy.ModManager.Subscribe>Subscribe to {0} ({1}) on the Workshop.</Fluffy.ModManager.Subscribe>
     <Fluffy.ModManager.SubscribeAllMissing>Subscribe to all missing Workshop mods.</Fluffy.ModManager.SubscribeAllMissing>
+
+    <!-- misc -->
+    <Fluffy.ModManager.ChangeColour>Change mod display colour</Fluffy.ModManager.ChangeColour>
+    <Fluffy.ModManager.ChangeModColour>Change colour for this version of {0} only</Fluffy.ModManager.ChangeModColour>
+    <Fluffy.ModManager.ChangeButtonColour>Change colour for all versions of {0}</Fluffy.ModManager.ChangeButtonColour>
 </LanguageData>
