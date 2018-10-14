@@ -16,7 +16,7 @@ namespace ModManager
         public List<string> _modIds;
         public List<string> _modNames;
         private string _name;
-        private Color _color;
+        private Color _color = Color.white;
 
         public string Name
         {
