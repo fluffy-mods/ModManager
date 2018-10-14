@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 0,
-        "minor": 20,
-        "build": 638
+        "minor": 21,
+        "build": 639
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "",
+    "changenote": "fix: set default modlist colour to white",
     "tags": [],
     "publishedfileid": "1507748539"
 }
