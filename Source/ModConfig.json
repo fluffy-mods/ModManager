@@ -2,9 +2,9 @@
     "name": "Mod Manager",
     "version": {
         "alpha": 18,
-        "major": 0,
-        "minor": 21,
-        "build": 639
+        "major": 1,
+        "minor": 0,
+        "build": 642
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "fix: set default modlist colour to white",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }
