@@ -314,7 +314,8 @@ namespace ModManager
             try
             {
                 XmlDocument xmlDocument = new XmlDocument();
-                xmlDocument.LoadXml( xml );
+                // Trim should theoretically also get rid of BOMs
+                xmlDocument.LoadXml( xml.Trim() );
                 T t = DirectXmlToObject.ObjectFromXml<T>(xmlDocument.DocumentElement, false);
                 if (resolveCrossRefs)
                 {
