@@ -3,7 +3,7 @@
   <name>Mod Manager</name>
   <author>Fluffy</author>
   <url>https://ludeon.com/forums/index.php?topic=16120</url>
-  <targetVersion>1.0.2057</targetVersion>
+  <targetVersion>1.0.2059</targetVersion>
   <description>Managing mods should be easy!
 
 &lt;size=24&gt;Features&lt;/size&gt;
@@ -68,7 +68,7 @@ Brrainz:    multi-version targetting
 b606:    French translation
 
 &lt;size=24&gt;Version&lt;/size&gt;
-This is version 1.0.642, for RimWorld 1.0.2057.
+This is version 1.1.643, for RimWorld 1.0.2059.
 
 </description>
 </ModMetaData>
