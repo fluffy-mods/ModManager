@@ -324,7 +324,7 @@ namespace ModManager
             }
             catch (Exception ex)
             {
-                Log.Error("Exception loading item from string. Loading defaults instead. Exception was: " + ex );
+                Log.Error( $"Exception loading item from string. Loading defaults instead. \nXML: {xml}\n\nException: {ex}" );
                 result = Activator.CreateInstance<T>();
             }
             return result;
