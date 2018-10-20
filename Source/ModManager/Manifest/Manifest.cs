@@ -395,20 +395,21 @@ namespace ModManager
             }
             else if ( fromAssemblies )
             {
-                // if the mod is loaded, we may be able to get a version from its assembly/ies.
-                var loaded = LoadedModManager.RunningModsListForReading.FirstOrDefault(mcp => mcp.Identifier == mod.Identifier);
+                //// if the mod is loaded, we may be able to get a version from its assembly/ies.
+                //var loaded = LoadedModManager.RunningModsListForReading.FirstOrDefault(mcp => mcp.Identifier == mod.Identifier);
 
-                // under most circumstances, any depencies (e.g. Harmony) are loaded first - the last assembly is likely to be the main assembly
-                if ( loaded != null )
-                {
-                    // any assemblies will already be loaded
-                    if ( loaded.LoadedAnyAssembly )
-                    {
-                        Version = loaded.assemblies.loadedAssemblies.LastOrDefault()?.GetName().Version;
-                    }
-                }
-                else
-                {
+                //// under most circumstances, any depencies (e.g. Harmony) are loaded first - the last assembly is likely to be the main assembly
+                //if ( loaded != null )
+                //{
+                //    // any assemblies will already be loaded
+                //    if ( loaded.LoadedAnyAssembly )
+                //    {
+                //        Version = loaded.assemblies.loadedAssemblies.LastOrDefault()?.GetName().Version;
+                //    }
+                //}
+                //else
+                //{
+                // Always get Assembly FILE Version, as the actual assembly version may be intentionally kept static so as not to break references.
                     // not loaded, try get version from files
                     var assemblyFolder = new DirectoryInfo( Path.Combine( mod.RootDir.FullName, AssembliesFolder ) );
                     if ( assemblyFolder.Exists )
@@ -416,11 +417,10 @@ namespace ModManager
                         var assemblies = assemblyFolder.GetFiles( "*.dll" );
                         if ( !assemblies.NullOrEmpty() )
                         {
-                            Version = ParseVersion( FileVersionInfo.GetVersionInfo( assemblies.Last().FullName )
-                                .FileVersion );
+                            Version = ParseVersion( FileVersionInfo.GetVersionInfo( assemblies.Last().FullName ).FileVersion );
                         }
                     }
-                }
+                //}
             }   
         }
 
