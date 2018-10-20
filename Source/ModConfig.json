@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 3,
-        "build": 645
+        "minor": 4,
+        "build": 646
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,7 +14,7 @@
         "Brrainz": "multi-version targetting",
         "b606": "French translation"
     },
-    "changenote": "BOM fix (hopefully)",
+    "changenote": "always use assembly file version for version guessing",
     "tags": [],
     "publishedfileid": "1507748539"
 }
