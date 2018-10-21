@@ -98,6 +98,6 @@
     <!-- workshop -->
     <Fluffy.ModManager.DownloadPending>Téléchargement en attente...</Fluffy.ModManager.DownloadPending>
     <Fluffy.ModManager.ModInstalled>Installation de {0} terminée.</Fluffy.ModManager.ModInstalled>
-    <Fluffy.ModManager.Subscribe>S'abonner à {0} ({1}) sur le Workshop.</Fluffy.ModManager.Subscribe>
+    <Fluffy.ModManager.Subscribe>S'abonner à {0} sur le Workshop.</Fluffy.ModManager.Subscribe>
     <Fluffy.ModManager.SubscribeAllMissing>S'abonner à tous les mods manquants du Workshop.</Fluffy.ModManager.SubscribeAllMissing>
 </LanguageData>

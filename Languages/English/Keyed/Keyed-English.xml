@@ -89,7 +89,7 @@
 
     <!-- Links -->
     <Fluffy.ModManager.ModHomePage>Home page ({0})</Fluffy.ModManager.ModHomePage>
-    <Fluffy.ModManager.WorkshopPage>{0} on Steam Workshop</Fluffy.ModManager.WorkshopPage>
+    <Fluffy.ModManager.WorkshopPage>Open {0}'s Workshop page</Fluffy.ModManager.WorkshopPage>
 
     <!-- confirmation dialog 0: issue count, 1: issue list -->
     <Fluffy.ModManager.DialogConfirmIssues>You should resolve these issues before loading/starting a new game.&lt;b&gt;\n\nWARNING: Using this mod list is likely going to cause errors, and may crash the game!&lt;/b&gt;\n\n{0}</Fluffy.ModManager.DialogConfirmIssues>
@@ -105,7 +105,7 @@
     <!-- workshop -->
     <Fluffy.ModManager.DownloadPending>Download pending...</Fluffy.ModManager.DownloadPending>
     <Fluffy.ModManager.ModInstalled>{0} installation completed.</Fluffy.ModManager.ModInstalled>
-    <Fluffy.ModManager.Subscribe>Subscribe to {0} ({1}) on the Workshop.</Fluffy.ModManager.Subscribe>
+    <Fluffy.ModManager.Subscribe>Subscribe to {0}.</Fluffy.ModManager.Subscribe>
     <Fluffy.ModManager.SubscribeAllMissing>Subscribe to all missing Workshop mods.</Fluffy.ModManager.SubscribeAllMissing>
 
     <!-- colours -->
@@ -113,4 +113,15 @@
     <Fluffy.ModManager.ChangeModColour>Change colour for this version of {0} only</Fluffy.ModManager.ChangeModColour>
     <Fluffy.ModManager.ChangeButtonColour>Change colour for all versions of {0}</Fluffy.ModManager.ChangeButtonColour>
     <Fluffy.ModManager.ChangeListColour>Change list colour</Fluffy.ModManager.ChangeListColour>
+
+    <!-- promotions -->
+    <Fluffy.ModManager.PromotionsFor>Other mods by {0}</Fluffy.ModManager.PromotionsFor>
+
+    <!-- options -->
+    <Fluffy.ModManager.SettingsCategory>Mod Manager</Fluffy.ModManager.SettingsCategory>
+    <Fluffy.ModManager.ShowPromotions>Show Promotions</Fluffy.ModManager.ShowPromotions>
+    <Fluffy.ModManager.ShowPromotions_NotActive>Show promotions for inactive mods.</Fluffy.ModManager.ShowPromotions_NotActive>
+    <Fluffy.ModManager.ShowPromotions_NotSubscribed>Show promotions for non-subscribed mods.</Fluffy.ModManager.ShowPromotions_NotSubscribed>
+    <Fluffy.ModManager.ShowPromotionsTip>If enabled, whenever you select a Steam Workshop mod, Mod Manager will show promotions for other mods by the same author.</Fluffy.ModManager.ShowPromotionsTip>
+    <Fluffy.ModManager.ModSettings>Open mod settings</Fluffy.ModManager.ModSettings>    
 </LanguageData>

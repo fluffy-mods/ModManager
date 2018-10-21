@@ -330,6 +330,8 @@ namespace ModManager
                     new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Attributes[this].Color = color ) ) ) );
                 FloatMenu( options );
             }
+            if ( Selected.HasSettings() && ButtonIcon( ref iconRect, Gear, I18n.ModSettings ) )
+                OpenSettingsFor( Selected );
         }
 
         internal bool Matches(Dependency dep, bool strict = false )
@@ -508,6 +510,7 @@ namespace ModManager
                 DoOtherIssues( ref canvas );
             }
 
+            CrossPromotionManager.HandleCrossPromotions( ref canvas, Selected );
 
             Widgets.DrawBoxSolid( canvas, SlightlyDarkBackground);
             var descriptionOutRect = canvas.ContractedBy(SmallMargin);

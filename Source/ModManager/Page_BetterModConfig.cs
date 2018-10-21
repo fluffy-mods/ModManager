@@ -129,11 +129,17 @@ namespace ModManager
             Widgets.Label( new Rect( 0, 0, Screen.width, Screen.height ), msg );
         }
 
+        public override void WindowUpdate()
+        {
+            base.WindowUpdate();
+            DraggingManager.Update();
+            CrossPromotionManager.Update();
+        }
+
         public override void DoWindowContents( Rect canvas )
         {
             CheckResized();
             HandleKeyboardNavigation();
-            DraggingManager.Update();
             
             var iconBarHeight = IconSize + SmallMargin;
             var colWidth = Mathf.FloorToInt( canvas.width / 5 );

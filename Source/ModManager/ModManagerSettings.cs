@@ -13,6 +13,10 @@ namespace ModManager
         public Dictionary<string, ModAttributes> ModAttributes = new Dictionary<string, ModAttributes>();
         public Dictionary<string, ButtonAttributes> ButtonAttributes = new Dictionary<string, ButtonAttributes>();
 
+        public bool ShowPromotions = true;
+        public bool ShowPromotions_NotSubscribed = true;
+        public bool ShowPromotions_NotActive = false;
+
         public ModAttributes this[ModMetaData mod]
         {
             get
@@ -50,10 +54,11 @@ namespace ModManager
                     .ToList();
             }
 
-
             Scribe_Collections.Look( ref _saveableModAttributes, "ModAttributes", LookMode.Deep );
             Scribe_Collections.Look( ref _saveableButtonAttributes, "ButtonAttributes", LookMode.Deep );
-
+            Scribe_Values.Look( ref ShowPromotions, "ShowPromotions", true );
+            Scribe_Values.Look( ref ShowPromotions_NotSubscribed, "ShowPromotions_NotSubscribed", true );
+            Scribe_Values.Look( ref ShowPromotions_NotActive, "ShowPromotions_NotActive", false );
 
             if ( Scribe.mode == LoadSaveMode.PostLoadInit )
             {

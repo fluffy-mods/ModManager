@@ -28,14 +28,12 @@ namespace ModManager
 
         private static FloatMenuOption DeactivateModOption( ModButton_Installed mod )
         {
-            return new FloatMenuOption( I18n.DeactivateMod( mod ),
-                () => mod.Active = false );
+            return new FloatMenuOption( I18n.DeactivateMod( mod ), () => mod.Active = false );
         }
 
-        private static FloatMenuOption SubscribeOption( string name, string identifier )
+        internal static FloatMenuOption SubscribeOption( string name, string identifier )
         {
-            return new FloatMenuOption( I18n.Subscribe( name, identifier ),
-                () => Workshop.Subscribe( identifier ) );
+            return new FloatMenuOption( I18n.Subscribe( name ), () => Workshop.Subscribe( identifier ) );
         }
 
         public static void ResolveFindMod( Dependency dependency, ModButton_Installed requester )

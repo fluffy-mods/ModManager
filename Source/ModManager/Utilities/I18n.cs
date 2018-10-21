@@ -322,12 +322,25 @@ namespace ModManager
         {
             return Key( "ModInstalled" ).Translate( name );
         }
-        public static string Subscribe( string name, string pfid )
+        public static string Subscribe( string name )
         {
-            return Key( "Subscribe" ).Translate( name, pfid );
+            return Key( "Subscribe" ).Translate( name );
         }
 
         public static string SubscribeAllMissing = Key( "SubscribeAllMissing" ).Translate();
         public static string ResetMods = Key( "ResetMods" ).Translate();
+
+        // promotions
+        public static string PromotionsFor( string author ) => Key( "PromotionsFor" ).Translate( author );
+
+        // options
+        public static string SettingsCategory => Key( "SettingsCategory" ).Translate();
+        public static string ShowPromotions => Key( "ShowPromotions" ).Translate();
+        public static string ShowPromotionsTip => Key( "ShowPromotionsTip" ).Translate();
+        public static string ShowPromotions_NotSubscribed => Key("ShowPromotions_NotSubscribed").Translate();
+        public static string ShowPromotions_NotActive => Key("ShowPromotions_NotActive").Translate();
+
+        // settings
+        public static string ModSettings => Key( "ModSettings" ).Translate();
     }
 }

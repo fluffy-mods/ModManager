@@ -30,6 +30,29 @@ namespace ModManager
             return activeMods.FirstIndexOf( am => am.Identifier == mod.Identifier );
         }
 
+        public static bool HasSettings( this ModMetaData mod )
+        {
+            return mod.SettingsCategory() != null;
+        }
+
+        public static string SettingsCategory( this ModMetaData mod )
+        {
+            return mod.ModClassWithSettings()?.SettingsCategory();
+        }
+
+        private static Dictionary<ModMetaData, Mod> _modClassWithSettingsCache = new Dictionary<ModMetaData, Mod>();
+
+        public static Mod ModClassWithSettings( this ModMetaData mod )
+        {
+            if ( _modClassWithSettingsCache.TryGetValue( mod, out var modClass ) )
+                return modClass;
+            modClass = LoadedModManager.ModHandles.FirstOrDefault( m => 
+                m.Content.Identifier == mod.Identifier &&
+                !m.SettingsCategory().NullOrEmpty() );
+            _modClassWithSettingsCache.Add( mod, modClass );
+            return modClass;
+        }
+
         public static int Compatibility( this ModMetaData mod, bool careAboutBuild = false )
         {
             if ( mod.VersionCompatible )

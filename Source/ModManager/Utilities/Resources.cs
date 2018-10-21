@@ -23,6 +23,7 @@ namespace ModManager
             Warning,
             Question,
             Palette,
+            Gear,
             Status_Cross,
             Status_Down,
             Status_Up,
@@ -44,6 +45,7 @@ namespace ModManager
             Warning = ContentFinder<Texture2D>.Get( "UI/Icons/Warning" );
             Question = ContentFinder<Texture2D>.Get( "UI/Icons/Question" );
             Palette = ContentFinder<Texture2D>.Get( "UI/Icons/Palette" );
+            Gear = ContentFinder<Texture2D>.Get( "UI/Icons/Gear" );
 
             Status_Cross = ContentFinder<Texture2D>.Get("UI/Icons/Status/Cross");
             Status_Down = ContentFinder<Texture2D>.Get("UI/Icons/Status/Down");

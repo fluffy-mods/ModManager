@@ -56,6 +56,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CrossPromotion\CrossPromotion.cs" />
+    <Compile Include="CrossPromotion\CrossPromotionManager.cs" />
     <Compile Include="Manifest\OnlineManifest.cs" />
     <Compile Include="ModButton\ButtonAttributes.cs" />
     <Compile Include="ModButton\ModAttributes.cs" />
@@ -89,6 +91,7 @@
     <Compile Include="Utilities\VersionStatus.cs" />
     <Compile Include="Utilities\Workshop.cs" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <PostBuildEvent>mod update -x -n "Mod Manager"</PostBuildEvent>
   </PropertyGroup>

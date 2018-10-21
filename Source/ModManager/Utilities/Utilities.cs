@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Harmony;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -13,7 +14,9 @@ namespace ModManager
 {
     public class Utilities
     {
-        public static bool ButtonIcon( ref Rect rect, Texture2D icon, string tooltip = null, Texture2D iconAddon = null, Direction8Way addonLocation = Direction8Way.NorthEast, Color? mouseOverColor = null, Color? baseColor = null, int gapSize = SmallMargin )
+        public static bool ButtonIcon( ref Rect rect, Texture2D icon, string tooltip = null, Texture2D iconAddon = null,
+            Direction8Way addonLocation = Direction8Way.NorthEast, Color? mouseOverColor = null,
+            Color? baseColor = null, int gapSize = SmallMargin )
         {
             if ( Mouse.IsOver( rect ) )
                 GUI.color = mouseOverColor ?? GenUI.MouseoverColor;
@@ -51,47 +54,64 @@ namespace ModManager
             return rect;
         }
 
-        public static float MaxWidth(params string[] strings)
+        public static float MaxWidth( params string[] strings )
         {
             Text.WordWrap = false;
-            var max = Mathf.Max(strings.Select(s => Text.CalcSize(s).x).ToArray());
+            var max = Mathf.Max( strings.Select( s => Text.CalcSize( s ).x ).ToArray() );
             Text.WordWrap = true;
             return max;
         }
 
-        public static int Modulo(int x, int m)
+        public static int Modulo( int x, int m )
         {
             var r = x % m;
-            if (r < 0) r += m;
+            if ( r < 0 ) r += m;
             return r;
         }
 
-        public static void DoLabel(ref Rect canvas, string label)
+        public static void DoLabel( ref Rect canvas, string label )
         {
             var labelRect = new Rect(
                 canvas.xMin + SmallIconSize,
                 canvas.yMin,
                 canvas.width - SmallIconSize,
-                LabelHeight);
+                LabelHeight );
             canvas.yMin += LabelHeight - LabelOffset;
             GUI.color = Color.grey;
             Text.Font = GameFont.Tiny;
-            Widgets.Label(labelRect, label);
+            Widgets.Label( labelRect, label );
             GUI.color = Color.white;
             Text.Font = GameFont.Small;
         }
 
-        public static void ActionButton(Rect canvas, Action resolve)
+        public static void ActionButton( Rect canvas, Action resolve )
         {
-            Widgets.DrawHighlightIfMouseover(canvas);
-            if (Widgets.ButtonInvisible(canvas)) resolve?.Invoke();
+            Widgets.DrawHighlightIfMouseover( canvas );
+            if ( Widgets.ButtonInvisible( canvas ) ) resolve?.Invoke();
         }
 
-        public static void FloatMenu(List<FloatMenuOption> options)
+        public static void FloatMenu( List<FloatMenuOption> options )
         {
-            Find.WindowStack.Add(new FloatMenu(options));
+            Find.WindowStack.Add( new FloatMenu( options ) );
         }
 
         public static List<FloatMenuOption> NewOptions => new List<FloatMenuOption>();
+
+
+        public static void OpenSettingsFor( ModMetaData mod )
+        {
+            if ( !mod.HasSettings() )
+                return;
+            OpenSettingsFor( mod.ModClassWithSettings() );
+        }
+
+        public static void OpenSettingsFor( Mod mod )
+        {
+            if ( mod.SettingsCategory().NullOrEmpty() )
+                return;
+            var dialog = new Dialog_ModSettings();
+            Traverse.Create( dialog ).Field<Mod>( "selMod" ).Value = mod;
+            Find.WindowStack.Add( dialog );
+        }
     }
 }

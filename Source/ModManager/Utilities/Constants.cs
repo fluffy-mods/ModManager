@@ -7,6 +7,8 @@ namespace ModManager
 {
     public static class Constants
     {
+        public const int ScrollSpeed = 10;
+        public const int PromotionsHeight = 100;
         public const int SmallMargin = 6;
         public const int SmallIconSize = 12;
         public const int IconSize = 20;
