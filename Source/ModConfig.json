@@ -3,18 +3,18 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 4,
-        "build": 672
+        "minor": 5,
+        "build": 673
     },
     "visibility": 0,
     "git_repo": "ModManager",
     "git_user": "FluffierThanThou",
     "contributors": {
         "erdelf": "invaluable help with Harmony transpilers",
-        "Brrainz": "multi-version targetting",
+        "Brrainz": "multi-version targetting, inspiration for mod promotions",
         "b606": "French translation"
     },
-    "changenote": "",
+    "changenote": "add author promotions",
     "tags": [],
     "publishedfileid": "1507748539"
 }
