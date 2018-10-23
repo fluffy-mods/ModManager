@@ -34,6 +34,11 @@
     <Fluffy.ModManager.GetMoreMods_SteamWorkshop>Get more mods from the Steam Workshop</Fluffy.ModManager.GetMoreMods_SteamWorkshop>
     <Fluffy.ModManager.GetMoreMods_LudeonForums>Get more mods from the Ludeon Forums</Fluffy.ModManager.GetMoreMods_LudeonForums>
     <Fluffy.ModManager.SteamWorkshop.UnSubscribe>Unsubscribe from this mod on the Steam Workshop</Fluffy.ModManager.SteamWorkshop.UnSubscribe>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>Mass unsubscribe inactive/outdated/all Steam Workshop mods</Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>UnSubscribe all Steam mods</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>UnSubscribe all inactive Steam mods</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>UnSubscribe all outdated Steam mods</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>You are about to unsubscribe from {0} mods. Are you certain you want to continue?\n\nAffected mods:\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
     <Fluffy.ModManager.ModSettings>Open mod settings</Fluffy.ModManager.ModSettings>    
 
     <Fluffy.ModManager.ModListsTip>Create, apply and manage mod lists.\n\nMod Lists allow you to quickly switch sets of mods.</Fluffy.ModManager.ModListsTip>

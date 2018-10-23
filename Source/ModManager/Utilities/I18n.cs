@@ -122,6 +122,14 @@ namespace ModManager
         public static string DeleteModList = Key( "DeleteModList" ).Translate();
         public static string RenameModList = Key( "RenameModList" ).Translate();
 
+        // mass unsub
+        public static string MassUnSubscribe = Key( "SteamWorkshop.MassUnSubscribe" ).Translate();
+        public static string MassUnSubscribeAll = Key( "SteamWorkshop.MassUnSubscribeAll" ).Translate();
+        public static string MassUnSubscribeInactive = Key( "SteamWorkshop.MassUnSubscribeInactive" ).Translate();
+        public static string MassUnSubscribeOutdated = Key( "SteamWorkshop.MassUnSubscribeOutdated" ).Translate();
+        public static string MassUnSubscribeConfirm( int count, string list ) => Key(
+            "SteamWorkshop.MassUnSubscribeConfirm" ).Translate( count, list );
+        
         public static string CreateLocalCopies = Key( "CreateLocalCopies" ).Translate();
 
         public static string CreateLocalCopiesConfirmation( int count )

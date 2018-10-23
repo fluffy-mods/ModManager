@@ -208,6 +208,11 @@ namespace ModManager
                 SteamUtility.OpenSteamWorkshopPage();
             if ( Utilities.ButtonIcon( ref iconRect, Ludeon, I18n.GetMoreMods_LudeonForums, Status_Plus, Direction8Way.NorthWest ) )
                 Application.OpenURL("http://rimworldgame.com/getmods");
+
+            iconRect.x = canvas.xMin;
+            if ( ModButtonManager.AllMods.Any( m => m.Source == ContentSource.SteamWorkshop ) &&
+                Utilities.ButtonIcon( ref iconRect, Steam, I18n.MassUnSubscribe, Status_Cross, Direction8Way.NorthWest, Color.red ) )
+                Workshop.MassUnsubscribeFloatMenu();
         }
 
         private int _issueIndex = 0;
