@@ -591,7 +591,7 @@ namespace ModManager
             Utilities.DoLabel( ref canvas, I18n.AvailableMods );
             Widgets.DrawBoxSolid( canvas, SlightlyDarkBackground );
 
-            var buttons = FilteredAvailableButtons;
+            var buttons = new List<ModButton>( FilteredAvailableButtons );
             var filterRect = new Rect(
                 canvas.xMin,
                 canvas.yMin,
@@ -606,7 +606,7 @@ namespace ModManager
                 canvas.xMin,
                 filterRect.yMax + SmallMargin,
                 canvas.width,
-                Mathf.Max( ModButtonHeight * buttons.Count(), outRect.height ) );
+                Mathf.Max( ModButtonHeight * buttons.Count, outRect.height ) );
             if ( viewRect.height > outRect.height )
                 viewRect.width -= 18f;
             var modRect = new Rect(
@@ -716,7 +716,7 @@ namespace ModManager
                 _lastHoverIndex = hoverIndex;
                 SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
             }
-            for ( int i = 0; i < buttons.Count(); i++ )
+            for ( int i = 0; i < buttons.Count; i++ )
             {
                 var mod = buttons.ElementAt(i);
 

@@ -84,8 +84,8 @@ namespace ModManager
             }
             if ( requester is ModButton_Missing missing && missing.Identifier.IsSteamWorkshopIdentifier())
                 options.Add( SubscribeOption( missing.Name, missing.Identifier ) );
-            options.Add( WorkshopSearchOption( identifier ) );
-            options.Add( ForumSearchOption( identifier ) );
+            options.Add( WorkshopSearchOption( requester?.TrimmedName ?? identifier ) );
+            options.Add( ForumSearchOption( requester?.TrimmedName ?? identifier ) );
             FloatMenu( options );
         }
 
@@ -145,7 +145,7 @@ namespace ModManager
         public static void ResolveUpdateLocalCopy( ModMetaData source, ModMetaData local )
         {
             var options = NewOptions;
-            options.Add( new FloatMenuOption( I18n.UpdateLocalCopy( local.Name ), () => IO.TryUpdateLocalCopy( source, local ) ) );
+            options.Add( new FloatMenuOption( I18n.UpdateLocalCopy( TrimModName( local.Name ) ), () => IO.TryUpdateLocalCopy( source, local ) ) );
             FloatMenu( options );
         }
     }

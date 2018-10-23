@@ -70,7 +70,7 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  - erdelf:	invaluable help with Harmony transpilers
  - Brrainz:	multi-version targetting, inspiration for mod promotions
  - b606:	French translation
- - Proxyer:	
+ - Proxyer:	Japanese translation
 
 # Think you found a bug? 
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
@@ -91,4 +91,4 @@ Show your appreciation by buying me a coffee (or contribute towards a nice singl
 [![Buy Me a Coffee](http://i.imgur.com/EjWiUwx.gif)](https://ko-fi.com/fluffymods)
 
 # Version
-This is version 1.6.675, for RimWorld 1.0.2059.
+This is version 1.6.694, for RimWorld 1.0.2059.

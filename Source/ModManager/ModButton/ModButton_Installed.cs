@@ -43,7 +43,8 @@ namespace ModManager
 
         public static ModButton_Installed For( ModMetaData mod )
         {
-            var button = ModButtonManager.AllButtons.OfType<ModButton_Installed>().FirstOrDefault( mb => mb.Name == mod.Name );
+            var button = ModButtonManager.AllButtons.OfType<ModButton_Installed>()
+                .FirstOrDefault( mb => mb.Name == mod.Name || ModManager.Settings.TrimTags && mb.TrimmedName == TrimModName( mod.Name ) );
             if ( button == null )
                 return new ModButton_Installed( mod );
             if ( !button.Versions.Contains( mod ) )
@@ -99,7 +100,7 @@ namespace ModManager
                             () => Resolvers.ResolveUpdateLocalCopy( attributes.Source, Selected ) ) );
                     }
 
-                    if ( Manifest != null )
+                    if ( Manifest != null && Active )
                         _issues.AddRange( Manifest.Issues );
 
                     if ( !Active )
@@ -115,8 +116,8 @@ namespace ModManager
             .OrderByDescending( mod => mod.Compatibility() )
             .ThenBy( mod => mod.Source );
 
-        public override string Name => Selected?.Name ?? "ERROR :: NOTHING SELECTED";
-        public override string Identifier => Selected?.Identifier ?? "ERROR :: NOTHING SELECTED";
+        public override string Name => Selected?.Name;
+        public override string Identifier => Selected?.Identifier;
         public override bool MatchesIdentifier( string identifier )
         {
             return Selected?.MatchesIdentifier( identifier ) ?? false;
@@ -224,9 +225,9 @@ namespace ModManager
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
-            Widgets.Label(nameRect, Selected.Name.Truncate(nameRect.width, _modNameTruncationCache));
-            if ( Mouse.IsOver( nameRect ) && Selected.Name != Selected.Name.Truncate( nameRect.width, _modNameTruncationCache ) )
-                TooltipHandler.TipRegion( nameRect, Selected.Name );
+            Widgets.Label( nameRect, TrimmedName.Truncate( nameRect.width, _modNameTruncationCache ) );
+            if ( Mouse.IsOver( nameRect ) && TrimmedName != TrimmedName.Truncate( nameRect.width, _modNameTruncationCache ) )
+                TooltipHandler.TipRegion( nameRect, TrimmedName );
 
             if (!Selected.IsCoreMod)
             {

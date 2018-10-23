@@ -1,10 +1,11 @@
 ﻿// ModButtonManager.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System;
 using System.Collections.Generic;
 using Verse;
 using System.Linq;
-using System.Security.Policy;
+using Harmony;
 using UnityEngine;
 
 namespace ModManager
@@ -98,7 +99,7 @@ namespace ModManager
             _availableButtons = new List<ModButton>();
 
             // create all the buttons
-            foreach ( var mods in ModLister.AllInstalledMods.GroupBy( m => m.Name ) )
+            foreach ( var mods in ModLister.AllInstalledMods.GroupBy( m => Utilities.TrimModName( m.Name ) ) )
                 TryAdd( new ModButton_Installed( mods ), false );
             
             SortActive();
@@ -109,7 +110,7 @@ namespace ModManager
         {
             _availableButtons = _availableButtons
                 .OrderByDescending( b => b.SortOrder )
-                .ThenBy( b => b.Name )
+                .ThenBy( b => b.TrimmedName)
                 .ToList();
         }
 
@@ -122,10 +123,10 @@ namespace ModManager
 
         public static void Notify_ModOrderChanged()
         {
-            ModsConfig.SetActiveToList( ActiveMods.Select( m => m.Identifier ).ToList() );
+            ModsConfig.SetActiveToList(ActiveMods.Select(m => m.Identifier).ToList());
             Notify_RecacheIssues();
         }
-
+        
         public static ModButton_Installed CoreMod => AllButtons.First( b => b.IsCoreMod ) as ModButton_Installed;
 
         public static void Notify_RecacheIssues()

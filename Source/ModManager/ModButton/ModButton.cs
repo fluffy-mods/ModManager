@@ -13,6 +13,16 @@ namespace ModManager
     public abstract class ModButton
     {
         private ModButton _focus;
+        private string _trimmedName;
+        public virtual string TrimmedName
+        {
+            get
+            {
+                if ( _trimmedName.NullOrEmpty() )
+                    _trimmedName = Utilities.TrimModName( Name );
+                return _trimmedName;
+            }
+        }
         public abstract string Name { get; }
         public abstract string Identifier { get; }
         public abstract bool MatchesIdentifier( string identifier );
@@ -44,7 +54,10 @@ namespace ModManager
 
         public virtual int MatchesFilter( string filter )
         {
-            if ( filter.NullOrEmpty() || Name.ToUpper().Contains( filter.ToUpper() ) )
+            if ( filter.NullOrEmpty() )
+                return 1;
+            if ( ModManager.Settings.TrimTags && TrimmedName.ToLower().Contains( filter.ToLower() ) ||
+                 !ModManager.Settings.TrimTags && Name.ToLower().Contains( filter.ToLower( ) ) )
             {
                 return 1;
             }

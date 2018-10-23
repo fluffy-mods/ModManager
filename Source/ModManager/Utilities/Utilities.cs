@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Harmony;
 using RimWorld;
 using UnityEngine;
@@ -103,6 +104,23 @@ namespace ModManager
             if ( !mod.HasSettings() )
                 return;
             OpenSettingsFor( mod.ModClassWithSettings() );
+        }
+
+        private static Regex authorTag = new Regex( @"^\[[A-Z]{1,3}\]", RegexOptions.IgnoreCase );
+        private static Regex versionTag = new Regex( @"(\[|\))(\d\.\d+|[A-B]\d{2})(\]|\))", RegexOptions.IgnoreCase );
+        private static Regex versionString = new Regex( @"\d\.\d+|[A-B]\d{2}", RegexOptions.IgnoreCase );
+        public static string TrimModName( string name )
+        {
+            if ( ModManager.Settings.TrimTags )
+            {
+                name = authorTag.Replace( name, "" );
+                name = versionTag.Replace( name, "" );
+                if ( ModManager.Settings.TrimVersionStrings )
+                    name = versionString.Replace( name, "" );
+                name = name.Trim().Trim( '-' ).Trim();
+            }
+
+            return name;
         }
 
         public static void OpenSettingsFor( Mod mod )

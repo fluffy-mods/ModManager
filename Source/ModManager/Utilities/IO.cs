@@ -274,8 +274,12 @@ namespace ModManager
                 }, true));
         }
 
+        private static Dictionary<string, string> _hashCache = new Dictionary<string, string>();
         internal static string GetFolderHash( this DirectoryInfo folder )
         {
+            if ( _hashCache.TryGetValue( folder.FullName, out string hash ) )
+                return hash;
+
             var files = folder.GetFiles( "*", SearchOption.AllDirectories )
                 .OrderBy( p => p.FullName );
 
@@ -296,7 +300,9 @@ namespace ModManager
                 //Handles empty filePaths case
                 md5.TransformFinalBlock( new byte[0], 0, 0 );
 
-                return BitConverter.ToString( md5.Hash ).Replace( "-", "" ).ToLower();
+                hash = BitConverter.ToString( md5.Hash ).Replace( "-", "" ).ToLower();
+                _hashCache.Add( folder.FullName, hash );
+                return hash;
             }
         }
 

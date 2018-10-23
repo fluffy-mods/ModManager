@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 6,
-        "build": 675
+        "build": 694
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -13,9 +13,9 @@
         "erdelf": "invaluable help with Harmony transpilers",
         "Brrainz": "multi-version targetting, inspiration for mod promotions",
         "b606": "French translation",
-        "Proxyer": ""
+        "Proxyer": "Japanese translation"
     },
-    "changenote": "Japanese Translation for 1.4.646 (#13)",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }

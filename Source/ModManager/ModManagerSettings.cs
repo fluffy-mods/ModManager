@@ -16,6 +16,8 @@ namespace ModManager
         public bool ShowPromotions = true;
         public bool ShowPromotions_NotSubscribed = true;
         public bool ShowPromotions_NotActive = false;
+        public bool TrimTags = true;
+        public bool TrimVersionStrings = false;
 
         public ModAttributes this[ModMetaData mod]
         {
@@ -59,6 +61,8 @@ namespace ModManager
             Scribe_Values.Look( ref ShowPromotions, "ShowPromotions", true );
             Scribe_Values.Look( ref ShowPromotions_NotSubscribed, "ShowPromotions_NotSubscribed", true );
             Scribe_Values.Look( ref ShowPromotions_NotActive, "ShowPromotions_NotActive", false );
+            Scribe_Values.Look( ref TrimTags, "TrimTags", true );
+            Scribe_Values.Look( ref TrimVersionStrings, "TrimVersionStrings", false );
 
             if ( Scribe.mode == LoadSaveMode.PostLoadInit )
             {

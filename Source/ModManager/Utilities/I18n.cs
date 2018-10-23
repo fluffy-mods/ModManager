@@ -6,6 +6,7 @@ using System.Security.Policy;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using static ModManager.Utilities;
 
 namespace ModManager
 {
@@ -252,23 +253,22 @@ namespace ModManager
         }
         public static string NoMatchingModInstalled(string name)
         {
-            return Key("NoMatchingModInstalled")
-                .Translate(name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor);
+            return Key("NoMatchingModInstalled").Translate(name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor);
         }
 
         public static string DeactivateMod( ModButton_Installed mod )
         {
-            return Key( "DeactivateMod" ).Translate( mod.Name );
+            return Key( "DeactivateMod" ).Translate( TrimModName( mod.Name ) );
         }
 
         public static string MoveBefore(ModButton_Installed from, ModButton_Installed to)
         {
-            return Key("MoveBefore").Translate(from.Name, to.Name);
+            return Key("MoveBefore").Translate(TrimModName(from.Name), TrimModName(to.Name));
         }
 
         public static string MoveAfter(ModButton_Installed from, ModButton_Installed to)
         {
-            return Key("MoveAfter").Translate(from.Name, to.Name);
+            return Key( "MoveAfter" ).Translate( TrimModName( from.Name ), TrimModName( to.Name ) );
         }
 
         public static string SourceModChanged = Key( "SourceModChanged" ).Translate();
@@ -339,6 +339,11 @@ namespace ModManager
         public static string ShowPromotionsTip => Key( "ShowPromotionsTip" ).Translate();
         public static string ShowPromotions_NotSubscribed => Key("ShowPromotions_NotSubscribed").Translate();
         public static string ShowPromotions_NotActive => Key("ShowPromotions_NotActive").Translate();
+        public static string TrimTags => Key("TrimTags").Translate();
+        public static string TrimTagsTip => Key("TrimTagsTip").Translate();
+        public static string TrimVersionStrings => Key("TrimVersionStrings").Translate();
+        public static string TrimVersionStringsTip => Key("TrimVersionStringsTip").Translate();
+
 
         // settings
         public static string ModSettings => Key( "ModSettings" ).Translate();
