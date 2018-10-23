@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 6,
-        "build": 697
+        "minor": 7,
+        "build": 698
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,7 +15,7 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation"
     },
-    "changenote": "trim tags translation strings\ntrim tags from mod names, fix double-click adding bug, significantly reduce delay after adding/removing mods",
+    "changenote": "add mass unsubscribe options\ntrim tags translation strings\ntrim tags from mod names, fix double-click adding bug, significantly reduce delay after adding/removing mods",
     "tags": [],
     "publishedfileid": "1507748539"
 }
