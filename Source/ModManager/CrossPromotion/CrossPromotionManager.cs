@@ -58,7 +58,7 @@ namespace ModManager
             if ( !ModManager.Settings.ShowPromotions )
                 return false;
 
-            if ( mod.Source != ContentSource.SteamWorkshop )
+            if ( mod.GetPublishedFileId() == PublishedFileId_t.Invalid )
                 return false;
 
             var author = AuthorForMod( mod.GetPublishedFileId() );
