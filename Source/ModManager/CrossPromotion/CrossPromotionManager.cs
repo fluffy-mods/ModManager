@@ -55,7 +55,7 @@ namespace ModManager
 
         public static bool HandleCrossPromotions( ref Rect canvas, ModMetaData mod )
         {
-            if ( !ModManager.Settings.ShowPromotions )
+            if ( !ModManager.Settings.ShowPromotions || !Manifest.For( mod ).showCrossPromotions )
                 return false;
 
             if ( mod.GetPublishedFileId() == PublishedFileId_t.Invalid )

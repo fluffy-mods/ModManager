@@ -130,11 +130,11 @@ namespace ModManager
 
         public static string GetLocalCopyFolder( this ModMetaData mod )
         {
-            return Path.Combine( ModsDir, $"{Prefix}_{mod.Name}_{DateStamp}".SanitizeFileName() );
+            return Path.Combine( ModsDir, $"{LocalCopyPrefix}_{mod.Name}_{DateStamp}".SanitizeFileName() );
         }
 
         public static string DateStamp => $"({DateTime.Now.Day}-{DateTime.Now.Month})";
-        public static string Prefix => "__LocalCopy";
+        public static string LocalCopyPrefix => "__LocalCopy";
 
         /// <summary>
         /// Strip illegal chars and reserved words from a candidate filename (should not include the directory path)
@@ -252,11 +252,40 @@ namespace ModManager
         }
         private static List<Pair<ModButton_Installed, ModMetaData>> _batchCreatedCopies = new List<Pair<ModButton_Installed, ModMetaData>>();
 
-        internal static void DeleteLocal( ModMetaData mod )
+        internal static void DeleteLocalCopies( IEnumerable<ModMetaData> mods )
         {
-            Find.WindowStack.Add(Dialog_MessageBox.CreateConfirmation(
-                I18n.ConfirmRemoveLocal(mod.Name), delegate
+            string Target(string versionString)
+            {
+                try
                 {
+                    var version = VersionControl.VersionFromString(versionString);
+                    return version.Major + "." + version.Minor;
+                }
+                catch
+                {
+                    return versionString;
+                }
+            }
+
+            var modList = mods.Select(m => $"{m.Name} ({Target(m.TargetVersion)})").ToLineList();
+            var dialog = Dialog_MessageBox.CreateConfirmation(
+                I18n.MassUnSubscribeConfirm(mods.Count(), modList),
+                () =>
+                {
+                    foreach ( var mod in new List<ModMetaData>( mods ) )
+                        DeleteLocal( mod, true );
+                },
+                true);
+            Find.WindowStack.Add(dialog);
+        }
+
+        internal static void DeleteLocal( ModMetaData mod, bool force = false )
+        {
+            if ( force )
+            {
+                LongEventHandler.QueueLongEvent( () =>
+                {
+                    LongEventHandler.SetCurrentEventText(I18n.RemovingLocal(mod.Name));
                     if (TryRemoveLocalCopy(mod))
                     {
                         Messages.Message(I18n.RemoveLocalSucceeded(mod.Name),
@@ -269,9 +298,12 @@ namespace ModManager
                     }
 
                     // remove this version either way, as it's likely to be borked.
-                    ModButton_Installed.For( mod ).Notify_VersionRemoved( mod );
-
-                }, true));
+                    ModButton_Installed.For(mod).Notify_VersionRemoved(mod);
+                }, null, true, null );
+                return;
+            }
+            Find.WindowStack.Add( Dialog_MessageBox.CreateConfirmation(
+                I18n.ConfirmRemoveLocal( mod.Name ), () => DeleteLocal( mod, true ), true ) );
         }
 
         private static Dictionary<string, string> _hashCache = new Dictionary<string, string>();
@@ -335,6 +367,20 @@ namespace ModManager
                 result = Activator.CreateInstance<T>();
             }
             return result;
+        }
+
+        public static void MassRemoveLocalFloatMenu()
+        {
+            var options = Utilities.NewOptions;
+            var localCopies = ModButtonManager.AllMods.Where( m => m.IsLocalCopy() );
+            var outdated = localCopies.Where( m => !m.VersionCompatible && !m.MadeForNewerVersion );
+            var inactive = ModButtonManager.AvailableMods.Where( m => m.IsLocalCopy() );
+            options.Add( new FloatMenuOption( I18n.MassRemoveLocalAll, () => DeleteLocalCopies( localCopies ) ) );
+            if ( outdated.Any() )
+                options.Add( new FloatMenuOption( I18n.MassRemoveLocalOutdated, () => DeleteLocalCopies( outdated ) ) );
+            if ( inactive.Any() )
+                options.Add( new FloatMenuOption( I18n.MassRemoveLocalInactive, () => DeleteLocalCopies( inactive ) ) );
+            Utilities.FloatMenu( options );
         }
     }
 }

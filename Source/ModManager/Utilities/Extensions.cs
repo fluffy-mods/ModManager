@@ -4,6 +4,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -108,6 +109,12 @@ namespace ModManager
         public static ModAttributes Attributes( this ModMetaData mod )
         {
             return ModManager.Settings[mod];
+        }
+
+        public static bool IsLocalCopy( this ModMetaData mod )
+        {
+            return mod.Source == ContentSource.LocalFolder && 
+                mod.Identifier.StartsWith( IO.LocalCopyPrefix );
         }
 
         public static bool MatchesIdentifier( this ModMetaData mod, string identifier )

@@ -127,9 +127,17 @@ namespace ModManager
         public static string MassUnSubscribeAll = Key( "SteamWorkshop.MassUnSubscribeAll" ).Translate();
         public static string MassUnSubscribeInactive = Key( "SteamWorkshop.MassUnSubscribeInactive" ).Translate();
         public static string MassUnSubscribeOutdated = Key( "SteamWorkshop.MassUnSubscribeOutdated" ).Translate();
-        public static string MassUnSubscribeConfirm( int count, string list ) => Key(
-            "SteamWorkshop.MassUnSubscribeConfirm" ).Translate( count, list );
-        
+        public static string MassUnSubscribeConfirm( int count, string list ) => 
+            Key( "SteamWorkshop.MassUnSubscribeConfirm" ).Translate( count, list );
+
+        // mass remove local
+        public static string MassRemoveLocal = Key( "IO.MassRemoveLocal" ).Translate();
+        public static string MassRemoveLocalAll = Key( "IO.MassRemoveLocalAll" ).Translate();
+        public static string MassRemoveLocalInactive = Key("IO.MassRemoveLocalInactive").Translate();
+        public static string MassRemoveLocalOutdated = Key("IO.MassRemoveLocalOutdated").Translate();
+        public static string MassRemoveLocalConfirm( int count, string list ) => 
+            Key("IO.MassRemoveLocalConfirm").Translate( count, list );
+
         public static string CreateLocalCopies = Key( "CreateLocalCopies" ).Translate();
 
         public static string CreateLocalCopiesConfirmation( int count )
@@ -157,6 +165,7 @@ namespace ModManager
             return Key( "CreatingLocal" ).Translate( name );
         }
 
+        public static string RemovingLocal( string name ) => Key( "RemovingLocal" ).Translate( name );
         public static string DeleteLocalCopy( string name )
         {
             return Key( "DeleteLocalCopy" ).Translate( name );

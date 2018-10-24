@@ -17,7 +17,7 @@ namespace ModManager
     {
         public static bool ButtonIcon( ref Rect rect, Texture2D icon, string tooltip = null, Texture2D iconAddon = null,
             Direction8Way addonLocation = Direction8Way.NorthEast, Color? mouseOverColor = null,
-            Color? baseColor = null, int gapSize = SmallMargin )
+            Color? baseColor = null, int gapSize = SmallMargin, UIDirection direction = UIDirection.LeftThenDown )
         {
             if ( Mouse.IsOver( rect ) )
                 GUI.color = mouseOverColor ?? GenUI.MouseoverColor;
@@ -31,7 +31,18 @@ namespace ModManager
                 TooltipHandler.TipRegion( rect, tooltip );
 
             var clicked = Widgets.ButtonInvisible( rect );
-            rect.x -= rect.width + gapSize;
+
+            switch ( direction )
+            {
+                    case UIDirection.LeftThenDown:
+                    case UIDirection.LeftThenUp:
+                        rect.x -= rect.width + gapSize;
+                        break;
+                    case UIDirection.RightThenDown:
+                    case UIDirection.RightThenUp:
+                        rect.x += rect.width + gapSize;
+                        break;
+            }
             return clicked;
         }
 
@@ -107,8 +118,8 @@ namespace ModManager
         }
 
         private static Regex authorTag = new Regex( @"^\[[A-Z]{1,3}\]", RegexOptions.IgnoreCase );
-        private static Regex versionTag = new Regex( @"(\[|\))(\d\.\d+|[A-B]\d{2})(\]|\))", RegexOptions.IgnoreCase );
-        private static Regex versionString = new Regex( @"\d\.\d+|[A-B]\d{2}", RegexOptions.IgnoreCase );
+        private static Regex versionTag = new Regex( @"(\[|\()(\d\.\d+|[A-B]\d{2})(\]|\))", RegexOptions.IgnoreCase );
+        private static Regex versionString = new Regex(@"(\[|\()?v?\d+(\.\d+)+|[A-B]\d{2}(\]|\))?", RegexOptions.IgnoreCase );
         public static string TrimModName( string name )
         {
             if ( ModManager.Settings.TrimTags )

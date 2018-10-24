@@ -25,6 +25,8 @@ namespace ModManager
         public List<Dependency> incompatibleWith = new List<Dependency>();
         public List<Dependency> loadBefore = new List<Dependency>();
         public List<Dependency> loadAfter = new List<Dependency>();
+        public List<string> suggests = new List<string>();
+        public bool showCrossPromotions = true;
         private OnlineManifest _onlineManifest;
         private string manifestUri;
         internal string downloadUri;

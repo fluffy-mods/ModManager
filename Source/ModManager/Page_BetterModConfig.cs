@@ -170,7 +170,7 @@ namespace ModManager
             DoActiveMods(activeRect);
             DoDetails( detailRect );
 
-            DoMoreModButtons( moreModButtonsRect );
+            DoAvailableModButtons( moreModButtonsRect );
             DoModSetButtons( modSetButtonsRect );
             Selected?.DoModActionButtons( modButtonsRect );
         }
@@ -185,7 +185,7 @@ namespace ModManager
             }
         }
 
-        private void DoMoreModButtons( Rect canvas )
+        private void DoAvailableModButtons( Rect canvas )
         {
             Widgets.DrawBoxSolid( canvas, SlightlyDarkBackground );
             canvas = canvas.ContractedBy( SmallMargin / 2f );
@@ -202,8 +202,11 @@ namespace ModManager
 
             iconRect.x = canvas.xMin;
             if ( ModButtonManager.AllMods.Any( m => m.Source == ContentSource.SteamWorkshop ) &&
-                Utilities.ButtonIcon( ref iconRect, Steam, I18n.MassUnSubscribe, Status_Cross, Direction8Way.NorthWest, Color.red ) )
+                Utilities.ButtonIcon( ref iconRect, Steam, I18n.MassUnSubscribe, Status_Cross, Direction8Way.NorthWest, Color.red, direction: UIDirection.RightThenDown ) )
                 Workshop.MassUnsubscribeFloatMenu();
+            if ( ModButtonManager.AllMods.Any( m => m.Source == ContentSource.LocalFolder && !m.IsCoreMod ) &&
+                 Utilities.ButtonIcon( ref iconRect, Folder, I18n.MassRemoveLocal, Status_Cross, mouseOverColor: Color.red, direction: UIDirection.RightThenDown ) )
+                IO.MassRemoveLocalFloatMenu();
         }
 
         private int _issueIndex = 0;
