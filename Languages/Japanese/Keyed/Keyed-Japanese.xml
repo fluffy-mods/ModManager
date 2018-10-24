@@ -34,6 +34,12 @@
   <Fluffy.ModManager.GetMoreMods_SteamWorkshop>Steam-WorkshopからもっとModを入手する</Fluffy.ModManager.GetMoreMods_SteamWorkshop>
   <Fluffy.ModManager.GetMoreMods_LudeonForums>Ludeon公式フォーラムからもっとModを入手する</Fluffy.ModManager.GetMoreMods_LudeonForums>
   <Fluffy.ModManager.SteamWorkshop.UnSubscribe>Steam-WorkshopでこのModのサブスクライブを解除する</Fluffy.ModManager.SteamWorkshop.UnSubscribe>
+  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>使用してないか古いVersionのSteam-Workshopのmodをすべて一括でサブスクライブを解除する</Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>
+  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>Steamの全modをサブスクライブ解除する</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>
+  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>使用していないSteamのModを全てサブスクライブ解除する</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>
+  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>古くなったSteamのModsを全てサブスクライブ解除する</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>
+  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>あなたは「{0}」Modをのサブスクライブを解除しようとしています。続行してもよろしいですか？\n\n影響を受けるMod：\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
+  <Fluffy.ModManager.ModSettings>Mod設定を開く</Fluffy.ModManager.ModSettings>
 
   <Fluffy.ModManager.ModListsTip>MODリストの作成、適用、管理\n\nModリストを使用すると、Modセットをすばやく切り替えることができます。</Fluffy.ModManager.ModListsTip>
   <Fluffy.ModManager.LoadModList>Modリストを読込</Fluffy.ModManager.LoadModList>
@@ -113,5 +119,20 @@
   <Fluffy.ModManager.ChangeModColour>このバージョンの{0}の色だけを変更する</Fluffy.ModManager.ChangeModColour>
   <Fluffy.ModManager.ChangeButtonColour>{0}のすべてのバージョンの色を変更する</Fluffy.ModManager.ChangeButtonColour>
   <Fluffy.ModManager.ChangeListColour>リストの色を変更する</Fluffy.ModManager.ChangeListColour>
+
+  <!-- promotions -->
+  <Fluffy.ModManager.PromotionsFor>{0}のMod</Fluffy.ModManager.PromotionsFor>
+
+  <!-- options -->
+  <Fluffy.ModManager.SettingsCategory>Mod Manager</Fluffy.ModManager.SettingsCategory>
+  <Fluffy.ModManager.ShowPromotions>宣伝を表示</Fluffy.ModManager.ShowPromotions>
+  <Fluffy.ModManager.ShowPromotions_NotActive>使用していないModの宣伝を表示する。</Fluffy.ModManager.ShowPromotions_NotActive>
+  <Fluffy.ModManager.ShowPromotions_NotSubscribed>サブスクライブしていないModの宣伝を表示する</Fluffy.ModManager.ShowPromotions_NotSubscribed>
+  <Fluffy.ModManager.ShowPromotionsTip>これを有効にすると、Steam-WorkshopのModを選択するたびに、Mod_Managerは同じ作者による他のModの宣伝を表示します。</Fluffy.ModManager.ShowPromotionsTip>
+  <Fluffy.ModManager.TrimTags>mod名からタグを削除する</Fluffy.ModManager.TrimTags>
+  <Fluffy.ModManager.TrimTagsTip>これを有効にすると、Mod作成者名とバージョンのタグが表示されるMod名から削除されます（例：[KV]、[B19]等）</Fluffy.ModManager.TrimTagsTip>
+  <Fluffy.ModManager.TrimVersionStrings>Mod名からバージョン番号を削除する</Fluffy.ModManager.TrimVersionStrings>
+  <Fluffy.ModManager.TrimVersionStringsTip>これを有効にすると、Mod_Managerはバージョン名（Version1.0、0.19など）からバージョンの文字列を削除しようとします。\n\n警告：想定外の情報量を削除してしまう場合があります</Fluffy.ModManager.TrimVersionStringsTip>
+  <!--  -->
 
 </LanguageData>
