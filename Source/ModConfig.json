@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 7,
-        "build": 711
+        "minor": 8,
+        "build": 712
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,7 +15,7 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation"
     },
-    "changenote": "close on escape key, clear filter if something not matching the filter gets selected\nfix setting (colour) storage",
+    "changenote": "add mass remove local options\nclose on escape key, clear filter if something not matching the filter gets selected\nfix setting (colour) storage",
     "tags": [],
     "publishedfileid": "1507748539"
 }
