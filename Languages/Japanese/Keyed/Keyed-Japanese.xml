@@ -80,6 +80,7 @@
   <Fluffy.ModManager.ConfirmRemoveLocal>このバージョンの{0}を完全に削除してもよろしいですか？</Fluffy.ModManager.ConfirmRemoveLocal>
   <Fluffy.ModManager.RemoveLocalSucceeded>{0}のローカルコピーを削除しました</Fluffy.ModManager.RemoveLocalSucceeded>
   <Fluffy.ModManager.RemoveLocalFailed>{0}のローカルコピーを削除できませんでした。詳細については、エラーログを参照してください。Modsフォルダを調べて、部分的に削除されたModを直接削除することもできます。</Fluffy.ModManager.RemoveLocalFailed>
+  <Fluffy.ModManager.RemovingLocal>{0}のローカルコピーを削除しています</Fluffy.ModManager.RemovingLocal>
 
   <!-- Resolvers -->
   <Fluffy.ModManager.MoveCoreToFirst>「Core」をロード順の一番上(最初の位置)に設定します。</Fluffy.ModManager.MoveCoreToFirst>
