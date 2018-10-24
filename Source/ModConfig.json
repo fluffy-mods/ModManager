@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 7,
-        "build": 701
+        "build": 704
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,7 +15,7 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation"
     },
-    "changenote": "",
+    "changenote": "fix setting (colour) storage",
     "tags": [],
     "publishedfileid": "1507748539"
 }

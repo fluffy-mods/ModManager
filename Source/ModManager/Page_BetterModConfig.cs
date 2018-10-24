@@ -41,6 +41,7 @@ namespace ModManager
         {
             _instance = this;
             closeOnAccept = false;
+            closeOnCancel = true;
             doCloseButton = false;
             doCloseX = true;
             absorbInputAroundWindow = false;
@@ -77,28 +78,18 @@ namespace ModManager
                 if ( !value.Active )
                 {
                     _focusArea = FocusArea.Available;
-                    if ( FilteredAvailableButtons.Contains( value ) )
-                    {
-                        _focusElement = FilteredAvailableButtons.FirstIndexOf( mod => mod == value );
-                        EnsureVisible(ref _availableScrollPosition, _focusElement);
-                    }
-                    else
-                    {
-                        _selected = null;
-                    }
+                    if ( !FilteredAvailableButtons.Contains( value ))
+                        _availableFilter = null;
+                    _focusElement = FilteredAvailableButtons.FirstIndexOf( mod => mod == value );
+                    EnsureVisible(ref _availableScrollPosition, _focusElement);
                 }
                 else
                 {
                     _focusArea = FocusArea.Active;
-                    if ( FilteredActiveButtons.Contains( value ) )
-                    {
-                        _focusElement = FilteredActiveButtons.FirstIndexOf( mod => mod == value );
-                        EnsureVisible( ref _activeScrollPosition, _focusElement );
-                    }
-                    else
-                    {
-                        _selected = null;
-                    }
+                    if ( !FilteredActiveButtons.Contains( value ) )
+                        _activeFilter = null;
+                    _focusElement = FilteredActiveButtons.FirstIndexOf( mod => mod == value );
+                    EnsureVisible( ref _activeScrollPosition, _focusElement );
                 }
             }
         }
