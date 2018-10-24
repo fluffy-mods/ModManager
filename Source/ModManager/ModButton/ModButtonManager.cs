@@ -88,7 +88,7 @@ namespace ModManager
 
         public static ModAttributes AttributesFor( ModMetaData mod )
         {
-            return ModManager.Attributes[mod];
+            return ModManager.Settings[mod];
         }
 
         internal static void RecacheModButtons()

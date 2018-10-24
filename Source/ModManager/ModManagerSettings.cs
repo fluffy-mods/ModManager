@@ -54,6 +54,9 @@ namespace ModManager
                 _saveableModAttributes = ModAttributes.Values
                     .Where( a => !a.IsDefault )
                     .ToList();
+                Debug.Log( $"Writing attributes:" +
+                           $"\tButtons: {_saveableButtonAttributes.Count}/{ButtonAttributes.Count}" +
+                           $"\tMods: {_saveableModAttributes.Count}/{ModAttributes.Count}" );
             }
 
             Scribe_Collections.Look( ref _saveableModAttributes, "ModAttributes", LookMode.Deep );
@@ -69,14 +72,14 @@ namespace ModManager
                 ModAttributes = new Dictionary<string, ModAttributes>();
                 if ( !_saveableModAttributes.NullOrEmpty() )
                     foreach ( var modAttribute in _saveableModAttributes )
-                        if ( modAttribute.Mod != null && !modAttribute.IsDefault )
-                            ModAttributes.Add( modAttribute.Mod.Identifier, modAttribute );
+                        if ( !modAttribute.IsDefault )
+                            ModAttributes.Add( modAttribute.Identifier, modAttribute );
 
                 ButtonAttributes = new Dictionary<string, ButtonAttributes>();
                 if ( !_saveableButtonAttributes.NullOrEmpty() )
                     foreach ( var buttonAttribute in _saveableButtonAttributes )
-                        if ( buttonAttribute.Button != null && !buttonAttribute.IsDefault )
-                            ButtonAttributes.Add( buttonAttribute.Button.Name, buttonAttribute );
+                        if ( !buttonAttribute.IsDefault )
+                            ButtonAttributes.Add( buttonAttribute.Name, buttonAttribute );
             }
         }
     }

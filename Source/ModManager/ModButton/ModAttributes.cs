@@ -1,6 +1,7 @@
 ﻿// ModAttributes.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System.Collections.Specialized;
 using Steamworks;
 using UnityEngine;
 using Verse;
@@ -26,6 +27,8 @@ namespace ModManager
             Mod = mod;
             _identifier = mod.Identifier;
         }
+
+        public string Identifier => _identifier;
         public bool IsDefault => _color == Color.white && _source == PublishedFileId_t.Invalid;
         private Color _color = Color.white;
         public Color Color
@@ -34,7 +37,7 @@ namespace ModManager
             set
             {
                 _color = value;
-                ModManager.WriteAttributes();
+                ModManager.Instance.WriteSettings();
             }
         }
 
@@ -50,14 +53,13 @@ namespace ModManager
             }
             set
             {
-                ulong id;
-                if ( ulong.TryParse( value.Identifier, out id ) )
+                if ( ulong.TryParse( value.Identifier, out ulong id ) )
                 {
                     _source = new PublishedFileId_t( id );
                     _sourceHash = value.RootDir.GetFolderHash();
                     Debug.Log( $"Source: {_source}, hash: {_sourceHash}" );
 
-                    ModManager.WriteAttributes();
+                    ModManager.Instance.WriteSettings();
                 }
                 else
                 {

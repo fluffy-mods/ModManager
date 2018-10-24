@@ -19,13 +19,14 @@ namespace ModManager
             set
             {
                 _color = value;
-                ModManager.WriteAttributes();
+                ModManager.Instance.WriteSettings();
             }
         }
         public ButtonAttributes() { 
             // scribe
         }
 
+        public string Name => _name;
         public ButtonAttributes( ModButton_Installed button )
         {
             Button = button;
@@ -38,7 +39,7 @@ namespace ModManager
         {
             Button = ModButtonManager.AllButtons
                 .OfType<ModButton_Installed>()
-                .FirstOrDefault( b => b.Name == _name );
+                .FirstOrDefault( b => b.Versions.Any( m => m.Name == _name ) );
             return Button != null;
         }
         public void ExposeData()

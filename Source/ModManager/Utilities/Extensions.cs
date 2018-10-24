@@ -107,7 +107,7 @@ namespace ModManager
 
         public static ModAttributes Attributes( this ModMetaData mod )
         {
-            return ModManager.Attributes[mod];
+            return ModManager.Settings[mod];
         }
 
         public static bool MatchesIdentifier( this ModMetaData mod, string identifier )

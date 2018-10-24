@@ -92,7 +92,7 @@ namespace ModManager
                             break;
                     }
 
-                    var attributes = ModManager.Attributes[Selected];
+                    var attributes = ModManager.Settings[Selected];
                     if ( attributes.Source != null && attributes.SourceHash != attributes.Source.RootDir.GetFolderHash() )
                     {
                         _issues.Add( new ModIssue( Severity.Update, Subject.Other, this, Identifier,
@@ -161,12 +161,12 @@ namespace ModManager
             get
             {
                 // use version colour if set
-                if ( ModManager.Attributes[Selected].Color != Color.white )
-                    return ModManager.Attributes[Selected].Color;
+                if ( ModManager.Settings[Selected].Color != Color.white )
+                    return ModManager.Settings[Selected].Color;
 
                 // then button colour
-                if ( ModManager.Attributes[this].Color != Color.white )
-                    return ModManager.Attributes[this].Color;
+                if ( ModManager.Settings[this].Color != Color.white )
+                    return ModManager.Settings[this].Color;
 
                 // if this mod is included in any lists, use that colour
                 if ( !Lists.NullOrEmpty() )
@@ -180,7 +180,7 @@ namespace ModManager
                 // if nothing stuck, use default
                 return Color.white;
             }
-            set => ModManager.Attributes[this].Color = value;
+            set => ModManager.Settings[this].Color = value;
         }
 
         public override void DoModButton( 
@@ -326,9 +326,9 @@ namespace ModManager
             {
                 var options = NewOptions;
                 options.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Attributes[Selected].Color = color ) ) ) );
+                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Settings[Selected].Color = color ) ) ) );
                 options.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Attributes[this].Color = color ) ) ) );
+                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Settings[this].Color = color ) ) ) );
                 FloatMenu( options );
             }
             if ( Selected.HasSettings() && ButtonIcon( ref iconRect, Gear, I18n.ModSettings ) )

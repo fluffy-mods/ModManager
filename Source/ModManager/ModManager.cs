@@ -19,13 +19,6 @@ namespace ModManager
         }
 
         public static ModManager Instance { get; private set; }
-
-        public static void WriteAttributes()
-        {
-           Attributes.Write();
-        }
-
-        public static ModManagerSettings Attributes => Instance.GetSettings<ModManagerSettings>();
         public static ModManagerSettings Settings => Instance.GetSettings<ModManagerSettings>();
 
         public override string SettingsCategory() => I18n.SettingsCategory;

@@ -60,10 +60,10 @@ namespace ModManager
 
                 // copy settings and color attribute
                 TryCopySettings( mod, copy );
-                ModManager.Attributes[copy].Color = ModManager.Attributes[mod].Color;
+                ModManager.Settings[copy].Color = ModManager.Settings[mod].Color;
 
                 // set source attribute
-                ModManager.Attributes[copy].Source = mod;
+                ModManager.Settings[copy].Source = mod;
 
                 return true;
             }
