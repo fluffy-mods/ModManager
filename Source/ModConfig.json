@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 8,
-        "build": 735
+        "minor": 9,
+        "build": 736
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,7 +15,7 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation"
     },
-    "changenote": "",
+    "changenote": "updated colourpicker, adds rgb & hsv fields, recently used colours",
     "tags": [],
     "publishedfileid": "1507748539"
 }
