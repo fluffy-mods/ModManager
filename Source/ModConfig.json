@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 8,
-        "build": 712
+        "build": 735
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,7 +15,7 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation"
     },
-    "changenote": "add mass remove local options\nclose on escape key, clear filter if something not matching the filter gets selected\nfix setting (colour) storage",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }

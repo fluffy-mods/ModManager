@@ -36,9 +36,12 @@ namespace ModManager
             listing.CheckboxLabeled( I18n.ShowPromotions_NotSubscribed, ref Settings.ShowPromotions_NotSubscribed );
             listing.CheckboxLabeled( I18n.ShowPromotions_NotActive, ref Settings.ShowPromotions_NotActive );
 
-            listing.GapLine();
+            GUI.color = Color.white;
+            listing.Gap();
 
             listing.CheckboxLabeled( I18n.TrimTags, ref Settings.TrimTags, I18n.TrimTagsTip );
+            if ( !Settings.TrimTags )
+                GUI.color = Color.grey;
             listing.CheckboxLabeled( I18n.TrimVersionStrings, ref Settings.TrimVersionStrings, I18n.TrimVersionStringsTip );
 
             GUI.color = Color.white;
