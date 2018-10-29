@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Harmony;
+using RimWorld;
 using UnityEngine;
 using Verse;
 using static ModManager.Constants;
