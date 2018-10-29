@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 11,
-        "build": 739
+        "minor": 12,
+        "build": 741
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,7 +15,7 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation"
     },
-    "changenote": "don't try to use steam API if it's not available",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }

@@ -3,7 +3,6 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
 using RimWorld;
 using Steamworks;
 using UnityEngine;
@@ -23,6 +22,7 @@ namespace ModManager
         private static CallResult<SteamUGCQueryCompleted_t> _modDetailsCallResult;
         private static AppId_t _appId = SteamUtils.GetAppID();
         private static Vector2 _scrollPosition = Vector2.zero;
+        private static bool _enabled = false;
 
         public static void Update()
         {
@@ -31,8 +31,12 @@ namespace ModManager
 
         static CrossPromotionManager()
         {
-            _userModsCallResult = CallResult<SteamUGCQueryCompleted_t>.Create( OnUserModsReceived );
-            _modDetailsCallResult = CallResult<SteamUGCQueryCompleted_t>.Create( OnModDetailsReceived );
+            if ( Verse.Steam.SteamManager.Initialized )
+            {
+                _enabled = true;
+                _userModsCallResult = CallResult<SteamUGCQueryCompleted_t>.Create(OnUserModsReceived);
+                _modDetailsCallResult = CallResult<SteamUGCQueryCompleted_t>.Create(OnModDetailsReceived);
+            }
         }
 
         public static List<CrossPromotion> ModsForAuthor( AccountID_t author )
@@ -55,7 +59,7 @@ namespace ModManager
 
         public static bool HandleCrossPromotions( ref Rect canvas, ModMetaData mod )
         {
-            if ( !Verse.Steam.SteamManager.Initialized )
+            if ( !_enabled )
                 return false;
 
             if ( !ModManager.Settings.ShowPromotions || !Manifest.For( mod ).showCrossPromotions )
