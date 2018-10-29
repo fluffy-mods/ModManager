@@ -55,6 +55,9 @@ namespace ModManager
 
         public static bool HandleCrossPromotions( ref Rect canvas, ModMetaData mod )
         {
+            if ( !Verse.Steam.SteamManager.Initialized )
+                return false;
+
             if ( !ModManager.Settings.ShowPromotions || !Manifest.For( mod ).showCrossPromotions )
                 return false;
 
