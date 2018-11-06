@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 12,
-        "build": 741
+        "minor": 13,
+        "build": 743
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,7 +15,7 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation"
     },
-    "changenote": "",
+    "changenote": "Update french translation (#24)",
     "tags": [],
     "publishedfileid": "1507748539"
 }
