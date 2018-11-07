@@ -9,15 +9,15 @@
 
   <Fluffy.ModManager.NoModSelected>尚未选择 MOD</Fluffy.ModManager.NoModSelected>
 
-  <Fluffy.ModManager.TargetVersion>目标版本</Fluffy.ModManager.TargetVersion>
-  <Fluffy.ModManager.Version>版本</Fluffy.ModManager.Version>
+  <Fluffy.ModManager.TargetVersion>适配版本</Fluffy.ModManager.TargetVersion>
+  <Fluffy.ModManager.Version>模块版本</Fluffy.ModManager.Version>
   <Fluffy.ModManager.Unknown>未知</Fluffy.ModManager.Unknown>
   <Fluffy.ModManager.Later>后来</Fluffy.ModManager.Later>
 
   <!-- issues -->
   <Fluffy.ModManager.InvalidVersion>版本字符串异常："{0}".</Fluffy.ModManager.InvalidVersion>
-  <Fluffy.ModManager.DifferentVersion>游戏版本错误：当前版本为 {2}，但 {0} 适用于版本 {1}。</Fluffy.ModManager.DifferentVersion>
-  <Fluffy.ModManager.DifferentBuild>不同的游戏构建：当前版本为 {2}，但 {0} 将版本 {1} 指定为目标版本。</Fluffy.ModManager.DifferentBuild>
+  <Fluffy.ModManager.DifferentVersion>MOD 版本错误：当前版本为 {2}，但 {0} 适用于版本 {1}。</Fluffy.ModManager.DifferentVersion>
+  <Fluffy.ModManager.DifferentBuild>不同的游戏版本：当前版本为 {2}，但 {0} 将版本 {1} 指定为目标版本。</Fluffy.ModManager.DifferentBuild>
   <Fluffy.ModManager.CurrentVersion>版本匹配</Fluffy.ModManager.CurrentVersion>
   <Fluffy.ModManager.UpdateAvailable>可以更新为版本 {1}（当前版本：{0}）。</Fluffy.ModManager.UpdateAvailable>
   <Fluffy.ModManager.MissingMod>{0} (id: {1}) 尚未安装，将被忽略。</Fluffy.ModManager.MissingMod>
@@ -46,7 +46,7 @@
   <Fluffy.ModManager.IO.MassRemoveLocalConfirm>您即将永久删除 MOD {0} 的本地副本。 你确定要继续吗？\n\n\受影响的 MOD：\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
   <Fluffy.ModManager.ModSettings>打开 MOD 设置</Fluffy.ModManager.ModSettings>
 
-  <Fluffy.ModManager.ModListsTip>创建，应用和管理mod列表。\n\n通过列表，您可以快速切换 MOD 集。</Fluffy.ModManager.ModListsTip>
+  <Fluffy.ModManager.ModListsTip>创建，应用和管理 MOD 列表。\n\n通过列表，您可以快速切换 MOD 集。</Fluffy.ModManager.ModListsTip>
   <Fluffy.ModManager.LoadModList>加载 MOD 列表</Fluffy.ModManager.LoadModList>
   <Fluffy.ModManager.AddModList>添加到当前列表</Fluffy.ModManager.AddModList>
   <Fluffy.ModManager.SaveModList>保存当前列表</Fluffy.ModManager.SaveModList>
