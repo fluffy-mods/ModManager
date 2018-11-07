@@ -62,7 +62,7 @@
   <Fluffy.ModManager.ModListLoaded>MODリスト{0}が読込みました。</Fluffy.ModManager.ModListLoaded>
   <Fluffy.ModManager.ModListDeleted>MODリスト{0}が削除されました。</Fluffy.ModManager.ModListDeleted>
   <Fluffy.ModManager.LoadModListFromSave>セーブデータからMODリストを読込む</Fluffy.ModManager.LoadModListFromSave>
-  <Fluffy.ModManager.ResetMods>MODリストをリセットする。</Fluffy.ModManager.ResetMods>
+  <Fluffy.ModManager.ResetMods>MODリストをCoreだけにリセットする。</Fluffy.ModManager.ResetMods>
 
   <Fluffy.ModManager.AddToModList>Modリストにmodを追加</Fluffy.ModManager.AddToModList>
   <Fluffy.ModManager.RemoveFromModList>Modリストからmodを削除</Fluffy.ModManager.RemoveFromModList>
