@@ -12,7 +12,7 @@
   <Fluffy.ModManager.TargetVersion>适配版本</Fluffy.ModManager.TargetVersion>
   <Fluffy.ModManager.Version>模块版本</Fluffy.ModManager.Version>
   <Fluffy.ModManager.Unknown>未知</Fluffy.ModManager.Unknown>
-  <Fluffy.ModManager.Later>后来</Fluffy.ModManager.Later>
+  <Fluffy.ModManager.Later>稍后</Fluffy.ModManager.Later>
 
   <!-- issues -->
   <Fluffy.ModManager.InvalidVersion>版本字符串异常："{0}".</Fluffy.ModManager.InvalidVersion>
@@ -108,7 +108,7 @@
   <Fluffy.ModManager.DialogConfirmIssuesTitle>MOD 列表有 {0} 个问题！</Fluffy.ModManager.DialogConfirmIssuesTitle>
 
   <!-- online manifest -->
-  <Fluffy.ModManager.ManifestNotImplemented>由于此MOD没有清单文件，因此不支持版本检查。\n\n你应该告诉作者这很容易做到！</Fluffy.ModManager.ManifestNotImplemented>
+  <Fluffy.ModManager.ManifestNotImplemented>由于此 MOD 没有 "Manifest" 文件，因此不支持版本检查。\n\n你应该告诉作者这很容易做到！</Fluffy.ModManager.ManifestNotImplemented>
   <Fluffy.ModManager.FetchingOnlineManifest>正在检测最新的版本······</Fluffy.ModManager.FetchingOnlineManifest>
   <Fluffy.ModManager.FetchingOnlineManifestFailed>检测最新的版本失败: {0}.</Fluffy.ModManager.FetchingOnlineManifestFailed>
   <Fluffy.ModManager.NewVersionAvailable>新版本可更新！当前：{0}，最新： {1}.</Fluffy.ModManager.NewVersionAvailable>
