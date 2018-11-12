@@ -62,7 +62,7 @@
     <Fluffy.ModManager.ModListLoaded>Liste de mods {0} chargée.</Fluffy.ModManager.ModListLoaded>
     <Fluffy.ModManager.ModListDeleted>Liste de mods {0} supprimée.</Fluffy.ModManager.ModListDeleted>
     <Fluffy.ModManager.LoadModListFromSave>Charger la liste de mods des sauvegardes</Fluffy.ModManager.LoadModListFromSave>
-    <Fluffy.ModManager.ResetMods>Reinitialiser la liste de mods.</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.ResetMods>Reinitialiser la liste de mods à "Core" uniquement.</Fluffy.ModManager.ResetMods>
 
     <Fluffy.ModManager.AddToModList>Ajouter un mod à la liste de mods</Fluffy.ModManager.AddToModList>
     <Fluffy.ModManager.RemoveFromModList>Supprimer un mod d'une liste de mods</Fluffy.ModManager.RemoveFromModList>
@@ -83,7 +83,7 @@
     <Fluffy.ModManager.RemovingLocal>Suppression de la copie locale de {0}</Fluffy.ModManager.RemovingLocal>
 
     <!-- Resolvers -->
-    <Fluffy.ModManager.MoveCoreToFirst>Réglez 'Core' à la première position dans l'ordre de chargement.</Fluffy.ModManager.MoveCoreToFirst>
+    <Fluffy.ModManager.MoveCoreToFirst>Réglez "Core" à la première position dans l'ordre de chargement.</Fluffy.ModManager.MoveCoreToFirst>
     <Fluffy.ModManager.SearchSteamWorkshop>Chercher sur workshop pour "{0}".</Fluffy.ModManager.SearchSteamWorkshop>
     <Fluffy.ModManager.SearchForum>Chercher sur Ludeon forums pour "{0}".</Fluffy.ModManager.SearchForum>
     <Fluffy.ModManager.ActivateMod>Activer {0} {1} ({2}).</Fluffy.ModManager.ActivateMod>
@@ -101,7 +101,7 @@
 
     <!-- Links -->
     <Fluffy.ModManager.ModHomePage>Page d'accueil ({0})</Fluffy.ModManager.ModHomePage>
-    <Fluffy.ModManager.WorkshopPage>{0} sur Steam Workshop</Fluffy.ModManager.WorkshopPage>
+    <Fluffy.ModManager.WorkshopPage>Ouvrir la page Steam Workshop de {0}</Fluffy.ModManager.WorkshopPage>
 
     <!-- confirmation dialog 0: issue count, 1: issue list -->
     <Fluffy.ModManager.DialogConfirmIssues>Vous devez résoudre ces problèmes avant de charger ou de commencer une nouvelle partie.&lt;b&gt;\n\nATTENTION : L'utilisation de cette liste de mods est susceptible de causer des erreurs, et peut planter le jeu !&lt;/b&gt;\n\n{0}</Fluffy.ModManager.DialogConfirmIssues>
@@ -117,7 +117,7 @@
     <!-- workshop -->
     <Fluffy.ModManager.DownloadPending>Téléchargement en attente...</Fluffy.ModManager.DownloadPending>
     <Fluffy.ModManager.ModInstalled>Installation de {0} terminée.</Fluffy.ModManager.ModInstalled>
-    <Fluffy.ModManager.Subscribe>S'abonner à {0} sur le Workshop.</Fluffy.ModManager.Subscribe>
+    <Fluffy.ModManager.Subscribe>S'abonner à {0}.</Fluffy.ModManager.Subscribe>
     <Fluffy.ModManager.SubscribeAllMissing>S'abonner à tous les mods manquants du Workshop.</Fluffy.ModManager.SubscribeAllMissing>
 
     <!-- colours -->
