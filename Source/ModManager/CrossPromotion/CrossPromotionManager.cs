@@ -20,22 +20,33 @@ namespace ModManager
         private static Dictionary<PublishedFileId_t, AccountID_t> _authorForMod = new Dictionary<PublishedFileId_t, AccountID_t>();
         private static CallResult<SteamUGCQueryCompleted_t> _userModsCallResult;
         private static CallResult<SteamUGCQueryCompleted_t> _modDetailsCallResult;
-        private static AppId_t _appId = SteamUtils.GetAppID();
+        private static AppId_t _appId = AppId_t.Invalid;
         private static Vector2 _scrollPosition = Vector2.zero;
         private static bool _enabled = false;
 
         public static void Update()
         {
-            SteamAPI.RunCallbacks();
+            if (_enabled)
+                SteamAPI.RunCallbacks();
         }
 
         static CrossPromotionManager()
         {
-            if ( Verse.Steam.SteamManager.Initialized )
+            if (Verse.Steam.SteamManager.Initialized)
             {
                 _enabled = true;
                 _userModsCallResult = CallResult<SteamUGCQueryCompleted_t>.Create(OnUserModsReceived);
                 _modDetailsCallResult = CallResult<SteamUGCQueryCompleted_t>.Create(OnModDetailsReceived);
+            }
+        }
+
+        public static AppId_t AppID
+        {
+            get
+            {
+                if ( _enabled && _appId == AppId_t.Invalid )
+                    _appId = SteamUtils.GetAppID();
+                return _appId;
             }
         }
 
@@ -198,7 +209,7 @@ namespace ModManager
                 EUserUGCList.k_EUserUGCList_Published,
                 EUGCMatchingUGCType.k_EUGCMatchingUGCType_UsableInGame,
                 EUserUGCListSortOrder.k_EUserUGCListSortOrder_VoteScoreDesc, 
-                _appId, _appId, 1 );
+                AppID, AppID, 1 );
             SteamUGC.AddRequiredTag( query, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor );
             var request = SteamUGC.SendQueryUGCRequest( query );
             _userModsCallResult.Set( request );
