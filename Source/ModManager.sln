@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModManager", "ModManager\ModManager.csproj", "{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluffyUI", "..\..\..\TOOLS\FluffyUI\FluffyUI\FluffyUI.csproj", "{3E905175-2540-4C06-B4C6-F955836C0451}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E905175-2540-4C06-B4C6-F955836C0451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E905175-2540-4C06-B4C6-F955836C0451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E905175-2540-4C06-B4C6-F955836C0451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E905175-2540-4C06-B4C6-F955836C0451}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

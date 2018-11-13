@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 15,
-        "build": 748
+        "build": 751
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -16,7 +16,7 @@
         "Proxyer": "Japanese translation",
         "奔跑的梅洛斯": "Simplified Chinese translation"
     },
-    "changenote": "Japanese Translation for 1.13.743 (#26)\nTranslate to Simplified Chinese (#29)\nUpdate french translation (#30)",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539"
 }

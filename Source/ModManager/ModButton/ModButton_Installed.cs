@@ -193,7 +193,7 @@ namespace ModManager
         {
             base.DoModButton( canvas, alternate, clickAction, doubleClickAction, deemphasizeFiltered, filter );
 
-            canvas = canvas.ContractedBy(SmallMargin / 2f);
+            canvas = canvas.ContractedBy( SmallMargin / 2f ).Rounded();
 
             /**
              * NAME                    | Versions
@@ -226,7 +226,8 @@ namespace ModManager
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
             Widgets.Label( nameRect, TrimmedName.Truncate( nameRect.width, _modNameTruncationCache ) );
-            if ( Mouse.IsOver( nameRect ) && TrimmedName != TrimmedName.Truncate( nameRect.width, _modNameTruncationCache ) )
+            if ( Mouse.IsOver( nameRect ) && TrimmedName !=
+                 TrimmedName.Truncate( nameRect.width, _modNameTruncationCache ) )
                 TooltipHandler.TipRegion( nameRect, TrimmedName );
 
             if (!Selected.IsCoreMod)
@@ -244,6 +245,14 @@ namespace ModManager
             GUI.color = Color.white;
             Text.Anchor = TextAnchor.UpperLeft;
             Text.Font = GameFont.Small;
+
+            // floatmenu
+            if ( Event.current.type == EventType.mouseUp &&
+                 Event.current.button == 1 &&
+                 Mouse.IsOver( canvas ) &&
+                 !Mouse.IsOver( issueRect ) &&
+                 !Mouse.IsOver( sourceIconsRect ) )
+                DoModActionFloatMenu();
         }
 
         public override bool IsCoreMod => Selected?.IsCoreMod ?? false;
@@ -333,6 +342,54 @@ namespace ModManager
             }
             if ( Selected.HasSettings() && ButtonIcon( ref iconRect, Gear, I18n.ModSettings ) )
                 OpenSettingsFor( Selected );
+        }
+
+        public void DoModActionFloatMenu()
+        {
+            var options = NewOptions;
+            if (ModListManager.ListsFor(this).Count < ModListManager.ModLists.Count)
+            {
+                options.Add( new FloatMenuOption( I18n.AddToModList,
+                    () => ModListManager.DoAddToModListFloatMenu( this ) ) );
+            }
+
+            if (ModListManager.ListsFor(this).Any())
+            {
+                options.Add( new FloatMenuOption( I18n.RemoveFromModList,
+                    () => ModListManager.DoRemoveFromModListFloatMenu( this ) ) );
+            }
+
+            if (Selected.Source == ContentSource.SteamWorkshop)
+            {
+                options.Add( new FloatMenuOption( I18n.UnSubscribe, () => Workshop.Unsubscribe( Selected ) ) );
+                options.Add( new FloatMenuOption( I18n.CreateLocalCopy( Selected.Name ),
+                    () => IO.CreateLocalCopy( Selected ) ) );
+            }
+            if (Selected.Source == ContentSource.LocalFolder && !Selected.IsCoreMod)
+            {
+                options.Add( new FloatMenuOption( I18n.DeleteLocalCopy( Selected.Name ),
+                    () => IO.DeleteLocal( Selected ) ) );
+            }
+            if (Prefs.DevMode && SteamManager.Initialized && Selected.CanToUploadToWorkshop())
+            {
+                options.Add( new FloatMenuOption(
+                    Verse.Steam.Workshop.UploadButtonLabel( Selected.GetPublishedFileId() ),
+                    () => Workshop.Upload( Selected ) ) );
+            }
+            options.Add( new FloatMenuOption( I18n.ChangeColour, () =>
+            {
+                var options2 = NewOptions;
+                options2.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
+                    new ColourPicker.Dialog_ColourPicker( Color,
+                        color => ModManager.Settings[Selected].Color = color ) ) ) );
+                options2.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
+                    new ColourPicker.Dialog_ColourPicker( Color,
+                        color => ModManager.Settings[this].Color = color ) ) ) );
+                FloatMenu(options2);
+            } ) );
+            if ( Selected.HasSettings() )
+                options.Add( new FloatMenuOption( I18n.ModSettings, () => OpenSettingsFor( Selected ) ) );
+            FloatMenu( options );
         }
 
         internal bool Matches(Dependency dep, bool strict = false )
