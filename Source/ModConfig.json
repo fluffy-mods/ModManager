@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 14,
-        "build": 746
+        "minor": 15,
+        "build": 748
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -13,9 +13,10 @@
         "erdelf": "invaluable help with Harmony transpilers",
         "Brrainz": "multi-version targetting, inspiration for mod promotions",
         "b606": "French translation",
-        "Proxyer": "Japanese translation"
+        "Proxyer": "Japanese translation",
+        "奔跑的梅洛斯": "Simplified Chinese translation"
     },
-    "changenote": "stop using steam if steam isn't available",
+    "changenote": "Japanese Translation for 1.13.743 (#26)\nTranslate to Simplified Chinese (#29)\nUpdate french translation (#30)",
     "tags": [],
     "publishedfileid": "1507748539"
 }
