@@ -29,7 +29,7 @@ Mod Manager tries to read version information from a `Manifest.xml` file. This f
         <li>OtherCoolMod</li>
     </suggests>
     <showCrossPromotions>true</showCrossPromotions>
-    <manifestUri>https://rawgit.com/FluffierThanThou/ModManager/master/About/Manifest.xml</manifestUri>
+    <manifestUri>https://cdn.jsdelivr.net/gh/FluffierThanThou/ModManager/About/Manifest.xml</manifestUri>
     <downloadUri>https://github.com/FluffierThanThou/ModManager/releases/latest</downloadUri>
 </Manifest>
 ```
