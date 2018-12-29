@@ -571,7 +571,7 @@ namespace ModManager
             CrossPromotionManager.HandleCrossPromotions( ref canvas, Selected );
 
             Widgets.DrawBoxSolid( canvas, SlightlyDarkBackground);
-            var descriptionOutRect = canvas.ContractedBy(SmallMargin);
+            var descriptionOutRect = canvas.ContractedBy(SmallMargin).Rounded();
 
             // description
             var height2 = Text.CalcHeight(mod.Description, descriptionOutRect.width);
