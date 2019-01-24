@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 15,
-        "build": 755
+        "minor": 16,
+        "build": 756
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -16,7 +16,7 @@
         "Proxyer": "Japanese translation",
         "奔跑的梅洛斯": "Simplified Chinese translation"
     },
-    "changenote": "right click menus for mods",
+    "changenote": "correctly load modlists where Core isn't the first mod\nright click menus for mods",
     "tags": [],
     "publishedfileid": "1507748539"
 }
