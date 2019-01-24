@@ -103,7 +103,7 @@ namespace ModManager
         public void Apply( bool add )
         {
             if (!add)
-                ModButtonManager.Reset();
+                ModButtonManager.Reset( false );
 
             for ( int i = 0; i < _modIds.Count; i++ )
             {

@@ -3,7 +3,6 @@
   <name>Mod Manager</name>
   <author>Fluffy</author>
   <url>https://ludeon.com/forums/index.php?topic=16120</url>
-  <targetVersion>1.0.2059</targetVersion>
   <description>Managing mods should be easy!
 
 &lt;size=24&gt;Features&lt;/size&gt;
@@ -90,7 +89,10 @@ Proxyer:    Japanese translation
 奔跑的梅洛斯:    Simplified Chinese translation
 
 &lt;size=24&gt;Version&lt;/size&gt;
-This is version 1.15.751, for RimWorld 1.0.2059.
+This is version 1.15.755, for RimWorld 1.0.2150.
 
 </description>
+  <supportedVersions>
+    <li>1.0</li>
+  </supportedVersions>
 </ModMetaData>
