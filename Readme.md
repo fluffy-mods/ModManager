@@ -72,6 +72,7 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  - b606:	French translation
  - Proxyer:	Japanese translation
  - 奔跑的梅洛斯:	Simplified Chinese translation
+ - Zetrith:	
 
 # Think you found a bug? 
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
@@ -92,4 +93,4 @@ Show your appreciation by buying me a coffee (or contribute towards a nice singl
 [![Buy Me a Coffee](http://i.imgur.com/EjWiUwx.gif)](https://ko-fi.com/fluffymods)
 
 # Version
-This is version 1.16.756, for RimWorld 1.0.2150.
+This is version 1.16.761, for RimWorld 1.0.2231.

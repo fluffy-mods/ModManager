@@ -254,20 +254,7 @@ namespace ModManager
 
         internal static void DeleteLocalCopies( IEnumerable<ModMetaData> mods )
         {
-            string Target(string versionString)
-            {
-                try
-                {
-                    var version = VersionControl.VersionFromString(versionString);
-                    return version.Major + "." + version.Minor;
-                }
-                catch
-                {
-                    return versionString;
-                }
-            }
-
-            var modList = mods.Select(m => $"{m.Name} ({Target(m.TargetVersion)})").ToLineList();
+            var modList = mods.Select(m => $"{m.Name} ({m.SupportedVersionsReadOnly.Select( v => v.ToString() ).StringJoin( ", " )})").ToLineList(); 
             var dialog = Dialog_MessageBox.CreateConfirmation(
                 I18n.MassUnSubscribeConfirm(mods.Count(), modList),
                 () =>

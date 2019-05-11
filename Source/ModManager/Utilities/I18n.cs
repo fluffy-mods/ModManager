@@ -2,9 +2,8 @@
 // Copyright Karel Kroeze, 2018-2018
 
 using System;
-using System.Security.Policy;
+using System.Collections.Generic;
 using RimWorld;
-using UnityEngine;
 using Verse;
 using static ModManager.Utilities;
 
@@ -43,22 +42,15 @@ namespace ModManager
         public static string Yes = "Yes".Translate(); // core
         public static string No = "No".Translate(); // core
 
-        public static string InvalidVersion( string version )
+        public static string InvalidVersion( List<Version> versions )
         {
-            return Key( "InvalidVersion" ).Translate( version );
+            return Key( "InvalidVersion" ).Translate( versions.VersionList() );
         }
 
-        public static string DifferentVersion( ModMetaData mod, string versionString = null )
+        public static string DifferentVersion( ModMetaData mod )
         {
-            var version = new Version( versionString ?? mod.TargetVersion );
-            return Key( "DifferentVersion" ).Translate( mod.Name, version.Major + "." + version.Minor,
+            return Key( "DifferentVersion" ).Translate( mod.Name, mod.SupportedVersionsReadOnly.VersionList(),
                 VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor );
-        }
-
-        public static string DifferentBuild( ModMetaData mod, string versionString = null )
-        {
-            var version = new Version(versionString ?? mod.TargetVersion );
-            return Key( "DifferentBuild" ).Translate( mod.Name, version.Build, VersionControl.CurrentBuild );
         }
 
         public static string CurrentVersion = Key("CurrentVersion").Translate();

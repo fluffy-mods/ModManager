@@ -79,18 +79,8 @@ namespace ModManager
                 if ( _issues == null )
                 {
                     _issues = new List<ModIssue>();
-                    switch ( Selected.GetVersionStatus().match )
-                    {
-                        case VersionMatch.DifferentVersion:
-                            _issues.Add( ModIssue.DifferentVersion( this ));
-                            break;
-                        case VersionMatch.DifferentBuild:
-                            _issues.Add( ModIssue.DifferentBuild( this )  );
-                            break;
-                        case VersionMatch.InvalidVersion when !IsCoreMod:
-                            _issues.Add( ModIssue.InvalidVersion( this )  );
-                            break;
-                    }
+                    if ( !Selected.GetVersionStatus().match )
+                        _issues.Add( ModIssue.DifferentVersion( this ) );
 
                     var attributes = ModManager.Settings[Selected];
                     if ( attributes.Source != null && attributes.SourceHash != attributes.Source.RootDir.GetFolderHash() )
@@ -529,7 +519,7 @@ namespace ModManager
                 Widgets.Label(labelRect, I18n.TargetVersion);
                 targetVersionRect.xMin += labelWidth + SmallMargin;
                 mod.GetVersionStatus().Label(targetVersionRect);
-                if ( mod.GetVersionStatus().match != VersionMatch.CurrentVersion )
+                if ( !mod.GetVersionStatus().match )
                     ActionButton( targetVersionRect,
                         () => Resolvers.ResolveFindMod( mod.Name.StripSpaces(), this, replace: true ) );
 

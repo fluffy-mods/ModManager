@@ -84,8 +84,8 @@ namespace ModManager
             }
             if ( requester is ModButton_Missing missing && missing.Identifier.IsSteamWorkshopIdentifier())
                 options.Add( SubscribeOption( missing.Name, missing.Identifier ) );
-            options.Add( WorkshopSearchOption( requester?.TrimmedName ?? identifier ) );
-            options.Add( ForumSearchOption( requester?.TrimmedName ?? identifier ) );
+            options.Add( WorkshopSearchOption( identifier ) );
+            options.Add( ForumSearchOption( identifier ) );
             FloatMenu( options );
         }
 

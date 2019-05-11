@@ -1,6 +1,7 @@
 ﻿// Extensions.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -57,14 +58,13 @@ namespace ModManager
         public static int Compatibility( this ModMetaData mod, bool careAboutBuild = false )
         {
             if ( mod.VersionCompatible )
-            {
-                if ( careAboutBuild && VersionControl.CurrentBuild == VersionControl.BuildFromVersionString( mod.TargetVersion ) )
-                {
-                    return 2;
-                }
                 return 1;
-            }
             return 0;
+        }
+
+        public static string VersionList( this IEnumerable<Version> versions )
+        {
+            return versions.Select( v => $"{v.Major}.{v.Minor}" ).StringJoin( ", " );
         }
 
         private static Dictionary<ModMetaData, VersionStatus> _versionStatusCache = new Dictionary<ModMetaData, VersionStatus>();

@@ -31,20 +31,7 @@ namespace ModManager
 
         public static void Unsubscribe( IEnumerable<ModMetaData> mods )
         {
-            string Target( string versionString )
-            {
-                try
-                {
-                    var version = VersionControl.VersionFromString( versionString );
-                    return version.Major + "." + version.Minor;
-                }
-                catch
-                {
-                    return versionString;
-                }
-            }
-
-            var modList = mods.Select( m => $"{m.Name} ({Target(m.TargetVersion)})" ).ToLineList();
+            var modList = mods.Select( m => $"{m.Name} ({m.SupportedVersionsReadOnly.Select( v => v.ToString() ).StringJoin( ", ")})" ).ToLineList();
             var dialog = Dialog_MessageBox.CreateConfirmation( 
                 I18n.MassUnSubscribeConfirm( mods.Count(), modList ),
                 () =>
@@ -68,29 +55,22 @@ namespace ModManager
         }
 
         public static void Upload( ModMetaData mod )
-        {
-            if ( !VersionControl.IsWellFormattedVersionString( mod.TargetVersion ) )
+    {
+            Find.WindowStack.Add( Dialog_MessageBox.CreateConfirmation( I18n.ConfirmSteamWorkshopUpload, delegate
             {
-                Messages.Message( I18n.NeedsWellFormattedTargetVersion, MessageTypeDefOf.RejectInput, false );
-            }
-            else
-            {
-                Find.WindowStack.Add( Dialog_MessageBox.CreateConfirmation( I18n.ConfirmSteamWorkshopUpload, delegate
-                {
-                    SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                    Dialog_MessageBox dialog_MessageBox = Dialog_MessageBox.CreateConfirmation(
-                        I18n.ConfirmContentAuthor, delegate
-                        {
-                            SoundDefOf.Tick_High.PlayOneShotOnCamera();
-                            AccessTools.Method( typeof( Verse.Steam.Workshop ), "Upload" )
-                                .Invoke( null, new object[] {mod} );
-                        }, true );
-                    dialog_MessageBox.buttonAText = I18n.Yes;
-                    dialog_MessageBox.buttonBText = I18n.No;
-                    dialog_MessageBox.interactionDelay = 6f;
-                    Find.WindowStack.Add( dialog_MessageBox );
-                }, true ) );
-            }
+                SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                Dialog_MessageBox dialog_MessageBox = Dialog_MessageBox.CreateConfirmation(
+                    I18n.ConfirmContentAuthor, delegate
+                    {
+                        SoundDefOf.Tick_High.PlayOneShotOnCamera();
+                        AccessTools.Method( typeof( Verse.Steam.Workshop ), "Upload" )
+                            .Invoke( null, new object[] {mod} );
+                    }, true );
+                dialog_MessageBox.buttonAText = I18n.Yes;
+                dialog_MessageBox.buttonBText = I18n.No;
+                dialog_MessageBox.interactionDelay = 6f;
+                Find.WindowStack.Add( dialog_MessageBox );
+            }, true ) );
         }
 
         public static void MassUnsubscribeFloatMenu()

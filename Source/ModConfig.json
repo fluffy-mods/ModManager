@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 16,
-        "build": 756
+        "build": 761
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -14,9 +14,10 @@
         "Brrainz": "multi-version targetting, inspiration for mod promotions",
         "b606": "French translation",
         "Proxyer": "Japanese translation",
-        "奔跑的梅洛斯": "Simplified Chinese translation"
+        "奔跑的梅洛斯": "Simplified Chinese translation",
+        "Zetrith": "Fix blurry mod descriptions"
     },
-    "changenote": "correctly load modlists where Core isn't the first mod\nright click menus for mods",
+    "changenote": "correctly load modlists where Core isn't the first mod",
     "tags": [],
     "publishedfileid": "1507748539"
 }

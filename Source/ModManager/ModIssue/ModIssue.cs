@@ -2,6 +2,7 @@
 // Copyright Karel Kroeze, 2018-2018
 
 using System;
+using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -46,12 +47,6 @@ namespace ModManager
             this.resolver = resolver;
         }
 
-        public static ModIssue DifferentBuild( ModButton_Installed button )
-        {
-            return new ModIssue( Severity.Notice, Subject.Version, button, button.Identifier,
-                I18n.DifferentBuild( button.Selected ) );
-        }
-
         public static ModIssue UpdateAvailable( ModButton_Installed button )
         {
             return new ModIssue( Severity.Update, Subject.Version, button, button.Identifier,
@@ -62,12 +57,6 @@ namespace ModManager
         {
             return new ModIssue( Severity.Critical, Subject.Version, button, button.Identifier,
                 I18n.DifferentVersion( button.Selected ) );
-        }
-
-        public static ModIssue InvalidVersion( ModButton_Installed button )
-        {
-            return new ModIssue( Severity.Minor, Subject.Version, button, button.Identifier,
-                I18n.InvalidVersion( button.Selected.TargetVersion ) );
         }
 
         public static ModIssue MissingMod( ModButton_Missing button )
