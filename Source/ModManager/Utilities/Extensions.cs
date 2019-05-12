@@ -128,6 +128,7 @@ namespace ModManager
 
         public static string StripSpaces( this string str )
         {
+            if ( str == null ) return null;  // garbage in, garbage out.
             return str.Replace( " ", "" );
         }
 
