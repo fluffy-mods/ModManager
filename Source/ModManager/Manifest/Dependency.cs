@@ -20,7 +20,7 @@ namespace ModManager
         Met
     }
 
-    public class Dependency
+    public class Dependency: IEquatable<Dependency>
     {
         public EqualityOperator Operator { get; private set; }
         public Manifest Owner { get; set; }
@@ -247,6 +247,13 @@ namespace ModManager
             TooltipHandler.TipRegion(canvas, Tooltip);
             Widgets.Label(canvas, ToString());
             GUI.DrawTexture( statusRect, icon );
+        }
+
+        public bool Equals( Dependency other )
+        {
+            return Identifier.Equals( other.Identifier ) 
+                && Operator.Equals( other.Operator ) 
+                && Version.Equals( other.Version );
         }
     }
 }

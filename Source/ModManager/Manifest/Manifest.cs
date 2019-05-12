@@ -179,6 +179,7 @@ namespace ModManager
                         .Concat(IncompatibilityIssues)
                         .ToList();
                 }
+                Debug.Log( ToString() );
                 return _issues;
             }
         }
@@ -236,35 +237,39 @@ namespace ModManager
                 var issues = new List<ModIssue>();
                 var order = mod.LoadOrder();
                 bool loadBeforeCore = false;
-                
-                foreach (var dep in loadBefore)
+                Debug.Log( $"loadorder for: {mod.Name} ({mod.Identifier})" );
+
+                foreach ( var dep in loadBefore )
                 {
                     var otherMod = ModButtonManager.ActiveButtons
                         .OfType<ModButton_Installed>()
-                        .FirstOrDefault(m => m.Matches(dep));
+                        .FirstOrDefault( m => m.MatchesIdentifier( dep.Identifier ) );
                     if ( otherMod == ModButtonManager.CoreMod )
                         loadBeforeCore = true;
                     var otherOrder = otherMod?.LoadOrder;
-                    if (otherOrder >= 0 && otherOrder < order)
-                        issues.Add(new ModIssue(Severity.Major, Subject.LoadOrder,
+                    Debug.Log( $"\tloadBefore: {dep}, mod: {otherMod?.ToString() ?? "NULL"}, order: {otherOrder}" );
+                    if ( otherMod != null && otherOrder >= 0 && otherOrder < order )
+                        issues.Add( new ModIssue( Severity.Major, Subject.LoadOrder,
                             Button, otherMod.Identifier,
-                            I18n.ShouldBeLoadedBefore(otherMod.Name),
-                            () => Resolvers.ResolveShouldLoadBefore(Button, otherMod)));
+                            I18n.ShouldBeLoadedBefore( otherMod.Name ),
+                            () => Resolvers.ResolveShouldLoadBefore( Button, otherMod ) ) );
                 }
 
                 var _loadAfter = new List<Dependency>( loadAfter );
                 _loadAfter.AddRange( dependencies.Where( d => d.Met == DependencyStatus.Met ||
                                                               d.Met == DependencyStatus.UnknownVersion ) );
+
                 if ( !loadBeforeCore )
                     _loadAfter.Add( new Dependency( "Core" ) );
 
-                foreach ( var dep in _loadAfter )
+                foreach ( var dep in _loadAfter.Distinct() )
                 {
                     var otherMod = ModButtonManager.ActiveButtons
                         .OfType<ModButton_Installed>()
-                        .FirstOrDefault( m => m.Matches( dep ) );
+                        .FirstOrDefault( m => m.MatchesIdentifier( dep.Identifier ) );
                     var otherOrder = otherMod?.LoadOrder;
-                    if ( otherOrder > order )
+                    Debug.Log( $"\tloadAfter/dep: {dep}, mod: {otherMod?.ToString() ?? "NULL"}, order: {otherOrder}" );
+                    if ( otherMod != null && otherOrder > order )
                         issues.Add( new ModIssue( Severity.Major, Subject.LoadOrder,
                             Button, otherMod.Identifier,
                             I18n.ShouldBeLoadedAfter( otherMod.Name ),

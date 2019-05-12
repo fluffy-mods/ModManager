@@ -385,7 +385,7 @@ namespace ModManager
         internal bool Matches(Dependency dep, bool strict = false )
         {
             return base.MatchesFilter( dep.Identifier ) > 0
-                   && dep.MatchesVersion( Selected, false );
+                   && dep.MatchesVersion( Selected, strict );
         }
 
         private List<FloatMenuOption> _titleLinkOptions;
