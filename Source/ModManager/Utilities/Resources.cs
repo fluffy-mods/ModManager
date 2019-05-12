@@ -44,7 +44,9 @@ namespace ModManager
             Folder = ContentFinder<Texture2D>.Get( "UI/Icons/ContentSources/LocalFolder" );
             Warning = ContentFinder<Texture2D>.Get( "UI/Icons/Warning" );
             Question = ContentFinder<Texture2D>.Get( "UI/Icons/Question" );
-            Palette = ContentFinder<Texture2D>.Get( "UI/Icons/palette" );
+            // the joys of case-unaware file systems - I now don't know which version is out there...
+            Palette = ContentFinder<Texture2D>.Get( "UI/Icons/Palette", false );
+            if ( Palette == null ) Palette = ContentFinder<Texture2D>.Get( "UI/Icons/palette" );
             Gear = ContentFinder<Texture2D>.Get( "UI/Icons/Gear" );
 
             Status_Cross = ContentFinder<Texture2D>.Get("UI/Icons/Status/Cross");
