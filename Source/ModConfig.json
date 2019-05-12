@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 18,
-        "build": 771
+        "minor": 19,
+        "build": 772
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -17,7 +17,7 @@
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions"
     },
-    "changenote": "check for null string in StripSpaces (resolves #41)",
+    "changenote": "correctly match mods by identifier\ncheck for null string in StripSpaces (resolves #41)",
     "tags": [],
     "publishedfileid": "1507748539"
 }
