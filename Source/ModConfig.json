@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 17,
-        "build": 762
+        "minor": 18,
+        "build": 764
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -17,7 +17,7 @@
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions"
     },
-    "changenote": "update for supportedVersions list\ncorrectly load modlists where Core isn't the first mod",
+    "changenote": "fix palette texture not found",
     "tags": [],
     "publishedfileid": "1507748539"
 }
