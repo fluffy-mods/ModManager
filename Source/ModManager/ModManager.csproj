@@ -54,6 +54,9 @@
       <HintPath>..\..\..\..\..\dlls\UnityEngine.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="YamlDotNet, Version=6.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
+      <HintPath>..\packages\YamlDotNet.6.0.0\lib\net35\YamlDotNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CrossPromotion\CrossPromotion.cs" />
@@ -64,6 +67,7 @@
     <Compile Include="ModButton\ModButton_Downloading.cs" />
     <Compile Include="ModIssue\ModIssue.cs" />
     <Compile Include="ModIssue\ModIssue_Resolvers.cs" />
+    <Compile Include="ModList\ModIdentifier.cs" />
     <Compile Include="ModManagerSettings.cs" />
     <Compile Include="Patches\Patch_WorkshopItems_Events.cs" />
     <Compile Include="ModList\Dialog_Rename_ModList.cs" />
@@ -91,7 +95,18 @@
     <Compile Include="Utilities\VersionStatus.cs" />
     <Compile Include="Utilities\Workshop.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\TOOLS\FluffyUI\FluffyUI\FluffyUI.csproj">
+      <Project>{3e905175-2540-4c06-b4c6-f955836c0451}</Project>
+      <Name>FluffyUI</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <PostBuildEvent>mod update -x -n "Mod Manager"</PostBuildEvent>
   </PropertyGroup>

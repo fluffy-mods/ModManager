@@ -13,6 +13,9 @@
     <Fluffy.ModManager.Version>Version</Fluffy.ModManager.Version>
     <Fluffy.ModManager.Unknown>Unknown</Fluffy.ModManager.Unknown>
     <Fluffy.ModManager.Later>Later</Fluffy.ModManager.Later>
+    <Fluffy.ModManager.Cancel>Cancel</Fluffy.ModManager.Cancel>
+
+    <Fluffy.ModManager.PressXtoCopyToClipboard>Press 'Control + C' to copy the ModList to the clipboard.</Fluffy.ModManager.PressXtoCopyToClipboard>
 
     <!-- issues -->
     <Fluffy.ModManager.InvalidVersion>Malformed version string: "{0}".</Fluffy.ModManager.InvalidVersion>
@@ -52,7 +55,10 @@
     <Fluffy.ModManager.SaveModList>Save current list</Fluffy.ModManager.SaveModList>
     <Fluffy.ModManager.DeleteModList>Delete saved list</Fluffy.ModManager.DeleteModList>
     <Fluffy.ModManager.RenameModList>Rename list</Fluffy.ModManager.RenameModList>
-    <Fluffy.ModManager.RebuildingModList>Rebuilding mod list</Fluffy.ModManager.RebuildingModList>
+    <Fluffy.ModManager.ImportModList>Import mod list from string</Fluffy.ModManager.ImportModList>
+    <Fluffy.ModManager.ExportModList>Export mod list to string</Fluffy.ModManager.ExportModList>
+    <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
+    <Fluffy.ModManager.ResetMods>Reset active mods to Core only</Fluffy.ModManager.ResetMods>
 
     <Fluffy.ModManager.InvalidName>{0} is not a valid name. The name may not contain any of these characters: {1}.</Fluffy.ModManager.InvalidName>
     <Fluffy.ModManager.ModListExists>{0} already exists. Please use a different name, or delete or rename the existing modlist.</Fluffy.ModManager.ModListExists>
@@ -61,8 +67,11 @@
     <Fluffy.ModManager.ModListCreated>Mod list {0} created.</Fluffy.ModManager.ModListCreated>
     <Fluffy.ModManager.ModListLoaded>Mod list {0} loaded.</Fluffy.ModManager.ModListLoaded>
     <Fluffy.ModManager.ModListDeleted>Mod list {0} deleted.</Fluffy.ModManager.ModListDeleted>
-    <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
-    <Fluffy.ModManager.ResetMods>Reset active mods to Core only</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.RebuildingModList>Rebuilding mod list</Fluffy.ModManager.RebuildingModList>
+    <Fluffy.ModManager.ConfirmOverwriteModList>A ModList named '{0}' already exists. Are you sure want to overwrite it?</Fluffy.ModManager.ConfirmOverwriteModList>
+    <Fluffy.ModManager.ModListCopiedToClipboard>Mod list {0} copied to clipboard.</Fluffy.ModManager.ModListCopiedToClipboard>
+    <Fluffy.ModManager.ModListCreatedFromClipboard>Mod list {0} imported from clipboard.</Fluffy.ModManager.ModListCreatedFromClipboard>
+    <Fluffy.ModManager.FailedToCreateModListFromClipboard>Failed to import mod list from clipboard: {0}.</Fluffy.ModManager.FailedToCreateModListFromClipboard>
 
     <Fluffy.ModManager.AddToModList>Add mod to a mod list</Fluffy.ModManager.AddToModList>
     <Fluffy.ModManager.RemoveFromModList>Remove mod from a mod list</Fluffy.ModManager.RemoveFromModList>

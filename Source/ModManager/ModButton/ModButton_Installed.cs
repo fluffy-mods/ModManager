@@ -417,11 +417,11 @@ namespace ModManager
         internal override void DoModDetails( Rect canvas )
         {
             var mod = Selected;
-            if ( mod.previewImage != null )
+            if ( !mod.PreviewImage.NullOrBad() )
             {
                 DoLabel( ref canvas, I18n.Preview );
-                var width = mod.previewImage.width;
-                var height = mod.previewImage.height;
+                var width = mod.PreviewImage.width;
+                var height = mod.PreviewImage.height;
                 var scale = canvas.width / width;
                 var viewRect = new Rect(
                     canvas.xMin,
@@ -437,7 +437,7 @@ namespace ModManager
                     viewRect.xMax -= 18f;
 
                 Widgets.BeginScrollView( outRect, ref _previewScrollPosition, viewRect );
-                GUI.DrawTexture( viewRect, mod.previewImage );
+                GUI.DrawTexture( viewRect, mod.PreviewImage );
                 Widgets.EndScrollView();
                 canvas.yMin = outRect.yMax + SmallMargin;
             }

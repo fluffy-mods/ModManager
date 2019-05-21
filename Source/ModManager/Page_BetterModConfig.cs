@@ -171,7 +171,7 @@ namespace ModManager
             DoDetails( detailRect );
 
             DoAvailableModButtons( moreModButtonsRect );
-            DoModSetButtons( modSetButtonsRect );
+            DoModListButtons( modSetButtonsRect );
             Selected?.DoModActionButtons( modButtonsRect );
         }
 
@@ -210,7 +210,7 @@ namespace ModManager
         }
 
         private int _issueIndex = 0;
-        private void DoModSetButtons( Rect canvas )
+        private void DoModListButtons( Rect canvas )
         {
             Widgets.DrawBoxSolid(canvas, SlightlyDarkBackground);
             canvas = canvas.ContractedBy(SmallMargin / 2f);
@@ -246,7 +246,6 @@ namespace ModManager
                     TooltipHandler.TipRegion(iconRect, tip);
                 }
 
-
                 var worstIssue = ModButtonManager.Issues.MaxBy(i => i.severity);
                 var color = worstIssue.Color;
 
@@ -269,6 +268,7 @@ namespace ModManager
             var options = Utilities.NewOptions;
             options.Add( new FloatMenuOption( I18n.SaveModList, () => new ModList( ModButtonManager.ActiveButtons ) ) );
             options.Add( new FloatMenuOption( I18n.LoadModListFromSave, DoLoadModListFromSaveFloatMenu ) );
+            options.Add( new FloatMenuOption( I18n.ImportModList, () => ModList.FromYaml( GUIUtility.systemCopyBuffer ) ) );
             options.AddRange( ModListManager.SavedModListsOptions );
             Find.WindowStack.Add( new FloatMenu( options ) );
         }

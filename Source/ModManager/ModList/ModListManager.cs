@@ -46,7 +46,7 @@ namespace ModManager
 
             // add to cache
             lists = ModLists
-                .Where( l => l._modIds.Contains( mod.Identifier ) )
+                .Where( l => l.Mods.Any( m => m.Name == mod.Identifier ) )
                 .ToList();
             _modModListsCache.Add( mod, lists );
             return lists;
@@ -110,6 +110,7 @@ namespace ModManager
         public static FloatMenuOption SavedModListOption( ModList list )
         {
             var options = Utilities.NewOptions;
+            options.Add( new FloatMenuOption( I18n.ExportModList, () => { GUIUtility.systemCopyBuffer = list.ToYaml(); Messages.Message( I18n.ModListCopiedToClipboard( list.Name ), MessageTypeDefOf.TaskCompletion, false ); } ) );
             options.Add( new FloatMenuOption( I18n.LoadModList, () => list.Apply( false ) ) );
             options.Add( new FloatMenuOption( I18n.AddModList, () => list.Apply( true ) ) );
             options.Add( new FloatMenuOption( I18n.RenameModList, () => Find.WindowStack.Add( new Dialog_Rename_ModList( list ) ) ) );
@@ -145,41 +146,31 @@ namespace ModManager
             return Path.Combine( BasePath, name + ".xml" );
         }
 
-        public static bool TryRename( ModList list, string oldName, bool force = false )
+        public static void TryRename( ModList list, string oldName, Action failureCallback, Action successCallback )
         {
 
             if ( !File.Exists( FilePath(oldName) ) )
             {
                 Log.Warning( $"List not saved: {oldName} ({FilePath(oldName)})" );
-                return false;
-            }
-            if (File.Exists( FilePath( list.Name ) ) && !force )
-            {
-                Log.Warning( $"File exists: {list.Name} ({FilePath( list )})" );
-                return false;
+                failureCallback?.Invoke();
+                return;
             }
 
             try
             {
                 File.Delete( FilePath( oldName ) );
-                var success = list.Save();
-                if ( success )
-                    Messages.Message( I18n.ModListRenamed( oldName, list.Name ), MessageTypeDefOf.TaskCompletion, false );
-                return success;
+                list.Save( false, failureCallback, successCallback );
             }
             catch ( Exception e )
             {
                 Log.Error( e.Message );
-                return false;
+                failureCallback?.Invoke();
             }
         }
 
-        public static bool TryCreate( ModList list, bool force = false )
+        public static void TryCreate( ModList list, Action failureCallback, Action successCallback )
         {
-            var success = list.Save( force );
-            if ( success )
-                Messages.Message( I18n.ModListCreated( list.Name ), MessageTypeDefOf.TaskCompletion, false );
-            return success;
+            list.Save( false, failureCallback, successCallback );
         }
 
         private static bool TryDelete(ModList list)

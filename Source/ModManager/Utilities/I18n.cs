@@ -41,6 +41,7 @@ namespace ModManager
         public static string OK = "OK".Translate(); // core
         public static string Yes = "Yes".Translate(); // core
         public static string No = "No".Translate(); // core
+        public static string Cancel = Key( "Cancel" ).Translate(); // you'd think this was in core...
 
         public static string InvalidVersion( List<Version> versions )
         {
@@ -108,6 +109,8 @@ namespace ModManager
         public static string ConfirmSteamWorkshopUpload = "ConfirmSteamWorkshopUpload".Translate(); // core
         public static string ConfirmContentAuthor = "ConfirmContentAuthor".Translate(); // core
         public static string RebuildingModList_Key = Key( "RebuildingModList" );
+        public static string ExportModList = Key( "ExportModList" ).Translate();
+        public static string ImportModList = Key( "ImportModList" ).Translate();
         public static string LoadModList = Key( "LoadModList" ).Translate();
         public static string AddModList = Key( "AddModList" ).Translate();
         public static string SaveModList = Key( "SaveModList" ).Translate();
@@ -192,12 +195,7 @@ namespace ModManager
         {
             return Key( "InvalidName" ).Translate( name, invalidChars );
         }
-
-        public static string ModListExists( string name )
-        {
-            return Key( "ModListExists" ).Translate( name );
-        }
-
+        public static string ConfirmOverwriteModList( string name ) => Key( "ConfirmOverwriteModList" ).Translate( name );
         public static string NameTooShort = Key( "NameTooShort" ).Translate();
         public static string LoadModListFromSave = Key( "LoadModListFromSave" ).Translate();
         public static string Problems = Key( "Problems" ).Translate();
@@ -222,6 +220,9 @@ namespace ModManager
             return Key( "ModListDeleted" ).Translate( name );
         }
 
+        public static string ModListCopiedToClipboard( string name ) => Key( "ModListCopiedToClipboard" ).Translate( name);
+        public static string ModListCreatedFromClipboard( string name ) => Key( "ModListCreatedFromClipboard" ).Translate( name );
+        public static string FailedToCreateModListFromClipboard( string reason ) => Key( "FailedToCreateModListFromClipboard" ).Translate( reason );
         public static string AddToModList = Key( "AddToModList" ).Translate();
         public static string RemoveFromModList = Key( "RemoveFromModList" ).Translate();
 
@@ -355,6 +356,6 @@ namespace ModManager
 
 
         // settings
-        public static string ModSettings => Key( "ModSettings" ).Translate();
+        public static string ModSettings = Key( "ModSettings" ).Translate();
     }
 }

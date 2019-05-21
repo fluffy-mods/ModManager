@@ -31,11 +31,7 @@ namespace ModManager
             foreach ( var invalidChar in invalidChars )
                 if ( name.Contains( invalidChar ) )
                     return I18n.InvalidName( name, new string( invalidChars ) );
-
-            // check if file exists
-            if ( File.Exists( ModListManager.FilePath( name ) ) )
-                return I18n.ModListExists( name );
-
+                        
             return true;
         }
     }

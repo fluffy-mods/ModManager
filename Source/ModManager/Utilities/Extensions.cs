@@ -5,8 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
-using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -14,6 +12,12 @@ namespace ModManager
 {
     public static class Extensions
     {
+        public static string SanitizeYaml( this string msg )
+        {
+            // TODO: conditionally escape only when needed
+            return $"'{msg.Replace( "'", "''" )}'";
+        }
+
         public static string StringJoin( this IEnumerable<string> list, string glue )
         {
             return string.Join( glue, list.ToArray() );
