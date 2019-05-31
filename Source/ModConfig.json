@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 20,
-        "build": 824
+        "minor": 21,
+        "build": 825
     },
     "visibility": 0,
     "git_repo": "ModManager",
