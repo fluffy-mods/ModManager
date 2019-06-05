@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 21,
-        "build": 825
+        "minor": 22,
+        "build": 827
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -17,7 +17,7 @@
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions"
     },
-    "changenote": "",
+    "changenote": "2019-06-05 :: Proxyer :: Update Japanese Translation for v1.21.825 (#47)'",
     "tags": [],
     "publishedfileid": "1507748539"
 }
