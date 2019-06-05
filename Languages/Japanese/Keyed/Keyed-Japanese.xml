@@ -13,6 +13,9 @@
   <Fluffy.ModManager.Version>バージョン</Fluffy.ModManager.Version>
   <Fluffy.ModManager.Unknown>不明</Fluffy.ModManager.Unknown>
   <Fluffy.ModManager.Later>後で</Fluffy.ModManager.Later>
+  <Fluffy.ModManager.Cancel>中止</Fluffy.ModManager.Cancel>
+
+  <Fluffy.ModManager.PressXtoCopyToClipboard>Ctrlを押しながらCキーを押して、MODリストをクリップボードにコピーします。</Fluffy.ModManager.PressXtoCopyToClipboard>
 
   <!-- issues -->
   <Fluffy.ModManager.InvalidVersion>不正なバージョン文字列：「{0}」</Fluffy.ModManager.InvalidVersion>
@@ -52,7 +55,10 @@
   <Fluffy.ModManager.SaveModList>現在のリストを保存</Fluffy.ModManager.SaveModList>
   <Fluffy.ModManager.DeleteModList>保存したリストを削除</Fluffy.ModManager.DeleteModList>
   <Fluffy.ModManager.RenameModList>リストの名前を変更</Fluffy.ModManager.RenameModList>
-  <Fluffy.ModManager.RebuildingModList>MODリストを再構築</Fluffy.ModManager.RebuildingModList>
+  <Fluffy.ModManager.ImportModList>文字列からMODリストを読み込む</Fluffy.ModManager.ImportModList>
+  <Fluffy.ModManager.ExportModList>MODリストを文字列に書き出す</Fluffy.ModManager.ExportModList>
+  <Fluffy.ModManager.LoadModListFromSave>セーブからMODリストを読み込む</Fluffy.ModManager.LoadModListFromSave>
+  <Fluffy.ModManager.ResetMods>有効なMODをCoreだけにリセットする</Fluffy.ModManager.ResetMods>
 
   <Fluffy.ModManager.InvalidName>{0}は正常な名前ではありません。名前には、これらの文字のいずれかを含めることはできません：{1}。</Fluffy.ModManager.InvalidName>
   <Fluffy.ModManager.ModListExists>{0}は既に存在します。別の名前を付けるか、既存のMODリストを削除、または名前を変更してください。</Fluffy.ModManager.ModListExists>
@@ -61,8 +67,11 @@
   <Fluffy.ModManager.ModListCreated>MODリスト{0}が作成されました。</Fluffy.ModManager.ModListCreated>
   <Fluffy.ModManager.ModListLoaded>MODリスト{0}が読込みました。</Fluffy.ModManager.ModListLoaded>
   <Fluffy.ModManager.ModListDeleted>MODリスト{0}が削除されました。</Fluffy.ModManager.ModListDeleted>
-  <Fluffy.ModManager.LoadModListFromSave>セーブデータからMODリストを読込む</Fluffy.ModManager.LoadModListFromSave>
-  <Fluffy.ModManager.ResetMods>MODリストをCoreだけにリセットする。</Fluffy.ModManager.ResetMods>
+  <Fluffy.ModManager.RebuildingModList>MODリストを再構築中</Fluffy.ModManager.RebuildingModList>
+  <Fluffy.ModManager.ConfirmOverwriteModList>「{0}」という名前のMODリストは既に存在します。上書きしますか？</Fluffy.ModManager.ConfirmOverwriteModList>
+  <Fluffy.ModManager.ModListCopiedToClipboard>MODリスト{0}をクリップボードにコピーしました。</Fluffy.ModManager.ModListCopiedToClipboard>
+  <Fluffy.ModManager.ModListCreatedFromClipboard>クリップボードからMODリスト{0}か読み込まれました。</Fluffy.ModManager.ModListCreatedFromClipboard>
+  <Fluffy.ModManager.FailedToCreateModListFromClipboard>クリップボードからMODリストを読み込めませんでした：{0}</Fluffy.ModManager.FailedToCreateModListFromClipboard>
 
   <Fluffy.ModManager.AddToModList>Modリストにmodを追加</Fluffy.ModManager.AddToModList>
   <Fluffy.ModManager.RemoveFromModList>Modリストからmodを削除</Fluffy.ModManager.RemoveFromModList>
@@ -140,4 +149,5 @@
   <Fluffy.ModManager.TrimVersionStrings>Mod名からバージョン番号を削除する</Fluffy.ModManager.TrimVersionStrings>
   <Fluffy.ModManager.TrimVersionStringsTip>これを有効にすると、Mod_Managerはバージョン名（Version1.0、0.19など）からバージョンの文字列を削除しようとします。\n\n警告：想定外の情報量を削除してしまう場合があります</Fluffy.ModManager.TrimVersionStringsTip>
   <!--  -->
+
 </LanguageData>
