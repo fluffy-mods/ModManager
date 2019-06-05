@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 23,
-        "build": 833
+        "build": 834
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -20,5 +20,13 @@
     "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": []
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:10ab29e165519cae0a5be636e404ae8b7971a684",
+            "date": "2019-06-05",
+            "author": "Fluffy",
+            "message": "'Release 1.23.833 [nolog]''"
+        }
+    ]
 }
