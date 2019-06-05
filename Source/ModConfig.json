@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 22,
-        "build": 831
+        "minor": 23,
+        "build": 832
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -17,8 +17,16 @@
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions"
     },
-    "changenote": "",
+    "changenote": "2019-06-05 :: Fluffy :: fail early when non-modlist xml is read'",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": []
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:ccb4fcdc5e047854e70f8790418a340eb4c30d30",
+            "date": "2019-06-05",
+            "author": "Fluffy",
+            "message": "fail early when non-modlist xml is read'"
+        }
+    ]
 }
