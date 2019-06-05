@@ -8,15 +8,38 @@ using System.Linq;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using YamlDotNet.Serialization;
 
 namespace ModManager
 {
-    public class ModList: IExposable
+    public class ModList : IExposable
     {
-        private List<string> _modIds = new List<string>();
+        private Color        _color    = Color.white;
+        private List<string> _modIds   = new List<string>();
         private List<string> _modNames = new List<string>();
-        private string _name;
-        private Color _color = Color.white;
+        private string       _name;
+
+        [Obsolete( "This constructor should not be used directly." )]
+        public ModList()
+        {
+            // scribe
+            Version = 1;
+        }
+
+        public ModList( IEnumerable<ModButton> mods )
+        {
+            _modIds   = new List<string>();
+            _modNames = new List<string>();
+            Debug.Log( "Creating modlist..." );
+            foreach ( var button in mods.Where( m => m.Active ) )
+            {
+                Debug.Log( $"\tAdding {button.Name} ({button.Identifier})" );
+                _modIds.Add( button.Identifier );
+                _modNames.Add( button.Name );
+            }
+
+            Find.WindowStack.Add( new Dialog_Rename_ModList( this ) );
+        }
 
         public int Version { get; set; }
 
@@ -32,25 +55,28 @@ namespace ModManager
                 // create or rename
                 if ( oldName.NullOrEmpty() )
                     ModListManager.TryCreate( this,
-                        () =>
-                        {
-                            _name = oldName;
-                            Find.WindowStack.Add( new Dialog_Rename_ModList( this ) );
-                        },
-                        () => {
-                            Messages.Message( I18n.ModListCreated( _name ), MessageTypeDefOf.TaskCompletion, false );
-                            ModListManager.Notify_ModListsChanged();
-                        } );
+                                              () =>
+                                              {
+                                                  _name = oldName;
+                                                  Find.WindowStack.Add( new Dialog_Rename_ModList( this ) );
+                                              },
+                                              () =>
+                                              {
+                                                  Messages.Message( I18n.ModListCreated( _name ),
+                                                                    MessageTypeDefOf.TaskCompletion, false );
+                                                  ModListManager.Notify_ModListsChanged();
+                                              } );
                 else
                     ModListManager.TryRename( this, oldName, () => _name = oldName, () =>
                     {
-                        Messages.Message( I18n.ModListRenamed( oldName, _name ), MessageTypeDefOf.TaskCompletion, false );
+                        Messages.Message( I18n.ModListRenamed( oldName, _name ), MessageTypeDefOf.TaskCompletion,
+                                          false );
                         ModListManager.Notify_ModListsChanged();
                     } );
-            }   
+            }
         }
 
-        [YamlDotNet.Serialization.YamlIgnore]
+        [YamlIgnore]
         public Color Color
         {
             get => _color;
@@ -66,7 +92,7 @@ namespace ModManager
             get
             {
                 var mods = new List<ModIdentifier>();
-                for ( int i = 0; i < _modIds.Count; i++ )
+                for ( var i = 0; i < _modIds.Count; i++ )
                     mods.Add( new ModIdentifier( _modIds[i], _modNames[i] ) );
                 return mods;
             }
@@ -74,79 +100,12 @@ namespace ModManager
             {
                 _modIds.Clear();
                 _modNames.Clear();
-                foreach( var mod in value )
+                foreach ( var mod in value )
                 {
                     _modIds.Add( mod.Id );
                     _modNames.Add( mod.Name );
                 }
             }
-        }
-        
-        [Obsolete("This constructor should not be used directly.")]
-        public ModList()
-        {
-            // scribe
-            Version = 1;
-        }
-
-        public static ModList FromFile( string path )
-        {
-#pragma warning disable CS0618 // Type or member is obsolete
-            ModList list = new ModList();
-#pragma warning restore CS0618 // Type or member is obsolete
-            Scribe.loader.InitLoading( path );
-            Scribe.EnterNode( ModListManager.RootElement );
-            list.ExposeData();
-            Scribe.loader.FinalizeLoading();
-            Debug.Log(list.ToString());
-            return list;
-        }
-
-        public static ModList FromSave( string name, string path )
-        {
-#pragma warning disable CS0618 // Type or member is obsolete
-            var list = new ModList();
-#pragma warning restore CS0618 // Type or member is obsolete
-            Scribe.loader.InitLoadingMetaHeaderOnly( path );
-            ScribeMetaHeaderUtility.LoadGameDataHeader( ScribeMetaHeaderUtility.ScribeHeaderMode.None, false );
-            list._modIds = ScribeMetaHeaderUtility.loadedModIdsList;
-            list._modNames = ScribeMetaHeaderUtility.loadedModNamesList;
-            list._name = name;
-            Scribe.loader.FinalizeLoading();
-            Debug.Log( list.ToString() );
-            return list;
-        }
-
-        public static ModList FromYaml( string source )
-        {
-            try
-            {
-                var deserializerBuilder = new YamlDotNet.Serialization.DeserializerBuilder();
-                var deserializer = deserializerBuilder.Build();
-                var list = deserializer.Deserialize<ModList>( source );
-                Messages.Message( I18n.ModListCreatedFromClipboard( list.Name ), MessageTypeDefOf.PositiveEvent, false );
-                return list;
-            }
-            catch ( Exception err )
-            {
-                Messages.Message( I18n.FailedToCreateModListFromClipboard( err.Message ), MessageTypeDefOf.NegativeEvent, false );
-                ModListManager.Notify_ModListsChanged();
-                throw err;
-            }
-        }
-
-        public ModList( IEnumerable<ModButton> mods )
-        {
-            _modIds = new List<string>();
-            _modNames = new List<string>();
-            Debug.Log("Creating modlist...");
-            foreach ( var button in mods.Where( m => m.Active ) )
-            {
-                Debug.Log($"\tAdding {button.Name} ({button.Identifier})");
-                _modIds.Add( button.Identifier );
-                _modNames.Add( button.Name );
-            }
-            Find.WindowStack.Add(new Dialog_Rename_ModList(this));
         }
 
         public void ExposeData()
@@ -157,16 +116,70 @@ namespace ModManager
             Scribe_Collections.Look( ref _modNames, "modNames" );
         }
 
+        public static ModList FromFile( string path )
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var list = new ModList();
+#pragma warning restore CS0618 // Type or member is obsolete
+            Scribe.loader.InitLoading( path );
+            Scribe.EnterNode( ModListManager.RootElement );
+            list.ExposeData();
+            Scribe.loader.FinalizeLoading();
+            Debug.Log( list.ToString() );
+
+            if ( list._modIds.NullOrEmpty() || list._modNames.NullOrEmpty() )
+                throw new InvalidDataException( "ModList contains no mods." );
+            if ( list._modIds.Count != list._modNames.Count )
+                throw new InvalidDataException( "ids and names unbalanced." );
+
+            return list;
+        }
+
+        public static ModList FromSave( string name, string path )
+        {
+#pragma warning disable CS0618 // Type or member is obsolete
+            var list = new ModList();
+#pragma warning restore CS0618 // Type or member is obsolete
+            Scribe.loader.InitLoadingMetaHeaderOnly( path );
+            ScribeMetaHeaderUtility.LoadGameDataHeader( ScribeMetaHeaderUtility.ScribeHeaderMode.None, false );
+            list._modIds   = ScribeMetaHeaderUtility.loadedModIdsList;
+            list._modNames = ScribeMetaHeaderUtility.loadedModNamesList;
+            list._name     = name;
+            Scribe.loader.FinalizeLoading();
+            Debug.Log( list.ToString() );
+            return list;
+        }
+
+        public static ModList FromYaml( string source )
+        {
+            try
+            {
+                var deserializerBuilder = new DeserializerBuilder();
+                var deserializer        = deserializerBuilder.Build();
+                var list                = deserializer.Deserialize<ModList>( source );
+                Messages.Message( I18n.ModListCreatedFromClipboard( list.Name ), MessageTypeDefOf.PositiveEvent,
+                                  false );
+                return list;
+            }
+            catch ( Exception err )
+            {
+                Messages.Message( I18n.FailedToCreateModListFromClipboard( err.Message ),
+                                  MessageTypeDefOf.NegativeEvent, false );
+                ModListManager.Notify_ModListsChanged();
+                throw err;
+            }
+        }
+
         public void Apply( bool add )
         {
-            if (!add)
+            if ( !add )
                 ModButtonManager.Reset( false );
 
-            for ( int i = 0; i < _modIds.Count; i++ )
+            for ( var i = 0; i < _modIds.Count; i++ )
             {
-                var id = _modIds[i];
+                var id   = _modIds[i];
                 var name = _modNames[i];
-                var mod = ModLister.GetModWithIdentifier( id );
+                var mod  = ModLister.GetModWithIdentifier( id );
                 if ( mod != null )
                 {
                     var button = ModButton_Installed.For( mod );
@@ -188,16 +201,16 @@ namespace ModManager
         {
             var str = _name + "\n";
             str += "ids:\n";
-            if (_modIds == null)
+            if ( _modIds == null )
                 str += "\tNULL\n";
             else
-                foreach (var modId in _modIds)
+                foreach ( var modId in _modIds )
                     str += "\t" + modId + "\n";
             str += "names:\n";
-            if (_modNames == null)
+            if ( _modNames == null )
                 str += "\tNULL\n";
             else
-                foreach (var name in _modNames)
+                foreach ( var name in _modNames )
                     str += "\t" + name + "\n";
             return str;
         }
@@ -205,16 +218,16 @@ namespace ModManager
 
         private static void LogObject( object obj, int lvl = 0 )
         {
-            Debug.Log( new string( '\t', lvl ) + obj?.ToString() );
+            Debug.Log( new string( '\t', lvl ) + obj );
             if ( obj is Dictionary<object, object> dict )
                 foreach ( var entry in dict )
-                    LogObject( entry, lvl + 1);
+                    LogObject( entry, lvl + 1 );
             if ( obj is List<object> list )
                 foreach ( var entry in list )
                     LogObject( entry, lvl + 1 );
             if ( obj is KeyValuePair<object, object> pair )
             {
-                Debug.Log( new string( '\t', lvl ) + pair.Key.ToString() + ": " + pair.Value.ToString() );
+                Debug.Log( new string( '\t', lvl ) + pair.Key + ": " + pair.Value );
                 if ( pair.Value is List<object> list2 )
                     LogObject( list2, lvl );
                 if ( pair.Value is Dictionary<object, object> dict2 )
@@ -224,9 +237,9 @@ namespace ModManager
 
         public string ToYaml()
         {
-            var serializerBuilder = new YamlDotNet.Serialization.SerializerBuilder();
-            var serializer = serializerBuilder.Build();
-            var yaml = serializer.Serialize( this );
+            var serializerBuilder = new SerializerBuilder();
+            var serializer        = serializerBuilder.Build();
+            var yaml              = serializer.Serialize( this );
             return yaml;
         }
 
@@ -270,10 +283,12 @@ namespace ModManager
             }
 
             var path = ModListManager.FilePath( this );
-            if (File.Exists(path) && !force )
+            if ( File.Exists( path ) && !force )
             {
                 Action okCallback = () => Save( true, failureCallback, successCallback );
-                var confirmation = new Dialog_MessageBox( I18n.ConfirmOverwriteModList( Name ), I18n.OK, okCallback, I18n.Cancel, failureCallback, null, true, okCallback, failureCallback );
+                var confirmation = new Dialog_MessageBox( I18n.ConfirmOverwriteModList( Name ), I18n.OK, okCallback,
+                                                          I18n.Cancel, failureCallback, null, true, okCallback,
+                                                          failureCallback );
                 Find.WindowStack.Add( confirmation );
                 return false;
             }
@@ -288,9 +303,9 @@ namespace ModManager
                 successCallback?.Invoke();
                 return true;
             }
-            catch (Exception e)
+            catch ( Exception e )
             {
-                Log.Error(e.Message);
+                Log.Error( e.Message );
                 failureCallback?.Invoke();
                 return false;
             }
