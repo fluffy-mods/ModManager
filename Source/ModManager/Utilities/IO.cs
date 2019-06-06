@@ -154,14 +154,17 @@ namespace ModManager
                 "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
             };
 
-            var sanitisedNamePart = Regex.Replace(str, invalidReStr, "_");
+            var fileSystemSanitized = Regex.Replace(str, invalidReStr, "_");
             foreach (var reservedWord in reservedWords)
             {
                 var reservedWordPattern = $"^{reservedWord}\\.";
-                sanitisedNamePart = Regex.Replace(sanitisedNamePart, reservedWordPattern, "_reservedWord_.", RegexOptions.IgnoreCase);
+                fileSystemSanitized = Regex.Replace(fileSystemSanitized, reservedWordPattern, "_reservedWord_.", RegexOptions.IgnoreCase);
             }
 
-            return sanitisedNamePart;
+            // we should also sanitize for uri schemes.
+            var uriSanitized = Uri.EscapeUriString( fileSystemSanitized );
+
+            return uriSanitized;
         }
 
 
