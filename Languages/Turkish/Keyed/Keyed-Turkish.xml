@@ -44,10 +44,10 @@
     <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>{0} modun aboneliğinden çıkmak üzeresiniz. gerçekten devam etmek ister misiniz?\n\nAbonelikten çıkılan modlar:\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
     <Fluffy.ModManager.IO.MassRemoveLocal>Hepsini silin: inaktif, eskimiş yada tüm yerel kopyalar</Fluffy.ModManager.IO.MassRemoveLocal>
     <Fluffy.ModManager.IO.MassRemoveLocalAll>Tüm yerel kopyaları silin</Fluffy.ModManager.IO.MassRemoveLocalAll>
-    <Fluffy.ModManager.IO.MassRemoveLocalInactive>Remove all inactive local copies</Fluffy.ModManager.IO.MassRemoveLocalInactive>
-    <Fluffy.ModManager.IO.MassRemoveLocalOutdated>Remove all outdated local copies</Fluffy.ModManager.IO.MassRemoveLocalOutdated>
-    <Fluffy.ModManager.IO.MassRemoveLocalConfirm>You are about to permanently delete {0} local copes of mods. Are you certain you want to continue?\n\nAffected mods:\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
-    <Fluffy.ModManager.ModSettings>Open mod settings</Fluffy.ModManager.ModSettings>    
+    <Fluffy.ModManager.IO.MassRemoveLocalInactive>İnaktif tüm yerel kopyaları silin</Fluffy.ModManager.IO.MassRemoveLocalInactive>
+    <Fluffy.ModManager.IO.MassRemoveLocalOutdated>Eskimiş tüm yerel kopyaları silin</Fluffy.ModManager.IO.MassRemoveLocalOutdated>
+    <Fluffy.ModManager.IO.MassRemoveLocalConfirm>Neredeyse {0} mod yerel kopyasını silmek üzeresiniz. Devam etmek istermisiniz?\n\nSilinecek modlar:\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
+    <Fluffy.ModManager.ModSettings>Mod ayarlarını aç</Fluffy.ModManager.ModSettings>    
 
     <Fluffy.ModManager.ModListsTip>Create, apply and manage mod lists.\n\nMod Lists allow you to quickly switch sets of mods.</Fluffy.ModManager.ModListsTip>
     <Fluffy.ModManager.LoadModList>Load mod list</Fluffy.ModManager.LoadModList>
@@ -139,14 +139,14 @@
     <Fluffy.ModManager.PromotionsFor>Other mods by {0}</Fluffy.ModManager.PromotionsFor>
 
     <!-- options -->
-    <Fluffy.ModManager.SettingsCategory>Mod Manager</Fluffy.ModManager.SettingsCategory>
-    <Fluffy.ModManager.ShowPromotions>Show Promotions</Fluffy.ModManager.ShowPromotions>
-    <Fluffy.ModManager.ShowPromotions_NotActive>Show promotions for inactive mods.</Fluffy.ModManager.ShowPromotions_NotActive>
-    <Fluffy.ModManager.ShowPromotions_NotSubscribed>Show promotions for non-subscribed mods.</Fluffy.ModManager.ShowPromotions_NotSubscribed>
-    <Fluffy.ModManager.ShowPromotionsTip>If enabled, whenever you select a Steam Workshop mod, Mod Manager will show promotions for other mods by the same author.</Fluffy.ModManager.ShowPromotionsTip>
+    <Fluffy.ModManager.SettingsCategory>Mod Manajeri</Fluffy.ModManager.SettingsCategory>
+    <Fluffy.ModManager.ShowPromotions>Promosyonları göster</Fluffy.ModManager.ShowPromotions>
+    <Fluffy.ModManager.ShowPromotions_NotActive>İnaktif modlar için promosyonlar göster</Fluffy.ModManager.ShowPromotions_NotActive>
+    <Fluffy.ModManager.ShowPromotions_NotSubscribed>Abone olunmamış modlardanda promosyon göster</Fluffy.ModManager.ShowPromotions_NotSubscribed>
+    <Fluffy.ModManager.ShowPromotionsTip>Eğer açılırsa, bir Steam Workshop modu seçtiğin zaman aynı yapımcıdan başka promosyonlarda gösterilecek.</Fluffy.ModManager.ShowPromotionsTip>
     <Fluffy.ModManager.TrimTags>Remove tags from mod names</Fluffy.ModManager.TrimTags>
-    <Fluffy.ModManager.TrimTagsTip>If enabled, author and version tags will be removed from mod names (e.g. [KV], [B19])</Fluffy.ModManager.TrimTagsTip>
-    <Fluffy.ModManager.TrimVersionStrings>Remove version numbers from mod names</Fluffy.ModManager.TrimVersionStrings>
-    <Fluffy.ModManager.TrimVersionStringsTip>If enabled, Mod Manager will attempt to remove version string from mod names (e.g. 1.0, 0.19)\n\nWARNING: This may remove too much information!</Fluffy.ModManager.TrimVersionStringsTip>
+    <Fluffy.ModManager.TrimTagsTip>Eğer açılırsa, Yapımcı ve versiyon tagları modlardan silinir (örn. [KV], [B19])</Fluffy.ModManager.TrimTagsTip>
+    <Fluffy.ModManager.TrimVersionStrings>Mod adlarından versiyon adlarını çıkar</Fluffy.ModManager.TrimVersionStrings>
+    <Fluffy.ModManager.TrimVersionStringsTip>Eğer açılırsa, Mod Manajeri mod adlarından versiyon adlarını silmeye çalışacak (örn. 1.0, 0.19)\n\nUYARI: Bu birsürü bilgiyi yokedebilir!</Fluffy.ModManager.TrimVersionStringsTip>
     <!--  -->
 </LanguageData>
