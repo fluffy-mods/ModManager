@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 24,
-        "build": 842
+        "minor": 25,
+        "build": 843
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -17,8 +17,16 @@
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions"
     },
-    "changenote": "",
+    "changenote": "2019-07-30 :: Fluffy :: use less spammy colour picker'",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": []
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:e5f762d937a580d04cb63000633e194519c77966",
+            "date": "2019-07-30",
+            "author": "Fluffy",
+            "message": "use less spammy colour picker'"
+        }
+    ]
 }
