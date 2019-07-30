@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0ColourPicker">
-      <HintPath>..\..\..\..\TOOLS\ColourPicker\0ColourPicker.dll</HintPath>
+    <Reference Include="0ColourPicker, Version=2.0.0.34093, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\TOOLS\ColourPicker\obj\Release\0ColourPicker.dll</HintPath>
     </Reference>
     <Reference Include="0Harmony">
       <HintPath>..\..\..\..\..\harmony\0Harmony.dll</HintPath>

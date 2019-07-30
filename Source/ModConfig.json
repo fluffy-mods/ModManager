@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 24,
-        "build": 840
+        "build": 842
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -17,58 +17,8 @@
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions"
     },
-    "changenote": "2019-06-06 :: Fluffy :: sanitize local mod names for uri reserved characters'",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:45f7512560c4c618d4eb0a4ac9011d675de9b77b",
-            "date": "2019-06-06",
-            "author": "Fluffy",
-            "message": "sanitize local mod names for uri reserved characters'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:0f94c05ab6b83ba4461330790e1c1f95db03bbbe",
-            "date": "2019-06-06",
-            "author": "Fluffy",
-            "message": "'Release 1.23.838 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:12ceacf3ef6b0fe531a13a52e9e0772ba6f602b5",
-            "date": "2019-06-06",
-            "author": "Fluffy",
-            "message": "'Release 1.23.837 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:d537b37e99ad4123b1f3c1cb70ab5b11d6810ad3",
-            "date": "2019-06-05",
-            "author": "Fluffy",
-            "message": "'Release 1.23.836 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:9b3150c368f65f4648661ed183e57f33705865f7",
-            "date": "2019-06-05",
-            "author": "Fluffy",
-            "message": "'Release 1.23.835 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:fdb8dbe9933a083ed340e8892fff8701ecea038f",
-            "date": "2019-06-05",
-            "author": "Fluffy",
-            "message": "'Release 1.23.834 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:10ab29e165519cae0a5be636e404ae8b7971a684",
-            "date": "2019-06-05",
-            "author": "Fluffy",
-            "message": "'Release 1.23.833 [nolog]''"
-        }
-    ]
+    "changenotes": []
 }

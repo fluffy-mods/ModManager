@@ -92,5 +92,7 @@ Show your appreciation by buying me a coffee (or contribute towards a nice singl
 
 [![Buy Me a Coffee](http://i.imgur.com/EjWiUwx.gif)](https://ko-fi.com/fluffymods)
 
+[![I Have a Black Dog](https://i.ibb.co/ss59Rwy/New-Project-2.png)](https://www.youtube.com/watch?v=XiCrniLQGYc)
+
 # Version
-This is version 1.24.840, for RimWorld 1.0.2282.
+This is version 1.24.842, for RimWorld 1.0.2282.
