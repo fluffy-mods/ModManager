@@ -172,6 +172,29 @@
             Check if the next node can be expressed as a simple key.
             </summary>
         </member>
+        <member name="P:YamlDotNet.Core.EmitterSettings.BestIndent">
+            <summary>
+            The preferred indentation.
+            </summary>
+        </member>
+        <member name="P:YamlDotNet.Core.EmitterSettings.BestWidth">
+            <summary>
+            The preferred text width.
+            </summary>
+        </member>
+        <member name="P:YamlDotNet.Core.EmitterSettings.IsCanonical">
+            <summary>
+            If true, write the output in canonical form.
+            </summary>
+        </member>
+        <member name="P:YamlDotNet.Core.EmitterSettings.MaxSimpleKeyLength">
+            <summary>
+            The maximum allowed length for simple keys.
+            </summary>
+            <remarks>
+            The specifiction mandates 1024 characters, but any desired value may be used.
+            </remarks>
+        </member>
         <member name="T:YamlDotNet.Core.Events.AnchorAlias">
             <summary>
             Represents an alias event.
@@ -3202,6 +3225,13 @@
             <param name="output">The output.</param>
             <param name="assignAnchors">Indicates whether or not to assign node anchors.</param>
         </member>
+        <member name="M:YamlDotNet.RepresentationModel.YamlStream.Save(YamlDotNet.Core.IEmitter,System.Boolean)">
+            <summary>
+            Saves the stream to the specified emitter.
+            </summary>
+            <param name="emitter">The emitter.</param>
+            <param name="assignAnchors">Indicates whether or not to assign node anchors.</param>
+        </member>
         <member name="M:YamlDotNet.RepresentationModel.YamlStream.Accept(YamlDotNet.RepresentationModel.IYamlVisitor)">
             <summary>
             Accepts the specified visitor by calling the appropriate Visit method on it.
@@ -4198,13 +4228,13 @@
             To customize the behavior of the serializer, use <see cref="T:YamlDotNet.Serialization.SerializerBuilder" />.
             </remarks>
         </member>
-        <member name="M:YamlDotNet.Serialization.Serializer.#ctor(YamlDotNet.Serialization.IValueSerializer)">
+        <member name="M:YamlDotNet.Serialization.Serializer.#ctor(YamlDotNet.Serialization.IValueSerializer,YamlDotNet.Core.EmitterSettings)">
             <remarks>
             This constructor is private to discourage its use.
-            To invoke it, call the <see cref="M:YamlDotNet.Serialization.Serializer.FromValueSerializer(YamlDotNet.Serialization.IValueSerializer)"/> method.
+            To invoke it, call the <see cref="M:YamlDotNet.Serialization.Serializer.FromValueSerializer(YamlDotNet.Serialization.IValueSerializer,YamlDotNet.Core.EmitterSettings)"/> method.
             </remarks>
         </member>
-        <member name="M:YamlDotNet.Serialization.Serializer.FromValueSerializer(YamlDotNet.Serialization.IValueSerializer)">
+        <member name="M:YamlDotNet.Serialization.Serializer.FromValueSerializer(YamlDotNet.Serialization.IValueSerializer,YamlDotNet.Core.EmitterSettings)">
             <summary>
             Creates a new <see cref="T:YamlDotNet.Serialization.Serializer" /> that uses the specified <see cref="T:YamlDotNet.Serialization.IValueSerializer" />.
             This method is available for advanced scenarios. The preferred way to customize the behavior of the

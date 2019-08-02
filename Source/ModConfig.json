@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 25,
-        "build": 843
+        "minor": 26,
+        "build": 848
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -15,18 +15,19 @@
         "b606": "French translation",
         "Proxyer": "Japanese translation",
         "奔跑的梅洛斯": "Simplified Chinese translation",
-        "Zetrith": "Fix blurry mod descriptions"
+        "Zetrith": "Fix blurry mod descriptions",
+        "enescaglayan": "Turkish translation"
     },
-    "changenote": "2019-07-30 :: Fluffy :: use less spammy colour picker'",
+    "changenote": "2019-08-02 :: enescaglayan :: Turkish translation. (#48)'",
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
         {
             "repo": "ModManager",
-            "hash": "'tformat:e5f762d937a580d04cb63000633e194519c77966",
-            "date": "2019-07-30",
-            "author": "Fluffy",
-            "message": "use less spammy colour picker'"
+            "hash": "'tformat:749d04164f72384e9e73c6deeea64a614b6b6769",
+            "date": "2019-08-02",
+            "author": "enescaglayan",
+            "message": "Turkish translation. (#48)'"
         }
     ]
 }
