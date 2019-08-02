@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 27,
-        "build": 850
+        "build": 851
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -18,30 +18,8 @@
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation"
     },
-    "changenote": "2019-08-02 :: enescaglayan :: Turkish translation. (#48)'",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:34e1f010d23a86f6a5a94c89fc28dd5dde855843",
-            "date": "2019-08-02",
-            "author": "Fluffy",
-            "message": "'Release 1.27.849 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:4a629f6e934351a28c8f2b98c5fbfe253bf0e208",
-            "date": "2019-08-02",
-            "author": "Fluffy",
-            "message": "'Release 1.26.848 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:749d04164f72384e9e73c6deeea64a614b6b6769",
-            "date": "2019-08-02",
-            "author": "enescaglayan",
-            "message": "Turkish translation. (#48)'"
-        }
-    ]
+    "changenotes": []
 }
