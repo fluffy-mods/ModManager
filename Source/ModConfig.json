@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 26,
-        "build": 848
+        "minor": 27,
+        "build": 849
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -22,6 +22,13 @@
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:4a629f6e934351a28c8f2b98c5fbfe253bf0e208",
+            "date": "2019-08-02",
+            "author": "Fluffy",
+            "message": "'Release 1.26.848 [nolog]''"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:749d04164f72384e9e73c6deeea64a614b6b6769",
