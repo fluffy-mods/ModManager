@@ -40,16 +40,19 @@ namespace ModManager
         public static bool TryUpdateLocalCopy( ModMetaData source, ModMetaData local )
         {
             // delete and re-copy mod.
-            var updateResult = TryRemoveLocalCopy( local ) && TryCopyMod( source, ref local, local.RootDir.FullName );
+            var updateResult = TryRemoveLocalCopy( local ) && TryCopyMod( source, ref local, local.RootDir.FullName, false );
             if ( !updateResult )
                 return false;
+
+            // rename settings file
+            TryCopySettings( source, local, true );
 
             // update version 
             ModButton_Installed.For( source ).Notify_VersionUpdated( local );
             return true;
         }
 
-        private static bool TryCopyMod( ModMetaData mod, ref ModMetaData copy, string targetDir )
+        private static bool TryCopyMod( ModMetaData mod, ref ModMetaData copy, string targetDir, bool copySettings = true )
         {
             try
             {
@@ -59,8 +62,11 @@ namespace ModManager
                 ( ModLister.AllInstalledMods as List<ModMetaData> )?.Add( copy );
 
                 // copy settings and color attribute
-                TryCopySettings( mod, copy );
-                ModManager.Settings[copy].Color = ModManager.Settings[mod].Color;
+                if ( copySettings )
+                {
+                    TryCopySettings( mod, copy );
+                    ModManager.Settings[copy].Color = ModManager.Settings[mod].Color;
+                }
 
                 // set source attribute
                 ModManager.Settings[copy].Source = mod;
@@ -86,7 +92,7 @@ namespace ModManager
                 GenText.SanitizeFilename( $"Mod_{targetIdentifier}_{match.Groups[1].Value}.xml" ) );
         }
 
-        private static void TryCopySettings( ModMetaData source, ModMetaData target )
+        private static void TryCopySettings( ModMetaData source, ModMetaData target, bool deleteOld = false )
         {
             // find any settings files that belong to the source mod
             var mask = SettingsMask( source.Identifier );
@@ -102,7 +108,10 @@ namespace ModManager
             foreach ( var setting in settings )
             {
                 Debug.Log( $"Copying settings :: {setting.source} => {setting.target}"  );
-                File.Copy( setting.source, setting.target, true );
+                if ( deleteOld )
+                    File.Move( setting.source, setting.target );
+                else 
+                    File.Copy( setting.source, setting.target, true );
             }
         }
 
