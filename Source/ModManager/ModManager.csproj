@@ -70,6 +70,7 @@
     <Compile Include="ModIssue\ModIssue_Resolvers.cs" />
     <Compile Include="ModList\ModIdentifier.cs" />
     <Compile Include="ModManagerSettings.cs" />
+    <Compile Include="Patches\Patch_WindowResizer_DoResizeControl.cs" />
     <Compile Include="Patches\Patch_WorkshopItems_Events.cs" />
     <Compile Include="ModList\Dialog_Rename_ModList.cs" />
     <Compile Include="Manifest\Dependency.cs" />

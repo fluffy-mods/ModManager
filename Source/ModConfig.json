@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 27,
-        "build": 854
+        "build": 856
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -18,10 +18,17 @@
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation"
     },
-    "changenote": "2019-08-06 :: Fluffy :: keep settings file when updating a local copy'\n2019-08-06 :: Fluffy :: simplify filename sanitizer'",
+    "changenote": "2019-08-06 :: Fluffy :: correctly show/hide add/remove mod from modlist controls'\n2019-08-06 :: Fluffy :: keep settings file when updating a local copy'\n2019-08-06 :: Fluffy :: simplify filename sanitizer'",
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:9722e83e74d93422dd6a7b7c84b7ef86ad57430e",
+            "date": "2019-08-06",
+            "author": "Fluffy",
+            "message": "correctly show/hide add/remove mod from modlist controls'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:9e0ea8f1b602c8df25f604ed2d04736b9da67c96",
