@@ -129,6 +129,7 @@ namespace ModManager
 
         public override void DoWindowContents( Rect canvas )
         {
+
             CheckResized();
             HandleKeyboardNavigation();
             
@@ -165,6 +166,9 @@ namespace ModManager
                 detailRect.yMax + SmallMargin,
                 detailRect.width,
                 iconBarHeight );
+
+            if ( !DraggingManager.Dragging && !( Mouse.IsOver( availableRect ) || Mouse.IsOver( activeRect ) ) )
+                GUI.DragWindow();
 
             DoAvailableMods(availableRect);
             DoActiveMods(activeRect);
