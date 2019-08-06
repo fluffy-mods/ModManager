@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 27,
-        "build": 866
+        "minor": 30,
+        "build": 869
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -18,10 +18,17 @@
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation"
     },
-    "changenote": "2019-08-06 :: Fluffy :: cancel resizer on mouseUp outside of game window and game focus loss'\n2019-08-06 :: Fluffy :: correctly show/hide add/remove mod from modlist controls'\n2019-08-06 :: Fluffy :: keep settings file when updating a local copy'\n2019-08-06 :: Fluffy :: simplify filename sanitizer'",
+    "changenote": "2019-08-06 :: Fluffy :: add window dragging'\n2019-08-06 :: Fluffy :: cancel resizer on mouseUp outside of game window and game focus loss'\n2019-08-06 :: Fluffy :: correctly show/hide add/remove mod from modlist controls'\n2019-08-06 :: Fluffy :: keep settings file when updating a local copy'\n2019-08-06 :: Fluffy :: simplify filename sanitizer'",
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:8da4e5b86affe5c9a589bb0fcb984478b9e243b6",
+            "date": "2019-08-06",
+            "author": "Fluffy",
+            "message": "add window dragging'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:3e201fa9d9a0b0ec4c5a7f0a646b4a9451551e52",
