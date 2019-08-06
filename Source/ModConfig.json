@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 27,
-        "build": 853
+        "build": 854
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -18,8 +18,23 @@
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation"
     },
-    "changenote": "",
+    "changenote": "2019-08-06 :: Fluffy :: keep settings file when updating a local copy'\n2019-08-06 :: Fluffy :: simplify filename sanitizer'",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": []
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:9e0ea8f1b602c8df25f604ed2d04736b9da67c96",
+            "date": "2019-08-06",
+            "author": "Fluffy",
+            "message": "keep settings file when updating a local copy'"
+        },
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:b189fcf0a2805033cffa426943df2acaf9032f4c",
+            "date": "2019-08-06",
+            "author": "Fluffy",
+            "message": "simplify filename sanitizer'"
+        }
+    ]
 }

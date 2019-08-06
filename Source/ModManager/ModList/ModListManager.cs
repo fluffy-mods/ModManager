@@ -31,24 +31,25 @@ namespace ModManager
             return ListsFor( button?.Selected );
         }
 
-        private static Dictionary<ModMetaData, List<ModList>> _modModListsCache = new Dictionary<ModMetaData, List<ModList>>();
+        private static Dictionary<ModMetaData, List<ModList>> _modListsCache = new Dictionary<ModMetaData, List<ModList>>();
+        private static List<ModList> _emptyModList = new List<ModList>();
 
         public static List<ModList> ListsFor( ModMetaData mod )
         {
             // garbage in, garbage out.
             if ( mod == null )
-                return null;
+                return _emptyModList;
 
             // get from cache
             List<ModList> lists;
-            if ( _modModListsCache.TryGetValue( mod, out lists ) )
+            if ( _modListsCache.TryGetValue( mod, out lists ) )
                 return lists;
 
             // add to cache
             lists = ModLists
-                .Where( l => l.Mods.Any( m => m.Name == mod.Identifier ) )
+                .Where( l => l.Mods.Any( m => m.Id == mod.Identifier ) )
                 .ToList();
-            _modModListsCache.Add( mod, lists );
+            _modListsCache.Add( mod, lists );
             return lists;
         }
 
@@ -73,12 +74,12 @@ namespace ModManager
         public static void Notify_ModListsChanged()
         {
             _modLists = null;
-            _modModListsCache.Clear();
+            _modListsCache.Clear();
         }
 
         public static void Notify_ModListChanged()
         {
-            _modModListsCache.Clear();
+            _modListsCache.Clear();
         }
 
         private static List<ModList> _modLists;
