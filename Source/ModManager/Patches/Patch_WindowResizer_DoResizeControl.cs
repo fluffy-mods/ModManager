@@ -10,9 +10,9 @@ namespace ModManager
     [HarmonyPatch(typeof(WindowResizer), nameof(WindowResizer.DoResizeControl))]
     public static class Patch_WindowResizer_DoResizeControl
     {
-        public static void PostFix( ref bool ___isResizing )
+        public static void Postfix( ref bool ___isResizing )
         {
-            if ( ___isResizing && ( !Input.GetMouseButton( 0 ) || !Application.isFocused ) )
+            if ( ___isResizing && ( Input.GetMouseButtonUp( 0 ) || !Application.isFocused ) )
                 ___isResizing = false;
         }
     }
