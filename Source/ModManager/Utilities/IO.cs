@@ -133,19 +133,13 @@ namespace ModManager
             return Path.Combine( ModsDir, $"{LocalCopyPrefix}_{mod.Name}_{DateStamp}".SanitizeFileName() );
         }
 
-        public static string DateStamp => $"({DateTime.Now.Day}-{DateTime.Now.Month})";
+        public static string DateStamp => $"-{DateTime.Now.Day}-{DateTime.Now.Month}";
         public static string LocalCopyPrefix => "__LocalCopy";
 
-        /// <summary>
-        /// Strip illegal chars and reserved words from a candidate filename (should not include the directory path)
-        /// </summary>
-        /// <remarks>
-        /// http://stackoverflow.com/questions/309485/c-sharp-sanitize-file-name
-        /// </remarks>
+
         public static string SanitizeFileName( this string str)
         {
-            var invalidChars = Regex.Escape(new string(Path.GetInvalidFileNameChars()));
-            var invalidReStr = $@"[{invalidChars}]+";
+            var invalidReStr = $@"[^0-9a-zA-Z_\-]+";
 
             var reservedWords = new[]
             {
@@ -157,14 +151,11 @@ namespace ModManager
             var fileSystemSanitized = Regex.Replace(str, invalidReStr, "_");
             foreach (var reservedWord in reservedWords)
             {
-                var reservedWordPattern = $"^{reservedWord}\\.";
-                fileSystemSanitized = Regex.Replace(fileSystemSanitized, reservedWordPattern, "_reservedWord_.", RegexOptions.IgnoreCase);
+                var reservedWordPattern = $@"^{reservedWord}\.";
+                fileSystemSanitized = Regex.Replace(fileSystemSanitized, reservedWordPattern, "_", RegexOptions.IgnoreCase);
             }
 
-            // we should also sanitize for uri schemes.
-            var uriSanitized = Uri.EscapeUriString( fileSystemSanitized );
-
-            return uriSanitized;
+            return fileSystemSanitized;
         }
 
 
