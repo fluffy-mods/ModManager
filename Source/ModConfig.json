@@ -4,11 +4,11 @@
         "alpha": 18,
         "major": 1,
         "minor": 31,
-        "build": 871
+        "build": 872
     },
     "visibility": 0,
     "git_repo": "ModManager",
-    "git_user": "FluffierThanThou",
+    "git_user": "fluffy-mods",
     "contributors": {
         "erdelf": "invaluable help with Harmony transpilers",
         "Brrainz": "multi-version targetting, inspiration for mod promotions",
@@ -22,6 +22,13 @@
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:f830f95daaac5149b39be1ea4ac0e6324d448517",
+            "date": "2019-08-09",
+            "author": "Fluffy",
+            "message": "'Release 1.31.871 [nolog]''"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:5f1d6364aa892edea98b109032fb1361fed17a95",
