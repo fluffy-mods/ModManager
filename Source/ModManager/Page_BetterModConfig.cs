@@ -167,8 +167,8 @@ namespace ModManager
                 detailRect.width,
                 iconBarHeight );
 
-            if ( !DraggingManager.Dragging && !( Mouse.IsOver( availableRect ) || Mouse.IsOver( activeRect ) ) )
-                GUI.DragWindow();
+            // if ( !DraggingManager.Dragging && !( Mouse.IsOver( availableRect ) || Mouse.IsOver( activeRect ) ) )
+            //     GUI.DragWindow();
 
             DoAvailableMods(availableRect);
             DoActiveMods(activeRect);

@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 1,
         "minor": 30,
-        "build": 869
+        "build": 870
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -18,51 +18,8 @@
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation"
     },
-    "changenote": "2019-08-06 :: Fluffy :: add window dragging'\n2019-08-06 :: Fluffy :: cancel resizer on mouseUp outside of game window and game focus loss'\n2019-08-06 :: Fluffy :: correctly show/hide add/remove mod from modlist controls'\n2019-08-06 :: Fluffy :: keep settings file when updating a local copy'\n2019-08-06 :: Fluffy :: simplify filename sanitizer'",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:8da4e5b86affe5c9a589bb0fcb984478b9e243b6",
-            "date": "2019-08-06",
-            "author": "Fluffy",
-            "message": "add window dragging'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:3e201fa9d9a0b0ec4c5a7f0a646b4a9451551e52",
-            "date": "2019-08-06",
-            "author": "Fluffy",
-            "message": "fix typo in postfix [nolog]'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:c75a45bf9f4b706c84059a5eb9dcf858ae1ceb45",
-            "date": "2019-08-06",
-            "author": "Fluffy",
-            "message": "cancel resizer on mouseUp outside of game window and game focus loss'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:9722e83e74d93422dd6a7b7c84b7ef86ad57430e",
-            "date": "2019-08-06",
-            "author": "Fluffy",
-            "message": "correctly show/hide add/remove mod from modlist controls'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:9e0ea8f1b602c8df25f604ed2d04736b9da67c96",
-            "date": "2019-08-06",
-            "author": "Fluffy",
-            "message": "keep settings file when updating a local copy'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:b189fcf0a2805033cffa426943df2acaf9032f4c",
-            "date": "2019-08-06",
-            "author": "Fluffy",
-            "message": "simplify filename sanitizer'"
-        }
-    ]
+    "changenotes": []
 }
