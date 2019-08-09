@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 30,
-        "build": 870
+        "minor": 31,
+        "build": 871
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -18,8 +18,16 @@
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation"
     },
-    "changenote": "",
+    "changenote": "2019-08-09 :: Fluffy :: revert draggability fix'",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": []
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:5f1d6364aa892edea98b109032fb1361fed17a95",
+            "date": "2019-08-09",
+            "author": "Fluffy",
+            "message": "revert draggability fix'"
+        }
+    ]
 }
