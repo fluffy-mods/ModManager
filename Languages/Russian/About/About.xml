@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <ModMetaData>
-  <name>Mod Manager [1.0] RU</name>
-  <author>Torq</author>
+  <name>Mod Manager</name>
+  <author>Fluffy</author>
   <url>https://ludeon.com/forums/index.php?topic=16120</url>
   <description>Управление модами должно быть простым!
-
-Это патч-перевод на русский язык для мода Mod Manager. Ниже перевод описания оригинального мода.
-This is a patch-translation into Russian for the Mod Manager mod. Below is a translation of the description of the original mod.
-
-&lt;spoiler&gt;Spoiler&lt;/spoiler&gt;
 
 &lt;size=24&gt;Функции&lt;/size&gt;
 Более чистый, улучшенный экран управления модами.
