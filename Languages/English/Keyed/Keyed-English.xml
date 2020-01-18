@@ -46,7 +46,7 @@
     <Fluffy.ModManager.IO.MassRemoveLocalAll>Remove all local copies</Fluffy.ModManager.IO.MassRemoveLocalAll>
     <Fluffy.ModManager.IO.MassRemoveLocalInactive>Remove all inactive local copies</Fluffy.ModManager.IO.MassRemoveLocalInactive>
     <Fluffy.ModManager.IO.MassRemoveLocalOutdated>Remove all outdated local copies</Fluffy.ModManager.IO.MassRemoveLocalOutdated>
-    <Fluffy.ModManager.IO.MassRemoveLocalConfirm>You are about to permanently delete {0} local copes of mods. Are you certain you want to continue?\n\nAffected mods:\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
+    <Fluffy.ModManager.IO.MassRemoveLocalConfirm>You are about to permanently delete {0} local copies of mods. Are you certain you want to continue?\n\nAffected mods:\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
     <Fluffy.ModManager.ModSettings>Open mod settings</Fluffy.ModManager.ModSettings>    
 
     <Fluffy.ModManager.ModListsTip>Create, apply and manage mod lists.\n\nMod Lists allow you to quickly switch sets of mods.</Fluffy.ModManager.ModListsTip>
