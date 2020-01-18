@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 31,
-        "build": 872
+        "minor": 32,
+        "build": 873
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -16,25 +16,19 @@
         "Proxyer": "Japanese translation",
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions",
-        "enescaglayan": "Turkish translation"
+        "enescaglayan": "Turkish translation",
+        "Nikita": "Russian translation"
     },
-    "changenote": "2019-08-09 :: Fluffy :: revert draggability fix'",
+    "changenote": "2020-01-18 :: Nikita :: Add russian translation. (#64)'",
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
         {
             "repo": "ModManager",
-            "hash": "'tformat:f830f95daaac5149b39be1ea4ac0e6324d448517",
-            "date": "2019-08-09",
-            "author": "Fluffy",
-            "message": "'Release 1.31.871 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:5f1d6364aa892edea98b109032fb1361fed17a95",
-            "date": "2019-08-09",
-            "author": "Fluffy",
-            "message": "revert draggability fix'"
+            "hash": "'tformat:10cf1216376db8657cb67982bf15ae4cbe4c4cba",
+            "date": "2020-01-18",
+            "author": "Nikita",
+            "message": "Add russian translation. (#64)'"
         }
     ]
 }
