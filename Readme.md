@@ -75,6 +75,7 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  - Zetrith:	Fix blurry mod descriptions
  - enescaglayan:	Turkish translation
  - Nikita:	Russian translation
+ - Patrick Schmitt:	German translation
 
 # Think you found a bug? 
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
@@ -97,4 +98,4 @@ Show your appreciation by buying me a coffee (or contribute towards a nice singl
 [![I Have a Black Dog](https://i.ibb.co/ss59Rwy/New-Project-2.png)](https://www.youtube.com/watch?v=XiCrniLQGYc)
 
 # Version
-This is version 1.32.873, for RimWorld 1.0.2408.
+This is version 1.33.874, for RimWorld 1.0.2408.
