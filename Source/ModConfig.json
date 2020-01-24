@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 33,
-        "build": 874
+        "minor": 34,
+        "build": 875
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -17,19 +17,12 @@
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation",
-        "Nikita": "Russian translation",
+        "Lex1975": "Russian translation",
+        "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-01-18 :: Patrick Schmitt :: Added German translation (#62)'",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:ab79af33c332604bfe680011a683b679a46d9cc4",
-            "date": "2020-01-18",
-            "author": "Patrick Schmitt",
-            "message": "Added German translation (#62)'"
-        }
-    ]
+    "changenotes": []
 }
