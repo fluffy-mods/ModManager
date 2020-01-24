@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 34,
-        "build": 875
+        "minor": 35,
+        "build": 876
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -21,10 +21,17 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-01-24 :: Fluffy :: modlist resets now add modmanager to the list (optionally)'",
+    "changenote": "2020-01-24 :: Fluffy :: stop suppressing the mod mismatch warning dialog'\n2020-01-24 :: Fluffy :: modlist resets now add modmanager to the list (optionally)'",
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:dbe16ca8f990b68288d2007b6a6e1626a2149981",
+            "date": "2020-01-24",
+            "author": "Fluffy",
+            "message": "stop suppressing the mod mismatch warning dialog'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:55a087a5920f84c7ba638116e6a165fb64a9c039",
