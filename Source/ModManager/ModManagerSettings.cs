@@ -18,6 +18,7 @@ namespace ModManager
         public bool ShowPromotions_NotActive = false;
         public bool TrimTags = true;
         public bool TrimVersionStrings = false;
+        public bool AddModManagerToNewModLists = true;
 
         public ModAttributes this[ModMetaData mod]
         {
@@ -66,6 +67,7 @@ namespace ModManager
             Scribe_Values.Look( ref ShowPromotions_NotActive, "ShowPromotions_NotActive", false );
             Scribe_Values.Look( ref TrimTags, "TrimTags", true );
             Scribe_Values.Look( ref TrimVersionStrings, "TrimVersionStrings", false );
+            Scribe_Values.Look( ref AddModManagerToNewModLists, "AddModManagerToNewModLists", true );
 
             if ( Scribe.mode == LoadSaveMode.PostLoadInit )
             {

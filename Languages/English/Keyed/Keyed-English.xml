@@ -58,7 +58,9 @@
     <Fluffy.ModManager.ImportModList>Import mod list from string</Fluffy.ModManager.ImportModList>
     <Fluffy.ModManager.ExportModList>Export mod list to string</Fluffy.ModManager.ExportModList>
     <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
-    <Fluffy.ModManager.ResetMods>Reset active mods to Core only</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.ResetMods>Reset active modlist to a blank modlist</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.AddModManagerToNewModList>Add Colony Manager to new modlists</Fluffy.ModManager.AddModManagerToNewModList>
+    <Fluffy.ModManager.AddModManagerToNewModListTip>Add Colony Manager to new modlists in addition to the Core mod.</Fluffy.ModManager.AddModManagerToNewModListTip>
 
     <Fluffy.ModManager.InvalidName>{0} is not a valid name. The name may not contain any of these characters: {1}.</Fluffy.ModManager.InvalidName>
     <Fluffy.ModManager.ModListExists>{0} already exists. Please use a different name, or delete or rename the existing modlist.</Fluffy.ModManager.ModListExists>

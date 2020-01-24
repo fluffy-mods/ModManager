@@ -357,5 +357,7 @@ namespace ModManager
 
         // settings
         public static string ModSettings = Key( "ModSettings" ).Translate();
+        public static string AddModManagerToNewModList = Key( "AddModManagerToNewModList" ).Translate();
+        public static string AddModManagerToNewModListTip = Key( "AddModManagerToNewModListTip" ).Translate();
     }
 }

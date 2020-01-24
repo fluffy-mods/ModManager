@@ -50,7 +50,8 @@ namespace ModManager
                 HandleInteractions( canvas, clickAction, doubleClickAction );
         }
 
-        public abstract bool IsCoreMod { get; }
+        public virtual bool IsCoreMod => false;
+        public virtual bool IsModManager => false;
 
         public virtual int MatchesFilter( string filter )
         {

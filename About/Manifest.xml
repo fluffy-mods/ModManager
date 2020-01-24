@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Manifest>
   <version>1.34.875</version>
+  <identifier>fluffy.modmanager</identifier>
   <manifestUri>https://cdn.jsdelivr.net/gh/fluffy-mods/ModManager/About/Manifest.xml</manifestUri>
   <downloadUri>https://github.com/fluffy-mods/ModManager/releases/v1.34.875</downloadUri>
 </Manifest>

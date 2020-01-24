@@ -247,6 +247,17 @@ namespace ModManager
 
         public override bool IsCoreMod => Selected?.IsCoreMod ?? false;
 
+        public override bool IsModManager
+        {
+            get
+            {
+                if ( Selected == null )
+                    return false;
+
+                return Selected.MatchesIdentifier( "fluffy.modmanager" );
+            }
+        }
+
         internal virtual void DoSourceButtons(Rect canvas)
         {
             Rect iconRect = new Rect(

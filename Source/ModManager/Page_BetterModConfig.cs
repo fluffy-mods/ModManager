@@ -260,8 +260,7 @@ namespace ModManager
                 }
                 iconRect.x += IconSize + SmallMargin;
             }
-            if ( ModButtonManager.ActiveButtons.Count >= 2 ||
-                 ( !ModButtonManager.ActiveButtons.FirstOrDefault()?.IsCoreMod ?? true ) )
+            if ( ModButtonManager.ActiveButtons.Count >= 2 || !(ModButtonManager.ActiveButtons.FirstOrDefault()?.IsCoreMod ?? true ) )
                 if ( Utilities.ButtonIcon( ref iconRect, Spinner[0], I18n.ResetMods, mouseOverColor: Color.red ) )
                     ModButtonManager.Reset();
 

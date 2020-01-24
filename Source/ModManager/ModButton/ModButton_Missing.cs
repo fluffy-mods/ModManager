@@ -71,8 +71,6 @@ namespace ModManager
                 TooltipHandler.TipRegion(nameRect, Name);
         }
 
-        public override bool IsCoreMod => false;
-
         internal override void DoModActionButtons( Rect canvas ){}
 
         internal override void DoModDetails( Rect canvas )

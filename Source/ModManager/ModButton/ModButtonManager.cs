@@ -126,8 +126,9 @@ namespace ModManager
             ModsConfig.SetActiveToList(ActiveMods.Select(m => m.Identifier).ToList());
             Notify_RecacheIssues();
         }
-        
+
         public static ModButton_Installed CoreMod => AllButtons.First( b => b.IsCoreMod ) as ModButton_Installed;
+        public static ModButton_Installed ModManagerMod => AllButtons.First( b => b.IsModManager ) as ModButton_Installed;
 
         public static void Notify_RecacheIssues()
         {
@@ -221,14 +222,19 @@ namespace ModManager
             }
         }
 
-        public static void Reset( bool activateCore = true )
+        public static void Reset( bool addDefaultMods = true )
         {
             foreach ( var button in new List<ModButton>( ActiveButtons ) )
                 button.Active = false;
 
-            if ( activateCore )
+            if ( addDefaultMods )
+            {
                 CoreMod.Active = true;
 
+                if ( ModManager.Settings.AddModManagerToNewModLists )
+                    ModManagerMod.Active = true;
+            }
+            
             Notify_ModOrderChanged();
         }
     }

@@ -22,6 +22,7 @@ namespace ModManager
         public static ModManagerSettings Settings => Instance.GetSettings<ModManagerSettings>();
 
         public override string SettingsCategory() => I18n.SettingsCategory;
+
         public override void DoSettingsWindowContents( Rect canvas )
         {
             base.DoSettingsWindowContents( canvas );
@@ -45,6 +46,9 @@ namespace ModManager
             listing.CheckboxLabeled( I18n.TrimVersionStrings, ref Settings.TrimVersionStrings, I18n.TrimVersionStringsTip );
 
             GUI.color = Color.white;
+            listing.Gap();
+            listing.CheckboxLabeled( I18n.AddModManagerToNewModList, ref Settings.AddModManagerToNewModLists,
+                                     I18n.AddModManagerToNewModListTip );
             listing.End();
         }
     }
