@@ -10,7 +10,7 @@ using Verse;
 
 namespace ModManager
 {
-    [HarmonyPatch(typeof( ScribeMetaHeaderUtility ), nameof( ScribeMetaHeaderUtility.TryCreateDialogsForVersionMismatchWarnings ) )]
+//    [HarmonyPatch(typeof( ScribeMetaHeaderUtility ), nameof( ScribeMetaHeaderUtility.TryCreateDialogsForVersionMismatchWarnings ) )]
     public class Patch_ScribeMetaHeaderUtility_TryCreateDialogsForVersionMismatchWarnings
     {
         public static bool Prefix( bool __result, Action confirmedAction, ScribeMetaHeaderUtility.ScribeHeaderMode ___lastMode )

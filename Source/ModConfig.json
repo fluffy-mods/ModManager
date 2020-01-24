@@ -21,8 +21,16 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "",
+    "changenote": "2020-01-24 :: Fluffy :: modlist resets now add modmanager to the list (optionally)'",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": []
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:55a087a5920f84c7ba638116e6a165fb64a9c039",
+            "date": "2020-01-24",
+            "author": "Fluffy",
+            "message": "modlist resets now add modmanager to the list (optionally)'"
+        }
+    ]
 }
