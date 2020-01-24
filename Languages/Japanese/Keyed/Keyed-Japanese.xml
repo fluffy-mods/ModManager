@@ -59,6 +59,8 @@
   <Fluffy.ModManager.ExportModList>MODリストを文字列に書き出す</Fluffy.ModManager.ExportModList>
   <Fluffy.ModManager.LoadModListFromSave>セーブからMODリストを読み込む</Fluffy.ModManager.LoadModListFromSave>
   <Fluffy.ModManager.ResetMods>有効なMODをCoreだけにリセットする</Fluffy.ModManager.ResetMods>
+  <Fluffy.ModManager.AddModManagerToNewModList>新規ModリストにColonyManagerを追加する</Fluffy.ModManager.AddModManagerToNewModList>
+  <Fluffy.ModManager.AddModManagerToNewModListTip>CoreにColonyManagerを新しいModリストに追加します。</Fluffy.ModManager.AddModManagerToNewModListTip>
 
   <Fluffy.ModManager.InvalidName>{0}は正常な名前ではありません。名前には、これらの文字のいずれかを含めることはできません：{1}。</Fluffy.ModManager.InvalidName>
   <Fluffy.ModManager.ModListExists>{0}は既に存在します。別の名前を付けるか、既存のMODリストを削除、または名前を変更してください。</Fluffy.ModManager.ModListExists>
