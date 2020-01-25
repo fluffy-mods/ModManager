@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 35,
-        "build": 876
+        "minor": 36,
+        "build": 877
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -21,23 +21,23 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-01-24 :: Fluffy :: stop suppressing the mod mismatch warning dialog'\n2020-01-24 :: Fluffy :: modlist resets now add modmanager to the list (optionally)'",
+    "changenote": "2020-01-25 :: Fluffy :: fix typo in translation for modlist reset setting'\n2020-01-25 :: Proxyer :: Pull request: Update Japanese Translation for v1.35.876 (#67)'",
     "tags": [],
     "publishedfileid": "1507748539",
     "changenotes": [
         {
             "repo": "ModManager",
-            "hash": "'tformat:dbe16ca8f990b68288d2007b6a6e1626a2149981",
-            "date": "2020-01-24",
+            "hash": "'tformat:3735c3782204b0ec19169d60f45734a0275c07fd",
+            "date": "2020-01-25",
             "author": "Fluffy",
-            "message": "stop suppressing the mod mismatch warning dialog'"
+            "message": "fix typo in translation for modlist reset setting'"
         },
         {
             "repo": "ModManager",
-            "hash": "'tformat:55a087a5920f84c7ba638116e6a165fb64a9c039",
-            "date": "2020-01-24",
-            "author": "Fluffy",
-            "message": "modlist resets now add modmanager to the list (optionally)'"
+            "hash": "'tformat:9244f4900d86ba727fd0be0bd2e829e6e05b9f95",
+            "date": "2020-01-25",
+            "author": "Proxyer",
+            "message": "Pull request: Update Japanese Translation for v1.35.876 (#67)'"
         }
     ]
 }
