@@ -27,7 +27,7 @@ namespace ModManager
             var manifest = Manifest.For( mod );
             if ( manifest != null && !manifest.TargetVersions.NullOrEmpty() )
                 return For( mod, manifest );
-            return For( mod, mod.SupportedVersionsReadOnly );
+            return For( mod, mod.SupportedGameVersionsReadOnly );
         }
 
         public static VersionStatus For( ModMetaData mod, Manifest manifest )

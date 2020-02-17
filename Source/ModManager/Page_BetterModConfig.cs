@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -69,7 +69,7 @@ namespace ModManager
                 if ( value == null )
                     return;
 
-                SoundDefOf.RadioButtonClicked.PlayOneShotOnCamera();
+                SoundDefOf.Tick_Tiny.PlayOneShotOnCamera();
 
                 // clear text field focus
                 GUIUtility.keyboardControl = 0;
@@ -208,7 +208,7 @@ namespace ModManager
             if ( ModButtonManager.AllMods.Any( m => m.Source == ContentSource.SteamWorkshop ) &&
                 Utilities.ButtonIcon( ref iconRect, Steam, I18n.MassUnSubscribe, Status_Cross, Direction8Way.NorthWest, Color.red, direction: UIDirection.RightThenDown ) )
                 Workshop.MassUnsubscribeFloatMenu();
-            if ( ModButtonManager.AllMods.Any( m => m.Source == ContentSource.LocalFolder && !m.IsCoreMod ) &&
+            if ( ModButtonManager.AllMods.Any( m => m.Source == ContentSource.ModsFolder && !m.IsCoreMod ) &&
                  Utilities.ButtonIcon( ref iconRect, Folder, I18n.MassRemoveLocal, Status_Cross, mouseOverColor: Color.red, direction: UIDirection.RightThenDown ) )
                 IO.MassRemoveLocalFloatMenu();
         }
@@ -770,7 +770,7 @@ namespace ModManager
             );
 
             // intercept focus gain events
-            if ( Mouse.IsOver( rect ) && Event.current.type == EventType.mouseUp )
+            if ( Mouse.IsOver( rect ) && Event.current.type == EventType.MouseUp )
             {
                 _focusArea = focus;
             }

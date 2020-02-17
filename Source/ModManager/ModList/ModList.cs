@@ -246,7 +246,7 @@ namespace ModManager
 
         public void Add( ModMetaData mod )
         {
-            _modIds.Add( mod.Identifier );
+            _modIds.Add( mod.PackageId );
             _modNames.Add( mod.Name );
 
             Save( true );
@@ -256,12 +256,12 @@ namespace ModManager
         public void Remove( ModMetaData mod )
         {
             // remove by index because mods might have duplicate names.
-            var index = _modIds.IndexOf( mod.Identifier );
+            var index = _modIds.IndexOf( mod.PackageId );
             if ( index < 0 )
                 return; // not found
             if ( _modNames[index] != mod.Name )
             {
-                Log.Warning( $"Tried to remove mod {mod.Name} (id: {mod.Identifier}) from mod list," +
+                Log.Warning( $"Tried to remove mod {mod.Name} (id: {mod.PackageId}) from mod list," +
                              $" but the mod with that identifier in the ModList is named {_modNames[index]}!" );
                 return;
             }

@@ -25,7 +25,7 @@ namespace ModManager
         public ModAttributes( ModMetaData mod )
         {
             Mod = mod;
-            _identifier = mod.Identifier;
+            _identifier = mod.PackageId;
         }
 
         public string Identifier => _identifier;
@@ -53,7 +53,7 @@ namespace ModManager
             }
             set
             {
-                if ( ulong.TryParse( value.Identifier, out ulong id ) )
+                if ( ulong.TryParse( value.PackageId, out ulong id ) )
                 {
                     _source = new PublishedFileId_t( id );
                     _sourceHash = value.RootDir.GetFolderHash();
@@ -63,7 +63,7 @@ namespace ModManager
                 }
                 else
                 {
-                    Log.Warning( $"Could not parse {value.Identifier} as PublishedFileID" );
+                    Log.Warning( $"Could not parse {value.PackageId} as PublishedFileID" );
                 }
             }
         }

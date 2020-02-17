@@ -47,7 +47,7 @@ namespace ModManager
 
             // add to cache
             lists = ModLists
-                .Where( l => l.Mods.Any( m => m.Id == mod.Identifier ) )
+                .Where( l => l.Mods.Any( m => m.Id == mod.PackageId ) )
                 .ToList();
             _modListsCache.Add( mod, lists );
             return lists;

@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using Steamworks;
 using Verse;
@@ -81,7 +81,7 @@ namespace ModManager
 
                 // deregister item in ModLister
                 var mod = modlister.FirstOrDefault( m => m.Source == ContentSource.SteamWorkshop &&
-                                                         m.Identifier == pfid.ToString() );
+                                                         m.PackageId == pfid.ToString() );
                 modlister.TryRemove(mod);
 
                 // remove button

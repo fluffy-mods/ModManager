@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -11,10 +11,11 @@ namespace ModManager
         public ModManager( ModContentPack content ) : base( content )
         {
             Instance = this;
+            var harmonyInstance = new Harmony( "fluffy.modmanager" );
+
 #if DEBUG
-            HarmonyInstance.DEBUG = true;
+            Harmony.DEBUG = true;
 #endif
-            var harmonyInstance = HarmonyInstance.Create( "fluffy.modmanager" );
             harmonyInstance.PatchAll( Assembly.GetExecutingAssembly() );
         }
 

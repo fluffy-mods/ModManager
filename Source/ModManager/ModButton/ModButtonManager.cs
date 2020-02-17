@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using Verse;
 using System.Linq;
-using Harmony;
 using UnityEngine;
 
 namespace ModManager
@@ -123,7 +122,7 @@ namespace ModManager
 
         public static void Notify_ModOrderChanged()
         {
-            ModsConfig.SetActiveToList(ActiveMods.Select(m => m.Identifier).ToList());
+            ModsConfig.SetActiveToList(ActiveMods.Select(m => m.PackageId).ToList());
             Notify_RecacheIssues();
         }
 
@@ -183,19 +182,19 @@ namespace ModManager
         {
             var button = AllButtons.OfType<ModButton_Installed>()
                 .FirstOrDefault( b => b.Versions.Any( m => m.Source == ContentSource.SteamWorkshop &&
-                                                           m.Identifier == publishedFileId ) );
+                                                           m.PackageId == publishedFileId ) );
             var mod = button?.Versions.First( m => m.Source == ContentSource.SteamWorkshop &&
-                                                  m.Identifier == publishedFileId );
+                                                  m.PackageId == publishedFileId );
             button?.Notify_VersionRemoved( mod );
         }
 
         public static void Notify_DownloadCompleted( ModMetaData mod )
         {
             var downloading = AllButtons.OfType<ModButton_Downloading>()
-                .FirstOrDefault( b => b.Identifier == mod.Identifier );
+                .FirstOrDefault( b => b.Identifier == mod.PackageId );
 
             var missing = AllButtons.OfType<ModButton_Missing>()
-                .FirstOrDefault( b => b.Identifier == mod.Identifier );
+                .FirstOrDefault( b => b.Identifier == mod.PackageId );
 
             // add installed item to MBM
             var installed = ModButton_Installed.For( mod );

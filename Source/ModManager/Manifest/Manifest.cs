@@ -7,8 +7,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Harmony;
-using RimWorld;
 using UnityEngine;
 using Verse;
 using static ModManager.Constants;
@@ -17,24 +15,37 @@ namespace ModManager
 {
     public class Manifest
     {
-        private string version;
+
         private ModMetaData mod;
-        public Version Version { get; private set; }
+
         public List<string> tags = new List<string>();
+
+        [Obsolete( "Multiple target versions have been implemented in RW since 1.0" )]
+        private List<string> targetVersions;
+        [Obsolete( "Multiple target versions have been implemented in RW since 1.0" )]
+        public List<Version> TargetVersions;
+
+        [Obsolete("dependency management has been implemented in RW from 1.1 onwards.")]
         public string identifier;
+
         public List<Dependency> dependencies = new List<Dependency>();
         public List<Dependency> incompatibleWith = new List<Dependency>();
+
+        [Obsolete("dependency management has been implemented in RW from 1.1 onwards.")]
         public List<Dependency> loadBefore = new List<Dependency>();
+        [Obsolete("dependency management has been implemented in RW from 1.1 onwards.")]
         public List<Dependency> loadAfter = new List<Dependency>();
+        
+
         public List<string> suggests = new List<string>();
         public bool showCrossPromotions = true;
+        private string version;
+        public Version Version { get; private set; }
         private OnlineManifest _onlineManifest;
         private string manifestUri;
         internal string downloadUri;
         public Uri ManifestUri;
         public Uri DownloadUri;
-        private List<string> targetVersions;
-        public List<Version> TargetVersions;
 
         public Texture2D Icon
         {
@@ -237,7 +248,7 @@ namespace ModManager
                 var issues = new List<ModIssue>();
                 var order = mod.LoadOrder();
                 bool loadBeforeCore = false;
-                Debug.Log( $"loadorder for: {mod.Name} ({mod.Identifier})" );
+                Debug.Log( $"loadorder for: {mod.Name} ({mod.PackageId})" );
 
                 foreach ( var dep in loadBefore )
                 {

@@ -75,7 +75,7 @@ namespace ModManager
             if (Mouse.IsOver(canvas))
             {
                 Widgets.DrawHighlight(canvas);
-                if (Event.current.type == EventType.mouseDown)
+                if (Event.current.type == EventType.MouseDown)
                 {
                     _focus = this;
                     if (Event.current.clickCount == 2)
@@ -83,7 +83,7 @@ namespace ModManager
                         doubleClickAction?.Invoke();
                     }
                 }
-                if (Event.current.type == EventType.mouseUp && _focus == this)
+                if (Event.current.type == EventType.MouseUp && _focus == this)
                 {
                     clickAction?.Invoke();
                 }

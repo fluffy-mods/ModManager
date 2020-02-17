@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -23,7 +23,7 @@ namespace ModManager
                 VersionControl.BuildFromVersionString( ScribeMetaHeaderUtility.loadedGameVersion ) != VersionControl.BuildFromVersionString( VersionControl.CurrentVersionStringWithRev ) )
             {
                 title = "VersionMismatch".Translate();
-                var loadedVersion = !ScribeMetaHeaderUtility.loadedGameVersion.NullOrEmpty() ? ScribeMetaHeaderUtility.loadedGameVersion : ("(" + "UnknownLower".Translate() + ")");
+                var loadedVersion = !ScribeMetaHeaderUtility.loadedGameVersion.NullOrEmpty() ? ScribeMetaHeaderUtility.loadedGameVersion : ("(" + "UnknownLower".Translate() + ")").ToString();
                 switch ( ___lastMode )
                 {
                     case ScribeMetaHeaderUtility.ScribeHeaderMode.Map:

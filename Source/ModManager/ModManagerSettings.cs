@@ -24,10 +24,10 @@ namespace ModManager
         {
             get
             {
-                if (ModAttributes.ContainsKey(mod.Identifier))
-                    return ModAttributes[mod.Identifier];
+                if (ModAttributes.ContainsKey(mod.PackageId))
+                    return ModAttributes[mod.PackageId];
                 var attributes = new ModAttributes(mod);
-                ModAttributes.Add(mod.Identifier, attributes);
+                ModAttributes.Add(mod.PackageId, attributes);
                 return attributes;
             }
         }

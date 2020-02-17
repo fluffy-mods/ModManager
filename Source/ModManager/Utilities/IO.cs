@@ -16,7 +16,7 @@ namespace ModManager
 {
     public static class IO
     {
-        public static string ModsDir => GenFilePaths.CoreModsFolderPath;
+        public static string ModsDir => GenFilePaths.ModsFolderPath;
 
         public static bool TryCreateLocalCopy( ModMetaData mod, out ModMetaData copy )
         {
@@ -95,13 +95,13 @@ namespace ModManager
         private static void TryCopySettings( ModMetaData source, ModMetaData target, bool deleteOld = false )
         {
             // find any settings files that belong to the source mod
-            var mask = SettingsMask( source.Identifier );
+            var mask = SettingsMask( source.PackageId );
             var settings = Directory.GetFiles( GenFilePaths.ConfigFolderPath )
                 .Where( f => mask.IsMatch( f ) )
                 .Select( f => new
                 {
                     source = f,
-                    target = NewSettingsFilePath( f, mask, target.Identifier )
+                    target = NewSettingsFilePath( f, mask, target.PackageId )
                 } );
 
             // copy settings files, overwriting existing - if any.
@@ -117,7 +117,7 @@ namespace ModManager
 
         public static bool TryRemoveLocalCopy( ModMetaData mod )
         {
-            if ( mod.Source != ContentSource.LocalFolder )
+            if ( mod.Source != ContentSource.ModsFolder )
             {
                 Log.Error( "Can only delete locally installed non-steam workshop mods." );
                 return false;
@@ -257,7 +257,7 @@ namespace ModManager
 
         internal static void DeleteLocalCopies( IEnumerable<ModMetaData> mods )
         {
-            var modList = mods.Select(m => $"{m.Name} ({m.SupportedVersionsReadOnly.Select( v => v.ToString() ).StringJoin( ", " )})").ToLineList(); 
+            var modList = mods.Select(m => $"{m.Name} ({m.SupportedGameVersionsReadOnly.Select( v => v.ToString() ).StringJoin( ", " )})").ToLineList(); 
             var dialog = Dialog_MessageBox.CreateConfirmation(
                 I18n.MassUnSubscribeConfirm(mods.Count(), modList),
                 () =>

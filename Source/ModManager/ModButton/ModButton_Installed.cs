@@ -4,7 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Harmony;
+using HarmonyLib;
 using RimWorld;
 using Steamworks;
 using UnityEngine;
@@ -107,7 +107,7 @@ namespace ModManager
             .ThenBy( mod => mod.Source );
 
         public override string Name => Selected?.Name;
-        public override string Identifier => Selected?.Identifier;
+        public override string Identifier => Selected?.PackageId;
         public override bool MatchesIdentifier( string identifier )
         {
             return Selected?.MatchesIdentifier( identifier ) ?? false;
@@ -237,7 +237,7 @@ namespace ModManager
             Text.Font = GameFont.Small;
 
             // floatmenu
-            if ( Event.current.type == EventType.mouseUp &&
+            if ( Event.current.type == EventType.MouseUp &&
                  Event.current.button == 1 &&
                  Mouse.IsOver( canvas ) &&
                  !Mouse.IsOver( issueRect ) &&
@@ -321,7 +321,7 @@ namespace ModManager
                 if ( ButtonIcon( ref iconRect, Folder, I18n.CreateLocalCopy( Selected.Name ), Status_Plus ) )
                     IO.CreateLocalCopy( Selected );
             }
-            if (Selected.Source == ContentSource.LocalFolder && !Selected.IsCoreMod)
+            if (Selected.Source == ContentSource.ModsFolder && !Selected.IsCoreMod)
             {
                 if ( ButtonIcon( ref iconRect, Folder, I18n.DeleteLocalCopy( Selected.Name ),
                     Status_Cross, Direction8Way.NorthEast, Color.red ) )
@@ -366,7 +366,7 @@ namespace ModManager
                 options.Add( new FloatMenuOption( I18n.CreateLocalCopy( Selected.Name ),
                     () => IO.CreateLocalCopy( Selected ) ) );
             }
-            if (Selected.Source == ContentSource.LocalFolder && !Selected.IsCoreMod)
+            if (Selected.Source == ContentSource.ModsFolder && !Selected.IsCoreMod)
             {
                 options.Add( new FloatMenuOption( I18n.DeleteLocalCopy( Selected.Name ),
                     () => IO.DeleteLocal( Selected ) ) );
@@ -623,7 +623,7 @@ namespace ModManager
 
         public void Notify_VersionUpdated( ModMetaData local )
         {
-            var old = Versions.FirstOrDefault( m => m.Identifier == local.Identifier );
+            var old = Versions.FirstOrDefault( m => m.PackageId == local.PackageId );
             if ( Versions.TryRemove( old ) )
                 Notify_VersionAdded( local, true );
         }

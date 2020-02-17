@@ -50,7 +50,7 @@ namespace ModManager
 
         public static string DifferentVersion( ModMetaData mod )
         {
-            return Key( "DifferentVersion" ).Translate( mod.Name, mod.SupportedVersionsReadOnly.VersionList(),
+            return Key( "DifferentVersion" ).Translate( mod.Name, mod.SupportedGameVersionsReadOnly.VersionList(),
                 VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor );
         }
 

@@ -21,23 +21,8 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-01-25 :: Fluffy :: fix typo in translation for modlist reset setting'\n2020-01-25 :: Proxyer :: Pull request: Update Japanese Translation for v1.35.876 (#67)'",
+    "changenote": "",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:3735c3782204b0ec19169d60f45734a0275c07fd",
-            "date": "2020-01-25",
-            "author": "Fluffy",
-            "message": "fix typo in translation for modlist reset setting'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:9244f4900d86ba727fd0be0bd2e829e6e05b9f95",
-            "date": "2020-01-25",
-            "author": "Proxyer",
-            "message": "Pull request: Update Japanese Translation for v1.35.876 (#67)'"
-        }
-    ]
+    "changenotes": []
 }

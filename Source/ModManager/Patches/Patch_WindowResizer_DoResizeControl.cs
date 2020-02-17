@@ -1,7 +1,7 @@
 ﻿// Patch_WindowResizer_DoResizeControl.cs
 // Copyright Karel Kroeze, 2019-2019
 
-using Harmony;
+using HarmonyLib;
 using UnityEngine;
 using Verse;
 

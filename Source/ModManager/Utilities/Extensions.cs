@@ -31,9 +31,9 @@ namespace ModManager
                 return -1;
             }
             var activeMods = ModsConfig.ActiveModsInLoadOrder;
-            if ( !activeMods.Any( am => am?.Identifier == mod.Identifier ) )
+            if ( !activeMods.Any( am => am?.PackageId == mod.PackageId ) )
                 return -1;
-            return activeMods.FirstIndexOf( am => am.Identifier == mod.Identifier );
+            return activeMods.FirstIndexOf( am => am.PackageId == mod.PackageId );
         }
 
         public static bool HasSettings( this ModMetaData mod )
@@ -53,7 +53,7 @@ namespace ModManager
             if ( _modClassWithSettingsCache.TryGetValue( mod, out var modClass ) )
                 return modClass;
             modClass = LoadedModManager.ModHandles.FirstOrDefault( m => 
-                m.Content.Identifier == mod.Identifier &&
+                m.Content.PackageId == mod.PackageId &&
                 !m.SettingsCategory().NullOrEmpty() );
             _modClassWithSettingsCache.Add( mod, modClass );
             return modClass;
@@ -117,15 +117,15 @@ namespace ModManager
 
         public static bool IsLocalCopy( this ModMetaData mod )
         {
-            return mod.Source == ContentSource.LocalFolder && 
-                mod.Identifier.StartsWith( IO.LocalCopyPrefix );
+            return mod.Source == ContentSource.ModsFolder && 
+                mod.PackageId.StartsWith( IO.LocalCopyPrefix );
         }
 
         public static bool MatchesIdentifier( this ModMetaData mod, string identifier )
         {
             identifier = identifier.StripSpaces();
             return !identifier.NullOrEmpty() &&
-                   ( mod.Identifier.StripSpaces() == identifier
+                   ( mod.PackageId.StripSpaces() == identifier
                      || mod.Name.StripSpaces() == identifier
                      || Manifest.For( mod )?.identifier == identifier );
         }
