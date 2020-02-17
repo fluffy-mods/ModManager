@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 36,
-        "build": 877
+        "minor": 37,
+        "build": 878
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -21,8 +21,16 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "",
+    "changenote": "2020-02-17 :: Fluffy :: initial 1.1 'release''",
     "tags": [],
     "publishedfileid": "1507748539",
-    "changenotes": []
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:1ad6a97d09af2e373e31940ffdb85f1894d2520a",
+            "date": "2020-02-17",
+            "author": "Fluffy",
+            "message": "initial 1.1 'release''"
+        }
+    ]
 }
