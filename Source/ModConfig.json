@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 1,
-        "minor": 37,
-        "build": 878
+        "minor": 38,
+        "build": 879
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -22,9 +22,18 @@
         "Patrick Schmitt": "German translation"
     },
     "changenote": "2020-02-17 :: Fluffy :: initial 1.1 'release''",
-    "tags": [],
+    "tags": [
+        "1.1"
+    ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:8d5df1eada5285b9aa3d42202feade9bdd992739",
+            "date": "2020-02-17",
+            "author": "Fluffy",
+            "message": "'Release 1.37.878 [nolog]''"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:1ad6a97d09af2e373e31940ffdb85f1894d2520a",
@@ -32,5 +41,6 @@
             "author": "Fluffy",
             "message": "initial 1.1 'release''"
         }
-    ]
+    ],
+    "packageId": "fluffy.modmanager"
 }

@@ -25,9 +25,9 @@ namespace ModManager
         public override string Identifier => _identifier.ToString();
         public override int SortOrder => 9;
 
-        public override bool MatchesIdentifier( string identifier )
+        public override bool SamePackageId( string packageId )
         {
-            return Identifier == identifier;
+            return Identifier == packageId;
         }
 
         public override bool Active { get; set; }
@@ -83,7 +83,6 @@ namespace ModManager
 
         internal override void DoModDetails( Rect canvas ){}
 
-        public static List<ModIssue> _issues = new List<ModIssue>();
-        public override IEnumerable<ModIssue> Issues => _issues;
+        public override IEnumerable<Dependency> Issues => Manifest.EmptyRequirementList;
     }
 }

@@ -25,7 +25,7 @@ namespace ModManager
         }
         public abstract string Name { get; }
         public abstract string Identifier { get; }
-        public abstract bool MatchesIdentifier( string identifier );
+        public abstract bool SamePackageId( string packageId );
         public abstract bool Active { get; set; }
         public virtual Color Color { get; set; }
         public virtual void DoModButton( Rect canvas, bool alternate = false, Action clickAction = null,
@@ -58,7 +58,7 @@ namespace ModManager
             if ( filter.NullOrEmpty() )
                 return 1;
             if ( ModManager.Settings.TrimTags && TrimmedName.ToLower().Contains( filter.ToLower() ) ||
-                 !ModManager.Settings.TrimTags && Name.ToLower().Contains( filter.ToLower( ) ) )
+                !ModManager.Settings.TrimTags && Name.ToLower().Contains( filter.ToLower( ) ) )
             {
                 return 1;
             }
@@ -69,7 +69,7 @@ namespace ModManager
         internal abstract void DoModDetails( Rect canvas );
         public virtual int LoadOrder => -1;
         public virtual int SortOrder => -1;
-        public abstract IEnumerable<ModIssue> Issues { get; }
+        public abstract IEnumerable<Dependency> Issues { get; }
         internal virtual void HandleInteractions(Rect canvas, Action clickAction, Action doubleClickAction)
         {
             if (Mouse.IsOver(canvas))
@@ -90,28 +90,19 @@ namespace ModManager
             }
         }
 
-        private int _issueIndex = 0;
         internal virtual void DoModIssuesIcon( Rect canvas )
         {
             if ( !Issues.Any() )
                 return;
 
-            TooltipHandler.TipRegion( canvas, string.Join( "\n", Issues.Select( i => i.tip ).ToArray() ) );
-            var worstIssue = Issues.MaxBy( i => i.severity );
-            GUI.color = worstIssue.Color;
-            GUI.DrawTexture( canvas, worstIssue.Icon );
-            GUI.color = Color.white;
+            GUI.DrawTexture( canvas, Resources.Warning );
+            TooltipHandler.TipRegion( canvas, Issues.Select( i => i.Tooltip ).StringJoin( "\n" ) );
         }
 
-
-        internal virtual void DoOtherIssues(ref Rect canvas)
+        internal virtual void DrawRequirements(ref Rect canvas)
         {
-            var issues = Issues.Where(issue => issue.subject == Subject.LoadOrder || issue.subject == Subject.Other);
-            if (!issues.Any())
-                return;
-
-            Utilities.DoLabel(ref canvas, I18n.Problems);
-            var outRect = new Rect(canvas) { height = issues.Count() * LineHeight + SmallMargin * 2f };
+            Utilities.DoLabel(ref canvas, I18n.Dependencies );
+            var outRect = new Rect(canvas) { height = Issues.Count() * LineHeight + SmallMargin * 2f };
             Widgets.DrawBoxSolid(outRect, Resources.SlightlyDarkBackground);
             canvas.yMin += outRect.height + SmallMargin;
             outRect = outRect.ContractedBy(SmallMargin);
@@ -121,17 +112,16 @@ namespace ModManager
                 outRect.width,
                 LineHeight);
 
-            foreach (var issue in issues)
+            foreach (var issue in Issues)
             {
                 var iconRect = new Rect(issueRect.xMin, issueRect.yMin, SmallIconSize, SmallIconSize)
                     .CenteredOnYIn(issueRect);
                 var labelRect = new Rect(issueRect);
                 labelRect.xMin += SmallIconSize + SmallMargin;
                 GUI.color = issue.Color;
-                GUI.DrawTexture(iconRect, Resources.Warning);
-                Widgets.Label(labelRect, issue.tip);
-                if (issue.resolver != null)
-                    Utilities.ActionButton(issueRect, issue.resolver);
+                GUI.DrawTexture( iconRect, issue.StatusIcon );
+                Widgets.Label( labelRect, issue.Tooltip );
+                Utilities.ActionButton( issueRect, () => issue.OnClicked( null ) ); // todo: reference to window? Why?
                 issueRect.y += LineHeight;
             }
             GUI.color = Color.white;
@@ -143,6 +133,6 @@ namespace ModManager
         }
         internal static Dictionary<string, string> _modNameTruncationCache = new Dictionary<string, string>();
         public virtual void Notify_ResetSelected(){}
-        public virtual void Notify_RecacheIssues(){}
+        public virtual void Notify_RecheckRequirements(){}
     }
 }

@@ -18,7 +18,6 @@ namespace ModManager
 {
     public class ModButton_Installed : ModButton
     {
-        private VersionStatus? _version;
         private ModMetaData _selected;
         private Vector2 _previewScrollPosition = Vector2.zero;
         private Vector2 _descriptionScrollPosition = Vector2.zero;
@@ -65,42 +64,6 @@ namespace ModManager
             //    return 3;
             return 0;
         }
-
-        private List<ModIssue> _issues;
-        public override void Notify_RecacheIssues()
-        {
-            _issues = null;
-            Manifest?.Notify_RecacheIssues();
-        }
-        public override IEnumerable<ModIssue> Issues
-        {
-            get
-            {
-                if ( _issues == null )
-                {
-                    _issues = new List<ModIssue>();
-                    if ( !Selected.GetVersionStatus().match )
-                        _issues.Add( ModIssue.DifferentVersion( this ) );
-
-                    var attributes = ModManager.Settings[Selected];
-                    if ( attributes.Source != null && attributes.SourceHash != attributes.Source.RootDir.GetFolderHash() )
-                    {
-                        _issues.Add( new ModIssue( Severity.Update, Subject.Other, this, Identifier,
-                            I18n.SourceModChanged,
-                            () => Resolvers.ResolveUpdateLocalCopy( attributes.Source, Selected ) ) );
-                    }
-
-                    if ( Manifest != null && Active )
-                        _issues.AddRange( Manifest.Issues );
-
-                    if ( !Active )
-                        _issues = _issues
-                            .Where( i => i.subject == Subject.Other || i.subject == Subject.Version )
-                            .ToList();
-                }
-                return _issues;
-            }
-        }
         
         public IEnumerable<ModMetaData> VersionsOrdered => Versions
             .OrderByDescending( mod => mod.Compatibility() )
@@ -108,9 +71,9 @@ namespace ModManager
 
         public override string Name => Selected?.Name;
         public override string Identifier => Selected?.PackageId;
-        public override bool MatchesIdentifier( string identifier )
+        public override bool SamePackageId( string packageId )
         {
-            return Selected?.MatchesIdentifier( identifier ) ?? false;
+            return Selected?.SamePackageId( packageId ) ?? false;
         }
 
         public override bool Active
@@ -140,7 +103,6 @@ namespace ModManager
                 if ( Selected != null )
                     Selected.Active = false;
                 _selected = value;
-                _version = null;
                 _titleLinkOptions = null;
                 ModButtonManager.Notify_ModOrderChanged();
             }
@@ -254,8 +216,15 @@ namespace ModManager
                 if ( Selected == null )
                     return false;
 
-                return Selected.MatchesIdentifier( "fluffy.modmanager" );
+                return Selected.SamePackageId("Fluffy.ModManager");
             }
+        }
+        public string GetVersionTip( ModMetaData mod )
+        {
+            if ( mod.VersionCompatible )
+                return I18n.CurrentVersion;
+            else
+                return I18n.DifferentVersion( mod );
         }
 
         internal virtual void DoSourceButtons(Rect canvas)
@@ -270,18 +239,17 @@ namespace ModManager
             foreach ( var mod in VersionsOrdered )
             {
                 var icon = mod.Source.GetIcon();
-                var status = mod.GetVersionStatus();
-                GUI.color = status.Color();
+                var color = mod.VersionCompatible ? Color.white : Color.red;
+                GUI.color = color;
                 if ( singleVersion )
                     GUI.DrawTexture( iconRect, icon );
                 else
                 {
-                    if ( Widgets.ButtonImage( iconRect, icon,
-                        mod == Selected ? status.Color() : status.Color().Desaturate() ) )
+                    if ( Widgets.ButtonImage( iconRect, icon, mod == Selected ? color : color.Desaturate() ) )
                         Selected = mod;
                 }
 
-                mod.GetVersionStatus().Tooltip( iconRect );
+                TooltipHandler.TipRegion( iconRect, () => GetVersionTip( mod ), mod.GetHashCode() );
                 iconRect.x -= SmallIconSize + SmallMargin;
             }
         }
@@ -392,13 +360,7 @@ namespace ModManager
                 options.Add( new FloatMenuOption( I18n.ModSettings, () => OpenSettingsFor( Selected ) ) );
             FloatMenu( options );
         }
-
-        internal bool Matches(Dependency dep, bool strict = false )
-        {
-            return base.MatchesFilter( dep.Identifier ) > 0
-                   && dep.MatchesVersion( Selected, strict );
-        }
-
+        
         private List<FloatMenuOption> _titleLinkOptions;
 
         private List<FloatMenuOption> TitleLinkOptions
@@ -495,9 +457,9 @@ namespace ModManager
                 var labelWidth = MaxWidth( I18n.Title, I18n.Author );
                 Text.Font = GameFont.Small;
                 Text.Anchor = TextAnchor.UpperLeft;
-                var titleLabelRect = new Rect(titleRect) { width = labelWidth };
+                labelRect = new Rect(titleRect) { width = labelWidth };
                 GUI.color = Color.grey;
-                Widgets.Label(titleLabelRect, I18n.Title);
+                Widgets.Label( labelRect, I18n.Title);
                 GUI.color = Color.white;
                 titleRect.xMin += labelWidth + SmallMargin;
                 Widgets.Label(titleRect, mod.Name.Truncate(titleRect.width));
@@ -523,51 +485,21 @@ namespace ModManager
                     }
                 }
 
-                // targetVersion
-                labelWidth = MaxWidth(I18n.TargetVersion, I18n.Version);
-                labelRect = new Rect(targetVersionRect) { width = labelWidth };
-                GUI.color = Color.grey;
-                Widgets.Label(labelRect, I18n.TargetVersion);
-                targetVersionRect.xMin += labelWidth + SmallMargin;
-                mod.GetVersionStatus().Label(targetVersionRect);
-                if ( !mod.GetVersionStatus().match )
-                    ActionButton( targetVersionRect,
-                        () => Resolvers.ResolveFindMod( mod.Name.StripSpaces(), this, replace: true ) );
+                // target version(s)
+                Text.Anchor = TextAnchor.MiddleRight;
+                Widgets.Label( targetVersionRect, mod.SupportedVersionsReadOnly.VersionList() );
+                TooltipHandler.TipRegion( targetVersionRect, I18n.TargetVersions( mod.SupportedVersionsReadOnly.VersionList() ) );
 
-                // version
-                labelRect = new Rect(versionRect) { width = labelWidth };
-                GUI.color = Color.grey;
-                Widgets.Label(labelRect, I18n.Version);
-                versionRect.xMin += labelWidth + SmallMargin;
-                var versionIconRect = new Rect( versionRect.xMax - SmallIconSize, 0f, SmallIconSize, SmallIconSize )
-                    .CenteredOnYIn( versionRect );
-
-                GUI.color = Manifest.Color;
-                GUI.DrawTexture( versionIconRect, Manifest.Icon );
-                GUI.color = Color.white;
-                TooltipHandler.TipRegion(versionRect, Manifest.Tip);
-                if (Manifest.Resolver != null)
-                {
-                    ActionButton(versionRect, Manifest.Resolver);
-                }
-
-                if ( Manifest.Version != null )
+                // mod version
+                if ( Manifest.HasVersion )
                 {
                     Widgets.Label( versionRect, Manifest.Version.ToString() );
                 }
-                else
-                {
-                    GUI.color = Color.grey;
-                    Widgets.Label( versionRect, I18n.Unknown );
-                    GUI.color = Color.white;
-                }
-            }
 
-            if ( Active )
-            {
-                Manifest?.DoDependencyDetails( ref canvas );
-                DoOtherIssues( ref canvas );
+                Text.Anchor = TextAnchor.UpperLeft;
             }
+            
+            DrawRequirements( ref canvas );
 
             CrossPromotionManager.HandleCrossPromotions( ref canvas, Selected );
 
@@ -588,11 +520,16 @@ namespace ModManager
             Widgets.EndScrollView();
         }
 
-
+        public override IEnumerable<Dependency> Issues => Manifest?.MissingRequirements ?? Manifest.EmptyRequirementList;
 
         public override void Notify_ResetSelected()
         {
             Selected = null;
+        }
+
+        public override void Notify_RecheckRequirements()
+        {
+            Manifest?.Notify_RecheckRequirements();
         }
 
         public void Notify_VersionAdded( ModMetaData version, bool active = false )

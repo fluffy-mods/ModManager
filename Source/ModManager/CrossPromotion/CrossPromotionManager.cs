@@ -137,7 +137,7 @@ namespace ModManager
                         var options = Utilities.NewOptions;
                         options.Add( new FloatMenuOption( I18n.WorkshopPage( promotion.Name ),
                             () => SteamUtility.OpenWorkshopPage( promotion.FileId ) ) );
-                        options.Add( Resolvers.SubscribeOption( promotion.Name, promotion.FileId.ToString() ) );
+//                        options.Add( Resolvers.SubscribeOption( promotion.Name, promotion.FileId.ToString() ) );
                         Utilities.FloatMenu( options );
                     }
                     else

@@ -70,18 +70,7 @@ namespace ModManager
         {
             return versions.Select( v => $"{v.Major}.{v.Minor}" ).StringJoin( ", " );
         }
-
-        private static Dictionary<ModMetaData, VersionStatus> _versionStatusCache = new Dictionary<ModMetaData, VersionStatus>();
-        public static VersionStatus GetVersionStatus( this ModMetaData mod )
-        {
-            VersionStatus status;
-            if ( _versionStatusCache.TryGetValue( mod, out status ) )
-                return status;
-            status = VersionStatus.For( mod );
-            _versionStatusCache.Add( mod, status );
-            return status;
-        }
-
+        
         public static Color Desaturate( this Color color, float saturation = 0.5f )
         {
             float h, s, v;
@@ -120,16 +109,7 @@ namespace ModManager
             return mod.Source == ContentSource.ModsFolder && 
                 mod.PackageId.StartsWith( IO.LocalCopyPrefix );
         }
-
-        public static bool MatchesIdentifier( this ModMetaData mod, string identifier )
-        {
-            identifier = identifier.StripSpaces();
-            return !identifier.NullOrEmpty() &&
-                   ( mod.PackageId.StripSpaces() == identifier
-                     || mod.Name.StripSpaces() == identifier
-                     || Manifest.For( mod )?.identifier == identifier );
-        }
-
+        
         public static string StripSpaces( this string str )
         {
             if ( str == null ) return null;  // garbage in, garbage out.

@@ -31,7 +31,9 @@ namespace ModManager
 
         public static void Unsubscribe( IEnumerable<ModMetaData> mods )
         {
-            var modList = mods.Select( m => $"{m.Name} ({m.SupportedGameVersionsReadOnly.Select( v => v.ToString() ).StringJoin( ", ")})" ).ToLineList();
+            var modList = mods
+                         .Select( m => $"{m.Name} ({m.SupportedVersionsReadOnly.Select( v => v.ToString() ).StringJoin( ", " )})" )
+                         .ToLineList();
             var dialog = Dialog_MessageBox.CreateConfirmation( 
                 I18n.MassUnSubscribeConfirm( mods.Count(), modList ),
                 () =>

@@ -98,7 +98,8 @@ namespace ModManager
             _focusArea == FocusArea.Active && ModButtonManager.ActiveButtons.Contains( Selected ) ||
             _focusArea == FocusArea.Available && ModButtonManager.AvailableButtons.Contains( Selected );
         
-        public override void ExtraOnGUI()
+        public override void 
+            ExtraOnGUI()
         {
             base.ExtraOnGUI();
             DraggingManager.OnGUI();
@@ -115,7 +116,7 @@ namespace ModManager
             for( int i = 0; i < mods.Count; i++ )
             {
                 var mod = mods[i];
-                msg += $"{i}: {mod?.Name ?? "NULL"}\t({mod?.RootDir.Name ?? "NULL"})\n";
+                msg += $"{i}: {mod?.Name ?? "NULL"}\t({mod?.PackageId ?? "NULL"})\n";
             }
             Widgets.Label( new Rect( 0, 0, Screen.width, Screen.height ), msg );
         }
@@ -239,24 +240,23 @@ namespace ModManager
             if ( ModButtonManager.AnyIssue )
             {
                 var groupedIssues = ModButtonManager.Issues
-                    .Where( i => i.severity > Severity.Notice )
-                    .GroupBy( i => i.button )
-                    .OrderByDescending( bi => bi.Max( i => i.severity ) )
-                    .ThenBy( bi => bi.Key.Name );
+                    .GroupBy( i => i.parent )
+                    .OrderByDescending( bi => bi.Max( i => i.Severity ) )
+                    .ThenBy( bi => bi.Key.Mod.Name );
                 foreach ( var buttonIssues in groupedIssues)
                 {
-                    var tip = $"<b>{buttonIssues.Key.Name}</b>";
-                    tip += buttonIssues.Select( i => $"\n<color={ColorUtility.ToHtmlStringRGBA(i.Color)}>{i.tip}</color>" ).StringJoin( "" );
+                    var tip = $"<b>{buttonIssues.Key.Mod.Name}</b>";
+                    tip += buttonIssues.Select( i => $"\n<color={ColorUtility.ToHtmlStringRGBA(i.Color)}>{i.Tooltip}</color>" ).StringJoin( "" );
                     TooltipHandler.TipRegion(iconRect, tip);
                 }
 
-                var worstIssue = ModButtonManager.Issues.MaxBy(i => i.severity);
+                var worstIssue = ModButtonManager.Issues.MaxBy(i => i.Severity);
                 var color = worstIssue.Color;
 
-                if ( Widgets.ButtonImage(iconRect, worstIssue.Icon, color ) )
+                if ( Widgets.ButtonImage(iconRect, worstIssue.StatusIcon, color ) )
                 {
                     _issueIndex = Utilities.Modulo( _issueIndex, groupedIssues.Count() );
-                    Selected = groupedIssues.ElementAt( _issueIndex++ ).Key;
+                    Selected = ModButton_Installed.For( groupedIssues.ElementAt( _issueIndex++ ).Key.Mod );
                 }
                 iconRect.x += IconSize + SmallMargin;
             }
@@ -894,15 +894,15 @@ namespace ModManager
 
         public void ConfirmModIssues()
         {
-            var issues = ModButtonManager.Issues.Where( i => i.severity > Severity.Notice );
+            var issues = ModButtonManager.Issues.Where( i => i.Severity > 1 );
             string issueList = "";
-            foreach ( var buttonIssues in issues.GroupBy( i => i.button )
-                .OrderByDescending( bi => bi.Max( i => i.severity ) )
-                .ThenBy( bi => bi.Key.Name  ) )
+            foreach ( var buttonIssues in issues.GroupBy( i => i.parent )
+                .OrderByDescending( bi => bi.Max( i => i.Severity ) )
+                .ThenBy( bi => bi.Key.Mod.Name  ) )
             {
-                issueList += $"{buttonIssues.Key.Name}\n";
-                foreach ( var issue in buttonIssues.Where( i => i.severity > Severity.Notice ).OrderByDescending( i => i.severity ) )
-                    issueList += $"<i><color=#{ColorUtility.ToHtmlStringRGBA(issue.Color)}>{issue.tip}</color></i>\n";
+                issueList += $"{buttonIssues.Key.Mod.Name}\n";
+                foreach ( var issue in buttonIssues.Where( i => i.Severity > 1 ).OrderByDescending( i => i.Severity ) )
+                    issueList += $"<i><color=#{ColorUtility.ToHtmlStringRGBA(issue.Color)}>{issue.Tooltip}</color></i>\n";
                 issueList += "\n";
             }
 

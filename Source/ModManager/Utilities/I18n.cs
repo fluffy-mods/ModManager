@@ -1,11 +1,12 @@
 ﻿// I18n.cs
 // Copyright Karel Kroeze, 2018-2018
 
-using System;
 using System.Collections.Generic;
 using RimWorld;
+using Steamworks;
 using Verse;
 using static ModManager.Utilities;
+using Version = System.Version;
 
 namespace ModManager
 {
@@ -30,8 +31,7 @@ namespace ModManager
         public static string Preview = Key( "Preview" ).Translate();
         public static string Title = "Title".Translate(); // core
         public static string Author = "Author".Translate(); // core
-        public static string TargetVersion = Key( "TargetVersion" ).Translate();
-        public static string Version = Key( "Version" ).Translate();
+        public static string TargetVersions( string versions ) => Key( "TargetVersions" ).Translate( versions );
         public static string Unknown = Key( "Unknown" ).Translate();
         public static string ModsChanged = "ModsChanged".Translate();
         public static string Later = Key( "Later" ).Translate();
@@ -50,7 +50,7 @@ namespace ModManager
 
         public static string DifferentVersion( ModMetaData mod )
         {
-            return Key( "DifferentVersion" ).Translate( mod.Name, mod.SupportedGameVersionsReadOnly.VersionList(),
+            return Key( "DifferentVersion" ).Translate( mod.Name, mod.SupportedVersionsReadOnly.VersionList(),
                 VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor );
         }
 
@@ -58,7 +58,7 @@ namespace ModManager
 
         public static string UpdateAvailable( Version current, Version latest )
         {
-            return Key( "UpdateAvailable" ).Translate( current, latest );
+            return Key( "UpdateAvailable" ).Translate( current.ToString(), latest.ToString() );
         }
 
         public static string MissingMod( string name, string id )
@@ -68,24 +68,27 @@ namespace ModManager
 
         public static string CoreNotFirst = Key( "CoreNotFirst" ).Translate();
 
-        public static string DependencyNotFound( string id )
+        public static string DependencyNotFound( string name )
         {
-            return Key( "DependencyNotFound" ).Translate( id );
+            return Key( "DependencyNotFound" ).Translate( name );
         }
 
-        public static string DependencyUnknownVersion( Dependency dep, ModButton_Installed tgt )
+        public static string DependencyUnknownVersion( ModMetaData tgt )
         {
-            return Key( "DependencyUnknownVersion" ).Translate( dep, tgt.Name );
+            return Key( "DependencyUnknownVersion" ).Translate( tgt.Name );
         }
 
-        public static string DependencyWrongVersion( Dependency dep, ModButton_Installed tgt )
+        public static string DependencyWrongVersion( ModMetaData tgt, VersionedDependency depend )
         {
-            return Key( "DependencyWrongVersion" ).Translate( dep, tgt.Manifest.Version );
+            return Key( "DependencyWrongVersion" ).Translate( tgt.Name, depend.version.ToString(), tgt.GetManifest().Version.ToString() );
         }
 
-        public static string DependencyMet( ModButton_Installed tgt )
+        public static string DependencyNotActive( ModMetaData tgt ) =>
+            Key( "DependencyNotActive" ).Translate( tgt.Name );
+
+        public static string DependencyMet( ModMetaData tgt )
         {
-            return Key( "DependencyMet" ).Translate( tgt.Name, tgt.Manifest.Version );
+            return Key( "DependencyMet" ).Translate( tgt.Name );
         }
 
         public static string IncompatibleMod( string mod, string identifier )
@@ -93,10 +96,15 @@ namespace ModManager
             return Key( "IncompatibleMod" ).Translate( identifier );
         }
 
+        public static string LoadedBefore( string name ) => Key( "LoadedBefore" ).Translate( name );
+
         public static string ShouldBeLoadedBefore( string identifier )
         {
             return Key( "ShouldBeLoadedBefore" ).Translate( identifier );
         }
+
+        public static string LoadedAfter( string name ) => Key("LoadedAfter").Translate( name );
+
 
         public static string ShouldBeLoadedAfter( string identifier )
         {
@@ -251,16 +259,16 @@ namespace ModManager
 
         public static string ActivateMod( ModMetaData mod )
         {
-            return Key( "ActivateMod" ).Translate( mod.Name, Manifest.For( mod )?.Version,
+            return Key( "ActivateMod" ).Translate( mod.Name, Manifest.For( mod )?.Version.ToString(),
                 Key( "ContentSource", mod.Source.ToString() ).Translate() );
         }
 
-        public static string NoMatchingModInstalled(string name, Version desired, Dependency.EqualityOperator op )
-        {
-            return Key( "NoMatchingModInstalled_Version" )
-                .Translate( name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor, desired,
-                    Dependency.OperatorToString( op ) );
-        }
+//        public static string NoMatchingModInstalled(string name, Version desired, Dependency.EqualityOperator op )
+//        {
+//            return Key( "NoMatchingModInstalled_Version" )
+//                .Translate( name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor, desired,
+//                    Dependency.OperatorToString( op ) );
+//        }
         public static string NoMatchingModInstalled(string name)
         {
             return Key("NoMatchingModInstalled").Translate(name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor);
@@ -322,7 +330,7 @@ namespace ModManager
         }
         public static string NewVersionAvailable( Version current, Version latest )
         {
-            return Key( "NewVersionAvailable" ).Translate( current, latest );
+            return Key( "NewVersionAvailable" ).Translate( current.ToString(), latest.ToString() );
         }
         public static string LatestVersion = Key( "LatestVersion" ).Translate();
 

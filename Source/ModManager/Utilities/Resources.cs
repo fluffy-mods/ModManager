@@ -27,7 +27,8 @@ namespace ModManager
             Status_Cross,
             Status_Down,
             Status_Up,
-            Status_Plus;
+            Status_Plus,
+            Check;
 
         public static Texture2D[] Spinner;
 
@@ -41,13 +42,14 @@ namespace ModManager
             Steam = ContentFinder<Texture2D>.Get( "UI/Icons/ContentSources/SteamWorkshop" );
             Ludeon = ContentFinder<Texture2D>.Get( "UI/Icons/Ludeon" );
             File = ContentFinder<Texture2D>.Get( "UI/Icons/File" );
-            Folder = ContentFinder<Texture2D>.Get( "UI/Icons/ContentSources/LocalFolder" );
+            Folder = ContentFinder<Texture2D>.Get( "UI/Icons/ContentSources/ModsFolder" );
             Warning = ContentFinder<Texture2D>.Get( "UI/Icons/Warning" );
             Question = ContentFinder<Texture2D>.Get( "UI/Icons/Question" );
             // the joys of case-unaware file systems - I now don't know which version is out there...
             Palette = ContentFinder<Texture2D>.Get( "UI/Icons/Palette", false );
             if ( Palette == null ) Palette = ContentFinder<Texture2D>.Get( "UI/Icons/palette" );
             Gear = ContentFinder<Texture2D>.Get( "UI/Icons/Gear" );
+            Check = ContentFinder<Texture2D>.Get( "UI/Widgets/CheckOn" );
 
             Status_Cross = ContentFinder<Texture2D>.Get("UI/Icons/Status/Cross");
             Status_Down = ContentFinder<Texture2D>.Get("UI/Icons/Status/Down");

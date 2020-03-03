@@ -3,6 +3,7 @@
   <name>Mod Manager</name>
   <author>Fluffy</author>
   <url>https://ludeon.com/forums/index.php?topic=16120</url>
+  <packageId>fluffy.modmanager</packageId>
   <description>Managing mods should be easy!
 
 &lt;size=24&gt;Features&lt;/size&gt;
@@ -94,10 +95,21 @@ Torq:    Russian translation
 Patrick Schmitt:    German translation
 
 &lt;size=24&gt;Version&lt;/size&gt;
-This is version 1.37.878, for RimWorld 1.1.2547.
+This is version 1.38.879, for RimWorld 1.1.2562.
 
 </description>
   <supportedVersions>
     <li>1.1</li>
   </supportedVersions>
+  <modDependencies>
+    <li>
+      <packageId>brrainz.harmony</packageId>
+      <displayName>Harmony</displayName>
+      <steamWorkshopUrl>steam://url/CommunityFilePage/2009463077</steamWorkshopUrl>
+      <downloadUrl>https://github.com/pardeike/HarmonyRimWorld/releases/latest</downloadUrl>
+    </li>
+  </modDependencies>
+  <loadAfter>
+    <li>brrainz.harmony</li>
+  </loadAfter>
 </ModMetaData>

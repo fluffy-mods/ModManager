@@ -1,7 +1,6 @@
 ﻿// ModButtonManager.cs
 // Copyright Karel Kroeze, 2018-2018
 
-using System;
 using System.Collections.Generic;
 using Verse;
 using System.Linq;
@@ -50,7 +49,7 @@ namespace ModManager
             .Select( b => b.Selected );
 
         public static IEnumerable<ModMetaData> AvailableMods => AllMods.Where( m => !m.Active );
-        public static bool AnyIssue => Issues.Any( i => i.severity > Severity.Notice );
+        public static bool AnyIssue => Issues.Any( i => i.Severity > 1 );
 
         public static void TryAdd( ModButton button, bool notify_orderChanged = true )
         {
@@ -132,12 +131,8 @@ namespace ModManager
         public static void Notify_RecacheIssues()
         {
             foreach (var button in AllButtons)
-                button.Notify_RecacheIssues();
+                button.Notify_RecheckRequirements();
             _issues = ActiveButtons.SelectMany( b => b.Issues ).ToList();
-
-            if ( !CoreMod.Active )
-                // core not loaded
-                _issues.Add( ModIssue.CoreNotFirst( CoreMod ) );
         }
 
         public static void Reorder( int from, int to )
@@ -210,8 +205,8 @@ namespace ModManager
             Page_BetterModConfig.Instance.Notify_ModsListChanged();
         }
 
-        private static List<ModIssue> _issues;
-        public static List<ModIssue> Issues
+        private static List<Dependency> _issues;
+        public static List<Dependency> Issues
         {
             get
             {

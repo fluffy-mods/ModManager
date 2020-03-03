@@ -25,7 +25,7 @@ namespace ModManager
         public override string Identifier => _identifier;
 
 
-        public override bool MatchesIdentifier( string identifier )
+        public override bool SamePackageId( string packageId )
         {
             return false;
         }
@@ -75,23 +75,21 @@ namespace ModManager
 
         internal override void DoModDetails( Rect canvas )
         {
-            DoOtherIssues( ref canvas );
+            DrawRequirements( ref canvas );
         }
 
-        public List<ModIssue> _issues;
-
-        public override IEnumerable<ModIssue> Issues
-        {
-            get
-            {
-                if ( _issues == null )
-                {
-                    _issues = new List<ModIssue>();
-                    _issues.Add( ModIssue.MissingMod( this ) );
-                }
-                return _issues;
-            }
-        }
+        public override IEnumerable<Dependency> Issues => Manifest.EmptyRequirementList;
+//        {
+//            get
+//            {
+//                if ( _issues == null )
+//                {
+//                    _issues = new List<ModRequirement>();
+//                    _issues.Add( ModRequirement.MissingMod( this ) );
+//                }
+//                return _issues;
+//            }
+//        }
 
         public override void Notify_ResetSelected(){}
     }
