@@ -2,9 +2,9 @@
     "name": "Mod Manager",
     "version": {
         "alpha": 18,
-        "major": 1,
-        "minor": 38,
-        "build": 879
+        "major": 2,
+        "minor": 0,
+        "build": 880
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -21,12 +21,19 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-02-17 :: Fluffy :: initial 1.1 'release''",
+    "changenote": "2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
     "tags": [
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:bbacf68488277af940a1a89a78c30c2c54d562b4",
+            "date": "2020-03-03",
+            "author": "Fluffy",
+            "message": "initial 1.1 release'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:8d5df1eada5285b9aa3d42202feade9bdd992739",
