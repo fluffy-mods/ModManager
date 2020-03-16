@@ -520,7 +520,14 @@ namespace ModManager
             Widgets.EndScrollView();
         }
 
-        public override IEnumerable<Dependency> Issues => Manifest?.MissingRequirements ?? Manifest.EmptyRequirementList;
+        public override IEnumerable<Dependency> Issues
+        {
+            get
+            {
+                return Manifest?.MissingRequirements ?? Manifest.EmptyRequirementList;
+            }
+        }
+            
 
         public override void Notify_ResetSelected()
         {

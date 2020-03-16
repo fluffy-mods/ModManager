@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using HarmonyLib;
+using RecursiveProfiler;
 using RimWorld;
 using UnityEngine;
 using Verse;
@@ -17,6 +18,12 @@ namespace ModManager
             Harmony.DEBUG = true;
 #endif
             harmonyInstance.PatchAll( Assembly.GetExecutingAssembly() );
+
+#if DEBUG
+            LongEventHandler.ExecuteWhenFinished( () => new Profiler(
+                                                      typeof( Page_BetterModConfig ).GetMethod(
+                                                          nameof( Page_BetterModConfig.DoWindowContents ) ) ) );
+#endif
         }
 
         public static ModManager Instance { get; private set; }

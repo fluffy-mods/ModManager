@@ -41,6 +41,7 @@
     </Reference>
     <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Assembly-CSharp">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
@@ -123,6 +124,10 @@
     <ProjectReference Include="..\..\..\..\TOOLS\FluffyUI\FluffyUI\FluffyUI.csproj">
       <Project>{3e905175-2540-4c06-b4c6-f955836c0451}</Project>
       <Name>FluffyUI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\TOOLS\RecursiveProfiler\RecursiveProfiler.csproj">
+      <Project>{10b8b327-5068-4eaa-8128-8b8dec498dad}</Project>
+      <Name>RecursiveProfiler</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

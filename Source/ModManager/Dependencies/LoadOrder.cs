@@ -22,7 +22,7 @@ namespace ModManager
         {
         }
 
-        public override bool IsApplicable => target != null && target.Active;
+        public override bool IsApplicable => ( parent?.Mod?.Active ?? false ) && ( target?.Active ?? false );
 
         public override Color Color => IsSatisfied ? Color.white : Color.red;
 
@@ -50,17 +50,14 @@ namespace ModManager
                     : I18n.ShouldBeLoadedBefore( target.Name );
             }
         }
-            
-        public override bool IsSatisfied
+
+        public override bool CheckSatisfied()
         {
-            get
-            {
-                var mods  = ModsConfig.ActiveModsInLoadOrder.ToList();
-                var other = ModLister.GetModWithIdentifier( packageId );
-                return mods.Contains( other )
-                    && mods.Contains(parent.Mod) 
-                    && mods.IndexOf( other ) > mods.IndexOf( parent.Mod );
-            }
+            var mods  = ModsConfig.ActiveModsInLoadOrder.ToList();
+            var other = ModLister.GetModWithIdentifier( packageId );
+            return mods.Contains( other )
+                && mods.Contains( parent.Mod )
+                && mods.IndexOf( other ) > mods.IndexOf( parent.Mod );
         }
 
         public override string RequirementTypeLabel => "loadOrder".Translate();
@@ -113,16 +110,13 @@ namespace ModManager
             }
         }
 
-        public override bool IsSatisfied
+        public override bool CheckSatisfied()
         {
-            get
-            {
-                var mods  = ModsConfig.ActiveModsInLoadOrder.ToList();
-                var other = ModLister.GetModWithIdentifier( packageId );
-                return mods.Contains( other )
-                    && mods.Contains( parent.Mod )
-                    && mods.IndexOf( other ) < mods.IndexOf( parent.Mod );
-            }
+            var mods  = ModsConfig.ActiveModsInLoadOrder.ToList();
+            var other = ModLister.GetModWithIdentifier( packageId );
+            return mods.Contains( other )
+                && mods.Contains( parent.Mod )
+                && mods.IndexOf( other ) < mods.IndexOf( parent.Mod );
         }
 
         public override string RequirementTypeLabel => "loadOrder".Translate();

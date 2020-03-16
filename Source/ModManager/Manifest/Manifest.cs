@@ -200,16 +200,13 @@ namespace ModManager
                                  .Concat( LoadBefore )
                                  .Concat( LoadAfter )
                                  .Concat( VersionCheck )
-                                 .Where( d => d != null );
+                                 .Where( d => d != null && d.IsApplicable );
 
             foreach ( var requirement in allRequirements )
             {
                 requirement.parent = this;
                 requirement.target = ModLister.GetModWithIdentifier( requirement.packageId, true );
             }
-
-//            foreach ( var requirement in allRequirements )
-//                Debug.Log( $"{Mod.PackageId} :: {requirement.GetType()} :: {requirement.packageId} :: {requirement.parent?.Mod.PackageId ?? "MOD NOT FOUND"}");
 
             _missingRequirements = allRequirements.Where( req => !req.IsSatisfied ).ToList();
             _metRequirements = allRequirements.Where( req => req.IsSatisfied ).ToList();

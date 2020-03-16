@@ -12,7 +12,7 @@ namespace ModManager
 {
     public class VersionCheck: Dependency
     {
-        private Version version;
+        private Version remoteVersion;
         private bool completed = false;
         private bool downloading;
         private Exception exception;
@@ -23,7 +23,7 @@ namespace ModManager
             FetchManifest( parent.manifestUri );
         }
 
-        public override int Severity => version == null || version <= parent.Version ? 0 : 1;
+        public override int Severity => remoteVersion == null || remoteVersion <= parent.Version ? 0 : 1;
 
         public override string Tooltip
         {
@@ -35,7 +35,7 @@ namespace ModManager
                     return I18n.DownloadPending;
                 if ( IsSatisfied )
                     return I18n.LatestVersion;
-                return I18n.NewVersionAvailable( parent.Version, version ?? new Version() );
+                return I18n.NewVersionAvailable( parent.Version, remoteVersion ?? new Version() );
             }
         }
 
@@ -79,7 +79,7 @@ namespace ModManager
                 downloading = true;
                 var      raw            = await client.DownloadStringTaskAsync( manifestUri );
                 Manifest onlineManifest = DirectXmlLoader.ItemFromXmlString<Manifest>( raw, manifestUri );
-                version = onlineManifest.Version;
+                remoteVersion = onlineManifest.Version;
             }
             catch ( WebException ex )
             {
@@ -104,7 +104,13 @@ namespace ModManager
             // do stuff.
         }
 
-        public override bool IsSatisfied => completed && !downloading && exception == null && version <= parent.Version;
+        public override bool IsSatisfied => completed && !downloading && exception == null && remoteVersion <= parent.Version;
+
+        public override bool CheckSatisfied()
+        {
+            // do nothing.
+            return true;
+        }
 
         public override string RequirementTypeLabel => "VersionCheck".Translate();
     }

@@ -8,7 +8,7 @@ using Verse;
 
 namespace ModManager
 {
-    public class Dependency : ModDependency
+    public abstract class Dependency : ModDependency
     {
         public Manifest parent;
         public ModMetaData target;
@@ -18,6 +18,24 @@ namespace ModManager
         public virtual Color Color => Color.white;
 
         public virtual bool ShouldShow => !IsSatisfied;
+
+        protected bool? satisfied;
+
+        public virtual void Notify_Recheck()
+        {
+            satisfied = null;
+        }
+
+        public override bool IsSatisfied {
+            get
+            {
+                if ( !satisfied.HasValue )
+                    satisfied = CheckSatisfied();
+                return satisfied.Value;
+            }
+        }
+
+        public abstract bool CheckSatisfied();
 
         public virtual bool IsApplicable => true;
 

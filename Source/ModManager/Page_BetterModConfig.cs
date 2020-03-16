@@ -170,7 +170,6 @@ namespace ModManager
 
             // if ( !DraggingManager.Dragging && !( Mouse.IsOver( availableRect ) || Mouse.IsOver( activeRect ) ) )
             //     GUI.DragWindow();
-
             DoAvailableMods(availableRect);
             DoActiveMods(activeRect);
             DoDetails( detailRect );

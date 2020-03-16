@@ -51,14 +51,14 @@ namespace ModManager
         public static IEnumerable<ModMetaData> AvailableMods => AllMods.Where( m => !m.Active );
         public static bool AnyIssue => Issues.Any( i => i.Severity > 1 );
 
-        public static void TryAdd( ModButton button, bool notify_orderChanged = true )
+        public static void TryAdd( ModButton button, bool notifyOrderChanged = true )
         {
             _allButtons.TryAdd( button );
             if ( button.Active )
             {
                 _activeButtons.TryAdd( button );
                 _availableButtons.TryRemove( button );
-                if (notify_orderChanged)
+                if (notifyOrderChanged)
                     Notify_ModOrderChanged();
             }
             else

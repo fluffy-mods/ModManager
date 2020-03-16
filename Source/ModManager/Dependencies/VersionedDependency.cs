@@ -50,7 +50,7 @@ namespace ModManager
 
         public bool IsAvailable => target != null;
         public bool IsActive => target?.Active ?? false;
-
+        public override bool IsApplicable => ( parent?.Mod?.Active ?? false ) && ( target?.Active ?? false );
         public bool IsInRange
         {
             get
@@ -60,7 +60,7 @@ namespace ModManager
             }
         }
 
-        public override bool IsSatisfied => IsAvailable && IsActive && IsInRange;
+        public override bool CheckSatisfied() => IsAvailable && IsActive && IsInRange;
 
         public override string RequirementTypeLabel => "dependsOn".Translate();
 
