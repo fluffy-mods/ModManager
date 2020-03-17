@@ -151,9 +151,9 @@
     <Fluffy.ModManager.TrimVersionStringsTip>If enabled, Mod Manager will attempt to remove version string from mod names (e.g. 1.0, 0.19)\n\nWARNING: This may remove too much information!</Fluffy.ModManager.TrimVersionStringsTip>
     
     <Fluffy.ModManager.ShowAllRequirements>Show all mod requirements</Fluffy.ModManager.ShowAllRequirements>
-    <Fluffy.ModManager.ShowAllRequirements.Tip>Show all met and unmet mod requirements in the mod details</Fluffy.ModManager.ShowAllRequirements.Tip>
+    <Fluffy.ModManager.ShowAllRequirementsTip>Show all met and unmet mod requirements in the mod details</Fluffy.ModManager.ShowAllRequirementsTip>
     <Fluffy.ModManager.AddModManagerToNewModList>Add Mod Manager to new modlists</Fluffy.ModManager.AddModManagerToNewModList>
     <Fluffy.ModManager.AddModManagerToNewModListTip>Add Mod Manager to new modlists in addition to the Core mod.</Fluffy.ModManager.AddModManagerToNewModListTip>
-    <Fluffy.ModManager.AddExpansionsToNewModList>Add official expansions to new modlists</Fluffy.Expansions.AddModManagerToNewModList>
+    <Fluffy.ModManager.AddExpansionsToNewModList>Add official expansions to new modlists</Fluffy.ModManager.AddExpansionsToNewModList>
     <Fluffy.ModManager.AddExpansionsToNewModListTip>Add official expansions to new modlists in addition to the Core mod.</Fluffy.ModManager.AddExpansionsToNewModListTip>
 </LanguageData>
