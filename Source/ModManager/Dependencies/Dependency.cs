@@ -17,8 +17,6 @@ namespace ModManager
 
         public virtual Color Color => Color.white;
 
-        public virtual bool ShouldShow => !IsSatisfied;
-
         protected bool? satisfied;
 
         public virtual void Notify_Recheck()

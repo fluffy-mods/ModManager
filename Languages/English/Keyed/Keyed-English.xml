@@ -60,8 +60,6 @@
     <Fluffy.ModManager.ExportModList>Export mod list to string</Fluffy.ModManager.ExportModList>
     <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
     <Fluffy.ModManager.ResetMods>Reset active modlist to a blank modlist</Fluffy.ModManager.ResetMods>
-    <Fluffy.ModManager.AddModManagerToNewModList>Add Mod Manager to new modlists</Fluffy.ModManager.AddModManagerToNewModList>
-    <Fluffy.ModManager.AddModManagerToNewModListTip>Add Mod Manager to new modlists in addition to the Core mod.</Fluffy.ModManager.AddModManagerToNewModListTip>
 
     <Fluffy.ModManager.InvalidName>{0} is not a valid name. The name may not contain any of these characters: {1}.</Fluffy.ModManager.InvalidName>
     <Fluffy.ModManager.ModListExists>{0} already exists. Please use a different name, or delete or rename the existing modlist.</Fluffy.ModManager.ModListExists>
@@ -151,5 +149,11 @@
     <Fluffy.ModManager.TrimTagsTip>If enabled, author and version tags will be removed from mod names (e.g. [KV], [B19])</Fluffy.ModManager.TrimTagsTip>
     <Fluffy.ModManager.TrimVersionStrings>Remove version numbers from mod names</Fluffy.ModManager.TrimVersionStrings>
     <Fluffy.ModManager.TrimVersionStringsTip>If enabled, Mod Manager will attempt to remove version string from mod names (e.g. 1.0, 0.19)\n\nWARNING: This may remove too much information!</Fluffy.ModManager.TrimVersionStringsTip>
-    <!--  -->
+    
+    <Fluffy.ModManager.ShowAllRequirements>Show all mod requirements</Fluffy.ModManager.ShowAllRequirements>
+    <Fluffy.ModManager.ShowAllRequirements.Tip>Show all met and unmet mod requirements in the mod details</Fluffy.ModManager.ShowAllRequirements.Tip>
+    <Fluffy.ModManager.AddModManagerToNewModList>Add Mod Manager to new modlists</Fluffy.ModManager.AddModManagerToNewModList>
+    <Fluffy.ModManager.AddModManagerToNewModListTip>Add Mod Manager to new modlists in addition to the Core mod.</Fluffy.ModManager.AddModManagerToNewModListTip>
+    <Fluffy.ModManager.AddExpansionsToNewModList>Add official expansions to new modlists</Fluffy.Expansions.AddModManagerToNewModList>
+    <Fluffy.ModManager.AddExpansionsToNewModListTip>Add official expansions to new modlists in addition to the Core mod.</Fluffy.ModManager.AddExpansionsToNewModListTip>
 </LanguageData>

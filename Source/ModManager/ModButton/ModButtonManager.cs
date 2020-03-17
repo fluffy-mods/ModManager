@@ -1,9 +1,11 @@
 ﻿// ModButtonManager.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System.Collections;
 using System.Collections.Generic;
 using Verse;
 using System.Linq;
+using RimWorld;
 using UnityEngine;
 
 namespace ModManager
@@ -127,6 +129,7 @@ namespace ModManager
 
         public static ModButton_Installed CoreMod => AllButtons.First( b => b.IsCoreMod ) as ModButton_Installed;
         public static ModButton_Installed ModManagerMod => AllButtons.First( b => b.IsModManager ) as ModButton_Installed;
+        public static IEnumerable<ModButton_Installed> Expansions => AllButtons.Where( b => b.IsExpansion ).Cast<ModButton_Installed>();
 
         public static void Notify_RecacheIssues()
         {
@@ -225,10 +228,25 @@ namespace ModManager
             {
                 CoreMod.Active = true;
 
-                if ( ModManager.Settings.AddModManagerToNewModLists )
+                if ( ModManager.Settings.AddExpansionsToNewModLists )
+                    foreach ( var expansion in Expansions )
+                        expansion.Active = true;
+
+                if ( ModManager.Settings.AddModManagerToNewModLists && ModManagerMod != null )
+                {
                     ModManagerMod.Active = true;
+
+                    // also try to activate harmony
+                    var harmony = ModLister.GetModWithIdentifier( "brrainz.harmony" );
+                    if ( harmony != null )
+                    {
+                        var harmonyButton = ModButton_Installed.For( harmony );
+                        harmonyButton.Active = true;
+                        Insert( harmonyButton, 0 );
+                    }
+                }
             }
-            
+
             Notify_ModOrderChanged();
         }
     }

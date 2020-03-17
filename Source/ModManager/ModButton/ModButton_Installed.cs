@@ -206,6 +206,8 @@ namespace ModManager
 
         public override bool IsCoreMod => Selected?.IsCoreMod ?? false;
 
+        public override bool IsExpansion => !IsCoreMod && ( Selected?.Official ?? false );
+
         public override bool IsModManager
         {
             get
@@ -514,14 +516,8 @@ namespace ModManager
             Widgets.EndScrollView();
         }
 
-        public override IEnumerable<Dependency> Issues
-        {
-            get
-            {
-                return Manifest?.Requirements.Where( r => r.ShouldShow ) ?? Manifest.EmptyRequirementList;
-            }
-        }
-          
+        public override IEnumerable<Dependency> Issues => Manifest?.Requirements ?? Manifest.EmptyRequirementList;
+
         public override void Notify_ResetSelected()
         {
             Selected = null;

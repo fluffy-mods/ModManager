@@ -21,13 +21,20 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-03-17 :: Fluffy :: improve issue display'\n2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
+    "changenote": "2020-03-17 :: Fluffy :: fix cross promotion preview image loading'\n2020-03-17 :: Fluffy :: improve issue display'\n2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:66d84ebbb1b9cf45ac858190caf4d14c68fbc946",
+            "date": "2020-03-17",
+            "author": "Fluffy",
+            "message": "fix cross promotion preview image loading'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:93885b51758a03b50dc752a96167a71e85dd913b",

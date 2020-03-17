@@ -1,7 +1,6 @@
 ﻿using System.Reflection;
 using HarmonyLib;
 using RecursiveProfiler;
-using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -37,6 +36,8 @@ namespace ModManager
             var listing = new Listing_Standard();
             listing.ColumnWidth = canvas.width;
             listing.Begin( canvas );
+            listing.CheckboxLabeled( I18n.ShowAllRequirements, ref Settings.ShowSatisfiedRequirements,
+                                     I18n.ShowAllRequirementsTip );
             listing.CheckboxLabeled( I18n.ShowPromotions, ref Settings.ShowPromotions, I18n.ShowPromotionsTip );
 
             if ( !Settings.ShowPromotions )
@@ -57,6 +58,8 @@ namespace ModManager
             listing.Gap();
             listing.CheckboxLabeled( I18n.AddModManagerToNewModList, ref Settings.AddModManagerToNewModLists,
                                      I18n.AddModManagerToNewModListTip );
+            listing.CheckboxLabeled( I18n.AddExpansionsToNewModList, ref Settings.AddExpansionsToNewModLists,
+                                     I18n.AddExpansionsToNewModListTip);
             listing.End();
         }
     }

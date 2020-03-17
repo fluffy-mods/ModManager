@@ -235,21 +235,23 @@ namespace ModManager
                     Workshop.Subscribe( ModButtonManager.ActiveButtons.OfType<ModButton_Missing>()
                         .Where( b => b.Identifier.IsSteamWorkshopIdentifier() ).Select( b => b.Identifier ) );
 
-            iconRect.x = canvas.xMin + SmallMargin; 
-            if ( ModButtonManager.AnyIssue )
+            iconRect.x = canvas.xMin + SmallMargin;
+            var severityThreshold = 2;
+            var relevantIssues = ModButtonManager.Issues.Where( i => i.Severity >= severityThreshold );
+            if ( relevantIssues.Any() )
             {
-                var groupedIssues = ModButtonManager.Issues
+                var groupedIssues = relevantIssues
                     .GroupBy( i => i.parent )
                     .OrderByDescending( bi => bi.Max( i => i.Severity ) )
                     .ThenBy( bi => bi.Key.Mod.Name );
                 foreach ( var buttonIssues in groupedIssues)
                 {
-                    var tip = $"<b>{buttonIssues.Key.Mod.Name}</b>";
-                    tip += buttonIssues.Select( i => $"\n<color={ColorUtility.ToHtmlStringRGBA(i.Color)}>{i.Tooltip}</color>" ).StringJoin( "" );
+                    var tip = $"<b>{buttonIssues.Key.Mod.Name}</b>\n";
+                    tip += buttonIssues.Select( i => i.Tooltip.Colorize( i.Color ) ).StringJoin( "\n" );
                     TooltipHandler.TipRegion(iconRect, tip);
                 }
 
-                var worstIssue = ModButtonManager.Issues.MaxBy(i => i.Severity);
+                var worstIssue = relevantIssues.MaxBy(i => i.Severity);
                 var color = worstIssue.Color;
 
                 if ( Widgets.ButtonImage(iconRect, worstIssue.StatusIcon, color ) )
@@ -901,7 +903,7 @@ namespace ModManager
             {
                 issueList += $"{buttonIssues.Key.Mod.Name}\n";
                 foreach ( var issue in buttonIssues.Where( i => i.Severity > 1 ).OrderByDescending( i => i.Severity ) )
-                    issueList += $"<i><color=#{ColorUtility.ToHtmlStringRGBA(issue.Color)}>{issue.Tooltip}</color></i>\n";
+                    issueList += issue.Tooltip.CapitalizeFirst().Colorize( issue.Color ) + "\n";
                 issueList += "\n";
             }
 

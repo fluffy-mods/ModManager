@@ -9,7 +9,6 @@ using RimWorld;
 using SemVer;
 using UnityEngine;
 using Verse;
-using Version = System.Version;
 
 namespace ModManager
 {

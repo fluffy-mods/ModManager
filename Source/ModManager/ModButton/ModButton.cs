@@ -51,6 +51,7 @@ namespace ModManager
         }
 
         public virtual bool IsCoreMod => false;
+        public virtual bool IsExpansion => false;
         public virtual bool IsModManager => false;
 
         public virtual int MatchesFilter( string filter )
@@ -92,23 +93,27 @@ namespace ModManager
 
         internal virtual void DoModIssuesIcon( Rect canvas )
         {
-            if ( !Issues.Any() )
+            var severityThreshold = 2;
+            var relevantIssues = Issues.Where( i => i.Severity >= severityThreshold );
+            if ( !relevantIssues.Any() )
                 return;
 
             var worst = Issues.MaxBy( d => d.Severity );
             GUI.color = worst.Color;
             GUI.DrawTexture( canvas, Resources.Warning );
             GUI.color = Color.white;
-            TooltipHandler.TipRegion( canvas, Issues.Select( i => i.Tooltip ).StringJoin( "\n" ) );
+            TooltipHandler.TipRegion( canvas, relevantIssues.OrderBy( i => i.Severity ).Select( i => i.Tooltip.Colorize( i.Color ) ).StringJoin( "\n" ) );
         }
 
         internal virtual void DrawRequirements(ref Rect canvas)
         {
-            if ( !Issues.Any() )
+            var severityThreshold = ModManager.Settings.ShowSatisfiedRequirements ? 0 : 1;
+            var relevantIssues = Issues.Where( i => i.Severity >= severityThreshold );
+            if ( !Issues.Any( i => i.Severity >= severityThreshold ) )
                 return;
 
             Utilities.DoLabel(ref canvas, I18n.Dependencies );
-            var outRect = new Rect(canvas) { height = Issues.Count() * LineHeight + SmallMargin * 2f };
+            var outRect = new Rect(canvas) { height = relevantIssues.Count() * LineHeight + SmallMargin * 2f };
             Widgets.DrawBoxSolid(outRect, Resources.SlightlyDarkBackground);
             canvas.yMin += outRect.height + SmallMargin;
             outRect = outRect.ContractedBy(SmallMargin);
@@ -118,7 +123,7 @@ namespace ModManager
                 outRect.width,
                 LineHeight);
 
-            foreach (var issue in Issues)
+            foreach (var issue in relevantIssues )
             {
                 var iconRect = new Rect(issueRect.xMin, issueRect.yMin, SmallIconSize, SmallIconSize)
                     .CenteredOnYIn(issueRect);

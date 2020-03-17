@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using UnityEngine;
 using Verse;
 
 namespace ModManager
@@ -19,6 +17,8 @@ namespace ModManager
         public bool TrimTags = true;
         public bool TrimVersionStrings = false;
         public bool AddModManagerToNewModLists = true;
+        public bool ShowSatisfiedRequirements = false;
+        public bool AddExpansionsToNewModLists = true;
 
         public ModAttributes this[ModMetaData mod]
         {
@@ -68,6 +68,8 @@ namespace ModManager
             Scribe_Values.Look( ref TrimTags, "TrimTags", true );
             Scribe_Values.Look( ref TrimVersionStrings, "TrimVersionStrings", false );
             Scribe_Values.Look( ref AddModManagerToNewModLists, "AddModManagerToNewModLists", true );
+            Scribe_Values.Look( ref AddExpansionsToNewModLists, "AddExpansionsToNewModLists", true );
+            Scribe_Values.Look( ref ShowSatisfiedRequirements, "ShowSatisfiedRequirements", false );
 
             if ( Scribe.mode == LoadSaveMode.PostLoadInit )
             {

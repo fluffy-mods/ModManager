@@ -38,8 +38,6 @@ namespace ModManager
             }
         }
 
-        public override bool ShouldShow => Severity > 0;
-
         public override bool IsApplicable => true;
 
         public override string Tooltip

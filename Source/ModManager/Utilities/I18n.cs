@@ -25,22 +25,22 @@ namespace ModManager
         }
 
         public static string AvailableMods = Key( "AvailableMods" ).Translate();
-        public static string ActiveMods = Key( "ActiveMods" ).Translate();
+        public static string ActiveMods    = Key( "ActiveMods" ).Translate();
         public static string NoModSelected = Key( "NoModSelected" ).Translate();
 
         public static string Preview = Key( "Preview" ).Translate();
-        public static string Title = "Title".Translate(); // core
-        public static string Author = "Author".Translate(); // core
+        public static string Title   = "Title".Translate();  // core
+        public static string Author  = "Author".Translate(); // core
         public static string TargetVersions( string versions ) => Key( "TargetVersions" ).Translate( versions );
-        public static string Unknown = Key( "Unknown" ).Translate();
-        public static string ModsChanged = "ModsChanged".Translate();
-        public static string Later = Key( "Later" ).Translate();
+        public static string Unknown      = Key( "Unknown" ).Translate();
+        public static string ModsChanged  = "ModsChanged".Translate();
+        public static string Later        = Key( "Later" ).Translate();
         public static string Dependencies = Key( "Dependencies" ).Translate();
-        public static string Details = Key( "Details" ).Translate();
+        public static string Details      = Key( "Details" ).Translate();
 
-        public static string OK = "OK".Translate(); // core
-        public static string Yes = "Yes".Translate(); // core
-        public static string No = "No".Translate(); // core
+        public static string OK     = "OK".Translate();            // core
+        public static string Yes    = "Yes".Translate();           // core
+        public static string No     = "No".Translate();            // core
         public static string Cancel = Key( "Cancel" ).Translate(); // you'd think this was in core...
 
         public static string InvalidVersion( List<Version> versions )
@@ -51,10 +51,11 @@ namespace ModManager
         public static string DifferentVersion( ModMetaData mod )
         {
             return Key( "DifferentVersion" ).Translate( mod.Name, mod.SupportedVersionsReadOnly.VersionList(),
-                VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor );
+                                                        VersionControl.CurrentMajor + "." +
+                                                        VersionControl.CurrentMinor );
         }
 
-        public static string CurrentVersion = Key("CurrentVersion").Translate();
+        public static string CurrentVersion = Key( "CurrentVersion" ).Translate();
 
         public static string UpdateAvailable( Version current, Version latest )
         {
@@ -80,7 +81,8 @@ namespace ModManager
 
         public static string DependencyWrongVersion( ModMetaData tgt, VersionedDependency depend )
         {
-            return Key( "DependencyWrongVersion" ).Translate( tgt.Name, depend.version.ToString(), tgt.GetManifest().Version.ToString() );
+            return Key( "DependencyWrongVersion" )
+               .Translate( tgt.Name, depend.version.ToString(), tgt.GetManifest().Version.ToString() );
         }
 
         public static string DependencyNotActive( ModMetaData tgt ) =>
@@ -103,7 +105,7 @@ namespace ModManager
             return Key( "ShouldBeLoadedBefore" ).Translate( identifier );
         }
 
-        public static string LoadedAfter( string name ) => Key("LoadedAfter").Translate( name );
+        public static string LoadedAfter( string name ) => Key( "LoadedAfter" ).Translate( name );
 
 
         public static string ShouldBeLoadedAfter( string identifier )
@@ -111,35 +113,37 @@ namespace ModManager
             return Key( "ShouldBeLoadedAfter" ).Translate( identifier );
         }
 
-        public static string GetMoreMods_SteamWorkshop = Key( "GetMoreMods_SteamWorkshop" ).Translate();
-        public static string GetMoreMods_LudeonForums = Key( "GetMoreMods_LudeonForums" ).Translate();
-        public static string UnSubscribe = Key( "SteamWorkshop.UnSubscribe" ).Translate();
+        public static string GetMoreMods_SteamWorkshop  = Key( "GetMoreMods_SteamWorkshop" ).Translate();
+        public static string GetMoreMods_LudeonForums   = Key( "GetMoreMods_LudeonForums" ).Translate();
+        public static string UnSubscribe                = Key( "SteamWorkshop.UnSubscribe" ).Translate();
         public static string ConfirmSteamWorkshopUpload = "ConfirmSteamWorkshopUpload".Translate(); // core
-        public static string ConfirmContentAuthor = "ConfirmContentAuthor".Translate(); // core
-        public static string RebuildingModList_Key = Key( "RebuildingModList" );
-        public static string ExportModList = Key( "ExportModList" ).Translate();
-        public static string ImportModList = Key( "ImportModList" ).Translate();
-        public static string LoadModList = Key( "LoadModList" ).Translate();
-        public static string AddModList = Key( "AddModList" ).Translate();
-        public static string SaveModList = Key( "SaveModList" ).Translate();
-        public static string DeleteModList = Key( "DeleteModList" ).Translate();
-        public static string RenameModList = Key( "RenameModList" ).Translate();
+        public static string ConfirmContentAuthor       = "ConfirmContentAuthor".Translate();       // core
+        public static string RebuildingModList_Key      = Key( "RebuildingModList" );
+        public static string ExportModList              = Key( "ExportModList" ).Translate();
+        public static string ImportModList              = Key( "ImportModList" ).Translate();
+        public static string LoadModList                = Key( "LoadModList" ).Translate();
+        public static string AddModList                 = Key( "AddModList" ).Translate();
+        public static string SaveModList                = Key( "SaveModList" ).Translate();
+        public static string DeleteModList              = Key( "DeleteModList" ).Translate();
+        public static string RenameModList              = Key( "RenameModList" ).Translate();
 
         // mass unsub
-        public static string MassUnSubscribe = Key( "SteamWorkshop.MassUnSubscribe" ).Translate();
-        public static string MassUnSubscribeAll = Key( "SteamWorkshop.MassUnSubscribeAll" ).Translate();
+        public static string MassUnSubscribe         = Key( "SteamWorkshop.MassUnSubscribe" ).Translate();
+        public static string MassUnSubscribeAll      = Key( "SteamWorkshop.MassUnSubscribeAll" ).Translate();
         public static string MassUnSubscribeInactive = Key( "SteamWorkshop.MassUnSubscribeInactive" ).Translate();
         public static string MassUnSubscribeOutdated = Key( "SteamWorkshop.MassUnSubscribeOutdated" ).Translate();
-        public static string MassUnSubscribeConfirm( int count, string list ) => 
+
+        public static string MassUnSubscribeConfirm( int count, string list ) =>
             Key( "SteamWorkshop.MassUnSubscribeConfirm" ).Translate( count, list );
 
         // mass remove local
-        public static string MassRemoveLocal = Key( "IO.MassRemoveLocal" ).Translate();
-        public static string MassRemoveLocalAll = Key( "IO.MassRemoveLocalAll" ).Translate();
-        public static string MassRemoveLocalInactive = Key("IO.MassRemoveLocalInactive").Translate();
-        public static string MassRemoveLocalOutdated = Key("IO.MassRemoveLocalOutdated").Translate();
-        public static string MassRemoveLocalConfirm( int count, string list ) => 
-            Key("IO.MassRemoveLocalConfirm").Translate( count, list );
+        public static string MassRemoveLocal         = Key( "IO.MassRemoveLocal" ).Translate();
+        public static string MassRemoveLocalAll      = Key( "IO.MassRemoveLocalAll" ).Translate();
+        public static string MassRemoveLocalInactive = Key( "IO.MassRemoveLocalInactive" ).Translate();
+        public static string MassRemoveLocalOutdated = Key( "IO.MassRemoveLocalOutdated" ).Translate();
+
+        public static string MassRemoveLocalConfirm( int count, string list ) =>
+            Key( "IO.MassRemoveLocalConfirm" ).Translate( count, list );
 
         public static string CreateLocalCopies = Key( "CreateLocalCopies" ).Translate();
 
@@ -169,6 +173,7 @@ namespace ModManager
         }
 
         public static string RemovingLocal( string name ) => Key( "RemovingLocal" ).Translate( name );
+
         public static string DeleteLocalCopy( string name )
         {
             return Key( "DeleteLocalCopy" ).Translate( name );
@@ -199,14 +204,18 @@ namespace ModManager
 
         // Modlists
         public static string ModListsTip = Key( "ModListsTip" ).Translate();
+
         public static string InvalidName( string name, string invalidChars )
         {
             return Key( "InvalidName" ).Translate( name, invalidChars );
         }
-        public static string ConfirmOverwriteModList( string name ) => Key( "ConfirmOverwriteModList" ).Translate( name );
-        public static string NameTooShort = Key( "NameTooShort" ).Translate();
+
+        public static string ConfirmOverwriteModList( string name ) =>
+            Key( "ConfirmOverwriteModList" ).Translate( name );
+
+        public static string NameTooShort        = Key( "NameTooShort" ).Translate();
         public static string LoadModListFromSave = Key( "LoadModListFromSave" ).Translate();
-        public static string Problems = Key( "Problems" ).Translate();
+        public static string Problems            = Key( "Problems" ).Translate();
 
         public static string ModListRenamed( string oldName, string newName )
         {
@@ -223,24 +232,31 @@ namespace ModManager
             return Key( "ModListLoaded" ).Translate( name );
         }
 
-        public static string ModListDeleted(string name)
+        public static string ModListDeleted( string name )
         {
             return Key( "ModListDeleted" ).Translate( name );
         }
 
-        public static string ModListCopiedToClipboard( string name ) => Key( "ModListCopiedToClipboard" ).Translate( name);
-        public static string ModListCreatedFromClipboard( string name ) => Key( "ModListCreatedFromClipboard" ).Translate( name );
-        public static string FailedToCreateModListFromClipboard( string reason ) => Key( "FailedToCreateModListFromClipboard" ).Translate( reason );
-        public static string AddToModList = Key( "AddToModList" ).Translate();
+        public static string ModListCopiedToClipboard( string name ) =>
+            Key( "ModListCopiedToClipboard" ).Translate( name );
+
+        public static string ModListCreatedFromClipboard( string name ) =>
+            Key( "ModListCreatedFromClipboard" ).Translate( name );
+
+        public static string FailedToCreateModListFromClipboard( string reason ) =>
+            Key( "FailedToCreateModListFromClipboard" ).Translate( reason );
+
+        public static string AddToModList      = Key( "AddToModList" ).Translate();
         public static string RemoveFromModList = Key( "RemoveFromModList" ).Translate();
 
-        public static string AddToModListX(string name)
+        public static string AddToModListX( string name )
         {
-            return Key("AddToModListX").Translate(name);
+            return Key( "AddToModListX" ).Translate( name );
         }
-        public static string RemoveFromModListX(string name)
+
+        public static string RemoveFromModListX( string name )
         {
-            return Key("RemoveFromModListX").Translate(name);
+            return Key( "RemoveFromModListX" ).Translate( name );
         }
 
 
@@ -260,7 +276,7 @@ namespace ModManager
         public static string ActivateMod( ModMetaData mod )
         {
             return Key( "ActivateMod" ).Translate( mod.Name, Manifest.For( mod )?.Version.ToString(),
-                Key( "ContentSource", mod.Source.ToString() ).Translate() );
+                                                   Key( "ContentSource", mod.Source.ToString() ).Translate() );
         }
 
 //        public static string NoMatchingModInstalled(string name, Version desired, Dependency.EqualityOperator op )
@@ -269,9 +285,10 @@ namespace ModManager
 //                .Translate( name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor, desired,
 //                    Dependency.OperatorToString( op ) );
 //        }
-        public static string NoMatchingModInstalled(string name)
+        public static string NoMatchingModInstalled( string name )
         {
-            return Key("NoMatchingModInstalled").Translate(name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor);
+            return Key( "NoMatchingModInstalled" )
+               .Translate( name, VersionControl.CurrentMajor + "." + VersionControl.CurrentMinor );
         }
 
         public static string DeactivateMod( ModButton_Installed mod )
@@ -279,12 +296,12 @@ namespace ModManager
             return Key( "DeactivateMod" ).Translate( TrimModName( mod.Name ) );
         }
 
-        public static string MoveBefore(ModButton_Installed from, ModButton_Installed to)
+        public static string MoveBefore( ModButton_Installed from, ModButton_Installed to )
         {
-            return Key("MoveBefore").Translate(TrimModName(from.Name), TrimModName(to.Name));
+            return Key( "MoveBefore" ).Translate( TrimModName( from.Name ), TrimModName( to.Name ) );
         }
 
-        public static string MoveAfter(ModButton_Installed from, ModButton_Installed to)
+        public static string MoveAfter( ModButton_Installed from, ModButton_Installed to )
         {
             return Key( "MoveAfter" ).Translate( TrimModName( from.Name ), TrimModName( to.Name ) );
         }
@@ -293,11 +310,11 @@ namespace ModManager
 
         public static string UpdateLocalCopy( string name )
         {
-            return Key("UpdateLocalCopy").Translate( name );
+            return Key( "UpdateLocalCopy" ).Translate( name );
         }
 
         public static string ChangeColour = Key( "ChangeColour" ).Translate();
-        public static string ChangeModColour( string name ) => Key( "ChangeModColour" ).Translate( name );
+        public static string ChangeModColour( string name )    => Key( "ChangeModColour" ).Translate( name );
         public static string ChangeButtonColour( string name ) => Key( "ChangeButtonColour" ).Translate( name );
         public static string ChangeListColour = Key( "ChangeListColour" ).Translate();
 
@@ -313,59 +330,67 @@ namespace ModManager
 
         public static string DialogConfirmIssues( string description )
         {
-            return Key( "DialogConfirmIssues" ).Translate( description );
+            return Key( "DialogConfirmIssues" ).Translate( description ).Resolve();
         }
 
-        public static string DialogConfirmIssuesTitle(int count )
+        public static string DialogConfirmIssuesTitle( int count )
         {
-            return Key("DialogConfirmIssuesTitle").Translate(count);
+            return Key( "DialogConfirmIssuesTitle" ).Translate( count );
         }
 
         // manifest
         public static string ManifestNotImplemented = Key( "ManifestNotImplemented" ).Translate();
         public static string FetchingOnlineManifest = Key( "FetchingOnlineManifest" ).Translate();
-        public static string FetchingOnlineManifestFailed( string error)
+
+        public static string FetchingOnlineManifestFailed( string error )
         {
             return Key( "FetchingOnlineManifestFailed" ).Translate( error );
         }
+
         public static string NewVersionAvailable( Version current, Version latest )
         {
             return Key( "NewVersionAvailable" ).Translate( current.ToString(), latest.ToString() );
         }
+
         public static string LatestVersion = Key( "LatestVersion" ).Translate();
 
         // workshop
         public static string DownloadPending = Key( "DownloadPending" ).Translate();
-        public static string ModInstalled( string name)
+
+        public static string ModInstalled( string name )
         {
             return Key( "ModInstalled" ).Translate( name );
         }
+
         public static string Subscribe( string name )
         {
             return Key( "Subscribe" ).Translate( name );
         }
 
         public static string SubscribeAllMissing = Key( "SubscribeAllMissing" ).Translate();
-        public static string ResetMods = Key( "ResetMods" ).Translate();
+        public static string ResetMods           = Key( "ResetMods" ).Translate();
 
         // promotions
         public static string PromotionsFor( string author ) => Key( "PromotionsFor" ).Translate( author );
 
         // options
-        public static string SettingsCategory => Key( "SettingsCategory" ).Translate();
-        public static string ShowPromotions => Key( "ShowPromotions" ).Translate();
-        public static string ShowPromotionsTip => Key( "ShowPromotionsTip" ).Translate();
-        public static string ShowPromotions_NotSubscribed => Key("ShowPromotions_NotSubscribed").Translate();
-        public static string ShowPromotions_NotActive => Key("ShowPromotions_NotActive").Translate();
-        public static string TrimTags => Key("TrimTags").Translate();
-        public static string TrimTagsTip => Key("TrimTagsTip").Translate();
-        public static string TrimVersionStrings => Key("TrimVersionStrings").Translate();
-        public static string TrimVersionStringsTip => Key("TrimVersionStringsTip").Translate();
-
+        public static string SettingsCategory             => Key( "SettingsCategory" ).Translate();
+        public static string ShowPromotions               => Key( "ShowPromotions" ).Translate();
+        public static string ShowPromotionsTip            => Key( "ShowPromotionsTip" ).Translate();
+        public static string ShowPromotions_NotSubscribed => Key( "ShowPromotions_NotSubscribed" ).Translate();
+        public static string ShowPromotions_NotActive     => Key( "ShowPromotions_NotActive" ).Translate();
+        public static string TrimTags                     => Key( "TrimTags" ).Translate();
+        public static string TrimTagsTip                  => Key( "TrimTagsTip" ).Translate();
+        public static string TrimVersionStrings           => Key( "TrimVersionStrings" ).Translate();
+        public static string TrimVersionStringsTip        => Key( "TrimVersionStringsTip" ).Translate();
 
         // settings
-        public static string ModSettings = Key( "ModSettings" ).Translate();
-        public static string AddModManagerToNewModList = Key( "AddModManagerToNewModList" ).Translate();
+        public static string ModSettings                  = Key( "ModSettings" ).Translate();
+        public static string ShowAllRequirements = Key( "ShowAllRequirements" ).Translate();
+        public static string ShowAllRequirementsTip = Key("ShowAllRequirementsTip").Translate();
+        public static string AddModManagerToNewModList    = Key( "AddModManagerToNewModList" ).Translate();
         public static string AddModManagerToNewModListTip = Key( "AddModManagerToNewModListTip" ).Translate();
+        public static string AddExpansionsToNewModList    = Key( "AddExpansionsToNewModList" ).Translate();
+        public static string AddExpansionsToNewModListTip = Key( "AddExpansionsToNewModListTip" ).Translate();
     }
 }
