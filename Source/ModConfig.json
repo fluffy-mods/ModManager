@@ -21,13 +21,20 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
+    "changenote": "2020-03-17 :: Fluffy :: improve issue display'\n2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:93885b51758a03b50dc752a96167a71e85dd913b",
+            "date": "2020-03-17",
+            "author": "Fluffy",
+            "message": "improve issue display'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:c671c4ce0f5da187f828f323a1dc903d91df1f92",

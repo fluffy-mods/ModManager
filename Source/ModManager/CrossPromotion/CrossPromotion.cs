@@ -51,7 +51,7 @@ namespace ModManager
             try
             {
                 Preview = new Texture2D( 1, 1, TextureFormat.ARGB32, false );
-                Preview.LoadRawTextureData( File.ReadAllBytes( PreviewPath ) );
+                Preview.LoadImage( File.ReadAllBytes( PreviewPath ) );
             }
             catch ( Exception ex )
             {

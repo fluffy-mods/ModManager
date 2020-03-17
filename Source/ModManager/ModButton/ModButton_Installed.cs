@@ -521,8 +521,7 @@ namespace ModManager
                 return Manifest?.Requirements.Where( r => r.ShouldShow ) ?? Manifest.EmptyRequirementList;
             }
         }
-            
-
+          
         public override void Notify_ResetSelected()
         {
             Selected = null;
