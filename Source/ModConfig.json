@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 2,
-        "minor": 1,
-        "build": 881
+        "minor": 2,
+        "build": 882
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -23,10 +23,18 @@
     },
     "changenote": "2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
     "tags": [
+        "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:cbe4e1fa92aedd18c376148e325f19bafc7a9537",
+            "date": "2020-03-16",
+            "author": "Fluffy",
+            "message": "'Release 2.1.881 [nolog]''"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:8874ecab3034483317e552fd81f541ae7a81d36d",
