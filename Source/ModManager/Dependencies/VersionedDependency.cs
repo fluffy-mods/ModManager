@@ -94,22 +94,27 @@ namespace ModManager
                 {
                     if ( TryGetPackageIdFromIdentifier( _packageId, out packageId ) )
                     {
-                        Log.Message( $"Invalid packageId '{_packageId}' resolved to '{packageId}'" );
+                        if ( Prefs.DevMode )
+                        {
+                            Log.Message( $"Invalid packageId '{_packageId}' resolved to '{packageId}'" );
+                        }
                     }
                     else
                     {
                         throw new InvalidDataException( $"Invalid packageId: '{_packageId}'" );
                     }
                 }
+
+                target = ModLister.GetModWithIdentifier( packageId, true );
             }
             catch ( Exception ex )
             {
-                if ( Prefs.DevMode )
+#if DEBUG
+                Log.Message( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
+#else
+                if (Prefs.DevMode)
                     Log.Warning( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-                else
-                    Log.Warning( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-                packageId = "invalid.package.id";
-                version = new Range( ">= 0.0.0", true );
+#endif
             }
         }
     }

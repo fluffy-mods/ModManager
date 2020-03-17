@@ -175,7 +175,7 @@ namespace ModManager
             DoDetails( detailRect );
 
             DoAvailableModButtons( moreModButtonsRect );
-            DoModListButtons( modSetButtonsRect );
+            DoActiveModButtons( modSetButtonsRect );
             Selected?.DoModActionButtons( modButtonsRect );
         }
 
@@ -214,7 +214,7 @@ namespace ModManager
         }
 
         private int _issueIndex = 0;
-        private void DoModListButtons( Rect canvas )
+        private void DoActiveModButtons( Rect canvas )
         {
             Widgets.DrawBoxSolid(canvas, SlightlyDarkBackground);
             canvas = canvas.ContractedBy(SmallMargin / 2f);

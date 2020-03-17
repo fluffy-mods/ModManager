@@ -67,17 +67,16 @@ namespace ModManager
 
         public Dependency( Manifest parent, string packageId )
         {
-            this.parent = parent;
+            this.parent    = parent;
             this.packageId = packageId;
+            target         = ModLister.GetModWithIdentifier( packageId, true );
         }
 
-        public Dependency( Manifest parent, ModDependency _depend )
+        public Dependency( Manifest parent, ModDependency depend ): this( parent, depend.packageId )
         {
-            this.parent = parent;
-            packageId = _depend.packageId;
-            displayName = _depend.displayName;
-            downloadUrl = _depend.downloadUrl;
-            steamWorkshopUrl = _depend.steamWorkshopUrl;
+            displayName = depend.displayName;
+            downloadUrl = depend.downloadUrl;
+            steamWorkshopUrl = depend.steamWorkshopUrl;
         }
     }
 }

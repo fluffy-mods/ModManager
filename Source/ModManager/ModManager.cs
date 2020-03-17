@@ -19,7 +19,7 @@ namespace ModManager
 #endif
             harmonyInstance.PatchAll( Assembly.GetExecutingAssembly() );
 
-#if DEBUG
+#if DEBUG_PROFILE
             LongEventHandler.ExecuteWhenFinished( () => new Profiler(
                                                       typeof( Page_BetterModConfig ).GetMethod(
                                                           nameof( Page_BetterModConfig.DoWindowContents ) ) ) );

@@ -32,7 +32,7 @@ namespace ModManager
             }
         }
         private const string ManifestFileName = "Manifest.xml";
-        private const string AssembliesFolder = "Assemblies";
+        private const string AssembliesFolder = "Assemblies/";
 
         public List<Dependency> Dependencies = new List<Dependency>();
         public List<Dependency> Incompatibilities = new List<Dependency>();
@@ -61,11 +61,9 @@ namespace ModManager
 
         // version checking
 #pragma warning disable 649
-        internal string         manifestUri;
+        internal string manifestUri;
 #pragma warning restore 649
-#pragma warning disable 169
-        private string         downloadUri;
-#pragma warning restore 169
+        private string downloadUri;
         public VersionCheck VersionCheck;
 
         // suggestions
@@ -96,7 +94,7 @@ namespace ModManager
 
         public Manifest( ModMetaData mod )
         {
-            this.Mod = mod;
+            Mod = mod;
         }
 
         public Manifest( ModMetaData mod, string version ): this( mod )
@@ -111,7 +109,7 @@ namespace ModManager
             if ( _manifestCache.TryGetValue( mod, out Manifest manifest ) )
                 return manifest;
 
-            manifest = new Manifest {Mod = mod};
+            manifest = new Manifest( mod );
 
             // get from file.
             var manifestPath = Path.Combine( mod.AboutDir(), ManifestFileName );
@@ -164,52 +162,32 @@ namespace ModManager
         }
 
         public static List<Dependency> EmptyRequirementList = new List<Dependency>();
-        private List<Dependency> _missingRequirements;
-        public List<Dependency> MissingRequirements
+        public List<Dependency> _requirements;
+        public List<Dependency> Requirements
         {
             get
             {
-                if ( _missingRequirements == null )
+                if ( _requirements == null )
                     RecheckRequirements();
-                return _missingRequirements;
-            }
-        }
-
-
-        private List<Dependency> _metRequirements;
-        public List<Dependency> MetRequirements
-        {
-            get
-            {
-                if ( _metRequirements == null )
-                    RecheckRequirements();
-                return _metRequirements;
+                return _requirements;
             }
         }
 
         public void Notify_RecheckRequirements()
         {
-            _missingRequirements = null;
-            _metRequirements = null;
+            _requirements = null;
         }
 
         private void RecheckRequirements()
         {
-            var allRequirements = Dependencies
-                                 .Concat( Incompatibilities )
-                                 .Concat( LoadBefore )
-                                 .Concat( LoadAfter )
-                                 .Concat( VersionCheck )
-                                 .Where( d => d != null && d.IsApplicable );
-
-            foreach ( var requirement in allRequirements )
-            {
-                requirement.parent = this;
-                requirement.target = ModLister.GetModWithIdentifier( requirement.packageId, true );
-            }
-
-            _missingRequirements = allRequirements.Where( req => !req.IsSatisfied ).ToList();
-            _metRequirements = allRequirements.Where( req => req.IsSatisfied ).ToList();
+            _requirements = Dependencies
+                               .Concat( Incompatibilities )
+                               .Concat( LoadBefore )
+                               .Concat( LoadAfter )
+                               .Concat( VersionCheck )
+                               .Where( d => d != null && d.IsApplicable )
+                               .ToList();
+            _requirements.ForEach( r => r.Notify_Recheck() );
         }
 
         private Version ParseVersion( string version )
@@ -248,7 +226,7 @@ namespace ModManager
             else if ( fromAssemblies )
             {
                 // Always get Assembly FILE Version, as the actual assembly version may be intentionally kept static so as not to break references.
-                var assemblies = ModContentPack.GetAllFilesForMod( Pack, "Assemblies/", ext => ext.ToLower() == ".dll" );
+                var assemblies = ModContentPack.GetAllFilesForMod( Pack, AssembliesFolder, ext => ext.ToLower() == ".dll" );
 
                 if ( assemblies.Any() )
                     Version = ParseVersion( FileVersionInfo.GetVersionInfo( assemblies.Last().Value.FullName ).FileVersion );

@@ -182,15 +182,12 @@ namespace ModManager
                  TrimmedName.Truncate( nameRect.width, _modNameTruncationCache ) )
                 TooltipHandler.TipRegion( nameRect, TrimmedName );
 
-            if (!Selected.IsCoreMod)
-            {
-                Text.Anchor = TextAnchor.UpperLeft;
-                Text.Font = GameFont.Tiny;
-                GUI.color = Color.grey;
-                Widgets.Label(authorRect, Selected.Author);
-                GUI.color = Color.white;
-                DoSourceButtons(sourceIconsRect);
-            }
+            Text.Anchor = TextAnchor.UpperLeft;
+            Text.Font = GameFont.Tiny;
+            GUI.color = Color.grey;
+            Widgets.Label(authorRect, Selected.Author);
+            GUI.color = Color.white;
+            DoSourceButtons(sourceIconsRect);
 
             DoModIssuesIcon( issueRect );
 
@@ -419,85 +416,82 @@ namespace ModManager
                 DoLabel( ref canvas, I18n.Details );
             }
 
-            if (!mod.IsCoreMod)
+            var detailRect = new Rect(
+                canvas.xMin,
+                canvas.yMin,
+                canvas.width,
+                LineHeight * 2 + SmallMargin * 2);
+
+            Widgets.DrawBoxSolid(detailRect, SlightlyDarkBackground);
+            canvas.yMin = detailRect.yMax + SmallMargin;
+            detailRect = detailRect.ContractedBy(SmallMargin);
+
+            var titleRect = new Rect(
+                detailRect.xMin,
+                detailRect.yMin,
+                (detailRect.width - SmallMargin) / 2f,
+                LineHeight);
+            var authorRect = new Rect(
+                detailRect.xMin,
+                titleRect.yMax,
+                (detailRect.width - SmallMargin) / 2f,
+                LineHeight);
+            var targetVersionRect = new Rect(
+                titleRect.xMax,
+                detailRect.yMin,
+                (detailRect.width - SmallMargin) / 2f,
+                LineHeight);
+            var versionRect = new Rect(
+                authorRect.xMax,
+                targetVersionRect.yMax,
+                (detailRect.width - SmallMargin) / 2f,
+                LineHeight);
+            Rect labelRect;
+
+            // title
+            var labelWidth = MaxWidth( I18n.Title, I18n.Author );
+            Text.Font = GameFont.Small;
+            Text.Anchor = TextAnchor.UpperLeft;
+            labelRect = new Rect(titleRect) { width = labelWidth };
+            GUI.color = Color.grey;
+            Widgets.Label( labelRect, I18n.Title);
+            GUI.color = Color.white;
+            titleRect.xMin += labelWidth + SmallMargin;
+            Widgets.Label(titleRect, mod.Name.Truncate(titleRect.width));
+            if (TitleLinkOptions.Any())
+                ActionButton( titleRect, () => FloatMenu( TitleLinkOptions ) );
+
+            // author
+            if (!mod.Author.NullOrEmpty())
             {
-                var detailRect = new Rect(
-                    canvas.xMin,
-                    canvas.yMin,
-                    canvas.width,
-                    LineHeight * 2 + SmallMargin * 2);
-
-                Widgets.DrawBoxSolid(detailRect, SlightlyDarkBackground);
-                canvas.yMin = detailRect.yMax + SmallMargin;
-                detailRect = detailRect.ContractedBy(SmallMargin);
-
-                var titleRect = new Rect(
-                    detailRect.xMin,
-                    detailRect.yMin,
-                    (detailRect.width - SmallMargin) / 2f,
-                    LineHeight);
-                var authorRect = new Rect(
-                    detailRect.xMin,
-                    titleRect.yMax,
-                    (detailRect.width - SmallMargin) / 2f,
-                    LineHeight);
-                var targetVersionRect = new Rect(
-                    titleRect.xMax,
-                    detailRect.yMin,
-                    (detailRect.width - SmallMargin) / 2f,
-                    LineHeight);
-                var versionRect = new Rect(
-                    authorRect.xMax,
-                    targetVersionRect.yMax,
-                    (detailRect.width - SmallMargin) / 2f,
-                    LineHeight);
-                Rect labelRect;
-
-                // title
-                var labelWidth = MaxWidth( I18n.Title, I18n.Author );
-                Text.Font = GameFont.Small;
-                Text.Anchor = TextAnchor.UpperLeft;
-                labelRect = new Rect(titleRect) { width = labelWidth };
+                labelRect = new Rect(authorRect) { width = labelWidth };
                 GUI.color = Color.grey;
-                Widgets.Label( labelRect, I18n.Title);
+                Widgets.Label(labelRect, I18n.Author);
                 GUI.color = Color.white;
-                titleRect.xMin += labelWidth + SmallMargin;
-                Widgets.Label(titleRect, mod.Name.Truncate(titleRect.width));
-                if (TitleLinkOptions.Any())
-                    ActionButton( titleRect, () => FloatMenu( TitleLinkOptions ) );
-
-                // author
-                if (!mod.Author.NullOrEmpty())
+                authorRect.xMin += labelWidth + SmallMargin;
+                Widgets.Label(authorRect, mod.Author.Truncate(authorRect.width));
+                if ( mod.Source == ContentSource.SteamWorkshop )
                 {
-                    labelRect = new Rect(authorRect) { width = labelWidth };
-                    GUI.color = Color.grey;
-                    Widgets.Label(labelRect, I18n.Author);
-                    GUI.color = Color.white;
-                    authorRect.xMin += labelWidth + SmallMargin;
-                    Widgets.Label(authorRect, mod.Author.Truncate(authorRect.width));
-                    if ( mod.Source == ContentSource.SteamWorkshop )
-                    {
-                        var authorId = Traverse.Create( mod.GetWorkshopItemHook() )
-                            .Field( "steamAuthor" )
-                            .GetValue<CSteamID>();
-                        ActionButton( authorRect,
-                            () => SteamUtility.OpenUrl( $"https://steamcommunity.com/profiles/{authorId}/myworkshopfiles/" ) );
-                    }
+                    var authorId = Traverse.Create( mod.GetWorkshopItemHook() )
+                        .Field( "steamAuthor" )
+                        .GetValue<CSteamID>();
+                    ActionButton( authorRect,
+                        () => SteamUtility.OpenUrl( $"https://steamcommunity.com/profiles/{authorId}/myworkshopfiles/" ) );
                 }
-
-                // target version(s)
-                Text.Anchor = TextAnchor.MiddleRight;
-                Widgets.Label( targetVersionRect, mod.SupportedVersionsReadOnly.VersionList() );
-                TooltipHandler.TipRegion( targetVersionRect, I18n.TargetVersions( mod.SupportedVersionsReadOnly.VersionList() ) );
-
-                // mod version
-                if ( Manifest.HasVersion )
-                {
-                    Widgets.Label( versionRect, Manifest.Version.ToString() );
-                }
-
-                Text.Anchor = TextAnchor.UpperLeft;
             }
+
+            // target version(s)
+            Text.Anchor = TextAnchor.MiddleRight;
+            Widgets.Label( targetVersionRect, mod.SupportedVersionsReadOnly.VersionList() );
+            TooltipHandler.TipRegion( targetVersionRect, I18n.TargetVersions( mod.SupportedVersionsReadOnly.VersionList() ) );
+
+            // mod version
+            if ( Manifest.HasVersion )
+            {
+                Widgets.Label( versionRect, Manifest.Version.ToString() );
+            }
+
+            Text.Anchor = TextAnchor.UpperLeft;
             
             DrawRequirements( ref canvas );
 
@@ -524,7 +518,7 @@ namespace ModManager
         {
             get
             {
-                return Manifest?.MissingRequirements ?? Manifest.EmptyRequirementList;
+                return Manifest?.Requirements.Where( r => r.ShouldShow ) ?? Manifest.EmptyRequirementList;
             }
         }
             

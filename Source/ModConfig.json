@@ -30,6 +30,13 @@
     "changenotes": [
         {
             "repo": "ModManager",
+            "hash": "'tformat:c671c4ce0f5da187f828f323a1dc903d91df1f92",
+            "date": "2020-03-17",
+            "author": "Fluffy",
+            "message": "'Release 2.2.882 [nolog]''"
+        },
+        {
+            "repo": "ModManager",
             "hash": "'tformat:cbe4e1fa92aedd18c376148e325f19bafc7a9537",
             "date": "2020-03-16",
             "author": "Fluffy",

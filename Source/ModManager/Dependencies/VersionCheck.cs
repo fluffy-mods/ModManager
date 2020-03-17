@@ -13,7 +13,7 @@ namespace ModManager
     public class VersionCheck: Dependency
     {
         private Version remoteVersion;
-        private bool completed = false;
+        private bool completed;
         private bool downloading;
         private Exception exception;
 
@@ -23,7 +23,24 @@ namespace ModManager
             FetchManifest( parent.manifestUri );
         }
 
-        public override int Severity => remoteVersion == null || remoteVersion <= parent.Version ? 0 : 1;
+        public override int Severity {
+            get
+            {
+                if ( Prefs.DevMode && exception != null )
+                    return 3;
+                if ( exception != null )
+                    return 0;
+                if ( downloading )
+                    return 1;
+                if ( IsSatisfied )
+                    return 1;
+                return 2;
+            }
+        }
+
+        public override bool ShouldShow => Severity > 0;
+
+        public override bool IsApplicable => true;
 
         public override string Tooltip
         {
@@ -95,6 +112,7 @@ namespace ModManager
             finally
             {
                 downloading = false;
+                completed = true;
                 client.Dispose();
             }
         }

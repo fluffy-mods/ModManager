@@ -95,12 +95,18 @@ namespace ModManager
             if ( !Issues.Any() )
                 return;
 
+            var worst = Issues.MaxBy( d => d.Severity );
+            GUI.color = worst.Color;
             GUI.DrawTexture( canvas, Resources.Warning );
+            GUI.color = Color.white;
             TooltipHandler.TipRegion( canvas, Issues.Select( i => i.Tooltip ).StringJoin( "\n" ) );
         }
 
         internal virtual void DrawRequirements(ref Rect canvas)
         {
+            if ( !Issues.Any() )
+                return;
+
             Utilities.DoLabel(ref canvas, I18n.Dependencies );
             var outRect = new Rect(canvas) { height = Issues.Count() * LineHeight + SmallMargin * 2f };
             Widgets.DrawBoxSolid(outRect, Resources.SlightlyDarkBackground);
