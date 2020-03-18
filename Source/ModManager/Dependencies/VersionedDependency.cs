@@ -48,7 +48,7 @@ namespace ModManager
         }
 
         public bool IsAvailable => target != null;
-        public bool IsActive => target?.Active ?? false;
+        public bool IsActive => target?.GetManifest().Button.Active ?? false;
         public override bool IsApplicable => parent?.Mod?.Active ?? false;
         public bool IsInRange
         {
