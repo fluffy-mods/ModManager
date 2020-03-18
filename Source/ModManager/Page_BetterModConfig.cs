@@ -909,7 +909,7 @@ namespace ModManager
 
             Action close = () => Find.WindowStack.TryRemove( this );
             var title = I18n.DialogConfirmIssuesTitle( issues.Count() );
-            var text = I18n.DialogConfirmIssues( issueList );
+            var text = I18n.DialogConfirmIssues( issues.Any( i => i.Severity >= 3 ) ? I18n.DialogConfirmIssuesCritical : "", issueList );
             Find.WindowStack.Add( Dialog_MessageBox.CreateConfirmation( text, close, true, title ) );
         }
 

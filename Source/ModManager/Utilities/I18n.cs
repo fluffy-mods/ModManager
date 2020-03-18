@@ -328,10 +328,12 @@ namespace ModManager
             return Key( "WorkshopPage" ).Translate( subject );
         }
 
-        public static string DialogConfirmIssues( string description )
+        public static string DialogConfirmIssues( string warning, string description )
         {
-            return Key( "DialogConfirmIssues" ).Translate( description ).Resolve();
+            return Key( "DialogConfirmIssues" ).Translate( warning, description ).Resolve();
         }
+
+        public static string DialogConfirmIssuesCritical = Key( "DialogConfirmIssuesCritical" ).Translate();
 
         public static string DialogConfirmIssuesTitle( int count )
         {
