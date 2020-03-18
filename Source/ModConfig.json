@@ -21,104 +21,12 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-03-18 :: Proxyer :: Update Japanese Translation for v2.3.883 (#73)'\n2020-03-18 :: Fluffy :: fix translation'\n2020-03-18 :: Fluffy :: issue filter options, add expansions and harmony to auto-added mods'\n2020-03-17 :: Fluffy :: fix cross promotion preview image loading'\n2020-03-17 :: Fluffy :: improve issue display'\n2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
+    "changenote": "",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:ab15042c2cac8670915f329bbc3fb02444ea3751",
-            "date": "2020-03-18",
-            "author": "Proxyer",
-            "message": "Update Japanese Translation for v2.3.883 (#73)'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:74aff263b51d76fd57964ec20e5ad4e746fd66dc",
-            "date": "2020-03-18",
-            "author": "Fluffy",
-            "message": "'Release 2.3.883 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:9eb62ab7f748fb0c30206dd5954bd831cafa5f6f",
-            "date": "2020-03-18",
-            "author": "Fluffy",
-            "message": "fix translation'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:1c343cca9c793dbd46b970000f4d4aea46ee78f5",
-            "date": "2020-03-18",
-            "author": "Fluffy",
-            "message": "issue filter options, add expansions and harmony to auto-added mods'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:66d84ebbb1b9cf45ac858190caf4d14c68fbc946",
-            "date": "2020-03-17",
-            "author": "Fluffy",
-            "message": "fix cross promotion preview image loading'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:93885b51758a03b50dc752a96167a71e85dd913b",
-            "date": "2020-03-17",
-            "author": "Fluffy",
-            "message": "improve issue display'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:c671c4ce0f5da187f828f323a1dc903d91df1f92",
-            "date": "2020-03-17",
-            "author": "Fluffy",
-            "message": "'Release 2.2.882 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:cbe4e1fa92aedd18c376148e325f19bafc7a9537",
-            "date": "2020-03-16",
-            "author": "Fluffy",
-            "message": "'Release 2.1.881 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:8874ecab3034483317e552fd81f541ae7a81d36d",
-            "date": "2020-03-16",
-            "author": "Fluffy",
-            "message": "stop constantly recalculating all requirements'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:4a8ee32797d561446f7b30b23edb910e16c524c8",
-            "date": "2020-03-03",
-            "author": "Fluffy",
-            "message": "'Release 2.0.880 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:bbacf68488277af940a1a89a78c30c2c54d562b4",
-            "date": "2020-03-03",
-            "author": "Fluffy",
-            "message": "initial 1.1 release'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:8d5df1eada5285b9aa3d42202feade9bdd992739",
-            "date": "2020-02-17",
-            "author": "Fluffy",
-            "message": "'Release 1.37.878 [nolog]''"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:1ad6a97d09af2e373e31940ffdb85f1894d2520a",
-            "date": "2020-02-17",
-            "author": "Fluffy",
-            "message": "initial 1.1 'release''"
-        }
-    ],
+    "changenotes": [],
     "packageId": "fluffy.modmanager"
 }

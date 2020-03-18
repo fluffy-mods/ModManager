@@ -226,13 +226,15 @@ namespace ModManager
             else if ( fromAssemblies )
             {
                 // Always get Assembly FILE Version, as the actual assembly version may be intentionally kept static so as not to break references.
-                var assemblies = ModContentPack.GetAllFilesForMod( Pack, AssembliesFolder, ext => ext.ToLower() == ".dll" );
+                var assemblies =
+                    ModContentPack.GetAllFilesForMod( Pack, AssembliesFolder, ext => ext.ToLower() == ".dll" );
 
                 if ( assemblies.Any() )
-                    Version = ParseVersion( FileVersionInfo.GetVersionInfo( assemblies.Last().Value.FullName ).FileVersion );
+                    Version = ParseVersion( FileVersionInfo
+                                           .GetVersionInfo( assemblies.Last().Value.FullName ).FileVersion );
             }
             else
-                Version = new Version( 0, 0 );
+                Version = new Version( 0, 0, 0 );
         }
     }
 }

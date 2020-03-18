@@ -14,7 +14,7 @@ namespace ModManager
 {
     public class VersionedDependency: Dependency
     {
-        public Range version = new Range( ">= 0.0.0" );
+        public Range range = new Range( ">= 0.0.0" );
 
         public override int Severity => IsSatisfied ? 0 : 3;
 
@@ -49,13 +49,14 @@ namespace ModManager
 
         public bool IsAvailable => target != null;
         public bool IsActive => target?.Active ?? false;
-        public override bool IsApplicable => ( parent?.Mod?.Active ?? false ) && ( target?.Active ?? false );
+        public override bool IsApplicable => parent?.Mod?.Active ?? false;
         public bool IsInRange
         {
             get
             {
                 var v = target?.GetManifest().Version;
-                return v != null && version.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true );
+                Debug.Log( parent.Mod.PackageId + " :: version " + $"{v.Major}.{v.Minor}.{v.Build}" + " :: target range " + range );
+                return v != null && range.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true );
             }
         }
 
@@ -81,11 +82,11 @@ namespace ModManager
                         break;
                     case 2:
                         _packageId = parts[0];
-                        version = new Range( parts[1], true );
+                        range = new Range( parts[1], true );
                         break;
                     case 3:
                         _packageId = parts[0];
-                        version = new Range( parts.Skip( 1 ).StringJoin( "" ) );
+                        range = new Range( parts.Skip( 1 ).StringJoin( "" ) );
                         break;
                 }
 

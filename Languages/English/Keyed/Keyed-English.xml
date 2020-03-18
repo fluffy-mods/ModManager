@@ -25,7 +25,7 @@
     <Fluffy.ModManager.CoreNotFirst>'Core' should be the first mod loaded.</Fluffy.ModManager.CoreNotFirst>
     <Fluffy.ModManager.DependencyUnknownVersion>Depends on {0}, but its version is unknown.</Fluffy.ModManager.DependencyUnknownVersion>
     <Fluffy.ModManager.DependencyNotFound>Depends on {0}, which is not loaded.</Fluffy.ModManager.DependencyNotFound>
-    <Fluffy.ModManager.DependencyWrongVersion>Depends on {0} v{1}, v{2} is loaded.</Fluffy.ModManager.DependencyWrongVersion>
+    <Fluffy.ModManager.DependencyWrongVersion>Depends on {0} version {1}, version {2} is loaded.</Fluffy.ModManager.DependencyWrongVersion>
     <Fluffy.ModManager.DependencyNotActive>Depends on {0}, which is not active.</Fluffy.ModManager.DependencyNotActive>
     <Fluffy.ModManager.DependencyMet>{0} version {1} loaded.</Fluffy.ModManager.DependencyMet>
     <Fluffy.ModManager.IncompatibleMod>Not compatible with {0}.</Fluffy.ModManager.IncompatibleMod>
