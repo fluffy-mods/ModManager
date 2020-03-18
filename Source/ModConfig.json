@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 2,
-        "minor": 3,
-        "build": 883
+        "minor": 4,
+        "build": 884
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -21,13 +21,27 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-03-18 :: Fluffy :: fix translation'\n2020-03-18 :: Fluffy :: issue filter options, add expansions and harmony to auto-added mods'\n2020-03-17 :: Fluffy :: fix cross promotion preview image loading'\n2020-03-17 :: Fluffy :: improve issue display'\n2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
+    "changenote": "2020-03-18 :: Proxyer :: Update Japanese Translation for v2.3.883 (#73)'\n2020-03-18 :: Fluffy :: fix translation'\n2020-03-18 :: Fluffy :: issue filter options, add expansions and harmony to auto-added mods'\n2020-03-17 :: Fluffy :: fix cross promotion preview image loading'\n2020-03-17 :: Fluffy :: improve issue display'\n2020-03-16 :: Fluffy :: stop constantly recalculating all requirements'\n2020-03-03 :: Fluffy :: initial 1.1 release'\n2020-02-17 :: Fluffy :: initial 1.1 'release''",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:ab15042c2cac8670915f329bbc3fb02444ea3751",
+            "date": "2020-03-18",
+            "author": "Proxyer",
+            "message": "Update Japanese Translation for v2.3.883 (#73)'"
+        },
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:74aff263b51d76fd57964ec20e5ad4e746fd66dc",
+            "date": "2020-03-18",
+            "author": "Fluffy",
+            "message": "'Release 2.3.883 [nolog]''"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:9eb62ab7f748fb0c30206dd5954bd831cafa5f6f",
