@@ -21,12 +21,20 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "",
+    "changenote": "2020-03-18 :: Fluffy :: fix non-versioned dependencies/mods'",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:6bb1af247c2a8656367593887b7b26d793dd713e",
+            "date": "2020-03-18",
+            "author": "Fluffy",
+            "message": "fix non-versioned dependencies/mods'"
+        }
+    ],
     "packageId": "fluffy.modmanager"
 }

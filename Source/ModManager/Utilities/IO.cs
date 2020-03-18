@@ -361,7 +361,7 @@ namespace ModManager
 
         public static void MassRemoveLocalFloatMenu()
         {
-            var options = Utilities.NewOptions;
+            var options = Utilities.NewOptionsList;
             var localCopies = ModButtonManager.AllMods.Where( m => m.IsLocalCopy() );
             var outdated = localCopies.Where( m => !m.VersionCompatible && !m.MadeForNewerVersion );
             var inactive = ModButtonManager.AvailableMods.Where( m => m.IsLocalCopy() );

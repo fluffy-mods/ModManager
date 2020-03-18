@@ -301,7 +301,7 @@ namespace ModManager
             }
             if ( ButtonIcon( ref iconRect, Palette, I18n.ChangeColour ) )
             {
-                var options = NewOptions;
+                var options = NewOptionsList;
                 options.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
                     new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Settings[Selected].Color = color ) ) ) );
                 options.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
@@ -314,7 +314,7 @@ namespace ModManager
 
         public void DoModActionFloatMenu()
         {
-            var options = NewOptions;
+            var options = NewOptionsList;
             if (ModListManager.ListsFor(this).Count < ModListManager.ModLists.Count)
             {
                 options.Add( new FloatMenuOption( I18n.AddToModList,
@@ -346,7 +346,7 @@ namespace ModManager
             }
             options.Add( new FloatMenuOption( I18n.ChangeColour, () =>
             {
-                var options2 = NewOptions;
+                var options2 = NewOptionsList;
                 options2.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
                     new ColourPicker.Dialog_ColourPicker( Color,
                         color => ModManager.Settings[Selected].Color = color ) ) ) );
@@ -368,7 +368,7 @@ namespace ModManager
             {
                 if ( _titleLinkOptions == null )
                 {
-                    _titleLinkOptions = NewOptions;
+                    _titleLinkOptions = NewOptionsList;
                     if ( !Selected?.Url.NullOrEmpty() ?? false )
                     {
                         _titleLinkOptions.Add( new FloatMenuOption( I18n.ModHomePage( Selected.Url ),

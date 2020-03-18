@@ -12,7 +12,7 @@ namespace ModManager
     {
         public Manifest parent;
         public ModMetaData target;
-
+        
         public virtual int Severity => 1;
 
         public virtual Color Color => Color.white;

@@ -5,9 +5,11 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using FluffyUI.FloatMenu;
 using RimWorld;
 using UnityEngine;
 using Verse;
+using static ModManager.Utilities;
 
 namespace ModManager
 {
@@ -37,7 +39,14 @@ namespace ModManager
 
         public override void OnClicked( Page_ModsConfig window )
         {
-            // do something
+            var options = NewOptionsList;
+            options.Add( new FloatMenuOption( I18n.MoveBefore( parent.Button, target.GetManifest().Button ),
+                                              () => ModButtonManager.MoveBefore(
+                                                  parent.Button, target.GetManifest().Button ) ) );
+            options.Add( new FloatMenuOption( I18n.MoveBefore( target.GetManifest().Button, parent.Button ),
+                                              () => ModButtonManager.MoveBefore(
+                                                  target.GetManifest().Button, parent.Button ) ) );
+            FloatMenu( options );
         }
 
         public override string Tooltip
@@ -102,7 +111,12 @@ namespace ModManager
         public LoadOrder_After( Manifest parent, string packageId ) : base( parent, packageId ){}
         public override void OnClicked( Page_ModsConfig window )
         {
-            // do something
+            var options = NewOptionsList;
+            options.Add( new FloatMenuOption( I18n.MoveAfter( parent.Button, target.GetManifest().Button ),
+                                              () => ModButtonManager.MoveAfter( parent.Button, target.GetManifest().Button ) ) );
+            options.Add( new FloatMenuOption( I18n.MoveAfter( target.GetManifest().Button, parent.Button ),
+                                              () => ModButtonManager.MoveAfter( target.GetManifest().Button, parent.Button ) ) );
+            FloatMenu( options );
         }
         public override string Tooltip
         {

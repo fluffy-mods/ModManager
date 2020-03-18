@@ -269,7 +269,7 @@ namespace ModManager
 
         private void DoModListFloatMenu()
         {
-            var options = Utilities.NewOptions;
+            var options = Utilities.NewOptionsList;
             options.Add( new FloatMenuOption( I18n.SaveModList, () => new ModList( ModButtonManager.ActiveButtons ) ) );
             options.Add( new FloatMenuOption( I18n.LoadModListFromSave, DoLoadModListFromSaveFloatMenu ) );
             options.Add( new FloatMenuOption( I18n.ImportModList, () => ModList.FromYaml( GUIUtility.systemCopyBuffer ) ) );

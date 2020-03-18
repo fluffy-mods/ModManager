@@ -145,6 +145,16 @@ namespace ModManager
             Insert( ActiveButtons[from], to );
         }
 
+        public static void MoveBefore( ModButton from, ModButton to )
+        {
+            Insert( from, ActiveButtons.IndexOf( to ) );
+        }
+
+        public static void MoveAfter( ModButton from, ModButton to )
+        {
+            Insert( from, ActiveButtons.IndexOf( to ) + 1 );
+        }
+
         public static void Insert( ModButton button, int to )
         {
             AllButtons.TryAdd( button );

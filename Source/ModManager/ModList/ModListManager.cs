@@ -110,7 +110,7 @@ namespace ModManager
 
         public static FloatMenuOption SavedModListOption( ModList list )
         {
-            var options = Utilities.NewOptions;
+            var options = Utilities.NewOptionsList;
             options.Add( new FloatMenuOption( I18n.ExportModList, () => { GUIUtility.systemCopyBuffer = list.ToYaml(); Messages.Message( I18n.ModListCopiedToClipboard( list.Name ), MessageTypeDefOf.TaskCompletion, false ); } ) );
             options.Add( new FloatMenuOption( I18n.LoadModList, () => list.Apply( false ) ) );
             options.Add( new FloatMenuOption( I18n.AddModList, () => list.Apply( true ) ) );

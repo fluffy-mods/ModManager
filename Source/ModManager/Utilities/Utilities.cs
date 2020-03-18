@@ -107,7 +107,7 @@ namespace ModManager
             Find.WindowStack.Add( new FloatMenu( options ) );
         }
 
-        public static List<FloatMenuOption> NewOptions => new List<FloatMenuOption>();
+        public static List<FloatMenuOption> NewOptionsList => new List<FloatMenuOption>();
 
 
         public static void OpenSettingsFor( ModMetaData mod )

@@ -77,7 +77,7 @@ namespace ModManager
 
         public static void MassUnsubscribeFloatMenu()
         {
-            var options = Utilities.NewOptions;
+            var options = Utilities.NewOptionsList;
             var steamMods = ModButtonManager.AllMods.Where( m => m.Source == ContentSource.SteamWorkshop );
             var outdated = steamMods.Where( m => !m.VersionCompatible && !m.MadeForNewerVersion );
             var inactive = ModButtonManager.AvailableMods.Where( m => m.Source == ContentSource.SteamWorkshop );
