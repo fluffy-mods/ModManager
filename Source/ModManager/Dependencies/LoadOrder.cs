@@ -46,8 +46,8 @@ namespace ModManager
                 options.Add( new FloatMenuOption( I18n.MoveBefore( parent.Button, target.GetManifest().Button ),
                                                   () => ModButtonManager.MoveBefore(
                                                       parent.Button, target.GetManifest().Button ) ) );
-                options.Add( new FloatMenuOption( I18n.MoveBefore( target.GetManifest().Button, parent.Button ),
-                                                  () => ModButtonManager.MoveBefore(
+                options.Add( new FloatMenuOption( I18n.MoveAfter( target.GetManifest().Button, parent.Button ),
+                                                  () => ModButtonManager.MoveAfter(
                                                       target.GetManifest().Button, parent.Button ) ) );
                 return options;
             }
@@ -122,8 +122,8 @@ namespace ModManager
                 options.Add( new FloatMenuOption( I18n.MoveAfter( parent.Button, target.GetManifest().Button ),
                                                   () => ModButtonManager.MoveAfter(
                                                       parent.Button, target.GetManifest().Button ) ) );
-                options.Add( new FloatMenuOption( I18n.MoveAfter( target.GetManifest().Button, parent.Button ),
-                                                  () => ModButtonManager.MoveAfter(
+                options.Add( new FloatMenuOption( I18n.MoveBefore( target.GetManifest().Button, parent.Button ),
+                                                  () => ModButtonManager.MoveBefore(
                                                       target.GetManifest().Button, parent.Button ) ) );
                 return options;
             }
