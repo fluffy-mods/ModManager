@@ -81,7 +81,8 @@ namespace ModManager
 
         public static string DependencyWrongVersion( ModMetaData tgt, VersionedDependency depend )
         {
-            return Key( "DependencyWrongVersion" ).Translate( tgt.Name, depend.range.ToString(), tgt.GetManifest().Version.ToString() );
+            return Key( "DependencyWrongVersion" )
+               .Translate( tgt.Name, depend.range.ToString(), tgt.GetManifest().Version.ToString() );
         }
 
         public static string DependencyNotActive( ModMetaData tgt ) =>
@@ -384,12 +385,14 @@ namespace ModManager
         public static string TrimVersionStringsTip        => Key( "TrimVersionStringsTip" ).Translate();
 
         // settings
-        public static string ModSettings                  = Key( "ModSettings" ).Translate();
-        public static string ShowAllRequirements = Key( "ShowAllRequirements" ).Translate();
-        public static string ShowAllRequirementsTip = Key("ShowAllRequirementsTip").Translate();
-        public static string AddModManagerToNewModList    = Key( "AddModManagerToNewModList" ).Translate();
-        public static string AddModManagerToNewModListTip = Key( "AddModManagerToNewModListTip" ).Translate();
-        public static string AddExpansionsToNewModList    = Key( "AddExpansionsToNewModList" ).Translate();
-        public static string AddExpansionsToNewModListTip = Key( "AddExpansionsToNewModListTip" ).Translate();
+        public static string ModSettings                      = Key( "ModSettings" ).Translate();
+        public static string ShowAllRequirements              = Key( "ShowAllRequirements" ).Translate();
+        public static string ShowAllRequirementsTip           = Key( "ShowAllRequirementsTip" ).Translate();
+        public static string AddModManagerToNewModList        = Key( "AddModManagerToNewModList" ).Translate();
+        public static string AddModManagerToNewModListTip     = Key( "AddModManagerToNewModListTip" ).Translate();
+        public static string AddExpansionsToNewModList        = Key( "AddExpansionsToNewModList" ).Translate();
+        public static string AddExpansionsToNewModListTip     = Key( "AddExpansionsToNewModListTip" ).Translate();
+        public static string ShowVersionChecksForSteamMods    = Key( "ShowVersionChecksForSteamMods" ).Translate();
+        public static string ShowVersionChecksForSteamModsTip = Key( "ShowVersionChecksForSteamModsTip" ).Translate();
     }
 }

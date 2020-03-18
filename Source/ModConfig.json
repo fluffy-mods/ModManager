@@ -21,13 +21,20 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-03-18 :: Fluffy :: add loadorder resolvers'\n2020-03-18 :: Fluffy :: fix non-versioned dependencies/mods'",
+    "changenote": "2020-03-18 :: Fluffy :: fix dependencies on mods that have a local and stream version'\n2020-03-18 :: Fluffy :: add loadorder resolvers'\n2020-03-18 :: Fluffy :: fix non-versioned dependencies/mods'",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:249a92708d0cf685a0c01df252a3cbe34dd1ceed",
+            "date": "2020-03-18",
+            "author": "Fluffy",
+            "message": "fix dependencies on mods that have a local and stream version'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:10d7fda8831f48aa0e0efa1532870fc52b74f306",

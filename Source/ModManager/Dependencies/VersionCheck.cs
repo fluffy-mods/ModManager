@@ -33,12 +33,14 @@ namespace ModManager
                 if ( downloading )
                     return 1;
                 if ( IsSatisfied )
-                    return 1;
+                    return 0;
                 return 2;
             }
         }
 
-        public override bool IsApplicable => true;
+        public override bool IsApplicable => parent.Mod.Active &&
+                                             ( ModManager.Settings.ShowVersionChecksOnSteamMods ||
+                                               parent.Mod.Source == ContentSource.ModsFolder );
 
         public override string Tooltip
         {

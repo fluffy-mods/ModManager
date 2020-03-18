@@ -38,6 +38,10 @@ namespace ModManager
             listing.Begin( canvas );
             listing.CheckboxLabeled( I18n.ShowAllRequirements, ref Settings.ShowSatisfiedRequirements,
                                      I18n.ShowAllRequirementsTip );
+            listing.CheckboxLabeled( I18n.ShowVersionChecksForSteamMods, ref Settings.ShowVersionChecksOnSteamMods,
+                                     I18n.ShowVersionChecksForSteamModsTip );
+
+            listing.Gap();
             listing.CheckboxLabeled( I18n.ShowPromotions, ref Settings.ShowPromotions, I18n.ShowPromotionsTip );
 
             if ( !Settings.ShowPromotions )
@@ -52,14 +56,15 @@ namespace ModManager
             listing.CheckboxLabeled( I18n.TrimTags, ref Settings.TrimTags, I18n.TrimTagsTip );
             if ( !Settings.TrimTags )
                 GUI.color = Color.grey;
-            listing.CheckboxLabeled( I18n.TrimVersionStrings, ref Settings.TrimVersionStrings, I18n.TrimVersionStringsTip );
+            listing.CheckboxLabeled( I18n.TrimVersionStrings, ref Settings.TrimVersionStrings,
+                                     I18n.TrimVersionStringsTip );
 
             GUI.color = Color.white;
             listing.Gap();
             listing.CheckboxLabeled( I18n.AddModManagerToNewModList, ref Settings.AddModManagerToNewModLists,
                                      I18n.AddModManagerToNewModListTip );
             listing.CheckboxLabeled( I18n.AddExpansionsToNewModList, ref Settings.AddExpansionsToNewModLists,
-                                     I18n.AddExpansionsToNewModListTip);
+                                     I18n.AddExpansionsToNewModListTip );
             listing.End();
         }
     }

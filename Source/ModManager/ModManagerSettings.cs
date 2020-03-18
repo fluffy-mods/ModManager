@@ -19,6 +19,7 @@ namespace ModManager
         public bool AddModManagerToNewModLists = true;
         public bool ShowSatisfiedRequirements = false;
         public bool AddExpansionsToNewModLists = true;
+        public bool ShowVersionChecksOnSteamMods = false;
 
         public ModAttributes this[ModMetaData mod]
         {
@@ -70,6 +71,7 @@ namespace ModManager
             Scribe_Values.Look( ref AddModManagerToNewModLists, "AddModManagerToNewModLists", true );
             Scribe_Values.Look( ref AddExpansionsToNewModLists, "AddExpansionsToNewModLists", true );
             Scribe_Values.Look( ref ShowSatisfiedRequirements, "ShowSatisfiedRequirements", false );
+            Scribe_Values.Look( ref ShowVersionChecksOnSteamMods, "ShowVersionChecksOnSteamMods", false );
 
             if ( Scribe.mode == LoadSaveMode.PostLoadInit )
             {

@@ -156,4 +156,6 @@
     <Fluffy.ModManager.AddModManagerToNewModListTip>Add Mod Manager to new modlists in addition to the Core mod.</Fluffy.ModManager.AddModManagerToNewModListTip>
     <Fluffy.ModManager.AddExpansionsToNewModList>Add official expansions to new modlists</Fluffy.ModManager.AddExpansionsToNewModList>
     <Fluffy.ModManager.AddExpansionsToNewModListTip>Add official expansions to new modlists in addition to the Core mod.</Fluffy.ModManager.AddExpansionsToNewModListTip>
+    <Fluffy.ModManager.ShowVersionChecksForSteamMods>Show version checks for steam mods.</Fluffy.ModManager.ShowVersionChecksForSteamMods>
+    <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>Version checks are most useful for manually installed mods, so are disabled for steam mods by default. Note that this will only notify about newer manually installed mods where the author has explicitly supported this functionality. It will not notify about new steam mods.</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
 </LanguageData>
