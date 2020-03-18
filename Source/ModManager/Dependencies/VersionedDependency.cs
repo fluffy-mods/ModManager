@@ -16,7 +16,17 @@ namespace ModManager
     {
         public Range range = new Range( ">= 0.0.0" );
 
-        public override int Severity => IsSatisfied ? 0 : 3;
+        public override int Severity
+        {
+            get
+            {
+                if ( IsSatisfied )
+                    return 0;
+                if ( IsActive && !IsInRange )
+                    return 2;
+                return 3;
+            }
+        }
 
         public override Color Color => IsSatisfied ? Color.white : Color.red;
 
@@ -35,7 +45,7 @@ namespace ModManager
         {
             get
             {
-                if (!IsAvailable)
+                if ( !IsAvailable )
                     return I18n.DependencyNotFound( displayName ?? packageId );
                 if ( !IsActive )
                     return I18n.DependencyNotActive( target );

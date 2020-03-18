@@ -28,7 +28,7 @@ namespace ModManager
 
         public override Color Color => IsSatisfied ? Color.white : Color.red;
 
-        public override int Severity => IsSatisfied ? 0 : 2;
+        public override int Severity => IsSatisfied ? 0 : 3;
     }
 
     public class LoadOrder_Before : LoadOrder
