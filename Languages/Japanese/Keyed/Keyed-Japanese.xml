@@ -8,31 +8,32 @@
   <Fluffy.ModManager.Details>詳細</Fluffy.ModManager.Details>
 
   <Fluffy.ModManager.NoModSelected>Modが未選択</Fluffy.ModManager.NoModSelected>
-
-  <Fluffy.ModManager.TargetVersion>対象バージョン</Fluffy.ModManager.TargetVersion>
-  <Fluffy.ModManager.Version>バージョン</Fluffy.ModManager.Version>
+  <Fluffy.ModManager.TargetVersions>このModはRimWorldバージョン{0}対応</Fluffy.ModManager.TargetVersions>
   <Fluffy.ModManager.Unknown>不明</Fluffy.ModManager.Unknown>
   <Fluffy.ModManager.Later>後で</Fluffy.ModManager.Later>
   <Fluffy.ModManager.Cancel>中止</Fluffy.ModManager.Cancel>
 
-  <Fluffy.ModManager.PressXtoCopyToClipboard>Ctrlを押しながらCキーを押して、MODリストをクリップボードにコピーします。</Fluffy.ModManager.PressXtoCopyToClipboard>
+  <Fluffy.ModManager.PressXtoCopyToClipboard>Ctrlを押しながらCキーを押して,MODリストをクリップボードにコピーします.</Fluffy.ModManager.PressXtoCopyToClipboard>
 
   <!-- issues -->
   <Fluffy.ModManager.InvalidVersion>不正なバージョン文字列：「{0}」</Fluffy.ModManager.InvalidVersion>
-  <Fluffy.ModManager.DifferentVersion>ゲームバージョンが間違っています。現在のバージョンは{2}ですが、{0}のバージョン{1}です。</Fluffy.ModManager.DifferentVersion>
-  <Fluffy.ModManager.DifferentBuild>ゲームビルドが異なります。現在のビルドは{2}ですが、{0}は対象バージョンとしてビルド{1}を指定しています。</Fluffy.ModManager.DifferentBuild>
+  <Fluffy.ModManager.DifferentVersion>ゲームバージョンが間違っています.現在のバージョンは{2}ですが,{0}のバージョン{1}です.</Fluffy.ModManager.DifferentVersion>
+  <Fluffy.ModManager.DifferentBuild>ゲームビルドが異なります.現在のビルドは{2}ですが,{0}は対象バージョンとしてビルド{1}を指定しています.</Fluffy.ModManager.DifferentBuild>
   <Fluffy.ModManager.CurrentVersion>バージョンが一致</Fluffy.ModManager.CurrentVersion>
-  <Fluffy.ModManager.UpdateAvailable>バージョン{1}のアップデートが利用可能です。（現在のバージョン：{0}）</Fluffy.ModManager.UpdateAvailable>
-  <Fluffy.ModManager.MissingMod>{0}（ID：{1}）はインストールされてないので、無視されます。</Fluffy.ModManager.MissingMod>
-  <Fluffy.ModManager.CoreNotFirst>「Core」はMODリストの一番上に配置されなければなりません。</Fluffy.ModManager.CoreNotFirst>
-  <Fluffy.ModManager.DependencyUnknownVersion>{0}に依存しますが、バージョンが不明です。</Fluffy.ModManager.DependencyUnknownVersion>
-  <Fluffy.ModManager.DependencyNotFound>リストにない{0}に依存しています。</Fluffy.ModManager.DependencyNotFound>
-  <Fluffy.ModManager.DependencyWrongVersion>{0}に依存して、v{1}が読み込まれます。</Fluffy.ModManager.DependencyWrongVersion>
-  <Fluffy.ModManager.DependencyMet>{0}のバージョン{1}が読み込まれました。</Fluffy.ModManager.DependencyMet>
-  <Fluffy.ModManager.IncompatibleMod>{0}と互換性がありません。</Fluffy.ModManager.IncompatibleMod>
-  <Fluffy.ModManager.ShouldBeLoadedBefore>{0}の上に置く必要があります。</Fluffy.ModManager.ShouldBeLoadedBefore>
-  <Fluffy.ModManager.ShouldBeLoadedAfter>{0}の下に置く必要があります。</Fluffy.ModManager.ShouldBeLoadedAfter>
-  <Fluffy.ModManager.SourceModChanged>Steam-Workshop-modの内容が更新されました。</Fluffy.ModManager.SourceModChanged>
+  <Fluffy.ModManager.UpdateAvailable>バージョン{1}のアップデートが利用可能です.（現在のバージョン：{0}）</Fluffy.ModManager.UpdateAvailable>
+  <Fluffy.ModManager.MissingMod>{0}（ID：{1}）はインストールされてないので,無視されます.</Fluffy.ModManager.MissingMod>
+  <Fluffy.ModManager.CoreNotFirst>「Core」はMODリストの一番上に配置されなければなりません.</Fluffy.ModManager.CoreNotFirst>
+  <Fluffy.ModManager.DependencyUnknownVersion>{0}に依存しますが,バージョンが不明です.</Fluffy.ModManager.DependencyUnknownVersion>
+  <Fluffy.ModManager.DependencyNotFound>リストにない{0}に依存しています.</Fluffy.ModManager.DependencyNotFound>
+  <Fluffy.ModManager.DependencyWrongVersion>{0}v{1}に依存し,v{2}が読み込まれました.</Fluffy.ModManager.DependencyWrongVersion>
+  <Fluffy.ModManager.DependencyNotActive>有効ではない{0}に依存しています.</Fluffy.ModManager.DependencyNotActive>
+  <Fluffy.ModManager.DependencyMet>{0}のバージョン{1}が読み込まれました.</Fluffy.ModManager.DependencyMet>
+  <Fluffy.ModManager.IncompatibleMod>{0}と互換性がありません.</Fluffy.ModManager.IncompatibleMod>
+  <Fluffy.ModManager.LoadedBefore>{0}よりも上に読み込まれています.</Fluffy.ModManager.LoadedBefore>
+  <Fluffy.ModManager.ShouldBeLoadedBefore>{0}の上に置く必要があります.</Fluffy.ModManager.ShouldBeLoadedBefore>
+  <Fluffy.ModManager.LoadedAfter>{0}よりも下に読み込まれています.</Fluffy.ModManager.LoadedAfter>
+  <Fluffy.ModManager.ShouldBeLoadedAfter>{0}の下に置く必要があります.</Fluffy.ModManager.ShouldBeLoadedAfter>
+  <Fluffy.ModManager.SourceModChanged>Steam-Workshop-modの内容が更新されました.</Fluffy.ModManager.SourceModChanged>
 
   <Fluffy.ModManager.GetMoreMods_SteamWorkshop>Steam-WorkshopからもっとModを入手する</Fluffy.ModManager.GetMoreMods_SteamWorkshop>
   <Fluffy.ModManager.GetMoreMods_LudeonForums>Ludeon公式フォーラムからもっとModを入手する</Fluffy.ModManager.GetMoreMods_LudeonForums>
@@ -41,15 +42,15 @@
   <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>Steamの全modをサブスクライブ解除する</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>
   <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>使用していないSteamのModを全てサブスクライブ解除する</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>
   <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>古くなったSteamのModsを全てサブスクライブ解除する</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>
-  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>あなたは「{0}」Modをのサブスクライブを解除しようとしています。続行してもよろしいですか？\n\n影響を受けるMod：\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
+  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>あなたは「{0}」Modをのサブスクライブを解除しようとしています.続行してもよろしいですか？\n\n影響を受けるMod：\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
   <Fluffy.ModManager.IO.MassRemoveLocal>使用してないか古くなったModsか全てのローカルコピーを一括削除する</Fluffy.ModManager.IO.MassRemoveLocal>
   <Fluffy.ModManager.IO.MassRemoveLocalAll>全てのローカルコピーを削除する</Fluffy.ModManager.IO.MassRemoveLocalAll>
   <Fluffy.ModManager.IO.MassRemoveLocalInactive>使用してない全てのローカルコピーを削除する</Fluffy.ModManager.IO.MassRemoveLocalInactive>
   <Fluffy.ModManager.IO.MassRemoveLocalOutdated>古くなった全てのローカルコピーを削除する</Fluffy.ModManager.IO.MassRemoveLocalOutdated>
-  <Fluffy.ModManager.IO.MassRemoveLocalConfirm>「{0}」Modのローカルコピーを永久に削除しようとしています。続行してもよろしいですか？\n\n影響を受けるMod：\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
+  <Fluffy.ModManager.IO.MassRemoveLocalConfirm>「{0}」Modのローカルコピーを永久に削除しようとしています.続行してもよろしいですか？\n\n影響を受けるMod：\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
   <Fluffy.ModManager.ModSettings>Mod設定を開く</Fluffy.ModManager.ModSettings>
 
-  <Fluffy.ModManager.ModListsTip>MODリストの作成、適用、管理\n\nModリストを使用すると、Modセットをすばやく切り替えることができます。</Fluffy.ModManager.ModListsTip>
+  <Fluffy.ModManager.ModListsTip>MODリストの作成,適用,管理\n\nModリストを使用すると,Modセットをすばやく切り替えることができます.</Fluffy.ModManager.ModListsTip>
   <Fluffy.ModManager.LoadModList>Modリストを読込</Fluffy.ModManager.LoadModList>
   <Fluffy.ModManager.AddModList>現在のリストに追加</Fluffy.ModManager.AddModList>
   <Fluffy.ModManager.SaveModList>現在のリストを保存</Fluffy.ModManager.SaveModList>
@@ -59,20 +60,18 @@
   <Fluffy.ModManager.ExportModList>MODリストを文字列に書き出す</Fluffy.ModManager.ExportModList>
   <Fluffy.ModManager.LoadModListFromSave>セーブからMODリストを読み込む</Fluffy.ModManager.LoadModListFromSave>
   <Fluffy.ModManager.ResetMods>有効なMODをCoreだけにリセットする</Fluffy.ModManager.ResetMods>
-  <Fluffy.ModManager.AddModManagerToNewModList>新しいModリストにMod-Managerを追加</Fluffy.ModManager.AddModManagerToNewModList>
-  <Fluffy.ModManager.AddModManagerToNewModListTip>CoreとMod-Managerを新しいModリストに追加します。</Fluffy.ModManager.AddModManagerToNewModListTip>
 
-  <Fluffy.ModManager.InvalidName>{0}は正常な名前ではありません。名前には、これらの文字のいずれかを含めることはできません：{1}。</Fluffy.ModManager.InvalidName>
-  <Fluffy.ModManager.ModListExists>{0}は既に存在します。別の名前を付けるか、既存のMODリストを削除、または名前を変更してください。</Fluffy.ModManager.ModListExists>
-  <Fluffy.ModManager.NameTooShort>MODリストには名前が必要です。</Fluffy.ModManager.NameTooShort>
-  <Fluffy.ModManager.ModListRenamed>MODリストの名前が{0}から{1}に変更されました。</Fluffy.ModManager.ModListRenamed>
-  <Fluffy.ModManager.ModListCreated>MODリスト{0}が作成されました。</Fluffy.ModManager.ModListCreated>
-  <Fluffy.ModManager.ModListLoaded>MODリスト{0}が読込みました。</Fluffy.ModManager.ModListLoaded>
-  <Fluffy.ModManager.ModListDeleted>MODリスト{0}が削除されました。</Fluffy.ModManager.ModListDeleted>
+  <Fluffy.ModManager.InvalidName>{0}は正常な名前ではありません.名前には,これらの文字のいずれかを含めることはできません：{1}.</Fluffy.ModManager.InvalidName>
+  <Fluffy.ModManager.ModListExists>{0}は既に存在します.別の名前を付けるか,既存のMODリストを削除,または名前を変更してください.</Fluffy.ModManager.ModListExists>
+  <Fluffy.ModManager.NameTooShort>MODリストには名前が必要です.</Fluffy.ModManager.NameTooShort>
+  <Fluffy.ModManager.ModListRenamed>MODリストの名前が{0}から{1}に変更されました.</Fluffy.ModManager.ModListRenamed>
+  <Fluffy.ModManager.ModListCreated>MODリスト{0}が作成されました.</Fluffy.ModManager.ModListCreated>
+  <Fluffy.ModManager.ModListLoaded>MODリスト{0}が読込みました.</Fluffy.ModManager.ModListLoaded>
+  <Fluffy.ModManager.ModListDeleted>MODリスト{0}が削除されました.</Fluffy.ModManager.ModListDeleted>
   <Fluffy.ModManager.RebuildingModList>MODリストを再構築中</Fluffy.ModManager.RebuildingModList>
-  <Fluffy.ModManager.ConfirmOverwriteModList>「{0}」という名前のMODリストは既に存在します。上書きしますか？</Fluffy.ModManager.ConfirmOverwriteModList>
-  <Fluffy.ModManager.ModListCopiedToClipboard>MODリスト{0}をクリップボードにコピーしました。</Fluffy.ModManager.ModListCopiedToClipboard>
-  <Fluffy.ModManager.ModListCreatedFromClipboard>クリップボードからMODリスト{0}か読み込まれました。</Fluffy.ModManager.ModListCreatedFromClipboard>
+  <Fluffy.ModManager.ConfirmOverwriteModList>「{0}」という名前のMODリストは既に存在します.上書きしますか？</Fluffy.ModManager.ConfirmOverwriteModList>
+  <Fluffy.ModManager.ModListCopiedToClipboard>MODリスト{0}をクリップボードにコピーしました.</Fluffy.ModManager.ModListCopiedToClipboard>
+  <Fluffy.ModManager.ModListCreatedFromClipboard>クリップボードからMODリスト{0}か読み込まれました.</Fluffy.ModManager.ModListCreatedFromClipboard>
   <Fluffy.ModManager.FailedToCreateModListFromClipboard>クリップボードからMODリストを読み込めませんでした：{0}</Fluffy.ModManager.FailedToCreateModListFromClipboard>
 
   <Fluffy.ModManager.AddToModList>Modリストにmodを追加</Fluffy.ModManager.AddToModList>
@@ -80,34 +79,34 @@
   <Fluffy.ModManager.AddToModListX>「{0}」に追加</Fluffy.ModManager.AddToModListX>
   <Fluffy.ModManager.RemoveFromModListX>「{0}」から削除</Fluffy.ModManager.RemoveFromModListX>
 
-  <Fluffy.ModManager.CreateLocalCopies>Modリストに存在し、有効な全てのSteam-Workshop-Modのローカルコピーを作成します\n\nローカルコピーされたModはmodsフォルダに保存され、自動更新は行われません。</Fluffy.ModManager.CreateLocalCopies>
-  <Fluffy.ModManager.CreateLocalCopiesConfirmation>あなたは{0}個のModに対してローカルコピーを作成しようとしています。これには数分かかるかも知れません。続行してもよろしいですか？</Fluffy.ModManager.CreateLocalCopiesConfirmation>
-  <Fluffy.ModManager.CreateLocalCopy>{0}のローカルコピーを作成します。\n\nローカルコピーされたModはmodsフォルダに保存され、自動更新は行われません。</Fluffy.ModManager.CreateLocalCopy>
-  <Fluffy.ModManager.CreateLocalSucceeded>{0}のローカルコピーの作成に成功しました。</Fluffy.ModManager.CreateLocalSucceeded>
-  <Fluffy.ModManager.CreateLocalFailed>{0}のローカルコピーの作成に失敗しました。詳細については、エラーログを参照してください。部分的にコピーされたModを削除するには、Modsフォルダを調べることができます。</Fluffy.ModManager.CreateLocalFailed>
+  <Fluffy.ModManager.CreateLocalCopies>Modリストに存在し,有効な全てのSteam-Workshop-Modのローカルコピーを作成します\n\nローカルコピーされたModはmodsフォルダに保存され,自動更新は行われません.</Fluffy.ModManager.CreateLocalCopies>
+  <Fluffy.ModManager.CreateLocalCopiesConfirmation>あなたは{0}個のModに対してローカルコピーを作成しようとしています.これには数分かかるかも知れません.続行してもよろしいですか？</Fluffy.ModManager.CreateLocalCopiesConfirmation>
+  <Fluffy.ModManager.CreateLocalCopy>{0}のローカルコピーを作成します.\n\nローカルコピーされたModはmodsフォルダに保存され,自動更新は行われません.</Fluffy.ModManager.CreateLocalCopy>
+  <Fluffy.ModManager.CreateLocalSucceeded>{0}のローカルコピーの作成に成功しました.</Fluffy.ModManager.CreateLocalSucceeded>
+  <Fluffy.ModManager.CreateLocalFailed>{0}のローカルコピーの作成に失敗しました.詳細については,エラーログを参照してください.部分的にコピーされたModを削除するには,Modsフォルダを調べることができます.</Fluffy.ModManager.CreateLocalFailed>
   <Fluffy.ModManager.CreatingLocal>{0}のローカルコピーを作成中</Fluffy.ModManager.CreatingLocal>
 
-  <Fluffy.ModManager.DeleteLocalCopy>{0}の現在選択されているバージョンを削除します。\n\n警告：これは取り消せません！</Fluffy.ModManager.DeleteLocalCopy>
+  <Fluffy.ModManager.DeleteLocalCopy>{0}の現在選択されているバージョンを削除します.\n\n警告：これは取り消せません！</Fluffy.ModManager.DeleteLocalCopy>
   <Fluffy.ModManager.ConfirmRemoveLocal>このバージョンの{0}を完全に削除してもよろしいですか？</Fluffy.ModManager.ConfirmRemoveLocal>
   <Fluffy.ModManager.RemoveLocalSucceeded>{0}のローカルコピーを削除しました</Fluffy.ModManager.RemoveLocalSucceeded>
-  <Fluffy.ModManager.RemoveLocalFailed>{0}のローカルコピーを削除できませんでした。詳細については、エラーログを参照してください。Modsフォルダを調べて、部分的に削除されたModを直接削除することもできます。</Fluffy.ModManager.RemoveLocalFailed>
+  <Fluffy.ModManager.RemoveLocalFailed>{0}のローカルコピーを削除できませんでした.詳細については,エラーログを参照してください.Modsフォルダを調べて,部分的に削除されたModを直接削除することもできます.</Fluffy.ModManager.RemoveLocalFailed>
   <Fluffy.ModManager.RemovingLocal>{0}のローカルコピーを削除しています</Fluffy.ModManager.RemovingLocal>
 
   <!-- Resolvers -->
-  <Fluffy.ModManager.MoveCoreToFirst>「Core」をロード順の一番上(最初の位置)に設定します。</Fluffy.ModManager.MoveCoreToFirst>
-  <Fluffy.ModManager.SearchSteamWorkshop>「{0}」のworkshopを検索する。</Fluffy.ModManager.SearchSteamWorkshop>
-  <Fluffy.ModManager.SearchForum>「{0}」のLudeon公式フォーラムを検索する。</Fluffy.ModManager.SearchForum>
-  <Fluffy.ModManager.ActivateMod>{0}{1}（{2}）を有効にする。</Fluffy.ModManager.ActivateMod>
-  <Fluffy.ModManager.NoMatchingModInstalled>ゲームバージョン{1}の「{0}」に一致するMODが見つかりませんでした。</Fluffy.ModManager.NoMatchingModInstalled>
-  <Fluffy.ModManager.NoMatchingModInstalled_Version>ゲームバージョン{1}の「{0}{3}{2}」に一致するMODが見つかりませんでした。</Fluffy.ModManager.NoMatchingModInstalled_Version>
-  <Fluffy.ModManager.DeactivateMod>{0}を無効にする。</Fluffy.ModManager.DeactivateMod>
-  <Fluffy.ModManager.MoveBefore>リストの順番で{1}の上に{0}を移動してください。</Fluffy.ModManager.MoveBefore>
-  <Fluffy.ModManager.MoveAfter>リストの順番で{1}の下に{0}を移動してください。</Fluffy.ModManager.MoveAfter>
-  <Fluffy.ModManager.UpdateLocalCopy>現在のSteamのWorkshopで公開されているバージョンに{0}を更新してください。</Fluffy.ModManager.UpdateLocalCopy>
+  <Fluffy.ModManager.MoveCoreToFirst>「Core」をロード順の一番上(最初の位置)に設定します.</Fluffy.ModManager.MoveCoreToFirst>
+  <Fluffy.ModManager.SearchSteamWorkshop>「{0}」のworkshopを検索する.</Fluffy.ModManager.SearchSteamWorkshop>
+  <Fluffy.ModManager.SearchForum>「{0}」のLudeon公式フォーラムを検索する.</Fluffy.ModManager.SearchForum>
+  <Fluffy.ModManager.ActivateMod>{0}{1}（{2}）を有効にする.</Fluffy.ModManager.ActivateMod>
+  <Fluffy.ModManager.NoMatchingModInstalled>ゲームバージョン{1}の「{0}」に一致するMODが見つかりませんでした.</Fluffy.ModManager.NoMatchingModInstalled>
+  <Fluffy.ModManager.NoMatchingModInstalled_Version>ゲームバージョン{1}の「{0}{3}{2}」に一致するMODが見つかりませんでした.</Fluffy.ModManager.NoMatchingModInstalled_Version>
+  <Fluffy.ModManager.DeactivateMod>{0}を無効にする.</Fluffy.ModManager.DeactivateMod>
+  <Fluffy.ModManager.MoveBefore>リストの順番で{1}の上に{0}を移動してください.</Fluffy.ModManager.MoveBefore>
+  <Fluffy.ModManager.MoveAfter>リストの順番で{1}の下に{0}を移動してください.</Fluffy.ModManager.MoveAfter>
+  <Fluffy.ModManager.UpdateLocalCopy>現在のSteamのWorkshopで公開されているバージョンに{0}を更新してください.</Fluffy.ModManager.UpdateLocalCopy>
 
   <!-- Content source -->
   <Fluffy.ModManager.ContentSource.Undefined>未定義</Fluffy.ModManager.ContentSource.Undefined>
-  <Fluffy.ModManager.ContentSource.LocalFolder>ローカル</Fluffy.ModManager.ContentSource.LocalFolder>
+  <Fluffy.ModManager.ContentSource.ModsFolder>ローカル</Fluffy.ModManager.ContentSource.ModsFolder>
   <Fluffy.ModManager.ContentSource.SteamWorkshop>Steam</Fluffy.ModManager.ContentSource.SteamWorkshop>
 
   <!-- Links -->
@@ -115,21 +114,21 @@
   <Fluffy.ModManager.WorkshopPage>SteamWorkshopの{0}</Fluffy.ModManager.WorkshopPage>
 
   <!-- confirmation dialog 0: issue count, 1: issue list -->
-  <Fluffy.ModManager.DialogConfirmIssues>新規にゲームを開始したり、セーブデータを読み込む前に、これらの問題を解決する必要があります。&lt;b&gt;\n\n警告：このMODリストを使用すると、エラーが発生する可能性が高く、ゲームが停止する可能性があります。&lt;/b&gt;\n\n{0}</Fluffy.ModManager.DialogConfirmIssues>
+  <Fluffy.ModManager.DialogConfirmIssues>新規にゲームを開始したり,セーブデータを読み込む前に,これらの問題を解決する必要があります.&lt;b&gt;\n\n警告：このMODリストを使用すると,エラーが発生する可能性が高く,ゲームが停止する可能性があります.&lt;/b&gt;\n\n{0}</Fluffy.ModManager.DialogConfirmIssues>
   <Fluffy.ModManager.DialogConfirmIssuesTitle>MODリストに問題が{0}あります！</Fluffy.ModManager.DialogConfirmIssuesTitle>
 
   <!-- online manifest -->
-  <Fluffy.ModManager.ManifestNotImplemented>このMODはマニフェストファイルを持たないのでバージョンチェックに対応していません。\n\nあなたはこれが本当に簡単であることを作者に伝えるべきでしょう！</Fluffy.ModManager.ManifestNotImplemented>
+  <Fluffy.ModManager.ManifestNotImplemented>このMODはマニフェストファイルを持たないのでバージョンチェックに対応していません.\n\nあなたはこれが本当に簡単であることを作者に伝えるべきでしょう！</Fluffy.ModManager.ManifestNotImplemented>
   <Fluffy.ModManager.FetchingOnlineManifest>最新バージョンの確認中...</Fluffy.ModManager.FetchingOnlineManifest>
   <Fluffy.ModManager.FetchingOnlineManifestFailed>最新バージョンの確認に失敗しました：{0}</Fluffy.ModManager.FetchingOnlineManifestFailed>
-  <Fluffy.ModManager.NewVersionAvailable>新しいバージョンが利用可能です！ 現在：{0}、最新：{1}</Fluffy.ModManager.NewVersionAvailable>
-  <Fluffy.ModManager.LatestVersion>これは最新バージョンです。</Fluffy.ModManager.LatestVersion>
+  <Fluffy.ModManager.NewVersionAvailable>新しいバージョンが利用可能です！ 現在：{0},最新：{1}</Fluffy.ModManager.NewVersionAvailable>
+  <Fluffy.ModManager.LatestVersion>これは最新バージョンです.</Fluffy.ModManager.LatestVersion>
 
   <!-- workshop -->
   <Fluffy.ModManager.DownloadPending>保留中のダウンロード...</Fluffy.ModManager.DownloadPending>
-  <Fluffy.ModManager.ModInstalled>{0}のインストールが完了しました。</Fluffy.ModManager.ModInstalled>
-  <Fluffy.ModManager.Subscribe>Workshopで{0}（{1}）をサブスクライブしてください。</Fluffy.ModManager.Subscribe>
-  <Fluffy.ModManager.SubscribeAllMissing>不足している全てのWorkshopModをサブスクライブする。</Fluffy.ModManager.SubscribeAllMissing>
+  <Fluffy.ModManager.ModInstalled>{0}のインストールが完了しました.</Fluffy.ModManager.ModInstalled>
+  <Fluffy.ModManager.Subscribe>Workshopで{0}（{1}）をサブスクライブしてください.</Fluffy.ModManager.Subscribe>
+  <Fluffy.ModManager.SubscribeAllMissing>不足している全てのWorkshopModをサブスクライブする.</Fluffy.ModManager.SubscribeAllMissing>
 
   <!-- colours -->
   <Fluffy.ModManager.ChangeColour>Modの色を変更</Fluffy.ModManager.ChangeColour>
@@ -143,13 +142,19 @@
   <!-- options -->
   <Fluffy.ModManager.SettingsCategory>Mod Manager</Fluffy.ModManager.SettingsCategory>
   <Fluffy.ModManager.ShowPromotions>宣伝を表示</Fluffy.ModManager.ShowPromotions>
-  <Fluffy.ModManager.ShowPromotions_NotActive>使用していないModの宣伝を表示する。</Fluffy.ModManager.ShowPromotions_NotActive>
+  <Fluffy.ModManager.ShowPromotions_NotActive>使用していないModの宣伝を表示する.</Fluffy.ModManager.ShowPromotions_NotActive>
   <Fluffy.ModManager.ShowPromotions_NotSubscribed>サブスクライブしていないModの宣伝を表示する</Fluffy.ModManager.ShowPromotions_NotSubscribed>
-  <Fluffy.ModManager.ShowPromotionsTip>これを有効にすると、Steam-WorkshopのModを選択するたびに、Mod_Managerは同じ作者による他のModの宣伝を表示します。</Fluffy.ModManager.ShowPromotionsTip>
+  <Fluffy.ModManager.ShowPromotionsTip>これを有効にすると,Steam-WorkshopのModを選択するたびに,Mod_Managerは同じ作者による他のModの宣伝を表示します.</Fluffy.ModManager.ShowPromotionsTip>
   <Fluffy.ModManager.TrimTags>mod名からタグを削除する</Fluffy.ModManager.TrimTags>
-  <Fluffy.ModManager.TrimTagsTip>これを有効にすると、Mod作成者名とバージョンのタグが表示されるMod名から削除されます（例：[KV]、[B19]等）</Fluffy.ModManager.TrimTagsTip>
+  <Fluffy.ModManager.TrimTagsTip>これを有効にすると,Mod作成者名とバージョンのタグが表示されるMod名から削除されます（例：[KV],[B19]等）</Fluffy.ModManager.TrimTagsTip>
   <Fluffy.ModManager.TrimVersionStrings>Mod名からバージョン番号を削除する</Fluffy.ModManager.TrimVersionStrings>
-  <Fluffy.ModManager.TrimVersionStringsTip>これを有効にすると、Mod_Managerはバージョン名（Version1.0、0.19など）からバージョンの文字列を削除しようとします。\n\n警告：想定外の情報量を削除してしまう場合があります</Fluffy.ModManager.TrimVersionStringsTip>
-  <!--  -->
+  <Fluffy.ModManager.TrimVersionStringsTip>これを有効にすると,Mod_Managerはバージョン名（Version1.0,0.19など）からバージョンの文字列を削除しようとします.\n\n警告：想定外の情報量を削除してしまう場合があります</Fluffy.ModManager.TrimVersionStringsTip>
+
+  <Fluffy.ModManager.ShowAllRequirements>Mod前提を全て表示</Fluffy.ModManager.ShowAllRequirements>
+  <Fluffy.ModManager.ShowAllRequirementsTip>Mod詳細に,Mod前提が完了したものと未完了な両方を全て表示する</Fluffy.ModManager.ShowAllRequirementsTip>
+  <Fluffy.ModManager.AddModManagerToNewModList>新しいModリストにMod-Managerを追加</Fluffy.ModManager.AddModManagerToNewModList>
+  <Fluffy.ModManager.AddModManagerToNewModListTip>CoreとMod-Managerを新しいModリストに追加します.</Fluffy.ModManager.AddModManagerToNewModListTip>
+  <Fluffy.ModManager.AddExpansionsToNewModList>新式Modリストに公式DLCを追加</Fluffy.ModManager.AddExpansionsToNewModList>
+  <Fluffy.ModManager.AddExpansionsToNewModListTip>Coreに加えて,公式DLCを新しいModリストに追加します.</Fluffy.ModManager.AddExpansionsToNewModListTip>
 
 </LanguageData>
