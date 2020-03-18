@@ -63,7 +63,7 @@ namespace ModManager
 #pragma warning disable 649
         internal string manifestUri;
 #pragma warning restore 649
-        private string downloadUri;
+        public string downloadUri;
         public VersionCheck VersionCheck;
 
         // suggestions

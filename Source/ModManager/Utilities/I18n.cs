@@ -396,5 +396,8 @@ namespace ModManager
         public static string AddExpansionsToNewModListTip     = Key( "AddExpansionsToNewModListTip" ).Translate();
         public static string ShowVersionChecksForSteamMods    = Key( "ShowVersionChecksForSteamMods" ).Translate();
         public static string ShowVersionChecksForSteamModsTip = Key( "ShowVersionChecksForSteamModsTip" ).Translate();
+
+        public static string OpenDownloadUri( string downloadUri ) => Key( "OpenDownloadUri" ).Translate( downloadUri ).Resolve();
+        public static string NoDownloadUri = Key( "NoDownloadUri" ).Translate();
     }
 }

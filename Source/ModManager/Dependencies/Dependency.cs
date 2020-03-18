@@ -1,8 +1,10 @@
 ﻿// Dependency.cs
 // Copyright Karel Kroeze, 2020-2020
 
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using RimWorld;
 using UnityEngine;
 using Verse;
 
@@ -37,6 +39,14 @@ namespace ModManager
 
         public virtual bool IsApplicable => true;
 
+        public abstract List<FloatMenuOption> Options { get; }
+
+        public override void OnClicked( Page_ModsConfig window )
+        {
+            if ( !Options.EnumerableNullOrEmpty() )
+                Utilities.FloatMenu( Options );
+        }
+
         public override Texture2D StatusIcon => Resources.Warning;
 
         public static Regex packageIdFormatRegex = new Regex(@"(?=.{1,60}$)^(?:[a-z0-9]+\.)+[a-z0-9]+$", RegexOptions.IgnoreCase );
@@ -63,11 +73,11 @@ namespace ModManager
             return false;
         }
 
-        public Dependency( Manifest parent, string packageId )
+        public Dependency( Manifest parent, string packageId, bool ignorePostfix = true )
         {
             this.parent    = parent;
             this.packageId = packageId;
-            target         = ModLister.GetModWithIdentifier( packageId, true );
+            target         = ModLister.GetModWithIdentifier( packageId, ignorePostfix );
         }
 
         public Dependency( Manifest parent, ModDependency depend ): this( parent, depend.packageId )

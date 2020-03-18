@@ -2,6 +2,7 @@
 // Copyright Karel Kroeze, -2020
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -37,16 +38,19 @@ namespace ModManager
 
         public LoadOrder_Before( Manifest parent, string packageId ) : base( parent, packageId ){}
 
-        public override void OnClicked( Page_ModsConfig window )
+        public override List<FloatMenuOption> Options
         {
-            var options = NewOptionsList;
-            options.Add( new FloatMenuOption( I18n.MoveBefore( parent.Button, target.GetManifest().Button ),
-                                              () => ModButtonManager.MoveBefore(
-                                                  parent.Button, target.GetManifest().Button ) ) );
-            options.Add( new FloatMenuOption( I18n.MoveBefore( target.GetManifest().Button, parent.Button ),
-                                              () => ModButtonManager.MoveBefore(
-                                                  target.GetManifest().Button, parent.Button ) ) );
-            FloatMenu( options );
+            get
+            {
+                var options = NewOptionsList;
+                options.Add( new FloatMenuOption( I18n.MoveBefore( parent.Button, target.GetManifest().Button ),
+                                                  () => ModButtonManager.MoveBefore(
+                                                      parent.Button, target.GetManifest().Button ) ) );
+                options.Add( new FloatMenuOption( I18n.MoveBefore( target.GetManifest().Button, parent.Button ),
+                                                  () => ModButtonManager.MoveBefore(
+                                                      target.GetManifest().Button, parent.Button ) ) );
+                return options;
+            }
         }
 
         public override string Tooltip
@@ -109,15 +113,22 @@ namespace ModManager
     {
         public LoadOrder_After() : base( null, string.Empty ){}
         public LoadOrder_After( Manifest parent, string packageId ) : base( parent, packageId ){}
-        public override void OnClicked( Page_ModsConfig window )
+
+        public override List<FloatMenuOption> Options
         {
-            var options = NewOptionsList;
-            options.Add( new FloatMenuOption( I18n.MoveAfter( parent.Button, target.GetManifest().Button ),
-                                              () => ModButtonManager.MoveAfter( parent.Button, target.GetManifest().Button ) ) );
-            options.Add( new FloatMenuOption( I18n.MoveAfter( target.GetManifest().Button, parent.Button ),
-                                              () => ModButtonManager.MoveAfter( target.GetManifest().Button, parent.Button ) ) );
-            FloatMenu( options );
+            get
+            {
+                var options = NewOptionsList;
+                options.Add( new FloatMenuOption( I18n.MoveAfter( parent.Button, target.GetManifest().Button ),
+                                                  () => ModButtonManager.MoveAfter(
+                                                      parent.Button, target.GetManifest().Button ) ) );
+                options.Add( new FloatMenuOption( I18n.MoveAfter( target.GetManifest().Button, parent.Button ),
+                                                  () => ModButtonManager.MoveAfter(
+                                                      target.GetManifest().Button, parent.Button ) ) );
+                return options;
+            }
         }
+
         public override string Tooltip
         {
             get

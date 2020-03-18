@@ -103,6 +103,8 @@
     <Fluffy.ModManager.MoveBefore>Move {0} to load before {1}.</Fluffy.ModManager.MoveBefore>
     <Fluffy.ModManager.MoveAfter>Move {0} to load after {1}.</Fluffy.ModManager.MoveAfter>
     <Fluffy.ModManager.UpdateLocalCopy>Update {0} to the current Steam Workshop version.</Fluffy.ModManager.UpdateLocalCopy>
+    <Fluffy.ModManager.OpenDownloadUri>Go to download location\n&lt;i&gt;{0}&lt;/i&gt;</Fluffy.ModManager.OpenDownloadUri>
+    <Fluffy.ModManager.NoDownloadUri>No download location provided.</Fluffy.ModManager.NoDownloadUri>
 
     <!-- Content source -->
     <Fluffy.ModManager.ContentSource.Undefined>Undefined</Fluffy.ModManager.ContentSource.Undefined>

@@ -2,6 +2,7 @@
 // Copyright Karel Kroeze, 2020-2020
 
 using System;
+using System.Collections.Generic;
 using System.Net;
 using RimWorld;
 using UnityEngine;
@@ -12,12 +13,12 @@ namespace ModManager
 {
     public class VersionCheck: Dependency
     {
-        private Version remoteVersion;
+        private Manifest onlineManifest;
         private bool completed;
         private bool downloading;
         private Exception exception;
 
-        public VersionCheck( Manifest parent ) : base( parent, parent.Mod.PackageId )
+        public VersionCheck( Manifest parent ) : base( parent, parent.Mod.PackageId, false )
         {
             // start crunching those downloads
             FetchManifest( parent.manifestUri );
@@ -42,6 +43,21 @@ namespace ModManager
                                              ( ModManager.Settings.ShowVersionChecksOnSteamMods ||
                                                parent.Mod.Source == ContentSource.ModsFolder );
 
+        public override List<FloatMenuOption> Options
+        {
+            get
+            {
+
+                var options = Utilities.NewOptionsList;
+                if ( !onlineManifest.downloadUri.NullOrEmpty() )
+                    options.Add( new FloatMenuOption( I18n.OpenDownloadUri( onlineManifest.downloadUri ),
+                                                      () => SteamUtility.OpenUrl( onlineManifest.downloadUri ) ) );
+                else
+                    options.Add( new FloatMenuOption( I18n.NoDownloadUri, null ) );
+                return options;
+            }
+        }
+
         public override string Tooltip
         {
             get
@@ -52,7 +68,7 @@ namespace ModManager
                     return I18n.DownloadPending;
                 if ( IsSatisfied )
                     return I18n.LatestVersion;
-                return I18n.NewVersionAvailable( parent.Version, remoteVersion ?? new Version() );
+                return I18n.NewVersionAvailable( parent.Version, onlineManifest.Version ?? new Version() );
             }
         }
 
@@ -95,8 +111,7 @@ namespace ModManager
             {
                 downloading = true;
                 var      raw            = await client.DownloadStringTaskAsync( manifestUri );
-                Manifest onlineManifest = DirectXmlLoader.ItemFromXmlString<Manifest>( raw, manifestUri );
-                remoteVersion = onlineManifest.Version;
+                onlineManifest = DirectXmlLoader.ItemFromXmlString<Manifest>( raw, manifestUri );
             }
             catch ( WebException ex )
             {
@@ -117,12 +132,7 @@ namespace ModManager
             }
         }
 
-        public override void OnClicked( Page_ModsConfig window )
-        {
-            // do stuff.
-        }
-
-        public override bool IsSatisfied => completed && !downloading && exception == null && remoteVersion <= parent.Version;
+        public override bool IsSatisfied => completed && !downloading && exception == null && onlineManifest.Version <= parent.Version;
 
         public override bool CheckSatisfied()
         {

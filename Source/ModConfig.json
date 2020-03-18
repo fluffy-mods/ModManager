@@ -21,13 +21,20 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-03-19 :: Fluffy :: be slightly less panicky about non-critical issues'\n2020-03-18 :: Fluffy :: add toggle for version checks on steam mods [default: off]'\n2020-03-18 :: Fluffy :: fix dependencies on mods that have a local and stream version'\n2020-03-18 :: Fluffy :: add loadorder resolvers'\n2020-03-18 :: Fluffy :: fix non-versioned dependencies/mods'",
+    "changenote": "2020-03-19 :: Fluffy :: tweak panic level of issues'\n2020-03-19 :: Fluffy :: be slightly less panicky about non-critical issues'\n2020-03-18 :: Fluffy :: add toggle for version checks on steam mods [default: off]'\n2020-03-18 :: Fluffy :: fix dependencies on mods that have a local and stream version'\n2020-03-18 :: Fluffy :: add loadorder resolvers'\n2020-03-18 :: Fluffy :: fix non-versioned dependencies/mods'",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:d1a0182754839980892716d1ddb3438871bd377c",
+            "date": "2020-03-19",
+            "author": "Fluffy",
+            "message": "tweak panic level of issues'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:159c143c7cd15bf472ee062d47729be42becaa97",

@@ -2,6 +2,7 @@
 // Copyright Karel Kroeze, 2020-2020
 
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -35,11 +36,8 @@ namespace ModManager
         public VersionedDependency( Manifest parent, ModDependency depend ) : base( parent, depend ){}
 
         public VersionedDependency( Manifest parent, string packageId ): base( parent, packageId) {}
-        
-        public override void OnClicked( Page_ModsConfig window )
-        {
-            // do something
-        }
+
+        public override List<FloatMenuOption> Options => Utilities.NewOptionsList;
 
         public override string Tooltip
         {
