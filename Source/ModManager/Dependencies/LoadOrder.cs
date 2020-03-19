@@ -38,7 +38,7 @@ namespace ModManager
 
         public LoadOrder_Before( Manifest parent, string packageId ) : base( parent, packageId ){}
 
-        public override List<FloatMenuOption> Options
+        public override List<FloatMenuOption> Resolvers
         {
             get
             {
@@ -77,36 +77,10 @@ namespace ModManager
         
         public void LoadDataFromXmlCustom( XmlNode root )
         {
-            try
-            {
-                var text = root.InnerText.Trim();
-                if ( !packageIdFormatRegex.IsMatch( text ) )
-                {
-                    if ( TryGetPackageIdFromIdentifier( text, out packageId ) )
-                    {
-                        if ( Prefs.DevMode )
-                        {
-                            Log.Message( $"Invalid packageId '{text}' resolved to '{packageId}'" );
-                        }
-                    }
-                    else
-                    {
-                        throw new InvalidDataException( $"Invalid packageId: '{text}'" );
-                    }
-                }
-
-                target = ModLister.GetModWithIdentifier( packageId, true );
-            }
-            catch ( Exception ex )
-            {
-#if DEBUG
-                Log.Message( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-#else
-                if (Prefs.DevMode)
-                    Log.Warning( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-#endif
-            }
+            var text = root.InnerText.Trim();
+            TryParseIdentifier( text, root );
         }
+
     }
 
     public class LoadOrder_After : LoadOrder
@@ -114,7 +88,7 @@ namespace ModManager
         public LoadOrder_After() : base( null, string.Empty ){}
         public LoadOrder_After( Manifest parent, string packageId ) : base( parent, packageId ){}
 
-        public override List<FloatMenuOption> Options
+        public override List<FloatMenuOption> Resolvers
         {
             get
             {
@@ -153,35 +127,8 @@ namespace ModManager
 
         public void LoadDataFromXmlCustom( XmlNode root )
         {
-            try
-            {
-                var text = root.InnerText.Trim();
-                if ( !packageIdFormatRegex.IsMatch( text ) )
-                {
-                    if ( TryGetPackageIdFromIdentifier( text, out packageId ) )
-                    {
-                        if ( Prefs.DevMode )
-                        {
-                            Log.Message( $"Invalid packageId '{text}' resolved to '{packageId}'" );
-                        }
-                    }
-                    else
-                    {
-                        throw new InvalidDataException( $"Invalid packageId: '{text}'" );
-                    }
-                }
-
-                target = ModLister.GetModWithIdentifier( packageId, true );
-            }
-            catch ( Exception ex )
-            {
-#if DEBUG
-                Log.Message( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-#else
-                if (Prefs.DevMode)
-                    Log.Warning( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-#endif
-            }
+            var text = root.InnerText.Trim();
+            TryParseIdentifier( text, root );
         }
     }
 }

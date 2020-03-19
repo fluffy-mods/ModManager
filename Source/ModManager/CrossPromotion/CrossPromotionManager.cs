@@ -162,7 +162,7 @@ namespace ModManager
             {
                 if (SteamUGC.GetQueryUGCResult(result.m_handle, i, out var details))
                 {
-                    Debug.Log($" - {details.m_rgchTitle} ({details.m_ulSteamIDOwner}");
+                    Debug.TracePromotions($" - {details.m_rgchTitle} ({details.m_ulSteamIDOwner}");
                     author = new CSteamID( details.m_ulSteamIDOwner );
                     promotions.Add(new CrossPromotion(details));
                 }
@@ -182,7 +182,7 @@ namespace ModManager
             {
                 if ( SteamUGC.GetQueryUGCResult( result.m_handle, i, out var details ) )
                 {
-                    Debug.Log($" - {details.m_rgchTitle} ({details.m_ulSteamIDOwner}");
+                    Debug.TracePromotions($" - {details.m_rgchTitle} ({details.m_ulSteamIDOwner}");
                     var author = new CSteamID( details.m_ulSteamIDOwner ).GetAccountID();
                     _authorForMod.Add( details.m_nPublishedFileId, author );
                     _currentlyFetchingFiles.Remove( details.m_nPublishedFileId );
@@ -193,7 +193,7 @@ namespace ModManager
 
         private static void FetchModDetails( PublishedFileId_t fileId )
         {
-            Debug.Log( $"Fetching details for {fileId}..." );
+            Debug.TracePromotions( $"Fetching details for {fileId}..." );
             _currentlyFetchingFiles.Add( fileId );
             var query = SteamUGC.CreateQueryUGCDetailsRequest( new[] {fileId}, 1 );
             var request = SteamUGC.SendQueryUGCRequest( query );
@@ -202,7 +202,7 @@ namespace ModManager
 
         private static void FetchModsForAuthor( AccountID_t author )
         {
-            Debug.Log( $"Fetching mods for {author}..." );
+            Debug.TracePromotions( $"Fetching mods for {author}..." );
             _currentlyFetchingAuthors.Add( author );
             var query = SteamUGC.CreateQueryUserUGCRequest( 
                 author, 

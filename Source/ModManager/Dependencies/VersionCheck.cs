@@ -43,7 +43,7 @@ namespace ModManager
                                              ( ModManager.Settings.ShowVersionChecksOnSteamMods ||
                                                parent.Mod.Source == ContentSource.ModsFolder );
 
-        public override List<FloatMenuOption> Options
+        public override List<FloatMenuOption> Resolvers
         {
             get
             {

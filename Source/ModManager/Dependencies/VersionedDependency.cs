@@ -3,11 +3,14 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 using RimWorld;
 using SemVer;
+using Steamworks;
 using UnityEngine;
 using Verse;
 
@@ -15,7 +18,18 @@ namespace ModManager
 {
     public class VersionedDependency: Dependency
     {
-        public Range range = new Range( ">= 0.0.0" );
+        private Range _range = new Range( ">= 0.0.0" );
+        protected bool versioned = false;
+
+        public Range Range
+        {
+            get => _range;
+            set
+            {
+                versioned = true;
+                _range = value;
+            }
+        }
 
         public override int Severity
         {
@@ -37,7 +51,48 @@ namespace ModManager
 
         public VersionedDependency( Manifest parent, string packageId ): base( parent, packageId) {}
 
-        public override List<FloatMenuOption> Options => Utilities.NewOptionsList;
+        protected static Regex SteamIdRegex = new Regex( @"(\d*)$" );
+        public override List<FloatMenuOption> Resolvers
+        {
+            get
+            {
+                var options = Utilities.NewOptionsList;
+                // if available, activate
+                // else
+                // if has steam id, subscribe + link
+                // if has download location, link
+                // else 
+                // search forum
+                // search steam
+
+                if ( IsAvailable && IsInRange )
+                {
+                    options.Add( new FloatMenuOption( I18n.ActivateMod( target ), () => target.GetManifest().Button.Active = true ) );
+                }
+                else if ( !downloadUrl.NullOrEmpty() || !steamWorkshopUrl.NullOrEmpty() )
+                {
+                    if ( !downloadUrl.NullOrEmpty() )
+                    {
+                        options.Add( new FloatMenuOption( I18n.OpenDownloadUri( downloadUrl ), () => SteamUtility.OpenUrl( downloadUrl ) ) );
+                    }
+
+                    if ( !steamWorkshopUrl.NullOrEmpty() )
+                    {
+                        var steamId = SteamIdRegex.Match( steamWorkshopUrl ).Groups[1].Value;
+                        Debug.Log( $"steamUrl: {steamWorkshopUrl}, id: {steamId}" );
+                        options.Add( new FloatMenuOption( I18n.WorkshopPage( displayName ?? packageId ), () => SteamUtility.OpenUrl( downloadUrl ) ) );
+                        options.Add( new FloatMenuOption( I18n.Subscribe( displayName ?? packageId ), () => Workshop.Subscribe( steamId ) ) );
+                    }
+                }
+                else
+                {
+                    options.Add( new FloatMenuOption( I18n.SearchForum( displayName ?? packageId ), () => SteamUtility.OpenUrl( "http://rimworldgame.com/getmods" ) ) );
+                    options.Add( new FloatMenuOption( I18n.SearchSteamWorkshop( displayName ?? packageId ), () => SteamUtility.OpenUrl( $"https://steamcommunity.com/workshop/browse/?appid=294100&searchtext={displayName ?? packageId}"))  );
+                }
+
+                return options;
+            }
+        }
 
         public override string Tooltip
         {
@@ -63,8 +118,7 @@ namespace ModManager
             get
             {
                 var v = target?.GetManifest().Version;
-                Debug.Log( parent.Mod.PackageId + " :: version " + $"{v.Major}.{v.Minor}.{v.Build}" + " :: target range " + range );
-                return v != null && range.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true );
+                return v != null && Range.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true );
             }
         }
 
@@ -74,56 +128,34 @@ namespace ModManager
 
         public void LoadDataFromXmlCustom( XmlNode root )
         {
-            try
+            var parts      = root.InnerText.Split( ' ' );
+            string _packageId;
+
+            Debug.TraceDependencies( $"Trying to parse '{root.OuterXml}'");
+
+            // can have 1, 2 or 3 parts
+            // 1 part: packageId only.
+            // 2 parts: packageId op:version     || where version is attached to the op, e.g. >1.0.0
+            // 3 parts: packageId op version
+            switch ( parts.Length )
             {
-                var parts = root.InnerText.Split( ' ' );
-                var _packageId = string.Empty;
-
-                // can have 1, 2 or 3 parts
-                // 1 part: packageId only.
-                // 2 parts: packageId op:version     || where version is attached to the op, e.g. >1.0.0
-                // 3 parts: packageId op version
-                switch ( parts.Length )
-                {
-                    case 1:
-                        _packageId = parts[0];
-                        break;
-                    case 2:
-                        _packageId = parts[0];
-                        range = new Range( parts[1], true );
-                        break;
-                    case 3:
-                        _packageId = parts[0];
-                        range = new Range( parts.Skip( 1 ).StringJoin( "" ) );
-                        break;
-                }
-
-                if ( !packageIdFormatRegex.IsMatch( _packageId ) )
-                {
-                    if ( TryGetPackageIdFromIdentifier( _packageId, out packageId ) )
-                    {
-                        if ( Prefs.DevMode )
-                        {
-                            Log.Message( $"Invalid packageId '{_packageId}' resolved to '{packageId}'" );
-                        }
-                    }
-                    else
-                    {
-                        throw new InvalidDataException( $"Invalid packageId: '{_packageId}'" );
-                    }
-                }
-
-                target = ModLister.GetModWithIdentifier( packageId, true );
+                case 1:
+                    _packageId = parts[0];
+                    break;
+                case 2:
+                    _packageId = parts[0];
+                    Range      = new Range( parts[1], true );
+                    break;
+                case 3:
+                    _packageId = parts[0];
+                    Range      = new Range( parts.Skip( 1 ).StringJoin( "" ) );
+                    break;
+                default:
+                    _packageId = root.InnerText;
+                    break;
             }
-            catch ( Exception ex )
-            {
-#if DEBUG
-                Log.Message( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-#else
-                if (Prefs.DevMode)
-                    Log.Warning( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
-#endif
-            }
+
+            TryParseIdentifier( _packageId, root );
         }
     }
 }

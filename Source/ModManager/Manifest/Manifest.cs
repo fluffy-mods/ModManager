@@ -1,5 +1,8 @@
 ﻿// Manifest.cs
 // Copyright Karel Kroeze, 2018-2018
+#if DEBUG
+#define TRACE_DEPENDENCIES
+#endif
 
 using System;
 using System.Collections.Generic;
@@ -38,8 +41,8 @@ namespace ModManager
         public List<Dependency> Incompatibilities = new List<Dependency>();
 
         // dependencies and incompatibilities are still relevant in the manifest because versioning is not a thing in vanilla
-        private List<VersionedDependency> dependencies     = new List<VersionedDependency>();
-        private List<VersionedDependency> incompatibleWith = new List<VersionedDependency>();
+        private List<VersionedDependency> dependencies = new List<VersionedDependency>();
+        private List<Incompatible> incompatibleWith = new List<Incompatible>();
 
         // idem for version itself, also version checking requires this
         private string  version;
@@ -149,10 +152,21 @@ namespace ModManager
                     manifest.LoadAfter.Add( new LoadOrder_After( manifest, after ) );
             foreach ( var incomp in mod.IncompatibleWith )
                 if ( !manifest.Incompatibilities.Any( d => d.packageId == incomp ) )
-                    manifest.Incompatibilities.Add( new VersionedDependency( manifest, incomp ) );
+                    manifest.Incompatibilities.Add( new Incompatible( manifest, incomp ) );
             foreach ( var depend in mod.Dependencies )
                 if ( !manifest.Dependencies.Any( d => d.packageId == depend.packageId ) )
                     manifest.Dependencies.Add( new VersionedDependency( manifest, depend ) );
+
+            foreach ( var dependency in manifest.Dependencies
+                                                .Concat( manifest.Incompatibilities )
+                                                .Concat( manifest.LoadBefore )
+                                                .Concat( manifest.LoadAfter )
+                                                .Concat( manifest.VersionCheck )
+                                                .Where( d => d != null ) )
+            {
+                dependency.parent = manifest;
+                Debug.TraceDependencies( $"parent={dependency.parent?.Mod.ToString() ?? "NULL"}, targetId={dependency.packageId}, target={dependency.target}, type={dependency.GetType()}" );
+            }
 
             // resolve version - if set in manifest that takes priority,
             // otherwise try to read version from assemblies.

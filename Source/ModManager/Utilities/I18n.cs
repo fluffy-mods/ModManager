@@ -82,7 +82,7 @@ namespace ModManager
         public static string DependencyWrongVersion( ModMetaData tgt, VersionedDependency depend )
         {
             return Key( "DependencyWrongVersion" )
-               .Translate( tgt.Name, depend.range.ToString(), tgt.GetManifest().Version.ToString() );
+               .Translate( tgt.Name, depend.Range.ToString(), tgt.GetManifest().Version.ToString() );
         }
 
         public static string DependencyNotActive( ModMetaData tgt ) =>
@@ -93,9 +93,9 @@ namespace ModManager
             return Key( "DependencyMet" ).Translate( tgt.Name, tgt.GetManifest()?.Version.ToString() ?? "[?]" );
         }
 
-        public static string IncompatibleMod( string mod, string identifier )
+        public static string IncompatibleMod( string name )
         {
-            return Key( "IncompatibleMod" ).Translate( identifier );
+            return Key( "IncompatibleMod" ).Translate( name );
         }
 
         public static string LoadedBefore( string name ) => Key( "LoadedBefore" ).Translate( name );

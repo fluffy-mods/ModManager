@@ -112,4 +112,7 @@ This is version 2.5.885, for RimWorld 1.1.2575.
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
+  <incompatibleWith>
+    <li>ludeon.rimworld.royalty</li>
+  </incompatibleWith>
 </ModMetaData>

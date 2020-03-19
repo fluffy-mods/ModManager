@@ -132,7 +132,7 @@ namespace ModManager
                 GUI.color = issue.Color;
                 GUI.DrawTexture( iconRect, issue.StatusIcon );
                 Widgets.Label( labelRect, issue.Tooltip );
-                if ( issue.Options.Any() )
+                if ( issue.Resolvers.Any() )
                     Utilities.ActionButton( issueRect, () => issue.OnClicked( null ) ); // todo: reference to window? Why?
                 issueRect.y += LineHeight;
             }
