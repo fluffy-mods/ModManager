@@ -121,7 +121,7 @@ namespace ModManager
                 Log.Message( $"Failed to parse dependency: {node.OuterXml}.\nInner exception: {ex}" );
 #else
                 if (Prefs.DevMode)
-                    Log.Warning( $"Failed to parse dependency: {root.OuterXml}.\nInner exception: {ex}" );
+                    Log.Warning( $"Failed to parse dependency: {node.OuterXml}.\nInner exception: {ex}" );
 #endif
             }
         }

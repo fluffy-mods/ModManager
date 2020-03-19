@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 2,
-        "minor": 5,
-        "build": 885
+        "minor": 6,
+        "build": 886
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -21,12 +21,20 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "",
+    "changenote": "2020-03-19 :: Fluffy :: fix incompatible mod requirements, add resolvers'",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:1d20d2a408c090df09ed4dc9f3809dcd5aae93c2",
+            "date": "2020-03-19",
+            "author": "Fluffy",
+            "message": "fix incompatible mod requirements, add resolvers'"
+        }
+    ],
     "packageId": "fluffy.modmanager"
 }

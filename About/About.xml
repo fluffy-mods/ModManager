@@ -95,7 +95,7 @@ Torq:    Russian translation
 Patrick Schmitt:    German translation
 
 &lt;size=24&gt;Version&lt;/size&gt;
-This is version 2.5.885, for RimWorld 1.1.2575.
+This is version 2.6.886, for RimWorld 1.1.2575.
 
 </description>
   <supportedVersions>
@@ -112,7 +112,4 @@ This is version 2.5.885, for RimWorld 1.1.2575.
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
-  <incompatibleWith>
-    <li>ludeon.rimworld.royalty</li>
-  </incompatibleWith>
 </ModMetaData>
