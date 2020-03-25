@@ -63,7 +63,7 @@ namespace ModManager
             get
             {
                 if ( exception != null )
-                    return exception.Message;
+                    return I18n.FetchingOnlineManifestFailed( exception.Message );
                 if ( downloading )
                     return I18n.DownloadPending;
                 if ( IsSatisfied )

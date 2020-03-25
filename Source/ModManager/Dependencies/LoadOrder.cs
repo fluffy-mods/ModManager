@@ -66,11 +66,8 @@ namespace ModManager
 
         public override bool CheckSatisfied()
         {
-            var mods  = ModsConfig.ActiveModsInLoadOrder.ToList();
-            var other = ModLister.GetModWithIdentifier( packageId );
-            return mods.Contains( other )
-                && mods.Contains( parent.Mod )
-                && mods.IndexOf( other ) > mods.IndexOf( parent.Mod );
+            var mods = ModButtonManager.ActiveMods;
+            return target != null && target.Active && parent.Mod.Active && mods.IndexOf( target ) > mods.IndexOf( parent.Mod );
         }
 
         public override string RequirementTypeLabel => "loadOrder".Translate();
@@ -116,11 +113,11 @@ namespace ModManager
 
         public override bool CheckSatisfied()
         {
-            var mods  = ModsConfig.ActiveModsInLoadOrder.ToList();
-            var other = ModLister.GetModWithIdentifier( packageId );
-            return mods.Contains( other )
-                && mods.Contains( parent.Mod )
-                && mods.IndexOf( other ) < mods.IndexOf( parent.Mod );
+            var mods = ModButtonManager.ActiveMods;
+            return target != null    &&
+                   target.Active     &&
+                   parent.Mod.Active &&
+                   mods.IndexOf( target ) < mods.IndexOf( parent.Mod );
         }
 
         public override string RequirementTypeLabel => "loadOrder".Translate();
