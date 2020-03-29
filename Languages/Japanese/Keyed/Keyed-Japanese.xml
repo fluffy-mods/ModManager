@@ -156,5 +156,7 @@
   <Fluffy.ModManager.AddModManagerToNewModListTip>CoreとMod-Managerを新しいModリストに追加します.</Fluffy.ModManager.AddModManagerToNewModListTip>
   <Fluffy.ModManager.AddExpansionsToNewModList>新式Modリストに公式DLCを追加</Fluffy.ModManager.AddExpansionsToNewModList>
   <Fluffy.ModManager.AddExpansionsToNewModListTip>Coreに加えて,公式DLCを新しいModリストに追加します.</Fluffy.ModManager.AddExpansionsToNewModListTip>
+  <Fluffy.ModManager.ShowVersionChecksForSteamMods>SteamModのバージョン確認を表示</Fluffy.ModManager.ShowVersionChecksForSteamMods>
+  <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>バージョン確認は手動インストールされたMODに最適で、デフォルトではSteamMODの確認は無効になっています。これはMod作成者がこの機能を明示的にサポートしている場合か、手動でインストールされた新しいMODについてだけ通知されることに注意してください。新しいSteamModのバージョンが出ても通知しません。</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
 
 </LanguageData>
