@@ -116,7 +116,7 @@
     <Fluffy.ModManager.WorkshopPage>Ouvrir la page Steam Workshop de {0}</Fluffy.ModManager.WorkshopPage>
 
     <!-- confirmation dialog 0: issue count, 1: issue list -->
-    <Fluffy.ModManager.DialogConfirmIssues>Vous devriez souhaiter résoudre ces problèmes avant de charger ou de commencer une nouvelle partie.&lt;b&gt;\n\nATTENTION : L'utilisation de cette liste de mods est susceptible de causer des erreurs, et peut planter le jeu !&lt;/b&gt;\n\n{0}</Fluffy.ModManager.DialogConfirmIssues>
+    <Fluffy.ModManager.DialogConfirmIssues>Vous devriez souhaiter résoudre ces problèmes avant de charger ou de commencer une nouvelle partie.&lt;b&gt;\n\nATTENTION : L'utilisation de cette liste de mods est susceptible de causer des erreurs, et peut planter le jeu !&lt;/b&gt;\n\n{1}</Fluffy.ModManager.DialogConfirmIssues>
     <Fluffy.ModManager.DialogConfirmIssuesCritital>&lt;b&gt;\n\nATTENTION: Utiliser cette liste de mods va probablement causer des erreurs et peut crasher le jeu!&lt;/b&gt;</Fluffy.ModManager.DialogConfirmIssuesCritital>
     <Fluffy.ModManager.DialogConfirmIssuesTitle>La liste de mods a {0} problèmes !</Fluffy.ModManager.DialogConfirmIssuesTitle>
 
