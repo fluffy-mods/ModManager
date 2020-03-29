@@ -103,6 +103,8 @@
   <Fluffy.ModManager.MoveBefore>リストの順番で{1}の上に{0}を移動してください.</Fluffy.ModManager.MoveBefore>
   <Fluffy.ModManager.MoveAfter>リストの順番で{1}の下に{0}を移動してください.</Fluffy.ModManager.MoveAfter>
   <Fluffy.ModManager.UpdateLocalCopy>現在のSteamのWorkshopで公開されているバージョンに{0}を更新してください.</Fluffy.ModManager.UpdateLocalCopy>
+  <Fluffy.ModManager.OpenDownloadUri>ダウンロード先に移動\n&lt;i&gt;{0}&lt;/i&gt;</Fluffy.ModManager.OpenDownloadUri>
+  <Fluffy.ModManager.NoDownloadUri>ダウンロード先が未指定</Fluffy.ModManager.NoDownloadUri>
 
   <!-- Content source -->
   <Fluffy.ModManager.ContentSource.Undefined>未定義</Fluffy.ModManager.ContentSource.Undefined>
@@ -115,6 +117,7 @@
 
   <!-- confirmation dialog 0: issue count, 1: issue list -->
   <Fluffy.ModManager.DialogConfirmIssues>新規にゲームを開始したり,セーブデータを読み込む前に,これらの問題を解決する必要があります.&lt;b&gt;\n\n警告：このMODリストを使用すると,エラーが発生する可能性が高く,ゲームが停止する可能性があります.&lt;/b&gt;\n\n{0}</Fluffy.ModManager.DialogConfirmIssues>
+  <Fluffy.ModManager.DialogConfirmIssuesCritital>&lt;b&gt;\n\警告：このModリストを使用すると,エラーが発生して,ゲームが壊れる可能性があります.&lt;/b&gt;</Fluffy.ModManager.DialogConfirmIssuesCritital>
   <Fluffy.ModManager.DialogConfirmIssuesTitle>MODリストに問題が{0}あります！</Fluffy.ModManager.DialogConfirmIssuesTitle>
 
   <!-- online manifest -->
