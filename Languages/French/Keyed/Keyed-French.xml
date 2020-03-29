@@ -13,6 +13,9 @@
     <Fluffy.ModManager.Version>Version</Fluffy.ModManager.Version>
     <Fluffy.ModManager.Unknown>Inconnue</Fluffy.ModManager.Unknown>
     <Fluffy.ModManager.Later>Plus tard</Fluffy.ModManager.Later>
+    <Fluffy.ModManager.Cancel>Annuler</Fluffy.ModManager.Cancel>
+
+    <Fluffy.ModManager.PressXtoCopyToClipboard>Utiliser 'Control + C' pour copier la liste dans le presse papier.</Fluffy.ModManager.PressXtoCopyToClipboard>
 
     <!-- issues -->
     <Fluffy.ModManager.InvalidVersion>Chaîne de caractères de version malformée: "{0}".</Fluffy.ModManager.InvalidVersion>
@@ -52,7 +55,12 @@
     <Fluffy.ModManager.SaveModList>Enregistrer la liste courante</Fluffy.ModManager.SaveModList>
     <Fluffy.ModManager.DeleteModList>Supprimer la liste sauvegardée</Fluffy.ModManager.DeleteModList>
     <Fluffy.ModManager.RenameModList>Renommer la liste</Fluffy.ModManager.RenameModList>
-    <Fluffy.ModManager.RebuildingModList>Reconstruire la liste de mods</Fluffy.ModManager.RebuildingModList>
+    <Fluffy.ModManager.ImportModList>Importer la liste de mods depuis une chaîne</Fluffy.ModManager.ImportModList>														  
+    <Fluffy.ModManager.ExportModList>Exporter la liste en une chaîne de caractères</Fluffy.ModManager.ExportModList>
+    <Fluffy.ModManager.LoadModListFromSave>Charger la liste de mods des sauvegardes</Fluffy.ModManager.LoadModListFromSave>
+    <Fluffy.ModManager.ResetMods>Reinitialiser la liste de mods à "Core" uniquement.</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.AddModManagerToNewModList>Ajouter Mod Manager aux nouvelles listes</Fluffy.ModManager.AddModManagerToNewModList>
+    <Fluffy.ModManager.AddModManagerToNewModListTip>Ajoute Mod Manager aux nouvelles listes de mod en plus du mode Core.</Fluffy.ModManager.AddModManagerToNewModListTip>
 
     <Fluffy.ModManager.InvalidName>{0} n'est pas un nom valide. Le nom ne doit pas contenir les caractères suivants : {1}.</Fluffy.ModManager.InvalidName>
     <Fluffy.ModManager.ModListExists>{0} existe déjà. Veuillez utiliser un nom différent, sinon supprimez ou renommez la liste de mods existante.</Fluffy.ModManager.ModListExists>
@@ -61,8 +69,11 @@
     <Fluffy.ModManager.ModListCreated>Liste de mods {0} créée.</Fluffy.ModManager.ModListCreated>
     <Fluffy.ModManager.ModListLoaded>Liste de mods {0} chargée.</Fluffy.ModManager.ModListLoaded>
     <Fluffy.ModManager.ModListDeleted>Liste de mods {0} supprimée.</Fluffy.ModManager.ModListDeleted>
-    <Fluffy.ModManager.LoadModListFromSave>Charger la liste de mods des sauvegardes</Fluffy.ModManager.LoadModListFromSave>
-    <Fluffy.ModManager.ResetMods>Reinitialiser la liste de mods à "Core" uniquement.</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.RebuildingModList>Reconstruire la liste de mods</Fluffy.ModManager.RebuildingModList>
+    <Fluffy.ModManager.ConfirmOverwriteModList>Une liste de mods appelée '{0}' existe déjà. Êtes-vous sûr de vouloir l'écraser ?</Fluffy.ModManager.ConfirmOverwriteModList>
+    <Fluffy.ModManager.ModListCopiedToClipboard>Liste de mods {0} copiée dans le presse-papier.</Fluffy.ModManager.ModListCopiedToClipboard>
+    <Fluffy.ModManager.ModListCreatedFromClipboard>Liste de mods {0} importée depuis le presse-papier.</Fluffy.ModManager.ModListCreatedFromClipboard>
+    <Fluffy.ModManager.FailedToCreateModListFromClipboard>Erreur à l'importation de la liste de mods depuis le presse-papier : {0}.</Fluffy.ModManager.FailedToCreateModListFromClipboard>																		  
 
     <Fluffy.ModManager.AddToModList>Ajouter un mod à la liste de mods</Fluffy.ModManager.AddToModList>
     <Fluffy.ModManager.RemoveFromModList>Supprimer un mod d'une liste de mods</Fluffy.ModManager.RemoveFromModList>
