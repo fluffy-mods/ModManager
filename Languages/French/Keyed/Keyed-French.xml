@@ -7,8 +7,8 @@
     <Fluffy.ModManager.Problems>Problèmes</Fluffy.ModManager.Problems>
     <Fluffy.ModManager.Details>Détails</Fluffy.ModManager.Details>
 
-    <Fluffy.ModManager.NoModSelected>Pas de mod sélectionné</Fluffy.ModManager.NoModSelected>
-    <Fluffy.ModManager.TargetVersion>Version cible</Fluffy.ModManager.TargetVersion>
+    <Fluffy.ModManager.NoModSelected>Aucun mod sélectionné</Fluffy.ModManager.NoModSelected>
+    <Fluffy.ModManager.TargetVersions>Ce mod est compatible avec les version(s) de RimWorld {0}</Fluffy.ModManager.TargetVersions>
     <Fluffy.ModManager.Version>Version</Fluffy.ModManager.Version>
     <Fluffy.ModManager.Unknown>Inconnue</Fluffy.ModManager.Unknown>
     <Fluffy.ModManager.Later>Plus tard</Fluffy.ModManager.Later>
@@ -56,7 +56,7 @@
     <Fluffy.ModManager.SaveModList>Enregistrer la liste courante</Fluffy.ModManager.SaveModList>
     <Fluffy.ModManager.DeleteModList>Supprimer la liste sauvegardée</Fluffy.ModManager.DeleteModList>
     <Fluffy.ModManager.RenameModList>Renommer la liste</Fluffy.ModManager.RenameModList>
-    <Fluffy.ModManager.ImportModList>Importer la liste de mods depuis une chaîne</Fluffy.ModManager.ImportModList>														  
+    <Fluffy.ModManager.ImportModList>Importer la liste de mods depuis une chaîne</Fluffy.ModManager.ImportModList>
     <Fluffy.ModManager.ExportModList>Exporter la liste en une chaîne de caractères</Fluffy.ModManager.ExportModList>
     <Fluffy.ModManager.LoadModListFromSave>Charger la liste de mods des sauvegardes</Fluffy.ModManager.LoadModListFromSave>
     <Fluffy.ModManager.ResetMods>Reinitialiser et vider la liste des mods actifs</Fluffy.ModManager.ResetMods>
@@ -72,7 +72,7 @@
     <Fluffy.ModManager.ConfirmOverwriteModList>Une liste de mods appelée '{0}' existe déjà. Êtes-vous sûr de vouloir l'écraser ?</Fluffy.ModManager.ConfirmOverwriteModList>
     <Fluffy.ModManager.ModListCopiedToClipboard>Liste de mods {0} copiée dans le presse-papier.</Fluffy.ModManager.ModListCopiedToClipboard>
     <Fluffy.ModManager.ModListCreatedFromClipboard>Liste de mods {0} importée depuis le presse-papier.</Fluffy.ModManager.ModListCreatedFromClipboard>
-    <Fluffy.ModManager.FailedToCreateModListFromClipboard>Erreur à l'importation de la liste de mods depuis le presse-papier : {0}.</Fluffy.ModManager.FailedToCreateModListFromClipboard>																		  
+    <Fluffy.ModManager.FailedToCreateModListFromClipboard>Erreur à l'importation de la liste de mods depuis le presse-papier : {0}.</Fluffy.ModManager.FailedToCreateModListFromClipboard>
 
     <Fluffy.ModManager.AddToModList>Ajouter un mod à la liste de mods</Fluffy.ModManager.AddToModList>
     <Fluffy.ModManager.RemoveFromModList>Supprimer un mod d'une liste de mods</Fluffy.ModManager.RemoveFromModList>
@@ -108,7 +108,7 @@
 
     <!-- Content source -->
     <Fluffy.ModManager.ContentSource.Undefined>Indéfinie</Fluffy.ModManager.ContentSource.Undefined>
-    <Fluffy.ModManager.ContentSource.LocalFolder>Locale</Fluffy.ModManager.ContentSource.LocalFolder>
+    <Fluffy.ModManager.ContentSource.ModsFolder>Local</Fluffy.ModManager.ContentSource.ModsFolder>
     <Fluffy.ModManager.ContentSource.SteamWorkshop>Steam</Fluffy.ModManager.ContentSource.SteamWorkshop>
 
     <!-- Links -->
@@ -116,7 +116,7 @@
     <Fluffy.ModManager.WorkshopPage>Ouvrir la page Steam Workshop de {0}</Fluffy.ModManager.WorkshopPage>
 
     <!-- confirmation dialog 0: issue count, 1: issue list -->
-    <Fluffy.ModManager.DialogConfirmIssues>Vous devriez souhaiter résoudre ces problèmes avant de charger ou de commencer une nouvelle partie.&lt;b&gt;\n\nATTENTION : L'utilisation de cette liste de mods est susceptible de causer des erreurs, et peut planter le jeu !&lt;/b&gt;\n\n{1}</Fluffy.ModManager.DialogConfirmIssues>
+    <Fluffy.ModManager.DialogConfirmIssues>Vous devriez souhaiter résoudre ces problèmes avant de charger ou de commencer une nouvelle partie.\n\n{1}</Fluffy.ModManager.DialogConfirmIssues>
     <Fluffy.ModManager.DialogConfirmIssuesCritital>&lt;b&gt;\n\nATTENTION: Utiliser cette liste de mods va probablement causer des erreurs et peut crasher le jeu!&lt;/b&gt;</Fluffy.ModManager.DialogConfirmIssuesCritital>
     <Fluffy.ModManager.DialogConfirmIssuesTitle>La liste de mods a {0} problèmes !</Fluffy.ModManager.DialogConfirmIssuesTitle>
 
@@ -152,7 +152,7 @@
     <Fluffy.ModManager.TrimTagsTip>Si cette option est activée, les balises auteur et version seront supprimées des noms de mod (e.g. [KV], [B19])</Fluffy.ModManager.TrimTagsTip>
     <Fluffy.ModManager.TrimVersionStrings>Supprimer les numéros de version des noms de mods</Fluffy.ModManager.TrimVersionStrings>
     <Fluffy.ModManager.TrimVersionStringsTip>Si cette option est activée, Mod Manager tentera de supprimer les numéros de version des noms de mod (e.g. 1.0, 0.19)\n\nATTENTION : cela pourrait supprimer trop d'informations !</Fluffy.ModManager.TrimVersionStringsTip>
-    
+
     <Fluffy.ModManager.ShowAllRequirements>Afficher toutes les dépendances des mods</Fluffy.ModManager.ShowAllRequirements>
     <Fluffy.ModManager.ShowAllRequirementsTip>Afficher les dépendances satisfaite et non satisfaites dans la description du mod</Fluffy.ModManager.ShowAllRequirementsTip>
     <Fluffy.ModManager.AddModManagerToNewModList>Ajouter Mod Manager aux nouvelles listes de mods</Fluffy.ModManager.AddModManagerToNewModList>
