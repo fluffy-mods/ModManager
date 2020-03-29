@@ -116,7 +116,7 @@
   <Fluffy.ModManager.WorkshopPage>SteamWorkshopの{0}</Fluffy.ModManager.WorkshopPage>
 
   <!-- confirmation dialog 0: issue count, 1: issue list -->
-  <Fluffy.ModManager.DialogConfirmIssues>新規にゲームを開始したり,セーブデータを読み込む前に,これらの問題を解決する必要があります.&lt;b&gt;\n\n警告：このMODリストを使用すると,エラーが発生する可能性が高く,ゲームが停止する可能性があります.&lt;/b&gt;\n\n{0}</Fluffy.ModManager.DialogConfirmIssues>
+  <Fluffy.ModManager.DialogConfirmIssues>新規にゲームを開始したり,セーブデータを読み込む前に,これらの問題を解決する必要があります.&lt;b&gt;\n\n警告：このMODリストを使用すると,エラーが発生する可能性が高く,ゲームが停止する可能性があります.&lt;/b&gt;\n\n{1}</Fluffy.ModManager.DialogConfirmIssues>
   <Fluffy.ModManager.DialogConfirmIssuesCritital>&lt;b&gt;\n\警告：このModリストを使用すると,エラーが発生して,ゲームが壊れる可能性があります.&lt;/b&gt;</Fluffy.ModManager.DialogConfirmIssuesCritital>
   <Fluffy.ModManager.DialogConfirmIssuesTitle>MODリストに問題が{0}あります！</Fluffy.ModManager.DialogConfirmIssuesTitle>
 
