@@ -130,7 +130,7 @@
   <!-- workshop -->
   <Fluffy.ModManager.DownloadPending>保留中のダウンロード...</Fluffy.ModManager.DownloadPending>
   <Fluffy.ModManager.ModInstalled>{0}のインストールが完了しました.</Fluffy.ModManager.ModInstalled>
-  <Fluffy.ModManager.Subscribe>Workshopで{0}（{1}）をサブスクライブしてください.</Fluffy.ModManager.Subscribe>
+  <Fluffy.ModManager.Subscribe>Workshopで{0}をサブスクライブしてください.</Fluffy.ModManager.Subscribe>
   <Fluffy.ModManager.SubscribeAllMissing>不足している全てのWorkshopModをサブスクライブする.</Fluffy.ModManager.SubscribeAllMissing>
 
   <!-- colours -->
