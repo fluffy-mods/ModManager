@@ -25,13 +25,13 @@
     <Fluffy.ModManager.CoreNotFirst>'Core' doit être le premier mod chargé.</Fluffy.ModManager.CoreNotFirst>
     <Fluffy.ModManager.DependencyUnknownVersion>Dépend de {0}, mais sa version est inconnue.</Fluffy.ModManager.DependencyUnknownVersion>
     <Fluffy.ModManager.DependencyNotFound>Dépend de {0}, qui n'est pas chargé.</Fluffy.ModManager.DependencyNotFound>
-    <Fluffy.ModManager.DependencyWrongVersion>Dépend de {0}, v{1} est chargé.</Fluffy.ModManager.DependencyWrongVersion>
+    <Fluffy.ModManager.DependencyWrongVersion>Dépend de {0} version {1}, la version {2} est chargé.</Fluffy.ModManager.DependencyWrongVersion>
     <Fluffy.ModManager.DependencyNotActive>Depends de {0}, qui n'est pas chargé.</Fluffy.ModManager.DependencyNotActive>
     <Fluffy.ModManager.DependencyMet>{0} version {1} chargé.</Fluffy.ModManager.DependencyMet>
     <Fluffy.ModManager.IncompatibleMod>Incompatible avec {0}.</Fluffy.ModManager.IncompatibleMod>
     <Fluffy.ModManager.LoadedBefore>Est chargé avant {0}.</Fluffy.ModManager.LoadedBefore>
     <Fluffy.ModManager.ShouldBeLoadedBefore>Doit être chargé avant {0}.</Fluffy.ModManager.ShouldBeLoadedBefore>
-    <Fluffy.ModManager.LoadedAfter>Est chargé après {0}.</Fluffy.ModManager.LoadedAfter>																			   
+    <Fluffy.ModManager.LoadedAfter>Est chargé après {0}.</Fluffy.ModManager.LoadedAfter>
     <Fluffy.ModManager.ShouldBeLoadedAfter>Doit être chargé après {0}.</Fluffy.ModManager.ShouldBeLoadedAfter>
     <Fluffy.ModManager.SourceModChanged>La source de mod Steam Workshop a été mise à jour.</Fluffy.ModManager.SourceModChanged>
 
