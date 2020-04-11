@@ -20,6 +20,7 @@ namespace ModManager
         public bool ShowSatisfiedRequirements = false;
         public bool AddExpansionsToNewModLists = true;
         public bool ShowVersionChecksOnSteamMods = false;
+        public bool AddHugslibToNewModLists = false;
 
         public ModAttributes this[ModMetaData mod]
         {
@@ -68,6 +69,7 @@ namespace ModManager
             Scribe_Values.Look( ref ShowPromotions_NotActive, "ShowPromotions_NotActive", false );
             Scribe_Values.Look( ref TrimTags, "TrimTags", true );
             Scribe_Values.Look( ref TrimVersionStrings, "TrimVersionStrings", false );
+            Scribe_Values.Look( ref AddHugslibToNewModLists, "AddHugslibToNewModLists", true );
             Scribe_Values.Look( ref AddModManagerToNewModLists, "AddModManagerToNewModLists", true );
             Scribe_Values.Look( ref AddExpansionsToNewModLists, "AddExpansionsToNewModLists", true );
             Scribe_Values.Look( ref ShowSatisfiedRequirements, "ShowSatisfiedRequirements", false );

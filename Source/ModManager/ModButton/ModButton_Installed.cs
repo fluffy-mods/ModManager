@@ -105,7 +105,7 @@ namespace ModManager
                 var old = _selected;
                 _selected = value;
                 _titleLinkOptions = null;
-                ModButtonManager.Notify_SelectedChanged( old, value );
+                ModButtonManager.Notify_ModListChanged();
             }
         }
 
@@ -524,9 +524,9 @@ namespace ModManager
 
         public override IEnumerable<Dependency> Issues => Manifest?.Requirements ?? Manifest.EmptyRequirementList;
 
-        public override void Notify_ResetSelected()
+        public void Notify_ResetSelected()
         {
-            Selected = null;
+            _selected = null;
         }
 
         public void Notify_VersionAdded( ModMetaData version, bool active = false )
@@ -538,7 +538,7 @@ namespace ModManager
             version.Active = active;
             Selected = version;
             if ( active )
-                ModButtonManager.Notify_ModAddedOrRemoved( version );
+                ModButtonManager.Notify_ModListChanged();
         }
 
         public void Notify_VersionRemoved( ModMetaData version )

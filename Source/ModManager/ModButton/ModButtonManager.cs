@@ -65,15 +65,15 @@ namespace ModManager
         public static IEnumerable<ModMetaData> AvailableMods => AllMods.Where( m => !m.Active );
         public static bool                     AnyIssue      => Issues.Any( i => i.Severity > 1 );
 
-        public static void TryAdd( ModButton button, bool notifyOrderChanged = true )
+        public static void TryAdd( ModButton button, bool notifyModListChanged = true )
         {
             _allButtons.TryAdd( button );
             if ( button.Active )
             {
                 _activeButtons.TryAdd( button );
                 _availableButtons.TryRemove( button );
-                if ( notifyOrderChanged && button is ModButton_Installed installed )
-                    Notify_ModAddedOrRemoved( installed.Selected );
+                if ( notifyModListChanged && button is ModButton_Installed installed )
+                    Notify_ModListChanged();
             }
             else
             {
@@ -87,7 +87,7 @@ namespace ModManager
         {
             _allButtons.TryRemove( mod );
             if ( _activeButtons.TryRemove( mod ) && mod is ModButton_Installed installed )
-                Notify_ModAddedOrRemoved( installed.Selected );
+                Notify_ModListChanged();
             _availableButtons.TryRemove( mod );
         }
 
@@ -132,52 +132,26 @@ namespace ModManager
                             .OrderBy( b => b.LoadOrder )
                             .ToList();
         }
-
-        public static void Notify_ModOrderChanged( bool notifyAll = false )
-        {
-            var oldOrder = new List<ModMetaData>( ActiveMods );
-            Notify_ModListChanged();
-            if ( notifyAll )
-                Notify_RecacheManifests();
-            else
-                Notify_ReorderedModManifests( oldOrder );
-        }
-
-        private static void Notify_ReorderedModManifests( List<ModMetaData> oldOrder )
-        {
-            for ( int i = 0; i < oldOrder.Count; i++ )
-                if ( oldOrder.IndexOf( oldOrder[i] ) != i )
-                    oldOrder[i].GetManifest().Notify_Recache();
-        }
-
-        private static void Notify_RecacheManifests()
+        
+        private static void Notify_RecacheAllManifests()
         {
             foreach ( var mod in ActiveMods )
                 mod.GetManifest().Notify_Recache();
         }
-
-        public static void Notify_SelectedChanged( ModMetaData added, ModMetaData removed )
-        {
-            Notify_ModListChanged();
-            Notify_RecacheManifests();
-        }
-
-        public static void Notify_ModAddedOrRemoved( ModMetaData changed )
-        {
-            Notify_ModListChanged();
-            Notify_RecacheManifests();
-        }
         
-        private static void Notify_ModListChanged()
+        public static void Notify_ModListChanged()
         {
             _activeMods = null;
             ModsConfig.SetActiveToList( ActiveMods.Select( m => m.PackageId ).ToList() );
+
+            Notify_RecacheIssuesList();
+            Notify_RecacheAllManifests();
         }
 
         public static ModButton_Installed CoreMod => AllButtons.First( b => b.IsCoreMod ) as ModButton_Installed;
         public static ModButton_Installed ModManagerMod => AllButtons.First( b => b.IsModManager ) as ModButton_Installed;
         public static IEnumerable<ModButton_Installed> Expansions => AllButtons.Where( b => b.IsExpansion ).Cast<ModButton_Installed>();
-        public static void Notify_RecacheIssues()
+        public static void RecacheIssues()
         {
             _issues = ActiveButtons.SelectMany( b => b.Issues ).ToList();
         }
@@ -211,7 +185,7 @@ namespace ModManager
             }
             ActiveButtons.Insert( Mathf.Clamp( to, 0, ActiveButtons.Count ), button );
             if ( button is ModButton_Installed installed )
-                Notify_ModAddedOrRemoved( installed.Selected );
+                Notify_ModListChanged();
         }
 
         public static void Notify_Activated( ModButton mod, bool active )
@@ -221,14 +195,14 @@ namespace ModManager
                 _availableButtons.TryRemove( mod );
                 _activeButtons.TryAdd( mod );
                 if ( mod is ModButton_Installed installed )
-                    Notify_ModAddedOrRemoved( installed.Selected );
+                    Notify_ModListChanged();
             }
             else
             {
                 _activeButtons.TryRemove( mod );
                 _availableButtons.TryAdd( mod );
                 if ( mod is ModButton_Installed installed )
-                    Notify_ModAddedOrRemoved( installed.Selected );
+                    Notify_ModListChanged();
                 SortAvailable();
             }
         }
@@ -265,13 +239,18 @@ namespace ModManager
             Page_BetterModConfig.Instance.Notify_ModsListChanged();
         }
 
+        public static void Notify_RecacheIssuesList()
+        {
+            _issues = null;
+        }
+
         private static List<Dependency> _issues;
         public static List<Dependency> Issues
         {
             get
             {
                 if ( _issues == null )
-                    Notify_RecacheIssues();
+                    RecacheIssues();
                 return _issues;
             }
         }
@@ -289,10 +268,21 @@ namespace ModManager
                     foreach ( var expansion in Expansions )
                         expansion.Active = true;
 
-                if ( ModManager.Settings.AddModManagerToNewModLists && ModManagerMod != null )
+                if ( ModManager.Settings.AddHugslibToNewModLists )
                 {
+                    var hugslib = ModLister.GetModWithIdentifier( "unlimitedhugs.hugslib" );
+                    if ( hugslib != null )
+                    {
+                        var hugslibButton = ModButton_Installed.For( hugslib );
+                        hugslibButton.Active = true;
+                    }
+                }
+
+                if ( ModManager.Settings.AddModManagerToNewModLists && ModManagerMod != null )
                     ModManagerMod.Active = true;
 
+                if ( ModManager.Settings.AddHugslibToNewModLists || ModManager.Settings.AddModManagerToNewModLists )
+                {
                     // also try to activate harmony
                     var harmony = ModLister.GetModWithIdentifier( "brrainz.harmony" );
                     if ( harmony != null )
@@ -304,7 +294,7 @@ namespace ModManager
                 }
             }
 
-            Notify_ModOrderChanged( true );
+            Notify_ModListChanged();
         }
     }
 }

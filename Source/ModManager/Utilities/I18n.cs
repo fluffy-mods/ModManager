@@ -392,12 +392,16 @@ namespace ModManager
         public static string ShowAllRequirementsTip           = Key( "ShowAllRequirementsTip" ).Translate();
         public static string AddModManagerToNewModList        = Key( "AddModManagerToNewModList" ).Translate();
         public static string AddModManagerToNewModListTip     = Key( "AddModManagerToNewModListTip" ).Translate();
+        public static string AddHugsLibToNewModList           = Key( "AddHugsLibToNewModList" ).Translate();
+        public static string AddHugsLibToNewModListTip        = Key( "AddHugsLibToNewModListTip" ).Translate();
         public static string AddExpansionsToNewModList        = Key( "AddExpansionsToNewModList" ).Translate();
         public static string AddExpansionsToNewModListTip     = Key( "AddExpansionsToNewModListTip" ).Translate();
         public static string ShowVersionChecksForSteamMods    = Key( "ShowVersionChecksForSteamMods" ).Translate();
         public static string ShowVersionChecksForSteamModsTip = Key( "ShowVersionChecksForSteamModsTip" ).Translate();
 
-        public static string OpenDownloadUri( string downloadUri ) => Key( "OpenDownloadUri" ).Translate( downloadUri ).Resolve();
+        public static string OpenDownloadUri( string downloadUri ) =>
+            Key( "OpenDownloadUri" ).Translate( downloadUri ).Resolve();
+
         public static string NoDownloadUri = Key( "NoDownloadUri" ).Translate();
     }
 }

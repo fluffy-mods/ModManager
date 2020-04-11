@@ -17,7 +17,13 @@ namespace ModManager
     {
         public Manifest parent;
 
-        public ModMetaData Target { get; protected set; }
+        public ModMetaData Target
+        {
+            get =>
+                _target ?? ( _target = ModLister.GetActiveModWithIdentifier( packageId ) ??
+                                       ModLister.GetModWithIdentifier( packageId, true ) );
+            set => _target = value;
+        }
         
         public virtual int Severity => 1;
 
@@ -28,8 +34,7 @@ namespace ModManager
         public virtual void Notify_Recache()
         {
             satisfied = null;
-            Target = ModLister.GetActiveModWithIdentifier( packageId ) ??
-                     ModLister.GetModWithIdentifier( packageId, true );
+            Target = null;
         }
 
         public override bool IsSatisfied {
@@ -56,6 +61,7 @@ namespace ModManager
         public override Texture2D StatusIcon => Resources.Warning;
 
         public static Regex packageIdFormatRegex = new Regex(@"(?=.{1,60}$)^(?:[a-z0-9]+\.)+[a-z0-9]+$", RegexOptions.IgnoreCase );
+        private ModMetaData _target;
 
         public const string InvalidPackageId = "invalid.package.id";
 

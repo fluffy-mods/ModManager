@@ -90,7 +90,5 @@ namespace ModManager
 //                return _issues;
 //            }
 //        }
-
-        public override void Notify_ResetSelected(){}
     }
 }

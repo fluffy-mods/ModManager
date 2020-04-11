@@ -65,6 +65,8 @@ namespace ModManager
             listing.Gap();
             listing.CheckboxLabeled( I18n.AddModManagerToNewModList, ref Settings.AddModManagerToNewModLists,
                                      I18n.AddModManagerToNewModListTip );
+            listing.CheckboxLabeled( I18n.AddHugsLibToNewModList, ref Settings.AddHugsLibToNewModLists,
+                                     I18n.AddHugsLibToNewModListTip);
             listing.CheckboxLabeled( I18n.AddExpansionsToNewModList, ref Settings.AddExpansionsToNewModLists,
                                      I18n.AddExpansionsToNewModListTip );
             listing.End();
