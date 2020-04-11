@@ -102,9 +102,10 @@ namespace ModManager
                     value.Active = Selected?.Active ?? false;
                 if ( Selected != null )
                     Selected.Active = false;
+                var old = _selected;
                 _selected = value;
                 _titleLinkOptions = null;
-                ModButtonManager.Notify_ModOrderChanged();
+                ModButtonManager.Notify_SelectedChanged( old, value );
             }
         }
 
@@ -357,6 +358,11 @@ namespace ModManager
             } ) );
             if ( Selected.HasSettings() )
                 options.Add( new FloatMenuOption( I18n.ModSettings, () => OpenSettingsFor( Selected ) ) );
+            if ( Prefs.DevMode )
+            {
+                options.Add( new FloatMenuOption( "Open mod directory",
+                                                  () => Application.OpenURL( Selected.RootDir.FullName ) ) );
+            }
             FloatMenu( options );
         }
         
@@ -523,11 +529,6 @@ namespace ModManager
             Selected = null;
         }
 
-        public override void Notify_RecheckRequirements()
-        {
-            Manifest?.Notify_RecheckRequirements();
-        }
-
         public void Notify_VersionAdded( ModMetaData version, bool active = false )
         {
             Versions.TryAdd( version );
@@ -536,7 +537,8 @@ namespace ModManager
 
             version.Active = active;
             Selected = version;
-            ModButtonManager.Notify_ModOrderChanged();
+            if ( active )
+                ModButtonManager.Notify_ModAddedOrRemoved( version );
         }
 
         public void Notify_VersionRemoved( ModMetaData version )

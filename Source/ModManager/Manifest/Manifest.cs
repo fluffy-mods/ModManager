@@ -30,8 +30,8 @@ namespace ModManager
             get
             {
                 return _pack ?? ( _pack =
-                           LoadedModManager.RunningModsListForReading.Find( mcp => mcp.PackageId == Mod.PackageId ) ??
-                           new ModContentPack( Mod.RootDir, Mod.PackageId, int.MaxValue, Mod.Name ) );
+                           LoadedModManager.RunningModsListForReading.Find( mcp => Mod.SamePackageId( mcp.PackageId ) ) ??
+                           new ModContentPack( Mod.RootDir, Mod.PackageId, Mod.PackageIdPlayerFacing, int.MaxValue, Mod.Name ) );
             }
         }
         private const string ManifestFileName = "Manifest.xml";
@@ -165,7 +165,7 @@ namespace ModManager
                                                 .Where( d => d != null ) )
             {
                 dependency.parent = manifest;
-                Debug.TraceDependencies( $"parent={dependency.parent?.Mod.ToString() ?? "NULL"}, targetId={dependency.packageId}, target={dependency.target}, type={dependency.GetType()}" );
+                Debug.TraceDependencies( $"parent={dependency.parent?.Mod.ToString() ?? "NULL"}, targetId={dependency.packageId}, target={dependency.Target}, type={dependency.GetType()}" );
             }
 
             // resolve version - if set in manifest that takes priority,
@@ -177,33 +177,34 @@ namespace ModManager
 
         public static List<Dependency> EmptyRequirementList = new List<Dependency>();
         public List<Dependency> _requirements;
-        public List<Dependency> Requirements
+        public IEnumerable<Dependency> Requirements
         {
             get
             {
-                if ( _requirements == null )
-                    RecheckRequirements();
-                return _requirements;
+                if ( _requirements == null)
+                    _requirements = Dependencies
+                                   .Concat( Incompatibilities )
+                                   .Concat( LoadBefore )
+                                   .Concat( LoadAfter )
+                                   .Concat( VersionCheck )
+                                   .Where( d => d != null )
+                                   .ToList();
+                return _requirements.Where( r => r.IsApplicable );
             }
         }
 
-        public void Notify_RecheckRequirements()
+        public void Notify_Recache()
         {
-            _requirements = null;
+            foreach ( var dependency in _requirements )
+                dependency.Notify_Recache();
         }
 
-        private void RecheckRequirements()
+        public void Notify_ModAddedOrRemoved( ModMetaData mod )
         {
-            _requirements = Dependencies
-                               .Concat( Incompatibilities )
-                               .Concat( LoadBefore )
-                               .Concat( LoadAfter )
-                               .Concat( VersionCheck )
-                               .Where( d => d != null && d.IsApplicable )
-                               .ToList();
-            _requirements.ForEach( r => r.Notify_Recheck() );
+            foreach ( var dependency in _requirements )
+                dependency.Notify_Recache();
         }
-
+        
         private Version ParseVersion( string version )
         {
             return ParseVersion( version, Mod );

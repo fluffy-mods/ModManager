@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿//#define DEBUG_PROFILE
+
+using System.Reflection;
 using HarmonyLib;
 using RecursiveProfiler;
 using UnityEngine;
@@ -19,9 +21,9 @@ namespace ModManager
             harmonyInstance.PatchAll( Assembly.GetExecutingAssembly() );
 
 #if DEBUG_PROFILE
-            LongEventHandler.ExecuteWhenFinished( () => new Profiler(
-                                                      typeof( Page_BetterModConfig ).GetMethod(
-                                                          nameof( Page_BetterModConfig.DoWindowContents ) ) ) );
+            LongEventHandler.ExecuteWhenFinished( () => new Profiler( typeof( Page_BetterModConfig ).GetMethod(
+                                                                          nameof( Page_BetterModConfig.DoWindowContents
+                                                                          ) ) ) );
 #endif
         }
 

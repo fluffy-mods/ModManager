@@ -16,7 +16,8 @@ namespace ModManager
     public abstract class Dependency : ModDependency
     {
         public Manifest parent;
-        public ModMetaData target;
+
+        public ModMetaData Target { get; protected set; }
         
         public virtual int Severity => 1;
 
@@ -24,9 +25,11 @@ namespace ModManager
 
         protected bool? satisfied;
 
-        public virtual void Notify_Recheck()
+        public virtual void Notify_Recache()
         {
             satisfied = null;
+            Target = ModLister.GetActiveModWithIdentifier( packageId ) ??
+                     ModLister.GetModWithIdentifier( packageId, true );
         }
 
         public override bool IsSatisfied {
@@ -80,7 +83,7 @@ namespace ModManager
         {
             this.parent    = parent;
             this.packageId = packageId;
-            target         = ModLister.GetModWithIdentifier( packageId, ignorePostfix );
+            Target         = ModLister.GetModWithIdentifier( packageId, ignorePostfix );
         }
 
         public Dependency( Manifest parent, ModDependency depend ): this( parent, depend.packageId )
@@ -113,7 +116,7 @@ namespace ModManager
                     packageId = text;
                 }
 
-                target = ModLister.GetModWithIdentifier( packageId, true );
+                Target = ModLister.GetModWithIdentifier( packageId, true );
             }
             catch ( Exception ex )
             {

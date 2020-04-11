@@ -21,7 +21,7 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation"
     },
-    "changenote": "2020-03-19 :: Fluffy :: fix incompatible mod requirements, add resolvers'",
+    "changenote": "2020-03-25 :: Fluffy :: cache modlist in order, improve error message for remote manifest fetch failure'",
     "tags": [
         "1.0",
         "1.1"
@@ -30,10 +30,10 @@
     "changenotes": [
         {
             "repo": "ModManager",
-            "hash": "'tformat:1d20d2a408c090df09ed4dc9f3809dcd5aae93c2",
-            "date": "2020-03-19",
+            "hash": "'tformat:2e1236607b85ca2b453990d7595d1c45d87c99f8",
+            "date": "2020-03-25",
             "author": "Fluffy",
-            "message": "fix incompatible mod requirements, add resolvers'"
+            "message": "cache modlist in order, improve error message for remote manifest fetch failure'"
         }
     ],
     "packageId": "fluffy.modmanager"

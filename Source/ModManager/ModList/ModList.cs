@@ -194,7 +194,7 @@ namespace ModManager
             }
 
             // reset selected versions for all these mods
-            ModButtonManager.Notify_ModOrderChanged();
+            ModButtonManager.Notify_ModOrderChanged( true );
         }
 
         public override string ToString()

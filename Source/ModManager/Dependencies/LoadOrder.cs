@@ -25,7 +25,7 @@ namespace ModManager
         {
         }
 
-        public override bool IsApplicable => ( parent?.Mod?.Active ?? false ) && ( target?.Active ?? false );
+        public override bool IsApplicable => ( parent?.Mod?.Active ?? false ) && ( Target?.Active ?? false );
 
         public override Color Color => IsSatisfied ? Color.white : Color.red;
 
@@ -43,12 +43,12 @@ namespace ModManager
             get
             {
                 var options = NewOptionsList;
-                options.Add( new FloatMenuOption( I18n.MoveBefore( parent.Button, target.GetManifest().Button ),
+                options.Add( new FloatMenuOption( I18n.MoveBefore( parent.Button, Target.GetManifest().Button ),
                                                   () => ModButtonManager.MoveBefore(
-                                                      parent.Button, target.GetManifest().Button ) ) );
-                options.Add( new FloatMenuOption( I18n.MoveAfter( target.GetManifest().Button, parent.Button ),
+                                                      parent.Button, Target.GetManifest().Button ) ) );
+                options.Add( new FloatMenuOption( I18n.MoveAfter( Target.GetManifest().Button, parent.Button ),
                                                   () => ModButtonManager.MoveAfter(
-                                                      target.GetManifest().Button, parent.Button ) ) );
+                                                      Target.GetManifest().Button, parent.Button ) ) );
                 return options;
             }
         }
@@ -59,15 +59,15 @@ namespace ModManager
             {
                 if ( !IsApplicable ) return "Not applicable";
                 return IsSatisfied
-                    ? I18n.LoadedBefore( target.Name )
-                    : I18n.ShouldBeLoadedBefore( target.Name );
+                    ? I18n.LoadedBefore( Target.Name )
+                    : I18n.ShouldBeLoadedBefore( Target.Name );
             }
         }
 
         public override bool CheckSatisfied()
         {
             var mods = ModButtonManager.ActiveMods;
-            return target != null && target.Active && parent.Mod.Active && mods.IndexOf( target ) > mods.IndexOf( parent.Mod );
+            return Target != null && Target.Active && parent.Mod.Active && mods.IndexOf( Target ) > mods.IndexOf( parent.Mod );
         }
 
         public override string RequirementTypeLabel => "loadOrder".Translate();
@@ -90,12 +90,12 @@ namespace ModManager
             get
             {
                 var options = NewOptionsList;
-                options.Add( new FloatMenuOption( I18n.MoveAfter( parent.Button, target.GetManifest().Button ),
+                options.Add( new FloatMenuOption( I18n.MoveAfter( parent.Button, Target.GetManifest().Button ),
                                                   () => ModButtonManager.MoveAfter(
-                                                      parent.Button, target.GetManifest().Button ) ) );
-                options.Add( new FloatMenuOption( I18n.MoveBefore( target.GetManifest().Button, parent.Button ),
+                                                      parent.Button, Target.GetManifest().Button ) ) );
+                options.Add( new FloatMenuOption( I18n.MoveBefore( Target.GetManifest().Button, parent.Button ),
                                                   () => ModButtonManager.MoveBefore(
-                                                      target.GetManifest().Button, parent.Button ) ) );
+                                                      Target.GetManifest().Button, parent.Button ) ) );
                 return options;
             }
         }
@@ -106,18 +106,18 @@ namespace ModManager
             {
                 if ( !IsApplicable ) return "Not applicable";
                 return IsSatisfied
-                    ? I18n.LoadedAfter( target.Name )
-                    : I18n.ShouldBeLoadedAfter( target.Name );
+                    ? I18n.LoadedAfter( Target.Name )
+                    : I18n.ShouldBeLoadedAfter( Target.Name );
             }
         }
 
         public override bool CheckSatisfied()
         {
             var mods = ModButtonManager.ActiveMods;
-            return target != null    &&
-                   target.Active     &&
+            return Target != null    &&
+                   Target.Active     &&
                    parent.Mod.Active &&
-                   mods.IndexOf( target ) < mods.IndexOf( parent.Mod );
+                   mods.IndexOf( Target ) < mods.IndexOf( parent.Mod );
         }
 
         public override string RequirementTypeLabel => "loadOrder".Translate();

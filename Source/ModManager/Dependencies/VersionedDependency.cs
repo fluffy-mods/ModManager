@@ -67,7 +67,7 @@ namespace ModManager
 
                 if ( IsAvailable && IsInRange )
                 {
-                    options.Add( new FloatMenuOption( I18n.ActivateMod( target ), () => target.GetManifest().Button.Active = true ) );
+                    options.Add( new FloatMenuOption( I18n.ActivateMod( Target ), () => Target.GetManifest().Button.Active = true ) );
                 }
                 else if ( !downloadUrl.NullOrEmpty() || !steamWorkshopUrl.NullOrEmpty() )
                 {
@@ -101,23 +101,23 @@ namespace ModManager
                 if ( !IsAvailable )
                     return I18n.DependencyNotFound( displayName ?? packageId );
                 if ( !IsActive )
-                    return I18n.DependencyNotActive( target );
+                    return I18n.DependencyNotActive( Target );
                 if ( !IsInRange )
-                    return I18n.DependencyWrongVersion( target, this );
+                    return I18n.DependencyWrongVersion( Target, this );
                 if ( IsSatisfied )
-                    return I18n.DependencyMet( target );
+                    return I18n.DependencyMet( Target );
                 return "Something weird happened.";
             }
         }
 
-        public bool IsAvailable => target != null;
-        public bool IsActive => target?.GetManifest().Button.Active ?? false;
+        public bool IsAvailable => Target != null;
+        public bool IsActive => Target?.GetManifest().Button.Active ?? false;
         public override bool IsApplicable => parent?.Mod?.Active ?? false;
         public bool IsInRange
         {
             get
             {
-                var v = target?.GetManifest().Version;
+                var v = Target?.GetManifest().Version;
                 return v != null && Range.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true );
             }
         }

@@ -145,6 +145,5 @@ namespace ModManager
         }
         internal static Dictionary<string, string> _modNameTruncationCache = new Dictionary<string, string>();
         public virtual void Notify_ResetSelected(){}
-        public virtual void Notify_RecheckRequirements(){}
     }
 }

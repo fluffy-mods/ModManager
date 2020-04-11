@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Verse;
 using System.Linq;
+using JetBrains.Annotations;
 using RimWorld;
 using UnityEngine;
 
@@ -15,7 +16,8 @@ namespace ModManager
         private static List<ModButton> _allButtons;
         private static List<ModButton> _activeButtons;
         private static List<ModButton> _availableButtons;
-        public static List<ModButton> AllButtons 
+
+        public static List<ModButton> AllButtons
         {
             get
             {
@@ -29,7 +31,7 @@ namespace ModManager
         {
             get
             {
-                if(_activeButtons == null)
+                if ( _activeButtons == null )
                     RecacheModButtons();
                 return _activeButtons;
             }
@@ -39,19 +41,29 @@ namespace ModManager
         {
             get
             {
-                if (_availableButtons == null)
+                if ( _availableButtons == null )
                     RecacheModButtons();
                 return _availableButtons;
             }
         }
-        public static IEnumerable<ModMetaData> AllMods => AllButtons.OfType<ModButton_Installed>()
-            .SelectMany( b => b.Versions );
 
-        public static IEnumerable<ModMetaData> ActiveMods => ActiveButtons.OfType<ModButton_Installed>()
-            .Select( b => b.Selected );
+        public static IEnumerable<ModMetaData> AllMods => AllButtons.OfType<ModButton_Installed>()
+                                                                    .SelectMany( b => b.Versions );
+
+        private static List<ModMetaData> _activeMods;
+
+        public static List<ModMetaData> ActiveMods
+        {
+            get
+            {
+                if ( _activeMods == null )
+                    _activeMods = ActiveButtons.OfType<ModButton_Installed>().Select( b => b.Selected ).ToList();
+                return _activeMods;
+            }
+        }
 
         public static IEnumerable<ModMetaData> AvailableMods => AllMods.Where( m => !m.Active );
-        public static bool AnyIssue => Issues.Any( i => i.Severity > 1 );
+        public static bool                     AnyIssue      => Issues.Any( i => i.Severity > 1 );
 
         public static void TryAdd( ModButton button, bool notifyOrderChanged = true )
         {
@@ -60,8 +72,8 @@ namespace ModManager
             {
                 _activeButtons.TryAdd( button );
                 _availableButtons.TryRemove( button );
-                if (notifyOrderChanged)
-                    Notify_ModOrderChanged();
+                if ( notifyOrderChanged && button is ModButton_Installed installed )
+                    Notify_ModAddedOrRemoved( installed.Selected );
             }
             else
             {
@@ -74,9 +86,9 @@ namespace ModManager
         public static void TryRemove( ModButton mod )
         {
             _allButtons.TryRemove( mod );
-            _activeButtons.TryRemove( mod );
+            if ( _activeButtons.TryRemove( mod ) && mod is ModButton_Installed installed )
+                Notify_ModAddedOrRemoved( installed.Selected );
             _availableButtons.TryRemove( mod );
-            Notify_ModOrderChanged();
         }
 
         public static ModAttributes AttributesFor( ModButton button )
@@ -94,14 +106,14 @@ namespace ModManager
         internal static void RecacheModButtons()
         {
             Debug.Log( "Recaching ModButtons" );
-            _allButtons = new List<ModButton>();
-            _activeButtons = new List<ModButton>();
+            _allButtons       = new List<ModButton>();
+            _activeButtons    = new List<ModButton>();
             _availableButtons = new List<ModButton>();
 
             // create all the buttons
             foreach ( var mods in ModLister.AllInstalledMods.GroupBy( m => Utilities.TrimModName( m.Name ) ) )
                 TryAdd( new ModButton_Installed( mods ), false );
-            
+
             SortActive();
             SortAvailable();
         }
@@ -109,32 +121,64 @@ namespace ModManager
         private static void SortAvailable()
         {
             _availableButtons = _availableButtons
-                .OrderByDescending( b => b.SortOrder )
-                .ThenBy( b => b.TrimmedName)
-                .ToList();
+                               .OrderByDescending( b => b.SortOrder )
+                               .ThenBy( b => b.TrimmedName )
+                               .ToList();
         }
 
         private static void SortActive()
         {
             _activeButtons = _activeButtons
-                .OrderBy(b => b.LoadOrder)
-                .ToList();
+                            .OrderBy( b => b.LoadOrder )
+                            .ToList();
         }
 
-        public static void Notify_ModOrderChanged()
+        public static void Notify_ModOrderChanged( bool notifyAll = false )
         {
-            ModsConfig.SetActiveToList(ActiveMods.Select(m => m.PackageId).ToList());
-            Notify_RecacheIssues();
+            var oldOrder = new List<ModMetaData>( ActiveMods );
+            Notify_ModListChanged();
+            if ( notifyAll )
+                Notify_RecacheManifests();
+            else
+                Notify_ReorderedModManifests( oldOrder );
+        }
+
+        private static void Notify_ReorderedModManifests( List<ModMetaData> oldOrder )
+        {
+            for ( int i = 0; i < oldOrder.Count; i++ )
+                if ( oldOrder.IndexOf( oldOrder[i] ) != i )
+                    oldOrder[i].GetManifest().Notify_Recache();
+        }
+
+        private static void Notify_RecacheManifests()
+        {
+            foreach ( var mod in ActiveMods )
+                mod.GetManifest().Notify_Recache();
+        }
+
+        public static void Notify_SelectedChanged( ModMetaData added, ModMetaData removed )
+        {
+            Notify_ModListChanged();
+            Notify_RecacheManifests();
+        }
+
+        public static void Notify_ModAddedOrRemoved( ModMetaData changed )
+        {
+            Notify_ModListChanged();
+            Notify_RecacheManifests();
+        }
+        
+        private static void Notify_ModListChanged()
+        {
+            _activeMods = null;
+            ModsConfig.SetActiveToList( ActiveMods.Select( m => m.PackageId ).ToList() );
         }
 
         public static ModButton_Installed CoreMod => AllButtons.First( b => b.IsCoreMod ) as ModButton_Installed;
         public static ModButton_Installed ModManagerMod => AllButtons.First( b => b.IsModManager ) as ModButton_Installed;
         public static IEnumerable<ModButton_Installed> Expansions => AllButtons.Where( b => b.IsExpansion ).Cast<ModButton_Installed>();
-
         public static void Notify_RecacheIssues()
         {
-            foreach (var button in AllButtons)
-                button.Notify_RecheckRequirements();
             _issues = ActiveButtons.SelectMany( b => b.Issues ).ToList();
         }
 
@@ -166,7 +210,8 @@ namespace ModManager
                 ActiveButtons.Remove( button );
             }
             ActiveButtons.Insert( Mathf.Clamp( to, 0, ActiveButtons.Count ), button );
-            Notify_ModOrderChanged();
+            if ( button is ModButton_Installed installed )
+                Notify_ModAddedOrRemoved( installed.Selected );
         }
 
         public static void Notify_Activated( ModButton mod, bool active )
@@ -175,13 +220,15 @@ namespace ModManager
             {
                 _availableButtons.TryRemove( mod );
                 _activeButtons.TryAdd( mod );
-                Notify_ModOrderChanged();
+                if ( mod is ModButton_Installed installed )
+                    Notify_ModAddedOrRemoved( installed.Selected );
             }
             else
             {
                 _activeButtons.TryRemove( mod );
                 _availableButtons.TryAdd( mod );
-                Notify_ModOrderChanged();
+                if ( mod is ModButton_Installed installed )
+                    Notify_ModAddedOrRemoved( installed.Selected );
                 SortAvailable();
             }
         }
@@ -257,7 +304,7 @@ namespace ModManager
                 }
             }
 
-            Notify_ModOrderChanged();
+            Notify_ModOrderChanged( true );
         }
     }
 }
