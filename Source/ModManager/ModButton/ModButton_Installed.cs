@@ -81,7 +81,7 @@ namespace ModManager
             get => Versions.Any( mod => mod.Active );
             set {
                 Selected.Active = value;
-                ModButtonManager.Notify_Activated( this, value );
+                ModButtonManager.Notify_ActiveStatusChanged( this, value );
             }
         }
 
@@ -522,7 +522,7 @@ namespace ModManager
             Widgets.EndScrollView();
         }
 
-        public override IEnumerable<Dependency> Issues => Manifest?.Requirements ?? Manifest.EmptyRequirementList;
+        public override IEnumerable<Dependency> Requirements => Manifest?.Requirements ?? Manifest.EmptyRequirementList;
 
         public void Notify_ResetSelected()
         {

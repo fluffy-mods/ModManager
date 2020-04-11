@@ -78,7 +78,7 @@ namespace ModManager
             DrawRequirements( ref canvas );
         }
 
-        public override IEnumerable<Dependency> Issues => Manifest.EmptyRequirementList;
+        public override IEnumerable<Dependency> Requirements => Manifest.EmptyRequirementList;
 //        {
 //            get
 //            {

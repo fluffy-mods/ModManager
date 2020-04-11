@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 2,
-        "minor": 6,
-        "build": 886
+        "minor": 7,
+        "build": 887
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -23,13 +23,20 @@
         "Han Yaodong": "",
         "Michaël Marinetti": ""
     },
-    "changenote": "2020-04-11 :: Fluffy :: recache target when needed'\n2020-04-11 :: Proxyer :: Pull request: Update Japanese Translation for 2.6.886 v2 (#81)'\n2020-04-11 :: Han Yaodong :: Update Chinese translation for v2.6.886 (#82)'\n2020-04-11 :: Michaël Marinetti :: Update French translations'\n2020-03-25 :: Fluffy :: cache modlist in order, improve error message for remote manifest fetch failure'",
+    "changenote": "2020-04-11 :: Fluffy :: cache dependency targets, add auto-adding hugslib toggle'\n2020-04-11 :: Fluffy :: recache target when needed'\n2020-04-11 :: Proxyer :: Pull request: Update Japanese Translation for 2.6.886 v2 (#81)'\n2020-04-11 :: Han Yaodong :: Update Chinese translation for v2.6.886 (#82)'\n2020-04-11 :: Michaël Marinetti :: Update French translations'\n2020-03-25 :: Fluffy :: cache modlist in order, improve error message for remote manifest fetch failure'",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:08229f64b3b8df824a5feafe7f606d8645aff8f7",
+            "date": "2020-04-11",
+            "author": "Fluffy",
+            "message": "cache dependency targets, add auto-adding hugslib toggle'"
+        },
         {
             "repo": "ModManager",
             "hash": "'tformat:67a7f1a68d43f0fbd59ca3c185dc3d2073d33806",

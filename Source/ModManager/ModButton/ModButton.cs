@@ -70,7 +70,7 @@ namespace ModManager
         internal abstract void DoModDetails( Rect canvas );
         public virtual int LoadOrder => -1;
         public virtual int SortOrder => -1;
-        public abstract IEnumerable<Dependency> Issues { get; }
+        public abstract IEnumerable<Dependency> Requirements { get; }
         internal virtual void HandleInteractions(Rect canvas, Action clickAction, Action doubleClickAction)
         {
             if (Mouse.IsOver(canvas))
@@ -94,11 +94,11 @@ namespace ModManager
         internal virtual void DoModIssuesIcon( Rect canvas )
         {
             var severityThreshold = 2;
-            var relevantIssues = Issues.Where( i => i.Severity >= severityThreshold );
+            var relevantIssues = Requirements.Where( i => i.Severity >= severityThreshold );
             if ( !relevantIssues.Any() )
                 return;
 
-            var worst = Issues.MaxBy( d => d.Severity );
+            var worst = Requirements.MaxBy( d => d.Severity );
             GUI.color = worst.Color;
             GUI.DrawTexture( canvas, Resources.Warning );
             GUI.color = Color.white;
@@ -108,8 +108,8 @@ namespace ModManager
         internal virtual void DrawRequirements(ref Rect canvas)
         {
             var severityThreshold = ModManager.Settings.ShowSatisfiedRequirements ? 0 : 1;
-            var relevantIssues = Issues.Where( i => i.Severity >= severityThreshold );
-            if ( !Issues.Any( i => i.Severity >= severityThreshold ) )
+            var relevantIssues = Requirements.Where( i => i.Severity >= severityThreshold );
+            if ( !Requirements.Any( i => i.Severity >= severityThreshold ) )
                 return;
 
             Utilities.DoLabel(ref canvas, I18n.Dependencies );

@@ -23,7 +23,10 @@ namespace ModManager
             {
                 var options = Utilities.NewOptionsList;
                 var targetButton = Target.GetManifest().Button;
-                options.Add( new FloatMenuOption( I18n.DeactivateMod( targetButton ), () => targetButton.Active = false ) );
+                options.Add( new FloatMenuOption( I18n.DeactivateMod( targetButton ),
+                                                  () => targetButton.Active = false ) );
+                options.Add( new FloatMenuOption( I18n.DeactivateMod( parent.Button ),
+                                                  () => parent.Button.Active = false ) );
                 return options;
             }
         }

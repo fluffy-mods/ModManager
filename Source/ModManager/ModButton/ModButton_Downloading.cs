@@ -83,6 +83,6 @@ namespace ModManager
 
         internal override void DoModDetails( Rect canvas ){}
 
-        public override IEnumerable<Dependency> Issues => Manifest.EmptyRequirementList;
+        public override IEnumerable<Dependency> Requirements => Manifest.EmptyRequirementList;
     }
 }

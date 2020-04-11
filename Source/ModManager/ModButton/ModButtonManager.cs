@@ -153,7 +153,7 @@ namespace ModManager
         public static IEnumerable<ModButton_Installed> Expansions => AllButtons.Where( b => b.IsExpansion ).Cast<ModButton_Installed>();
         public static void RecacheIssues()
         {
-            _issues = ActiveButtons.SelectMany( b => b.Issues ).ToList();
+            _issues = ActiveButtons.SelectMany( b => b.Requirements ).ToList();
         }
 
         public static void Reorder( int from, int to )
@@ -188,21 +188,21 @@ namespace ModManager
                 Notify_ModListChanged();
         }
 
-        public static void Notify_Activated( ModButton mod, bool active )
+        public static void Notify_ActiveStatusChanged( ModButton_Installed mod, bool active )
         {
             if ( active )
             {
                 _availableButtons.TryRemove( mod );
                 _activeButtons.TryAdd( mod );
-                if ( mod is ModButton_Installed installed )
-                    Notify_ModListChanged();
+                
+                Notify_ModListChanged();
             }
             else
             {
                 _activeButtons.TryRemove( mod );
                 _availableButtons.TryAdd( mod );
-                if ( mod is ModButton_Installed installed )
-                    Notify_ModListChanged();
+                
+                Notify_ModListChanged();
                 SortAvailable();
             }
         }
@@ -268,7 +268,7 @@ namespace ModManager
                     foreach ( var expansion in Expansions )
                         expansion.Active = true;
 
-                if ( ModManager.Settings.AddHugslibToNewModLists )
+                if ( ModManager.Settings.AddHugsLibToNewModLists )
                 {
                     var hugslib = ModLister.GetModWithIdentifier( "unlimitedhugs.hugslib" );
                     if ( hugslib != null )
@@ -281,7 +281,7 @@ namespace ModManager
                 if ( ModManager.Settings.AddModManagerToNewModLists && ModManagerMod != null )
                     ModManagerMod.Active = true;
 
-                if ( ModManager.Settings.AddHugslibToNewModLists || ModManager.Settings.AddModManagerToNewModLists )
+                if ( ModManager.Settings.AddHugsLibToNewModLists || ModManager.Settings.AddModManagerToNewModLists )
                 {
                     // also try to activate harmony
                     var harmony = ModLister.GetModWithIdentifier( "brrainz.harmony" );
