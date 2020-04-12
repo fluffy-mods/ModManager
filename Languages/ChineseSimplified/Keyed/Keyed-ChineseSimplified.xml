@@ -60,6 +60,9 @@
   <Fluffy.ModManager.ExportModList>将 Mod 列表导出为字符串</Fluffy.ModManager.ExportModList>
   <Fluffy.ModManager.LoadModListFromSave>从已保存中加载 Mod 列表</Fluffy.ModManager.LoadModListFromSave>
   <Fluffy.ModManager.ResetMods>将已激活 Mod 重置为仅激活 Core</Fluffy.ModManager.ResetMods>
+  <Fluffy.ModManager.ConfirmResetMods>您确定吗？\n\n这会重置您的整个 Mod 列表。如果您想保存已激活的 Mod 顺序，请先导出。</Fluffy.ModManager.ConfirmResetMods>
+  <Fluffy.ModManager.SortMods>自动排序 Mod 列表</Fluffy.ModManager.SortMods>
+  <Fluffy.ModManager.SortFailed.CyclicDependency>Cannot auto-sort mod list; {0} and {1} depend on eachother.</Fluffy.ModManager.SortFailed.CyclicDependency>
 
   <Fluffy.ModManager.InvalidName>{0}不是有效名称。名称不得包含以下任何字符：{1}。</Fluffy.ModManager.InvalidName>
   <Fluffy.ModManager.ModListExists>{0}已存在。 请使用其他名称、删除或重命名现有的 Mod 列表。</Fluffy.ModManager.ModListExists>
@@ -156,9 +159,11 @@
   <Fluffy.ModManager.ShowAllRequirements>显示所有 Mod 依赖</Fluffy.ModManager.ShowAllRequirements>
   <Fluffy.ModManager.ShowAllRequirementsTip>在 Mod 描述中显示所有满足和未满足的依赖</Fluffy.ModManager.ShowAllRequirementsTip>
   <Fluffy.ModManager.AddModManagerToNewModList>将 Mod Manager 加入新 Mod 列表</Fluffy.ModManager.AddModManagerToNewModList>
-  <Fluffy.ModManager.AddModManagerToNewModListTip>将 Mod Manager 加入包含 Core 的新 Mod 列表。</Fluffy.ModManager.AddModManagerToNewModListTip>
+  <Fluffy.ModManager.AddModManagerToNewModListTip>当列表重置时，总将 Mod Manager 加入新 Mod 列表。</Fluffy.ModManager.AddModManagerToNewModListTip>
+  <Fluffy.ModManager.AddHugsLibToNewModList>将 HugsLib 加入新 Mod 列表</Fluffy.ModManager.AddHugsLibToNewModList>
+  <Fluffy.ModManager.AddHugsLibToNewModListTip>当列表重置时，总将 HugsLib 加入新 Mod 列表。</Fluffy.ModManager.AddHugsLibToNewModListTip>
   <Fluffy.ModManager.AddExpansionsToNewModList>将官方拓展包加入 Mod 列表</Fluffy.ModManager.AddExpansionsToNewModList>
-  <Fluffy.ModManager.AddExpansionsToNewModListTip>将官方拓展包加入包含 Core 的新 Mod 列表。</Fluffy.ModManager.AddExpansionsToNewModListTip>
+  <Fluffy.ModManager.AddExpansionsToNewModListTip>当列表重置时，总将官方拓展包加入新 Mod 列表。</Fluffy.ModManager.AddExpansionsToNewModListTip>
   <Fluffy.ModManager.ShowVersionChecksForSteamMods>显示 Steam Mod 版本检查。</Fluffy.ModManager.ShowVersionChecksForSteamMods>
   <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>版本检查主要针对手动添加的 Mod，因此对 Steam Mod 默认关闭。注意，本功能只有在新手动添加 Mod，并且 Mod 作者明确支持本功能时有效。新添加的 Steam Mod 将不会被通知。</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
 </LanguageData>
