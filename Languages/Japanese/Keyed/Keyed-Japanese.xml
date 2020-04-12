@@ -60,6 +60,9 @@
   <Fluffy.ModManager.ExportModList>MODリストを文字列に書き出す</Fluffy.ModManager.ExportModList>
   <Fluffy.ModManager.LoadModListFromSave>セーブからMODリストを読み込む</Fluffy.ModManager.LoadModListFromSave>
   <Fluffy.ModManager.ResetMods>有効なMODをCoreだけにリセットする</Fluffy.ModManager.ResetMods>
+  <Fluffy.ModManager.ConfirmResetMods>本当に？\n\nこれにより,ModリストのModが全て選択解除されます.現在のMODリストを残したい場合は,まず初めに「MODリストを文字列に書き出」してください.</Fluffy.ModManager.ConfirmResetMods>
+  <Fluffy.ModManager.SortMods>Modリストを自動ソート</Fluffy.ModManager.SortMods>
+  <Fluffy.ModManager.SortFailed.CyclicDependency>MODリストを自動ソートできない; {0}と{1}が相互に依存している。</Fluffy.ModManager.SortFailed.CyclicDependency>
 
   <Fluffy.ModManager.InvalidName>{0}は正常な名前ではありません.名前には,これらの文字のいずれかを含めることはできません：{1}.</Fluffy.ModManager.InvalidName>
   <Fluffy.ModManager.ModListExists>{0}は既に存在します.別の名前を付けるか,既存のMODリストを削除,または名前を変更してください.</Fluffy.ModManager.ModListExists>
@@ -157,9 +160,10 @@
   <Fluffy.ModManager.ShowAllRequirementsTip>Mod詳細に,Mod前提が完了したものと未完了な両方を全て表示する</Fluffy.ModManager.ShowAllRequirementsTip>
   <Fluffy.ModManager.AddModManagerToNewModList>新しいModリストにMod-Managerを追加</Fluffy.ModManager.AddModManagerToNewModList>
   <Fluffy.ModManager.AddModManagerToNewModListTip>CoreとMod-Managerを新しいModリストに追加します.</Fluffy.ModManager.AddModManagerToNewModListTip>
-  <Fluffy.ModManager.AddExpansionsToNewModList>新式Modリストに公式DLCを追加</Fluffy.ModManager.AddExpansionsToNewModList>
+  <Fluffy.ModManager.AddHugsLibToNewModList>新しいModリストにHugsLibを追加</Fluffy.ModManager.AddHugsLibToNewModList>
+  <Fluffy.ModManager.AddHugsLibToNewModListTip>Modリストがリセットされた際,常に新しいModリストにHugsLibを追加します.</Fluffy.ModManager.AddHugsLibToNewModListTip>
+  <Fluffy.ModManager.AddExpansionsToNewModList>新しいModリストに公式DLCを追加</Fluffy.ModManager.AddExpansionsToNewModList>
   <Fluffy.ModManager.AddExpansionsToNewModListTip>Coreに加えて,公式DLCを新しいModリストに追加します.</Fluffy.ModManager.AddExpansionsToNewModListTip>
   <Fluffy.ModManager.ShowVersionChecksForSteamMods>SteamModのバージョン確認を表示</Fluffy.ModManager.ShowVersionChecksForSteamMods>
   <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>バージョン確認は手動インストールされたMODに最適で、デフォルトではSteamMODの確認は無効になっています。これはMod作成者がこの機能を明示的にサポートしている場合か、手動でインストールされた新しいMODについてだけ通知されることに注意してください。新しいSteamModのバージョンが出ても通知しません。</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
-
 </LanguageData>
