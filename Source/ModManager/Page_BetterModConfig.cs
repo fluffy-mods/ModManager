@@ -266,7 +266,7 @@ namespace ModManager
                     Find.WindowStack.Add( new Dialog_MessageBox( I18n.ConfirmResetMods, I18n.Yes,
                                                                  () => ModButtonManager.Reset(), I18n.Cancel,
                                                                  buttonADestructive: true ) );
-            if (ModButtonManager.ActiveButtons.Count > 1) 
+            if (ModButtonManager.ActiveButtons.Count > 1 && ModButtonManager.AnyIssue ) 
                 if (Utilities.ButtonIcon( ref iconRect, Wand, I18n.SortMods ) )
                     ModButtonManager.Sort();
         }
