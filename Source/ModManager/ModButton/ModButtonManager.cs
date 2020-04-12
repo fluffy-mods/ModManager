@@ -5,9 +5,11 @@ using System.Collections;
 using System.Collections.Generic;
 using Verse;
 using System.Linq;
+using FluffyUI;
 using JetBrains.Annotations;
 using RimWorld;
 using UnityEngine;
+using Verse.Sound;
 
 namespace ModManager
 {
@@ -72,7 +74,7 @@ namespace ModManager
             {
                 _activeButtons.TryAdd( button );
                 _availableButtons.TryRemove( button );
-                if ( notifyModListChanged && button is ModButton_Installed installed )
+                if ( notifyModListChanged && button is ModButton_Installed )
                     Notify_ModListChanged();
             }
             else
@@ -253,6 +255,116 @@ namespace ModManager
                     RecacheIssues();
                 return _issues;
             }
+        }
+
+        public static void Sort()
+        {
+            /**
+             * Topological sort.
+             * Depth first, because it's the easiest to understand.
+             * https://en.wikipedia.org/wiki/Topological_sorting
+             *
+             *  L ← Empty list that will contain the sorted nodes       // we'll use done.
+             *  while exists nodes without a permanent mark do
+             *      select an unmarked node n
+             *      visit(n)
+             *
+             *  function visit(node n)
+             *      if n has a permanent mark then                      // is in done list
+             *          return
+             *      if n has a temporary mark then                      // is in progress list
+             *          stop   (not a DAG)
+             *
+             *      mark n with a temporary mark                        // add to progress list
+             *
+             *      for each node m with an edge from n to m do         // visit each dependency
+             *          visit(m)
+             *
+             *      remove temporary mark from n                        // remove from progress list
+             *      mark n with a permanent mark                        // add to done list
+             *      add n to head of L
+             */
+
+            var graph    = new Dictionary<ModButton, HashSet<ModButton>>();
+            var done     = new HashSet<ModButton>();
+            var progress = new HashSet<ModButton>();
+
+            // create a directed acyclic graph.
+            foreach ( var activeButton in ActiveButtons )
+            {
+                if ( !graph.ContainsKey( activeButton ) )
+                    graph[activeButton] = new HashSet<ModButton>();
+
+                if ( !( activeButton is ModButton_Installed installedActiveButton ) ) continue;
+                foreach ( var target in installedActiveButton.Manifest.LoadBefore
+                                                             .Select( d => d.Target )
+                                                             .Where( t => t != null ) )
+                {
+                    var targetButton = ModButton_Installed.For( target );
+                    if ( !graph.ContainsKey( targetButton ) )
+                        graph[targetButton] = new HashSet<ModButton>();
+                    graph[targetButton].Add( activeButton );
+                }
+
+
+                foreach ( var target in installedActiveButton.Manifest.LoadAfter
+                                                             .Concat( installedActiveButton.Manifest.Dependencies )
+                                                             .Select( d => d.Target )
+                                                             .Where( t => t != null ) )
+                {
+                    var targetButton = ModButton_Installed.For( target );
+                    graph[activeButton].Add( targetButton );
+                }
+            }
+
+            // do that sort
+            foreach ( var activeButton in ActiveButtons )
+            {
+                var success = Sort_Visit( activeButton, graph, ref done, ref progress );
+                if ( !success )
+                {
+                    // we have a cyclic dependency.
+                    Messages.Message( I18n.SortFailed_Cyclic( activeButton.Name, success.Reason ), MessageTypeDefOf.CautionInput, false );
+                    return;
+                }
+            }
+
+            // reset mod list, then add mods back in order.
+            SoundDefOf.Tick_High.PlayOneShotOnCamera();
+            Reset( false );
+            foreach ( var mod in done )
+            {
+                // try to avoid re-caching too many times.
+                if ( mod is ModButton_Installed installed ) installed.Selected.Active = true; 
+                else mod.Active = true;
+
+                TryAdd( mod, false );
+            }
+
+            Notify_ModListChanged();
+        }
+
+        private static FailReason Sort_Visit( ModButton node, Dictionary<ModButton, HashSet<ModButton>> graph, ref HashSet<
+                                                  ModButton> done,
+                                        ref HashSet<ModButton> progress )
+        {
+            if ( done.Contains( node ) )
+                return true;
+            if ( progress.Contains( node ) )
+                return node.Name;
+
+            progress.Add( node );
+            foreach ( var dep in graph[node] )
+            {
+                var success = Sort_Visit( dep, graph, ref done, ref progress );
+                if ( !success )
+                    return success.Reason ?? dep.Name;
+            }
+
+            progress.Remove( node );
+            Debug.Log( node.Name );
+            done.Add( node );
+            return true;
         }
 
         public static void Reset( bool addDefaultMods = true )

@@ -261,10 +261,14 @@ namespace ModManager
                 }
                 iconRect.x += IconSize + SmallMargin;
             }
-            if ( ModButtonManager.ActiveButtons.Count >= 2 || !(ModButtonManager.ActiveButtons.FirstOrDefault()?.IsCoreMod ?? true ) )
-                if ( Utilities.ButtonIcon( ref iconRect, Spinner[0], I18n.ResetMods, mouseOverColor: Color.red ) )
-                    ModButtonManager.Reset();
-
+            if ( ModButtonManager.ActiveButtons.Count > 0)
+                if ( Utilities.ButtonIcon( ref iconRect, Spinner[0], I18n.ResetMods, mouseOverColor: Color.red, direction: UIDirection.RightThenDown ) )
+                    Find.WindowStack.Add( new Dialog_MessageBox( I18n.ConfirmResetMods, I18n.Yes,
+                                                                 () => ModButtonManager.Reset(), I18n.Cancel,
+                                                                 buttonADestructive: true ) );
+            if (ModButtonManager.ActiveButtons.Count > 1) 
+                if (Utilities.ButtonIcon( ref iconRect, Wand, I18n.SortMods ) )
+                    ModButtonManager.Sort();
         }
 
         private void DoModListFloatMenu()

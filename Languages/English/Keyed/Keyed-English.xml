@@ -60,6 +60,9 @@
     <Fluffy.ModManager.ExportModList>Export mod list to string</Fluffy.ModManager.ExportModList>
     <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
     <Fluffy.ModManager.ResetMods>Reset active modlist to a blank modlist</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.ConfirmResetMods>Are you sure?\n\nThis will de-activate your entire modlist. Make sure to export it first if you want to save your mod order.</Fluffy.ModManager.ConfirmResetMods>
+    <Fluffy.ModManager.SortMods>Auto-sort mod list</Fluffy.ModManager.SortMods>
+    <Fluffy.ModManager.SortFailed.CyclicDependency>Cannot auto-sort mod list; {0} and {1} depend on eachother.</Fluffy.ModManager.SortFailed.CyclicDependency>
 
     <Fluffy.ModManager.InvalidName>{0} is not a valid name. The name may not contain any of these characters: {1}.</Fluffy.ModManager.InvalidName>
     <Fluffy.ModManager.ModListExists>{0} already exists. Please use a different name, or delete or rename the existing modlist.</Fluffy.ModManager.ModListExists>

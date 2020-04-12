@@ -28,7 +28,8 @@ namespace ModManager
             Status_Down,
             Status_Up,
             Status_Plus,
-            Check;
+            Check,
+            Wand;
 
         public static Texture2D[] Spinner;
 
@@ -47,9 +48,10 @@ namespace ModManager
             Question = ContentFinder<Texture2D>.Get( "UI/Icons/Question" );
             // the joys of case-unaware file systems - I now don't know which version is out there...
             Palette = ContentFinder<Texture2D>.Get( "UI/Icons/Palette", false );
-            if ( Palette == null ) Palette = ContentFinder<Texture2D>.Get( "UI/Icons/palette" );
+            Palette ??= ContentFinder<Texture2D>.Get( "UI/Icons/palette" );
             Gear = ContentFinder<Texture2D>.Get( "UI/Icons/Gear" );
             Check = ContentFinder<Texture2D>.Get( "UI/Widgets/CheckOn" );
+            Wand = ContentFinder<Texture2D>.Get( "UI/Icons/Wand" );
 
             Status_Cross = ContentFinder<Texture2D>.Get("UI/Icons/Status/Cross");
             Status_Down = ContentFinder<Texture2D>.Get("UI/Icons/Status/Down");

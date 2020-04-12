@@ -23,55 +23,12 @@
         "Han Yaodong": "",
         "Michaël Marinetti": ""
     },
-    "changenote": "2020-04-11 :: Fluffy :: cache dependency targets, add auto-adding hugslib toggle'\n2020-04-11 :: Fluffy :: recache target when needed'\n2020-04-11 :: Proxyer :: Pull request: Update Japanese Translation for 2.6.886 v2 (#81)'\n2020-04-11 :: Han Yaodong :: Update Chinese translation for v2.6.886 (#82)'\n2020-04-11 :: Michaël Marinetti :: Update French translations'\n2020-03-25 :: Fluffy :: cache modlist in order, improve error message for remote manifest fetch failure'",
+    "changenote": "",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:08229f64b3b8df824a5feafe7f606d8645aff8f7",
-            "date": "2020-04-11",
-            "author": "Fluffy",
-            "message": "cache dependency targets, add auto-adding hugslib toggle'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:67a7f1a68d43f0fbd59ca3c185dc3d2073d33806",
-            "date": "2020-04-11",
-            "author": "Fluffy",
-            "message": "recache target when needed'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:ef58b607eb85bc6e4fb26d0e755dd69d321c2a71",
-            "date": "2020-04-11",
-            "author": "Proxyer",
-            "message": "Pull request: Update Japanese Translation for 2.6.886 v2 (#81)'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:66124489b1a67474f78bc788b139055ae4d9072b",
-            "date": "2020-04-11",
-            "author": "Han Yaodong",
-            "message": "Update Chinese translation for v2.6.886 (#82)'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:091edf1a2310c7762f382ab2ed65b300bda075cc",
-            "date": "2020-04-11",
-            "author": "Michaël Marinetti",
-            "message": "Update French translations'"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:2e1236607b85ca2b453990d7595d1c45d87c99f8",
-            "date": "2020-03-25",
-            "author": "Fluffy",
-            "message": "cache modlist in order, improve error message for remote manifest fetch failure'"
-        }
-    ],
+    "changenotes": [],
     "packageId": "fluffy.modmanager"
 }

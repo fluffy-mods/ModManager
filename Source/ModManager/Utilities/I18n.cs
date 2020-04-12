@@ -371,6 +371,9 @@ namespace ModManager
 
         public static string SubscribeAllMissing = Key( "SubscribeAllMissing" ).Translate();
         public static string ResetMods           = Key( "ResetMods" ).Translate();
+        public static string ConfirmResetMods = Key( "ConfirmResetMods" ).Translate();
+        public static string SortMods = Key( "SortMods" ).Translate();
+        public static string SortFailed_Cyclic( string a, string b ) => Key( "SortFailed.CyclicDependency" ).Translate( a, b );
 
         // promotions
         public static string PromotionsFor( string author ) => Key( "PromotionsFor" ).Translate( author );

@@ -33,7 +33,7 @@ namespace ModManager
             var activeMods = ModsConfig.ActiveModsInLoadOrder;
             if ( !activeMods.Any( am => am?.PackageId == mod.PackageId ) )
                 return -1;
-            return activeMods.FirstIndexOf( am => am.PackageId == mod.PackageId );
+            return activeMods.FirstIndexOf( am => am.SamePackageId( mod.PackageId ) );
         }
 
         public static bool HasSettings( this ModMetaData mod )
