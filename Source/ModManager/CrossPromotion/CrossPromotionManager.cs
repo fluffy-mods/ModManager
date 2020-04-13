@@ -135,9 +135,10 @@ namespace ModManager
                     if ( !promotion.Installed )
                     {
                         var options = Utilities.NewOptionsList;
+                        options.Add( new FloatMenuOption( I18n.Subscribe( promotion.Name ),
+                                                          () => Workshop.Subscribe( promotion.FileId ) ) );
                         options.Add( new FloatMenuOption( I18n.WorkshopPage( promotion.Name ),
-                            () => SteamUtility.OpenWorkshopPage( promotion.FileId ) ) );
-//                        options.Add( Resolvers.SubscribeOption( promotion.Name, promotion.FileId.ToString() ) );
+                                                          () => SteamUtility.OpenWorkshopPage( promotion.FileId ) ) );
                         Utilities.FloatMenu( options );
                     }
                     else

@@ -23,20 +23,12 @@
         "Han Yaodong": "Updates to Chinese translations",
         "Michaël Marinetti": "Updates to French translation"
     },
-    "changenote": "2020-04-13 :: Proxyer :: Update Japanese Translation for v2.8.888 (#83)'",
+    "changenote": "",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "'tformat:473b3f780c1e6620ebe7497be49da0b5a69fafee",
-            "date": "2020-04-13",
-            "author": "Proxyer",
-            "message": "Update Japanese Translation for v2.8.888 (#83)'"
-        }
-    ],
+    "changenotes": [],
     "packageId": "fluffy.modmanager"
 }

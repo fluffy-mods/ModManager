@@ -45,9 +45,13 @@ namespace ModManager
             Find.WindowStack.Add( dialog );
         }
 
+        public static void Subscribe( PublishedFileId_t fileId )
+        {
+            SteamUGC.SubscribeItem( fileId );
+        }
         public static void Subscribe( string identifier )
         {
-            SteamUGC.SubscribeItem( new PublishedFileId_t( ulong.Parse( identifier ) ) );
+            Subscribe( new PublishedFileId_t( ulong.Parse( identifier ) ) );
         }
 
         public static void Subscribe( IEnumerable<string> identifiers )
