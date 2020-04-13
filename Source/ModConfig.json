@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 2,
-        "minor": 8,
-        "build": 888
+        "minor": 9,
+        "build": 889
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -13,17 +13,17 @@
         "erdelf": "invaluable help with Harmony transpilers",
         "Brrainz": "multi-version targetting, inspiration for mod promotions",
         "b606": "French translation",
-        "Proxyer": "Japanese translation",
+        "Proxyer": "Japanese translation, with frequent updates",
         "奔跑的梅洛斯": "Simplified Chinese translation",
         "Zetrith": "Fix blurry mod descriptions",
         "enescaglayan": "Turkish translation",
         "Lex1975": "Russian translation",
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation",
-        "Han Yaodong": "",
-        "Michaël Marinetti": ""
+        "Han Yaodong": "Updates to Chinese translations",
+        "Michaël Marinetti": "Updates to French translation"
     },
-    "changenote": "2020-04-12 :: Fluffy :: implement auto-sort'",
+    "changenote": "2020-04-13 :: Proxyer :: Update Japanese Translation for v2.8.888 (#83)'",
     "tags": [
         "1.0",
         "1.1"
@@ -32,10 +32,10 @@
     "changenotes": [
         {
             "repo": "ModManager",
-            "hash": "'tformat:7a0b510115ff61c7c1985c81b54407cce0246be5",
-            "date": "2020-04-12",
-            "author": "Fluffy",
-            "message": "implement auto-sort'"
+            "hash": "'tformat:473b3f780c1e6620ebe7497be49da0b5a69fafee",
+            "date": "2020-04-13",
+            "author": "Proxyer",
+            "message": "Update Japanese Translation for v2.8.888 (#83)'"
         }
     ],
     "packageId": "fluffy.modmanager"
