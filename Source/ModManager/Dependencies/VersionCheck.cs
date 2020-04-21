@@ -49,7 +49,7 @@ namespace ModManager
             {
 
                 var options = Utilities.NewOptionsList;
-                if ( !onlineManifest.downloadUri.NullOrEmpty() )
+                if ( onlineManifest != null && !onlineManifest.downloadUri.NullOrEmpty() )
                     options.Add( new FloatMenuOption( I18n.OpenDownloadUri( onlineManifest.downloadUri ),
                                                       () => SteamUtility.OpenUrl( onlineManifest.downloadUri ) ) );
                 else
