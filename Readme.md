@@ -79,6 +79,7 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  - Patrick Schmitt:	German translation
  - Han Yaodong:	Updates to Chinese translations
  - Michaël Marinetti:	Updates to French translation
+ - Mohas:	
 
 # Think you found a bug? 
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
@@ -101,4 +102,4 @@ Show your appreciation by buying me a coffee (or contribute towards a nice singl
 [![I Have a Black Dog](https://i.ibb.co/ss59Rwy/New-Project-2.png)](https://www.youtube.com/watch?v=XiCrniLQGYc)
 
 # Version
-This is version 2.9.889, for RimWorld 1.1.2598.
+This is version 2.10.891, for RimWorld 1.1.2610.

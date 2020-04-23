@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 2,
-        "minor": 9,
-        "build": 889
+        "minor": 10,
+        "build": 891
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -21,14 +21,30 @@
         "Torq": "Russian translation",
         "Patrick Schmitt": "German translation",
         "Han Yaodong": "Updates to Chinese translations",
-        "Michaël Marinetti": "Updates to French translation"
+        "Michaël Marinetti": "Updates to French translation",
+        "Mohas": ""
     },
-    "changenote": "",
+    "changenote": "2020-04-23 :: Mohas :: added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don't throw exception when something goes wrong in FetchManifest (#89)'\n2020-04-13 :: Fluffy :: re-add subscribe to crosspromotion option'",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:b49f6d62a558d4b5a3b6ec5650df23a895be0954",
+            "date": "2020-04-23",
+            "author": "Mohas",
+            "message": "added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don't throw exception when something goes wrong in FetchManifest (#89)'"
+        },
+        {
+            "repo": "ModManager",
+            "hash": "'tformat:c0c3aefd2746fd9df8a71334d11c427c784efd50",
+            "date": "2020-04-13",
+            "author": "Fluffy",
+            "message": "re-add subscribe to crosspromotion option'"
+        }
+    ],
     "packageId": "fluffy.modmanager"
 }
