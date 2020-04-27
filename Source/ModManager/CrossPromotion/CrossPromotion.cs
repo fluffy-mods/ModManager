@@ -15,7 +15,7 @@ namespace ModManager
         private SteamUGCDetails_t _details;
         private CallResult<RemoteStorageDownloadUGCResult_t> _callResult;
 
-        private string PreviewPath => $"{GenFilePaths.SaveDataFolderPath}{Path.DirectorySeparatorChar}CrossPromotions{Path.DirectorySeparatorChar}{Name}_{FileId}.jpg";
+        private string PreviewPath => $"{GenFilePaths.SaveDataFolderPath}{Path.DirectorySeparatorChar}CrossPromotions{Path.DirectorySeparatorChar}{(Name + "_" + FileId).SanitizeFileName()}.jpg";
 
         public bool Ready => Preview != null;
         public PublishedFileId_t FileId => _details.m_nPublishedFileId;
