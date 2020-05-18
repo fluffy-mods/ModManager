@@ -13,16 +13,16 @@
   <Fluffy.ModManager.Later>稍后</Fluffy.ModManager.Later>
   <Fluffy.ModManager.Cancel>取消</Fluffy.ModManager.Cancel>
 
-  <Fluffy.ModManager.PressXtoCopyToClipboard>按“Ctrl + C”复制 Mod 列表到剪切板。</Fluffy.ModManager.PressXtoCopyToClipboard>
+  <Fluffy.ModManager.PressXtoCopyToClipboard>按 Ctrl + C 复制 Mod 列表到剪切板。</Fluffy.ModManager.PressXtoCopyToClipboard>
 
   <!-- issues -->
-  <Fluffy.ModManager.InvalidVersion>版本字符串异常：“{0}”。</Fluffy.ModManager.InvalidVersion>
+  <Fluffy.ModManager.InvalidVersion>版本字符串异常：「{0}」。</Fluffy.ModManager.InvalidVersion>
   <Fluffy.ModManager.DifferentVersion>Mod 版本错误：当前版本为{2}，但{0}适用于版本{1}。</Fluffy.ModManager.DifferentVersion>
   <Fluffy.ModManager.DifferentBuild>不同的游戏版本：当前版本为{2}，但{0}将版本{1}指定为目标版本。</Fluffy.ModManager.DifferentBuild>
   <Fluffy.ModManager.CurrentVersion>版本匹配</Fluffy.ModManager.CurrentVersion>
   <Fluffy.ModManager.UpdateAvailable>可以更新为版本{1}（当前版本：{0}）。</Fluffy.ModManager.UpdateAvailable>
   <Fluffy.ModManager.MissingMod>{0}（id：{1}）尚未安装，将被忽略。</Fluffy.ModManager.MissingMod>
-  <Fluffy.ModManager.CoreNotFirst>'Core' 应该是第一个加载的 Mod。</Fluffy.ModManager.CoreNotFirst>
+  <Fluffy.ModManager.CoreNotFirst>Core 应是第一个加载的 Mod。</Fluffy.ModManager.CoreNotFirst>
   <Fluffy.ModManager.DependencyUnknownVersion>依赖于{0}，但版本未知。</Fluffy.ModManager.DependencyUnknownVersion>
   <Fluffy.ModManager.DependencyNotFound>依赖于{0}，但尚未加载。</Fluffy.ModManager.DependencyNotFound>
   <Fluffy.ModManager.DependencyWrongVersion>依赖于{0}，版本{1}，但加载了版本{2}。</Fluffy.ModManager.DependencyWrongVersion>
@@ -42,7 +42,7 @@
   <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>取消订阅所有的 Mod</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>
   <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>取消订阅所有未激活 Mod</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>
   <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>取消订阅所有过时的 Mod</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>
-  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>您即将取消订阅 Mod “{0}”。你确定要继续吗？\n\n受影响的 Mod：\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
+  <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>您即将取消订阅 Mod「{0}」。你确定要继续吗？\n\n受影响的 Mod：\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
   <Fluffy.ModManager.IO.MassRemoveLocal>批量删除未激活，过时的或所有的本地副本</Fluffy.ModManager.IO.MassRemoveLocal>
   <Fluffy.ModManager.IO.MassRemoveLocalAll>删除所有本地副本</Fluffy.ModManager.IO.MassRemoveLocalAll>
   <Fluffy.ModManager.IO.MassRemoveLocalInactive>删除所有未激活本地副本</Fluffy.ModManager.IO.MassRemoveLocalInactive>
@@ -60,6 +60,9 @@
   <Fluffy.ModManager.ExportModList>将 Mod 列表导出为字符串</Fluffy.ModManager.ExportModList>
   <Fluffy.ModManager.LoadModListFromSave>从已保存中加载 Mod 列表</Fluffy.ModManager.LoadModListFromSave>
   <Fluffy.ModManager.ResetMods>将已激活 Mod 重置为仅激活 Core</Fluffy.ModManager.ResetMods>
+  <Fluffy.ModManager.ConfirmResetMods>您确定吗？\n\n这会重置您的整个 Mod 列表。如果您想保存已激活的 Mod 顺序，请先导出。</Fluffy.ModManager.ConfirmResetMods>
+  <Fluffy.ModManager.SortMods>自动排序 Mod 列表</Fluffy.ModManager.SortMods>
+  <Fluffy.ModManager.SortFailed.CyclicDependency>Cannot auto-sort mod list; {0} and {1} depend on eachother.</Fluffy.ModManager.SortFailed.CyclicDependency>
 
   <Fluffy.ModManager.InvalidName>{0}不是有效名称。名称不得包含以下任何字符：{1}。</Fluffy.ModManager.InvalidName>
   <Fluffy.ModManager.ModListExists>{0}已存在。 请使用其他名称、删除或重命名现有的 Mod 列表。</Fluffy.ModManager.ModListExists>
@@ -76,8 +79,8 @@
 
   <Fluffy.ModManager.AddToModList>添加 Mod 到 Mod 列表</Fluffy.ModManager.AddToModList>
   <Fluffy.ModManager.RemoveFromModList>从 Mod 列表移除 Mod</Fluffy.ModManager.RemoveFromModList>
-  <Fluffy.ModManager.AddToModListX>添加到“{0}”</Fluffy.ModManager.AddToModListX>
-  <Fluffy.ModManager.RemoveFromModListX>从“{0}”移除</Fluffy.ModManager.RemoveFromModListX>
+  <Fluffy.ModManager.AddToModListX>添加到「{0}」</Fluffy.ModManager.AddToModListX>
+  <Fluffy.ModManager.RemoveFromModListX>从「{0}」移除</Fluffy.ModManager.RemoveFromModListX>
 
   <Fluffy.ModManager.CreateLocalCopies>在已激活 Mod 列表中创建所有 Steam Mod 的本地副本\n\n本地副本将存储在 mods 文件夹中，并且不会自动更新。</Fluffy.ModManager.CreateLocalCopies>
   <Fluffy.ModManager.CreateLocalCopiesConfirmation>您即将创建{0}个 Mod 的本地副本。这可能会需要几分钟，你确定要继续吗？</Fluffy.ModManager.CreateLocalCopiesConfirmation>
@@ -94,11 +97,11 @@
 
   <!-- Resolvers -->
   <Fluffy.ModManager.MoveCoreToFirst>将 "Core" 设置为加载顺序中的第一个位置。</Fluffy.ModManager.MoveCoreToFirst>
-  <Fluffy.ModManager.SearchSteamWorkshop>在 Workshop 中搜索“{0}”。</Fluffy.ModManager.SearchSteamWorkshop>
-  <Fluffy.ModManager.SearchForum>在 Ludeon forums 中搜索“{0}”。</Fluffy.ModManager.SearchForum>
+  <Fluffy.ModManager.SearchSteamWorkshop>在 Workshop 中搜索「{0}」。</Fluffy.ModManager.SearchSteamWorkshop>
+  <Fluffy.ModManager.SearchForum>在 Ludeon forums 中搜索「{0}」。</Fluffy.ModManager.SearchForum>
   <Fluffy.ModManager.ActivateMod>激活{0} {1}（{2}）。</Fluffy.ModManager.ActivateMod>
-  <Fluffy.ModManager.NoMatchingModInstalled>尚未为游戏版本{1}找到匹配“{0}”的已安装 Mod。</Fluffy.ModManager.NoMatchingModInstalled>
-  <Fluffy.ModManager.NoMatchingModInstalled_Version>尚未为游戏版本{1}找到匹配“{0} {3} {2}”的已安装 Mod。</Fluffy.ModManager.NoMatchingModInstalled_Version>
+  <Fluffy.ModManager.NoMatchingModInstalled>尚未为游戏版本{1}找到匹配「{0}」的已安装 Mod。</Fluffy.ModManager.NoMatchingModInstalled>
+  <Fluffy.ModManager.NoMatchingModInstalled_Version>尚未为游戏版本{1}找到匹配「{0} {3} {2}」的已安装 Mod。</Fluffy.ModManager.NoMatchingModInstalled_Version>
   <Fluffy.ModManager.DeactivateMod>停用{0}。</Fluffy.ModManager.DeactivateMod>
   <Fluffy.ModManager.MoveBefore>将{0}移至{1}之前加载。</Fluffy.ModManager.MoveBefore>
   <Fluffy.ModManager.MoveAfter>将{0}移至{1}之后加载。</Fluffy.ModManager.MoveAfter>
@@ -156,9 +159,11 @@
   <Fluffy.ModManager.ShowAllRequirements>显示所有 Mod 依赖</Fluffy.ModManager.ShowAllRequirements>
   <Fluffy.ModManager.ShowAllRequirementsTip>在 Mod 描述中显示所有满足和未满足的依赖</Fluffy.ModManager.ShowAllRequirementsTip>
   <Fluffy.ModManager.AddModManagerToNewModList>将 Mod Manager 加入新 Mod 列表</Fluffy.ModManager.AddModManagerToNewModList>
-  <Fluffy.ModManager.AddModManagerToNewModListTip>将 Mod Manager 加入包含 Core 的新 Mod 列表。</Fluffy.ModManager.AddModManagerToNewModListTip>
+  <Fluffy.ModManager.AddModManagerToNewModListTip>当列表重置时，总将 Mod Manager 加入新 Mod 列表。</Fluffy.ModManager.AddModManagerToNewModListTip>
+  <Fluffy.ModManager.AddHugsLibToNewModList>将 HugsLib 加入新 Mod 列表</Fluffy.ModManager.AddHugsLibToNewModList>
+  <Fluffy.ModManager.AddHugsLibToNewModListTip>当列表重置时，总将 HugsLib 加入新 Mod 列表。</Fluffy.ModManager.AddHugsLibToNewModListTip>
   <Fluffy.ModManager.AddExpansionsToNewModList>将官方拓展包加入 Mod 列表</Fluffy.ModManager.AddExpansionsToNewModList>
-  <Fluffy.ModManager.AddExpansionsToNewModListTip>将官方拓展包加入包含 Core 的新 Mod 列表。</Fluffy.ModManager.AddExpansionsToNewModListTip>
+  <Fluffy.ModManager.AddExpansionsToNewModListTip>当列表重置时，总将官方拓展包加入新 Mod 列表。</Fluffy.ModManager.AddExpansionsToNewModListTip>
   <Fluffy.ModManager.ShowVersionChecksForSteamMods>显示 Steam Mod 版本检查。</Fluffy.ModManager.ShowVersionChecksForSteamMods>
   <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>版本检查主要针对手动添加的 Mod，因此对 Steam Mod 默认关闭。注意，本功能只有在新手动添加 Mod，并且 Mod 作者明确支持本功能时有效。新添加的 Steam Mod 将不会被通知。</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
 </LanguageData>
