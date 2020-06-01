@@ -145,10 +145,12 @@ namespace ModManager
         public static string DateStamp => $"-{DateTime.Now.Day}-{DateTime.Now.Month}";
         public static string LocalCopyPrefix => "__LocalCopy";
 
+        private static Regex _identifiersRegex = new Regex( @"(?:_steam|_copy(?:_\d+)?)$" );
+        public static string StripIdentifiers( this string packageId ) => _identifiersRegex.Replace( packageId.Trim(), "" );
 
         public static string SanitizeFileName( this string str)
         {
-            var invalidReStr = $@"[^0-9a-zA-Z_\-]+";
+            var invalidReStr = @"\W";
 
             var reservedWords = new[]
             {
@@ -157,14 +159,10 @@ namespace ModManager
                 "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
             };
 
-            var fileSystemSanitized = Regex.Replace(str, invalidReStr, "_");
-            foreach (var reservedWord in reservedWords)
-            {
-                var reservedWordPattern = $@"^{reservedWord}\.";
-                fileSystemSanitized = Regex.Replace(fileSystemSanitized, reservedWordPattern, "_", RegexOptions.IgnoreCase);
-            }
-
-            return fileSystemSanitized;
+            var fileSystemSanitized = Regex.Replace(str, invalidReStr, "_" );
+            return reservedWords
+                  .Select( reservedWord => $@"^{reservedWord}\." )
+                  .Aggregate( fileSystemSanitized, ( current, reservedWordPattern ) => Regex.Replace( current, reservedWordPattern, "_", RegexOptions.IgnoreCase ) );
         }
 
 

@@ -132,10 +132,6 @@
       <Project>{3e905175-2540-4c06-b4c6-f955836c0451}</Project>
       <Name>FluffyUI</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\TOOLS\RecursiveProfiler\RecursiveProfiler.csproj">
-      <Project>{10b8b327-5068-4eaa-8128-8b8dec498dad}</Project>
-      <Name>RecursiveProfiler</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 2,
         "minor": 11,
-        "build": 893
+        "build": 901
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,7 +24,7 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "2020-04-27 23:04 :: Fluffy :: fix crosspromotion preview path",
+    "changenote": "2020-05-18 23:05 :: Han Yaodong :: Update Chinese Translation for v2.11.893 (#91)",
     "tags": [
         "1.0",
         "1.1"
@@ -33,10 +33,10 @@
     "changenotes": [
         {
             "repo": "ModManager",
-            "hash": "5ef7f5640d67a1c321ccf20037da27201bf443c6",
-            "date": "2020-04-27 23:04",
-            "author": "Fluffy",
-            "message": "fix crosspromotion preview path"
+            "hash": "ee75c29839e3dcc05e8d12005ee33351ea36b5ee",
+            "date": "2020-05-18 23:05",
+            "author": "Han Yaodong",
+            "message": "Update Chinese Translation for v2.11.893 (#91)"
         }
     ],
     "packageId": "fluffy.modmanager"

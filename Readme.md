@@ -2,7 +2,10 @@
 
 Managing mods should be easy!
 
-# Features
+
+  
+  
+![Features](https://banners.karel-kroeze.nl/title/Features.png)
 A cleaner, better Mod management screen.
  - separate lists for available and active mods
  - create and delete local copies of steam mods
@@ -21,7 +24,10 @@ A cleaner, better Mod management screen.
  - incompatibility checks
  - load order hints
 
-# For Modders
+
+  
+  
+![For Modders](https://banners.karel-kroeze.nl/title/For%20Modders.png)
 Allows modders to create a Manifest.xml file, enabling a bunch of features that should have been in vanilla;
  - version checking
  - dependency checking
@@ -30,7 +36,10 @@ Allows modders to create a Manifest.xml file, enabling a bunch of features that 
 
  See [the documentation](https://github.com/FluffierThanThou/ModManager/blob/master/ForModders.md) for details on how to implement this. It's easy!
 
-# Details
+
+  
+  
+![Details](https://banners.karel-kroeze.nl/title/Details.png)
 **local mod copies**  
 You can make a local copy of any steam mods (or all active steam mods at once) by clicking the corresponding button underneath the mod details (or active mods list). Doing this will make sure any updates to the steam version will not break your game in progress. Local mods are created in the RimWorld/Mods folder, and can be manually deleted, or deleted by clicking the corresponding button underneath the mod details.
 
@@ -66,7 +75,10 @@ Sometimes, it's easier to navigate large lists with the keyboard.
 
  *This function can be turned off in Mod Managers' settings*
 
-# Contributors
+
+  
+  
+![Contributors](https://banners.karel-kroeze.nl/title/Contributors.png)
  - erdelf:	invaluable help with Harmony transpilers
  - Brrainz:	multi-version targetting, inspiration for mod promotions
  - b606:	French translation
@@ -80,25 +92,40 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  - Han Yaodong:	Updates to Chinese translations
  - Michaël Marinetti:	Updates to French translation
 
-# Think you found a bug? 
+
+  
+  
+![Think you found a bug?](https://banners.karel-kroeze.nl/title/Think%20you%20found%20a%20bug%3F.png)
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
  and then create a bug report [here](https://github.com/fluffy-mods/ModManager/issues)
 
-# Older versions
+
+  
+  
+![Older versions](https://banners.karel-kroeze.nl/title/Older%20versions.png)
 All current and past versions of this mod can be downloaded from [GitHub](https://github.com/fluffy-mods/ModManager/releases).
 
-# License
+
+  
+  
+![License](https://banners.karel-kroeze.nl/title/License.png)
 All original code in this mod is licensed under the [MIT license](https://opensource.org/licenses/MIT). Do what you want, but give me credit. 
 All original content (e.g. text, imagery, sounds) in this mod is licensed under the [CC-BY-SA 4.0 license](http://creativecommons.org/licenses/by-sa/4.0/).
 
 Parts of the code in this mod, and some content may be licensed by their original authors. If this is the case, the original author & license will either be given in the source code, or be in a LICENSE file next to the content. Please do not decompile my mods, but use the original source code available on [GitHub](https://github.com/fluffy-mods/ModManager/), so license information in the source code is preserved.
 
-# Are you enjoying my mods?
+
+  
+  
+![Are you enjoying my mods?](https://banners.karel-kroeze.nl/title/Are%20you%20enjoying%20my%20mods%3F.png)
 Show your appreciation by buying me a coffee (or contribute towards a nice single malt).
 
 [![Buy Me a Coffee](http://i.imgur.com/EjWiUwx.gif)](https://ko-fi.com/fluffymods)
 
 [![I Have a Black Dog](https://i.ibb.co/ss59Rwy/New-Project-2.png)](https://www.youtube.com/watch?v=XiCrniLQGYc)
 
-# Version
-This is version 2.11.893, for RimWorld 1.1.2610.
+
+  
+  
+![Version](https://banners.karel-kroeze.nl/title/Version.png)
+This is version 2.11.901, for RimWorld 1.1.2652.
