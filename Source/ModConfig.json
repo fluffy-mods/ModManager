@@ -33,6 +33,13 @@
     "changenotes": [
         {
             "repo": "ModManager",
+            "hash": "447721fc26c6291e599d28309a082f28828f7a29",
+            "date": "2020-06-02 00:06",
+            "author": "Fluffy",
+            "message": "Release 2.11.901 [nolog]"
+        },
+        {
+            "repo": "ModManager",
             "hash": "ee75c29839e3dcc05e8d12005ee33351ea36b5ee",
             "date": "2020-05-18 23:05",
             "author": "Han Yaodong",
