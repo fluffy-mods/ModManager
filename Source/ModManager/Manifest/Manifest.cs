@@ -195,6 +195,8 @@ namespace ModManager
 
         public void Notify_Recache()
         {
+            if (_requirements.NullOrEmpty() )
+                return;
             foreach ( var dependency in _requirements )
                 dependency.Notify_Recache();
         }
