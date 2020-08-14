@@ -2,9 +2,9 @@
     "name": "Mod Manager",
     "version": {
         "alpha": 18,
-        "major": 2,
-        "minor": 11,
-        "build": 928
+        "major": 3,
+        "minor": 0,
+        "build": 930
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,7 +24,7 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "2020-08-14 22:08 :: Fluffy :: give local copies unique packageId's, handle comparing them\n2020-08-11 22:08 :: Fluffy :: fix nullref in manifest.notify_recache\n2020-05-18 23:05 :: Han Yaodong :: Update Chinese Translation for v2.11.893 (#91)",
+    "changenote": "2020-08-15 00:08 :: Fluffy :: fix user data storage\n2020-08-14 22:08 :: Fluffy :: give local copies unique packageId's, handle comparing them\n2020-08-11 22:08 :: Fluffy :: fix nullref in manifest.notify_recache\n2020-05-18 23:05 :: Han Yaodong :: Update Chinese Translation for v2.11.893 (#91)",
     "tags": [
         "1.0",
         "1.1",
@@ -32,6 +32,13 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "e36b63c7c6b0d03bc82690aeabf3b362a548e4a5",
+            "date": "2020-08-15 00:08",
+            "author": "Fluffy",
+            "message": "fix user data storage"
+        },
         {
             "repo": "ModManager",
             "hash": "014c7b149b87e31ae430fc043b7d117b2a2bea91",
