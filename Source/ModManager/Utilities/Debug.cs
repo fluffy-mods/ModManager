@@ -24,6 +24,7 @@ namespace ModManager
         public static void TraceDependencies( string message ) =>
             Verse.Log.Message( "Mod Manager :: Dependencies :: " + message, true );
 
+        public static void Error( string msg ) => Verse.Log.Error( "Mod Manager :: " + msg );
 
     }
 }

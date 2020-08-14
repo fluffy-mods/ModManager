@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 2,
         "minor": 11,
-        "build": 901
+        "build": 923
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,13 +24,27 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "2020-05-18 23:05 :: Han Yaodong :: Update Chinese Translation for v2.11.893 (#91)",
+    "changenote": "2020-08-11 22:08 :: Fluffy :: fix nullref in manifest.notify_recache\n2020-05-18 23:05 :: Han Yaodong :: Update Chinese Translation for v2.11.893 (#91)",
     "tags": [
         "1.0",
         "1.1"
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "becd27f31e384d065109ea6e5b3d80458425394d",
+            "date": "2020-08-11 22:08",
+            "author": "Fluffy",
+            "message": "fix nullref in manifest.notify_recache"
+        },
+        {
+            "repo": "ModManager",
+            "hash": "b9228671030e179e8d10a0332773555c99a1121a",
+            "date": "2020-06-09 22:06",
+            "author": "Fluffy",
+            "message": "Release 2.11.901 [nolog]"
+        },
         {
             "repo": "ModManager",
             "hash": "447721fc26c6291e599d28309a082f28828f7a29",

@@ -2,6 +2,7 @@
 // Copyright Karel Kroeze, 2018-2018
 
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
@@ -59,6 +61,8 @@ namespace ModManager
                 // copy mod
                 mod.RootDir.Copy( targetDir, true );
                 copy = new ModMetaData( targetDir );
+                SetUniquePackageId( copy );
+
                 ( ModLister.AllInstalledMods as List<ModMetaData> )?.Add( copy );
 
                 // copy settings and color attribute
@@ -78,6 +82,47 @@ namespace ModManager
                 Log.Error( $"Creating local copy failed: {e.Message} \n\n{e.StackTrace}" );
                 return false;
             }
+        }
+
+        private static void SetUniquePackageId( ModMetaData mod )
+        {
+            var id       = GetUniquePackageId( mod );
+            UpdatePackageId_ModMetaData( mod, id );
+            UpdatePackageId_Xml( mod, id );
+        }
+
+        private static void UpdatePackageId_ModMetaData( ModMetaData mod, string id )
+        {
+            var traverse = Traverse.Create( mod );
+            traverse.Field( "meta" ).Field( "traverse" ).SetValue( id );
+            traverse.Field( "packageIdLowerCase" ).SetValue( id.ToLower() );
+        }
+
+        private static void UpdatePackageId_Xml( ModMetaData mod, string id )
+        {
+            var filePath = Path.Combine( mod.AboutDir(), "About.xml" );
+            var meta = new XmlDocument();
+            meta.Load( filePath );
+            var node = meta.SelectSingleNode( "ModMetaData/packageId" );
+            if ( node == null )
+            {
+                Debug.Error( $"packageId node not found for {mod.Name}!" );
+            }
+            else
+            {
+                node.InnerText = id;
+                meta.Save( filePath );
+            }
+        }
+
+        private static string GetUniquePackageId( ModMetaData mod )
+        {
+            var baseId = mod.PackageIdPlayerFacing + LocalCopyPostfix;
+            var id     = baseId;
+            var i      = 1;
+            while ( ModLister.GetModWithIdentifier( id ) != null )
+                id = baseId + "_" + i++;
+            return id;
         }
 
         private static Regex SettingsMask( string identifier )
@@ -145,7 +190,7 @@ namespace ModManager
         public static string DateStamp => $"-{DateTime.Now.Day}-{DateTime.Now.Month}";
         public static string LocalCopyPrefix => "__LocalCopy";
 
-        private static Regex _identifiersRegex = new Regex( @"(?:_steam|_copy(?:_\d+)?)$" );
+        private static Regex _identifiersRegex = new Regex( $@"(?:{ModMetaData.SteamModPostfix}|{LocalCopyPostfix}(?:_\d+)?)$" );
         public static string StripIdentifiers( this string packageId ) => _identifiersRegex.Replace( packageId.Trim(), "" );
 
         public static string SanitizeFileName( this string str)
@@ -295,6 +340,8 @@ namespace ModManager
         }
 
         private static Dictionary<string, string> _hashCache = new Dictionary<string, string>();
+        public const string LocalCopyPostfix = "_copy";
+
         internal static string GetFolderHash( this DirectoryInfo folder )
         {
             if ( _hashCache.TryGetValue( folder.FullName, out string hash ) )

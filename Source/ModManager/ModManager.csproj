@@ -15,8 +15,8 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DebugType>none</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>../../Assemblies</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -99,6 +99,7 @@
     <Compile Include="ModButton\ModButton_Downloading.cs" />
     <Compile Include="ModList\ModIdentifier.cs" />
     <Compile Include="ModManagerSettings.cs" />
+    <Compile Include="Patches\Patch_ModMetaData_PackageId.cs" />
     <Compile Include="Patches\Patch_ScribeMetaHeaderUtility_TryCreateDialogsForVersionMismatchWarnings.cs" />
     <Compile Include="Patches\Patch_WindowResizer_DoResizeControl.cs" />
     <Compile Include="Patches\Patch_WorkshopItems_Events.cs" />
