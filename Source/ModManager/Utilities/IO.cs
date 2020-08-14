@@ -54,7 +54,7 @@ namespace ModManager
             return true;
         }
 
-        private static bool TryCopyMod( ModMetaData mod, ref ModMetaData copy, string targetDir, bool copySettings = true )
+        private static bool TryCopyMod( ModMetaData mod, ref ModMetaData copy, string targetDir, bool copySettings = true, bool copyUserData = true )
         {
             try
             {
@@ -69,11 +69,15 @@ namespace ModManager
                 if ( copySettings )
                 {
                     TryCopySettings( mod, copy );
-                    ModManager.Settings[copy].Color = ModManager.Settings[mod].Color;
+                }
+
+                if ( copyUserData )
+                {
+                    TryCopyUserData( mod, copy );
                 }
 
                 // set source attribute
-                ModManager.Settings[copy].Source = mod;
+                ModManager.UserData[copy].Source = mod;
 
                 return true;
             }
@@ -82,6 +86,12 @@ namespace ModManager
                 Log.Error( $"Creating local copy failed: {e.Message} \n\n{e.StackTrace}" );
                 return false;
             }
+        }
+
+        private static bool TryCopyUserData( ModMetaData source, ModMetaData target )
+        {
+            // TODO!
+            throw new NotImplementedException();
         }
 
         private static void SetUniquePackageId( ModMetaData mod )
@@ -140,13 +150,13 @@ namespace ModManager
         private static void TryCopySettings( ModMetaData source, ModMetaData target, bool deleteOld = false )
         {
             // find any settings files that belong to the source mod
-            var mask = SettingsMask( source.PackageId );
+            var mask = SettingsMask( source.FolderName );
             var settings = Directory.GetFiles( GenFilePaths.ConfigFolderPath )
                 .Where( f => mask.IsMatch( f ) )
                 .Select( f => new
                 {
                     source = f,
-                    target = NewSettingsFilePath( f, mask, target.PackageId )
+                    target = NewSettingsFilePath( f, mask, target.FolderName )
                 } );
 
             // copy settings files, overwriting existing - if any.

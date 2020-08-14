@@ -1,6 +1,7 @@
 ﻿// ButtonAttributes.cs
 // Copyright Karel Kroeze, 2018-2018
 
+using System.IO;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -8,10 +9,9 @@ using Verse;
 
 namespace ModManager
 {
-    public class ButtonAttributes: IExposable
+    public class ButtonAttributes: IUserData
     {
-        private string _name;
-        public ModButton_Installed Button { get; private set; }
+        public ModButton Button { get; set; }
         private Color _color = Color.white;
         public Color Color
         {
@@ -19,36 +19,28 @@ namespace ModManager
             set
             {
                 _color = value;
-                ModManager.Instance.WriteSettings();
+                Write();
             }
         }
         public ButtonAttributes() { 
             // scribe
         }
 
-        public string Name => _name;
-        public ButtonAttributes( ModButton_Installed button )
+        public ButtonAttributes( ModButton button )
         {
             Button = button;
-            _name = button.Name;
         }
 
-        public bool IsDefault => _color == Color.white;
-
-        public bool TryResolve()
-        {
-            Button = ModButtonManager.AllButtons
-                .OfType<ModButton_Installed>()
-                .FirstOrDefault( b => b.Versions.Any( m => m.Name == _name ) );
-            return Button != null;
-        }
         public void ExposeData()
         {
-            Scribe_Values.Look( ref _name, "Name" );
             Scribe_Values.Look( ref _color, "Color", Color.white );
+        }
 
-            if (Scribe.mode == LoadSaveMode.PostLoadInit)
-                TryResolve();
+        public string FilePath => UserData.GetButtonAttributesPath( Button );
+
+        public void Write()
+        {
+            UserData.Write( this );
         }
     }
 }

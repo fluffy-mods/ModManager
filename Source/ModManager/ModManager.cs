@@ -2,6 +2,7 @@
 
 using System.Reflection;
 using HarmonyLib;
+using Steamworks;
 using UnityEngine;
 using Verse;
 
@@ -12,6 +13,9 @@ namespace ModManager
         public ModManager( ModContentPack content ) : base( content )
         {
             Instance = this;
+            UserData = new UserData();
+            Settings = GetSettings<ModManagerSettings>();
+
             var harmonyInstance = new Harmony( "fluffy.modmanager" );
 
 #if DEBUG
@@ -27,7 +31,9 @@ namespace ModManager
         }
 
         public static ModManager Instance { get; private set; }
-        public static ModManagerSettings Settings => Instance.GetSettings<ModManagerSettings>();
+
+        public static UserData           UserData { get; private set; }
+        public static ModManagerSettings Settings { get; private set; }
 
         public override string SettingsCategory() => I18n.SettingsCategory;
 

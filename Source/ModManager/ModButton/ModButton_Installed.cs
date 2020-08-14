@@ -114,12 +114,12 @@ namespace ModManager
             get
             {
                 // use version colour if set
-                if ( ModManager.Settings[Selected].Color != Color.white )
-                    return ModManager.Settings[Selected].Color;
+                if ( ModManager.UserData[Selected].Color != Color.white )
+                    return ModManager.UserData[Selected].Color;
 
                 // then button colour
-                if ( ModManager.Settings[this].Color != Color.white )
-                    return ModManager.Settings[this].Color;
+                if ( ModManager.UserData[this].Color != Color.white )
+                    return ModManager.UserData[this].Color;
 
                 // if this mod is included in any lists, use that colour
                 if ( !Lists.NullOrEmpty() )
@@ -133,7 +133,7 @@ namespace ModManager
                 // if nothing stuck, use default
                 return Color.white;
             }
-            set => ModManager.Settings[this].Color = value;
+            set => ModManager.UserData[this].Color = value;
         }
 
         public override void DoModButton( 
@@ -304,9 +304,13 @@ namespace ModManager
             {
                 var options = NewOptionsList;
                 options.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Settings[Selected].Color = color ) ) ) );
+                    new ColourPicker.Dialog_ColourPicker( Color, color =>
+                        ModManager.UserData[Selected].Color = color
+                     ) ) ) );
                 options.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color, color => ModManager.Settings[this].Color = color ) ) ) );
+                    new ColourPicker.Dialog_ColourPicker( Color, color =>
+                     ModManager.UserData[this].Color = color
+                     ) ) ) );
                 FloatMenu( options );
             }
             if ( Selected.HasSettings() && ButtonIcon( ref iconRect, Gear, I18n.ModSettings ) )
@@ -350,10 +354,14 @@ namespace ModManager
                 var options2 = NewOptionsList;
                 options2.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
                     new ColourPicker.Dialog_ColourPicker( Color,
-                        color => ModManager.Settings[Selected].Color = color ) ) ) );
+                        color =>
+                        
+                            ModManager.UserData[Selected].Color = color
+                         ) ) ) );
                 options2.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
                     new ColourPicker.Dialog_ColourPicker( Color,
-                        color => ModManager.Settings[this].Color = color ) ) ) );
+                        color => ModManager.UserData[this].Color = color
+                         ) ) ) );
                 FloatMenu(options2);
             } ) );
             if ( Selected.HasSettings() )

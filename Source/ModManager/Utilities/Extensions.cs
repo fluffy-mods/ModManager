@@ -98,12 +98,7 @@ namespace ModManager
         }
 
         public static string AboutDir( this ModMetaData mod ) => Path.Combine( mod.RootDir.FullName, "About" );
-
-        public static ModAttributes Attributes( this ModMetaData mod )
-        {
-            return ModManager.Settings[mod];
-        }
-
+        
         public static bool IsLocalCopy( this ModMetaData mod )
         {
             return mod.Source == ContentSource.ModsFolder && 

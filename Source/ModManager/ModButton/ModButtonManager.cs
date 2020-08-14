@@ -93,18 +93,6 @@ namespace ModManager
             _availableButtons.TryRemove( mod );
         }
 
-        public static ModAttributes AttributesFor( ModButton button )
-        {
-            if ( button is ModButton_Installed installed )
-                return AttributesFor( installed.Selected );
-            return null;
-        }
-
-        public static ModAttributes AttributesFor( ModMetaData mod )
-        {
-            return ModManager.Settings[mod];
-        }
-
         internal static void RecacheModButtons()
         {
             Debug.Log( "Recaching ModButtons" );
