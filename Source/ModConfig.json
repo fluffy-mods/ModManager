@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 3,
-        "minor": 0,
-        "build": 941
+        "minor": 1,
+        "build": 942
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,7 +24,7 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "2020-08-15 22:08 :: Fluffy :: copy user data when copying/moving mod",
+    "changenote": "2020-08-16 00:08 :: Fluffy :: cache relevant issue list\n2020-08-16 00:08 :: Fluffy :: properly cache Dependency.Target\n2020-08-15 22:08 :: Fluffy :: copy user data when copying/moving mod",
     "tags": [
         "1.0",
         "1.1",
@@ -32,6 +32,20 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "fa477e88b2207a691ae7a8212ae44acb75011af8",
+            "date": "2020-08-16 00:08",
+            "author": "Fluffy",
+            "message": "cache relevant issue list"
+        },
+        {
+            "repo": "ModManager",
+            "hash": "b44a8f1a41e2bef4d6197e3c30078c7fb5687977",
+            "date": "2020-08-16 00:08",
+            "author": "Fluffy",
+            "message": "properly cache Dependency.Target"
+        },
         {
             "repo": "ModManager",
             "hash": "ee8f6366716339e15c6ea0998f690201d7ae8b51",
