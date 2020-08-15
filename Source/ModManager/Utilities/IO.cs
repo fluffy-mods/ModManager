@@ -22,11 +22,10 @@ namespace ModManager
 
         public static bool TryCreateLocalCopy( ModMetaData mod, out ModMetaData copy )
         {
-            copy = null;
-
             if ( mod.Source != ContentSource.SteamWorkshop )
             {
                 Log.Error( "Can only create local copies of steam workshop mods." );
+                copy = null;
                 return false;
             }
 
@@ -36,25 +35,30 @@ namespace ModManager
             while ( Directory.Exists( targetDir ) )
                 targetDir = $"{baseTargetDir} ({i++})";
 
-            return TryCopyMod( mod, ref copy, targetDir );
+            return TryCopyMod( mod, out copy, targetDir );
         }
 
         public static bool TryUpdateLocalCopy( ModMetaData source, ModMetaData local )
         {
             // delete and re-copy mod.
-            var updateResult = TryRemoveLocalCopy( local ) && TryCopyMod( source, ref local, local.RootDir.FullName, false );
+            var removedResult = TryRemoveLocalCopy( local );
+            if ( !removedResult )
+                return false;
+
+            var updateResult = TryCopyMod( source, out var updated, local.RootDir.FullName, false );
             if ( !updateResult )
                 return false;
 
             // rename settings file
-            TryCopySettings( source, local, true );
+            TryCopySettings( local, updated, true );
+            TryCopyUserData( local, updated, true );
 
             // update version 
             ModButton_Installed.For( source ).Notify_VersionUpdated( local );
             return true;
         }
 
-        private static bool TryCopyMod( ModMetaData mod, ref ModMetaData copy, string targetDir, bool copySettings = true, bool copyUserData = true )
+        private static bool TryCopyMod( ModMetaData mod, out ModMetaData copy, string targetDir, bool copySettings = true, bool copyUserData = true )
         {
             try
             {
@@ -67,14 +71,10 @@ namespace ModManager
 
                 // copy settings and color attribute
                 if ( copySettings )
-                {
                     TryCopySettings( mod, copy );
-                }
 
                 if ( copyUserData )
-                {
                     TryCopyUserData( mod, copy );
-                }
 
                 // set source attribute
                 ModManager.UserData[copy].Source = mod;
@@ -84,14 +84,29 @@ namespace ModManager
             catch ( Exception e )
             {
                 Log.Error( $"Creating local copy failed: {e.Message} \n\n{e.StackTrace}" );
+                copy = null;
                 return false;
             }
         }
 
-        private static bool TryCopyUserData( ModMetaData source, ModMetaData target )
+        private static bool TryCopyUserData( ModMetaData source, ModMetaData target, bool deleteOld = false )
         {
-            // TODO!
-            throw new NotImplementedException();
+            try
+            {
+                File.Copy( UserData.GetModAttributesPath( source ), UserData.GetModAttributesPath( target ) );
+                if ( deleteOld )
+                    File.Delete( UserData.GetModAttributesPath( source ) );
+                return true;
+            }
+            catch ( Exception err )
+            {
+                Debug.Error( $"Error copying user settings: " +
+                             $"\n\tsource: {source.Name}"     +
+                             $"\n\ttarget: {target.Name}"     +
+                             $"\n\terror: {err}");
+            }
+
+            return false;
         }
 
         private static void SetUniquePackageId( ModMetaData mod )
