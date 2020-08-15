@@ -104,4 +104,4 @@ Become a supporter and show your appreciation by buying me a coffee (or contribu
 
 
 ![Version](https://banners.karel-kroeze.nl/title/Version.png)  
-This is version 3.0.931, for RimWorld 1.2.2723.
+This is version 3.0.941, for RimWorld 1.2.2723.

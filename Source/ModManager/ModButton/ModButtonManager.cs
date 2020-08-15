@@ -128,6 +128,12 @@ namespace ModManager
             foreach ( var mod in ActiveMods )
                 mod.GetManifest().Notify_Recache();
         }
+
+        private static void Notify_RecacheAllModButtons()
+        {
+            foreach ( var button in AllButtons )
+                button.Notify_ModListChanged();
+        }
         
         public static void Notify_ModListChanged()
         {
@@ -136,6 +142,7 @@ namespace ModManager
 
             Notify_RecacheIssuesList();
             Notify_RecacheAllManifests();
+            Notify_RecacheAllModButtons();
         }
 
         public static ModButton_Installed CoreMod => AllButtons.First( b => b.IsCoreMod ) as ModButton_Installed;

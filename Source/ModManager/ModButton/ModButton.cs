@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using RimWorld;
 using UnityEngine;
 using Verse;
 using static ModManager.Constants;
@@ -91,18 +92,43 @@ namespace ModManager
             }
         }
 
+        private List<Dependency> _relevantIssues;
+        protected virtual int                     SeverityThreshold => 2;
+        protected List<Dependency> RelevantIssues
+        {
+            get
+            {
+                return _relevantIssues ??= Requirements.Where( i => i.Severity >= SeverityThreshold ).ToList();
+            }
+        }
+
+        private string _relevantIssuesString;
+        protected string RelevantIssuesString
+        {
+            get
+            {
+                return _relevantIssuesString ??= RelevantIssues.OrderBy( i => i.Severity )
+                                                               .Select( i => i.Tooltip.Colorize( i.Color ) )
+                                                               .StringJoin( "\n" );
+            }
+        }
+
+        public virtual void Notify_ModListChanged()
+        {
+            _relevantIssues       = null;
+            _relevantIssuesString = null;
+        }
+
         internal virtual void DoModIssuesIcon( Rect canvas )
         {
-            var severityThreshold = 2;
-            var relevantIssues = Requirements.Where( i => i.Severity >= severityThreshold );
-            if ( !relevantIssues.Any() )
+            if ( !RelevantIssues.Any() )
                 return;
 
             var worst = Requirements.MaxBy( d => d.Severity );
             GUI.color = worst.Color;
             GUI.DrawTexture( canvas, Resources.Warning );
             GUI.color = Color.white;
-            TooltipHandler.TipRegion( canvas, relevantIssues.OrderBy( i => i.Severity ).Select( i => i.Tooltip.Colorize( i.Color ) ).StringJoin( "\n" ) );
+            TooltipHandler.TipRegion( canvas, RelevantIssuesString );
         }
 
         internal virtual void DrawRequirements(ref Rect canvas)

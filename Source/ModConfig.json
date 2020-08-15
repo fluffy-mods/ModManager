@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 0,
-        "build": 931
+        "build": 941
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,13 +24,21 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "",
+    "changenote": "2020-08-15 22:08 :: Fluffy :: copy user data when copying/moving mod",
     "tags": [
         "1.0",
         "1.1",
         "1.2"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "ee8f6366716339e15c6ea0998f690201d7ae8b51",
+            "date": "2020-08-15 22:08",
+            "author": "Fluffy",
+            "message": "copy user data when copying/moving mod"
+        }
+    ],
     "packageId": "fluffy.modmanager"
 }
