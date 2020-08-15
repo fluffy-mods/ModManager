@@ -15,15 +15,27 @@ namespace ModManager
 {
     public abstract class Dependency : ModDependency
     {
-        public Manifest parent;
-
+        public  Manifest    parent;
+        private ModMetaData _target;
+        private bool        _targetResolved;
         public ModMetaData Target
         {
-            get =>
-                _target ?? ( _target = ModLister.GetActiveModWithIdentifier( packageId ) ??
-                                       ModLister.GetModWithIdentifier( packageId, true ) );
+            get
+            {
+                if ( _targetResolved ) return _target;
+                
+                // we don't want to just re-resolve _target if it's null, as we 
+                // might have quite a few mods listing other dependencies that 
+                // are not installed.
+                _target = ModLister.GetActiveModWithIdentifier( packageId ) ??
+                          ModLister.GetModWithIdentifier( packageId, true );
+                _targetResolved = true;
+                return _target;
+            }
             set => _target = value;
         }
+
+
         
         public virtual int Severity => 1;
 
@@ -33,8 +45,8 @@ namespace ModManager
 
         public virtual void Notify_Recache()
         {
-            satisfied = null;
-            Target = null;
+            satisfied       = null;
+            _targetResolved = false;
         }
 
         public override bool IsSatisfied {
@@ -61,8 +73,6 @@ namespace ModManager
         public override Texture2D StatusIcon => Resources.Warning;
 
         public static Regex packageIdFormatRegex = new Regex(@"(?=.{1,60}$)^(?:[a-z0-9]+\.)+[a-z0-9]+$", RegexOptions.IgnoreCase );
-        private ModMetaData _target;
-
         public const string InvalidPackageId = "invalid.package.id";
 
         public static bool TryGetPackageIdFromIdentifier( string identifier, out string packageId )
