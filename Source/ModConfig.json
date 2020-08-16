@@ -1,62 +1,45 @@
 {
-  "name": "Mod Manager",
-  "version": {
-    "alpha": 18,
-    "major": 3,
-    "minor": 2,
-    "build": 961
-  },
-  "visibility": 0,
-  "git_repo": "ModManager",
-  "git_user": "fluffy-mods",
-  "contributors": {
-    "erdelf": "invaluable help with Harmony transpilers",
-    "Brrainz": "multi-version targetting, inspiration for mod promotions",
-    "b606": "French translation",
-    "Proxyer": "Japanese translation, with frequent updates",
-    "奔跑的梅洛斯": "Simplified Chinese translation",
-    "Zetrith": "Fix blurry mod descriptions",
-    "enescaglayan": "Turkish translation",
-    "Lex1975": "Russian translation",
-    "Torq": "Russian translation",
-    "Patrick Schmitt": "German translation",
-    "Han Yaodong": "Updates to Chinese translations",
-    "Michaël Marinetti": "Updates to French translation",
-    "shadowtouch": "better filename sanitizing code",
-    "Mohas": "fix nullref in online manifests"
-  },
-  "changenote": "2020-08-16 23:08 :: Fluffy :: sanitize filenames for user data\n2020-08-16 22:08 :: Fluffy :: sanitize filenames for user data\n2020-08-16 22:08 :: Fluffy :: improve loading of preview images, give users control over cache\n2020-08-16 15:08 :: Fluffy :: properly cache crosspromotions",
-  "tags": ["1.0", "1.1", "1.2"],
-  "publishedfileid": "1507748539",
-  "changenotes": [
-    {
-      "repo": "ModManager",
-      "hash": "71222748a29b8bad0e359c4fd16634c0697d8846",
-      "date": "2020-08-16 23:08",
-      "author": "Fluffy",
-      "message": "sanitize filenames for user data"
+    "name": "Mod Manager",
+    "version": {
+        "alpha": 18,
+        "major": 3,
+        "minor": 3,
+        "build": 962
     },
-    {
-      "repo": "ModManager",
-      "hash": "495caa78a010464792d41359593fd8e2fd6c0bc4",
-      "date": "2020-08-16 22:08",
-      "author": "Fluffy",
-      "message": "sanitize filenames for user data"
+    "visibility": 0,
+    "git_repo": "ModManager",
+    "git_user": "fluffy-mods",
+    "contributors": {
+        "erdelf": "invaluable help with Harmony transpilers",
+        "Brrainz": "multi-version targetting, inspiration for mod promotions",
+        "b606": "French translation",
+        "Proxyer": "Japanese translation, with frequent updates",
+        "奔跑的梅洛斯": "Simplified Chinese translation",
+        "Zetrith": "Fix blurry mod descriptions",
+        "enescaglayan": "Turkish translation",
+        "Lex1975": "Russian translation",
+        "Torq": "Russian translation",
+        "Patrick Schmitt": "German translation",
+        "Han Yaodong": "Updates to Chinese translations",
+        "Michaël Marinetti": "Updates to French translation",
+        "shadowtouch": "better filename sanitizing code",
+        "Mohas": "fix nullref in online manifests"
     },
-    {
-      "repo": "ModManager",
-      "hash": "3597be599b1aeca10b342369f6d1703b70013672",
-      "date": "2020-08-16 22:08",
-      "author": "Fluffy",
-      "message": "improve loading of preview images, give users control over cache"
-    },
-    {
-      "repo": "ModManager",
-      "hash": "d6c4e2bd99d259826017c4f2b0802835059a9fe9",
-      "date": "2020-08-16 15:08",
-      "author": "Fluffy",
-      "message": "properly cache crosspromotions"
-    }
-  ],
-  "packageId": "fluffy.modmanager"
+    "changenote": "",
+    "tags": [
+        "1.0",
+        "1.1",
+        "1.2"
+    ],
+    "publishedfileid": "1507748539",
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "848ac10c2eee3b02596b8887be3ef04a26006567",
+            "date": "2020-08-16 23:08",
+            "author": "Fluffy",
+            "message": "update contributors [nolog]"
+        }
+    ],
+    "packageId": "fluffy.modmanager"
 }

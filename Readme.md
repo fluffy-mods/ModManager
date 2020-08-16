@@ -80,7 +80,7 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  - Han Yaodong:	Updates to Chinese translations
  - Michaël Marinetti:	Updates to French translation
  - shadowtouch:	better filename sanitizing code
- - Mohas:	added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don't throw exception when something goes wrong in FetchManifest (#89)
+ - Mohas:	fix nullref in online manifests
 
 ![Think you found a bug?](https://banners.karel-kroeze.nl/title/Think%20you%20found%20a%20bug%3F.png)  
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
@@ -106,4 +106,4 @@ Become a supporter and show your appreciation by buying me a coffee (or contribu
 
 
 ![Version](https://banners.karel-kroeze.nl/title/Version.png)  
-This is version 3.2.961, for RimWorld 1.2.2723.
+This is version 3.3.962, for RimWorld 1.2.2723.
