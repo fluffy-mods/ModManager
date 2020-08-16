@@ -65,13 +65,13 @@ namespace ModManager
         public static string GetModAttributesPath( ModMetaData mod )
         {
             return Path.Combine( GenFilePaths.SaveDataFolderPath, UserDataFolder, ModsFolder,
-                          $"{mod.PackageId}.xml" );
+                          $"{mod.PackageId}.xml" ).SanitizeFileName();
         }
 
         public static string GetButtonAttributesPath( ModButton button )
         {
             return Path.Combine( GenFilePaths.SaveDataFolderPath, UserDataFolder, ButtonFolder,
-                          $"{button.Name}.xml" );
+                          $"{button.Name}.xml" ).SanitizeFileName();
         }
 
         public static void Write( IUserData data )

@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 1,
-        "build": 958
+        "build": 959
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,7 +24,7 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "2020-08-16 15:08 :: Fluffy :: properly cache crosspromotions",
+    "changenote": "2020-08-16 22:08 :: Fluffy :: improve loading of preview images, give users control over cache\n2020-08-16 15:08 :: Fluffy :: properly cache crosspromotions",
     "tags": [
         "1.0",
         "1.1",
@@ -32,6 +32,13 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "3597be599b1aeca10b342369f6d1703b70013672",
+            "date": "2020-08-16 22:08",
+            "author": "Fluffy",
+            "message": "improve loading of preview images, give users control over cache"
+        },
         {
             "repo": "ModManager",
             "hash": "d6c4e2bd99d259826017c4f2b0802835059a9fe9",
