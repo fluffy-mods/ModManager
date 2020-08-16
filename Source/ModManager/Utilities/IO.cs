@@ -219,8 +219,8 @@ namespace ModManager
 
         public static string SanitizeFileName( this string str)
         {
-            var invalidReStr = @"\W";
-
+            var invalidReStr = new Regex( string.Format( "[{0}]", Regex.Escape( new string( Path.GetInvalidFileNameChars() ) ) ) );
+            
             var reservedWords = new[]
             {
                 "CON", "PRN", "AUX", "CLOCK$", "NUL", "COM0", "COM1", "COM2", "COM3", "COM4",
@@ -228,7 +228,7 @@ namespace ModManager
                 "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
             };
 
-            var fileSystemSanitized = Regex.Replace(str, invalidReStr, "_" );
+            var fileSystemSanitized = invalidReStr.Replace(str, "_" );
             return reservedWords
                   .Select( reservedWord => $@"^{reservedWord}\." )
                   .Aggregate( fileSystemSanitized, ( current, reservedWordPattern ) => Regex.Replace( current, reservedWordPattern, "_", RegexOptions.IgnoreCase ) );

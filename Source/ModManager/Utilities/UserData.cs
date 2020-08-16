@@ -71,7 +71,7 @@ namespace ModManager
         public static string GetButtonAttributesPath( ModButton button )
         {
             return Path.Combine( GenFilePaths.SaveDataFolderPath, UserDataFolder, ButtonFolder,
-                          $"{button.Name}.xml" );
+                          $"{button.Name.SanitizeFileName()}.xml" );
         }
 
         public static void Write( IUserData data )
