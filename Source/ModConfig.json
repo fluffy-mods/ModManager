@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 1,
-        "build": 965
+        "build": 960
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,7 +24,7 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "2020-08-16 22:08 :: Fluffy :: sanitize filenames for user data\n2020-08-16 22:08 :: Fluffy :: improve loading of preview images, give users control over cache\n2020-08-16 15:08 :: Fluffy :: properly cache crosspromotions",
+    "changenote": "2020-08-16 23:08 :: Fluffy :: sanitize filenames for user data\n2020-08-16 22:08 :: Fluffy :: improve loading of preview images, give users control over cache\n2020-08-16 15:08 :: Fluffy :: properly cache crosspromotions",
     "tags": [
         "1.0",
         "1.1",
@@ -34,8 +34,8 @@
     "changenotes": [
         {
             "repo": "ModManager",
-            "hash": "495caa78a010464792d41359593fd8e2fd6c0bc4",
-            "date": "2020-08-16 22:08",
+            "hash": "71222748a29b8bad0e359c4fd16634c0697d8846",
+            "date": "2020-08-16 23:08",
             "author": "Fluffy",
             "message": "sanitize filenames for user data"
         },
