@@ -2,11 +2,13 @@
 // Copyright Karel Kroeze, 2018-2018
 
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using RimWorld;
 using Steamworks;
 using UnityEngine;
 using Verse;
+using Verse.Noise;
 using static ModManager.Constants;
 using static ModManager.Resources;
 
@@ -27,6 +29,81 @@ namespace ModManager
         {
             if (_enabled)
                 SteamAPI.RunCallbacks();
+        }
+
+
+        private static  string _cachePath;
+        internal static bool   cachePathOverriden;
+
+        internal static string CachePath
+        {
+            get
+            {
+                if ( _cachePath != null )
+                    return _cachePath;
+
+                string path;
+                if ( GenCommandLine.TryGetCommandLineArg( "cross-promotions-path", out path ) )
+                {
+                    path = path.TrimEnd( '\\', '/' );
+                    if ( path == "" )
+                        path = Path.DirectorySeparatorChar.ToString() ?? "";
+                    Log.Message( "CrossPromotion preview images location overriden: " + path );
+                }
+                else if ( ModManager.Settings.UseTempFolderForCrossPromotions )
+                {
+                    path = Path.Combine( Path.GetTempPath(), "CrossPromotions" );
+                }
+                else
+                {
+                    path = Path.Combine( GenFilePaths.SaveDataFolderPath, "CrossPromotions" );
+                }
+
+                var dir = new DirectoryInfo( path );
+                if ( !dir.Exists )
+                    dir.Create();
+                return path;
+            }
+        }
+
+        public static int? _cacheCount;
+        public static int CacheCount
+        {
+            get
+            {
+                return _cacheCount ??= new DirectoryInfo( CachePath ).GetFiles().Length;
+            }
+        }
+
+        public static long? _cacheSize;
+
+        public static long CacheSize
+        {
+            get
+            {
+                return _cacheSize ??= new DirectoryInfo( CachePath ).GetFiles().Sum( f => f.Length );
+            }
+        }
+
+        internal static void DeleteCache()
+        {
+            Find.WindowStack.Add( new Dialog_MessageBox(
+                                      I18n.ConfirmDeletingCrossPromotionCache(
+                                          CachePath, CacheCount, CacheSize ),
+                                      "Confirm".Translate(),
+                                      () =>
+                                      {
+                                          var dir = new DirectoryInfo( CachePath );
+                                          dir.Delete( true );
+                                          Notify_CrossPromotionPathChanged();
+                                      }, "Cancel".Translate(), buttonADestructive: true ) );
+        }
+
+        public static void Notify_CrossPromotionPathChanged()
+        {
+            _cachePath = null;
+            _cacheCount         = null;
+            _cacheSize          = null;
         }
 
         static CrossPromotionManager()

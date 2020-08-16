@@ -1,10 +1,7 @@
 ﻿// Debug.cs
 // Copyright Karel Kroeze, 2018-2018
-// #define TRACE_DEPENDENCIES
-
 
 using System.Diagnostics;
-using Verse;
 
 namespace ModManager
 {

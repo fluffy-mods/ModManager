@@ -401,6 +401,13 @@ namespace ModManager
         public static string AddExpansionsToNewModListTip     = Key( "AddExpansionsToNewModListTip" ).Translate();
         public static string ShowVersionChecksForSteamMods    = Key( "ShowVersionChecksForSteamMods" ).Translate();
         public static string ShowVersionChecksForSteamModsTip = Key( "ShowVersionChecksForSteamModsTip" ).Translate();
+        public static string UseTempFolderForCrossPromotionCache = Key( "UseTempFolderForCrossPromotionCache" ).Translate();
+        public static string UseTempFolderForCrossPromotionCacheTip = Key("UseTempFolderForCrossPromotionCacheTip").Translate();
+
+        public static string CrossPromotionCacheFolderSize( long size ) => Key( "CrossPromotionCacheFolderSize" ).Translate( size.ToStringSize() );
+        public static string DeleteCrossPromotionCache = Key( "DeleteCrossPromotionCache" ).Translate();
+
+        public static string ConfirmDeletingCrossPromotionCache( string path, int count, long size ) => Key( "ConfirmDeletingCrossPromotionCache" ).Translate( path, count, size.ToStringSize() );
 
         public static string OpenDownloadUri( string downloadUri ) =>
             Key( "OpenDownloadUri" ).Translate( downloadUri ).Resolve();

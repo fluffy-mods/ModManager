@@ -3,8 +3,6 @@
 
 using System;
 using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
 using Steamworks;
 using UnityEngine;
 using Verse;
@@ -16,7 +14,8 @@ namespace ModManager
         private SteamUGCDetails_t _details;
         private CallResult<RemoteStorageDownloadUGCResult_t> _callResult;
 
-        private string PreviewPath => $"{GenFilePaths.SaveDataFolderPath}{Path.DirectorySeparatorChar}CrossPromotions{Path.DirectorySeparatorChar}{(Name + "_" + FileId).SanitizeFileName()}.jpg";
+
+        private string PreviewPath => Path.Combine( CrossPromotionManager.CachePath, ( Name + "_" + FileId ).SanitizeFileName() + ".jpg" );
 
         public bool Ready => Preview != null;
         public PublishedFileId_t FileId => _details.m_nPublishedFileId;
@@ -67,6 +66,7 @@ namespace ModManager
             if (result.m_eResult != EResult.k_EResultOK)
                 return;
             LoadPreview();
+            CrossPromotionManager.Notify_UpdateRelevantMods();
         }
         private void FetchPreview( UGCHandle_t previewHandle )
         {

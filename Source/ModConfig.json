@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 1,
-        "build": 946
+        "build": 958
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -24,13 +24,21 @@
         "Michaël Marinetti": "Updates to French translation",
         "Mohas": ""
     },
-    "changenote": "",
+    "changenote": "2020-08-16 15:08 :: Fluffy :: properly cache crosspromotions",
     "tags": [
         "1.0",
         "1.1",
         "1.2"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "d6c4e2bd99d259826017c4f2b0802835059a9fe9",
+            "date": "2020-08-16 15:08",
+            "author": "Fluffy",
+            "message": "properly cache crosspromotions"
+        }
+    ],
     "packageId": "fluffy.modmanager"
 }

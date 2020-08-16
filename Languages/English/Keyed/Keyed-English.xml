@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+    <!-- cancel button on confirmation(s) -->
+    <Cancel>Cancel</Cancel>
+
     <Fluffy.ModManager.AvailableMods>Available</Fluffy.ModManager.AvailableMods>
     <Fluffy.ModManager.ActiveMods>Active</Fluffy.ModManager.ActiveMods>
     <Fluffy.ModManager.Preview>Preview</Fluffy.ModManager.Preview>
@@ -166,4 +169,10 @@
     <Fluffy.ModManager.AddExpansionsToNewModListTip>Add official expansions to new modlists whenever the modlist is reset.</Fluffy.ModManager.AddExpansionsToNewModListTip>
     <Fluffy.ModManager.ShowVersionChecksForSteamMods>Show version checks for steam mods.</Fluffy.ModManager.ShowVersionChecksForSteamMods>
     <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>Version checks are most useful for manually installed mods, so are disabled for steam mods by default. Note that this will only notify about newer manually installed mods where the author has explicitly supported this functionality. It will not notify about new steam mods.</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>Use system temp folder for cross promotion cache</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>If enabled, the cross promotion cache will be stored in a temporary folder. This may slow down getting cross promotion images, but allows the system to periodically clean out the cache.</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
+    <Fluffy.ModManager.CrossPromotionCacheFolderSize>Cache size: {0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
+    <Fluffy.ModManager.DeleteCrossPromotionCache>Clear cache</Fluffy.ModManager.DeleteCrossPromotionCache>
+    <Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>Are you sure you want to clear the cache?\n\nThis will irrevocably remove all {1} file(s) in {0}, freeing {2}.</Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>
+
 </LanguageData>

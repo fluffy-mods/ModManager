@@ -1,9 +1,5 @@
 ﻿// Manifest.cs
 // Copyright Karel Kroeze, 2018-2018
-#if DEBUG
-#define TRACE_DEPENDENCIES
-#endif
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;

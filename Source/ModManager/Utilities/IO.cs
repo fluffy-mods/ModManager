@@ -2,7 +2,6 @@
 // Copyright Karel Kroeze, 2018-2018
 
 using System;
-using System.CodeDom;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
