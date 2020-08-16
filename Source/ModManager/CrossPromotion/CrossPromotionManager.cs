@@ -14,7 +14,6 @@ namespace ModManager
 {
     public static class CrossPromotionManager
     {
-        private static HashSet<AccountID_t> _currentlyFetchingAuthors = new HashSet<AccountID_t>();
         private static HashSet<PublishedFileId_t> _currentlyFetchingFiles = new HashSet<PublishedFileId_t>();
         private static Dictionary<AccountID_t, List<CrossPromotion>> _modsForAuthor = new Dictionary<AccountID_t, List<CrossPromotion>>();
         private static Dictionary<PublishedFileId_t, AccountID_t> _authorForMod = new Dictionary<PublishedFileId_t, AccountID_t>();
@@ -50,13 +49,14 @@ namespace ModManager
             }
         }
 
-        public static List<CrossPromotion> ModsForAuthor( AccountID_t author )
+        public static List<CrossPromotion> PromotionsForAuthor( AccountID_t author )
         {
             if ( _modsForAuthor.TryGetValue( author, out var mods ) )
                 return mods;
-            if ( !_currentlyFetchingAuthors.Contains( author ) )
-                FetchModsForAuthor( author );
-            return null;
+            mods = new List<CrossPromotion>();
+            _modsForAuthor.Add( author, mods );
+            FetchModsForAuthor( author );
+            return mods;
         }
 
         public static AccountID_t? AuthorForMod( PublishedFileId_t fileId )
@@ -68,6 +68,12 @@ namespace ModManager
             return null;
         }
 
+        private static List<CrossPromotion> RelevantPromotions { get; set; }
+
+        public static void Notify_UpdateRelevantMods()
+        {
+            RelevantPromotions = null;
+        }
         public static bool HandleCrossPromotions( ref Rect canvas, ModMetaData mod )
         {
             if ( !_enabled )
@@ -83,8 +89,8 @@ namespace ModManager
             if ( author == null )
                 return false;
 
-            var promotions = ModsForAuthor( author.Value )?.Where( p => p.ShouldShow );
-            if ( promotions == null || !promotions.Any() )
+            RelevantPromotions ??= PromotionsForAuthor( author.Value )?.Where( p => p.ShouldShow ).ToList();
+            if ( RelevantPromotions.NullOrEmpty() )
                 return false;
 
             if ( Widgets.ButtonImage(
@@ -94,7 +100,7 @@ namespace ModManager
                 Utilities.OpenSettingsFor( ModManager.Instance );
             }
             Utilities.DoLabel( ref canvas, I18n.PromotionsFor( mod.Author ) );
-            DrawCrossPromotions( ref canvas, promotions );
+            DrawCrossPromotions( ref canvas, RelevantPromotions );
             return true;
         }
 
@@ -170,8 +176,8 @@ namespace ModManager
             }
             if ( author != CSteamID.Nil )
             {
-                _modsForAuthor.Add( author.GetAccountID(), promotions );
-                _currentlyFetchingAuthors.Remove( author.GetAccountID() );
+                _modsForAuthor[author.GetAccountID()] = promotions;
+                Notify_UpdateRelevantMods();
             }
             SteamUGC.ReleaseQueryUGCRequest( result.m_handle );
         }
@@ -204,7 +210,6 @@ namespace ModManager
         private static void FetchModsForAuthor( AccountID_t author )
         {
             Debug.TracePromotions( $"Fetching mods for {author}..." );
-            _currentlyFetchingAuthors.Add( author );
             var query = SteamUGC.CreateQueryUserUGCRequest( 
                 author, 
                 EUserUGCList.k_EUserUGCList_Published,

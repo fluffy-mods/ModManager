@@ -63,7 +63,11 @@ namespace ModManager
             get => _selected;
             set
             {
+                if ( _selected == value )
+                    return; 
+
                 _selected = value;
+                CrossPromotionManager.Notify_UpdateRelevantMods();
 
                 // cop-out if null
                 if ( value == null )

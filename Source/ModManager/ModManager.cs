@@ -76,5 +76,11 @@ namespace ModManager
                                      I18n.AddExpansionsToNewModListTip );
             listing.End();
         }
+
+        public override void WriteSettings()
+        {
+            base.WriteSettings();
+            CrossPromotionManager.Notify_UpdateRelevantMods();
+        }
     }
 }
