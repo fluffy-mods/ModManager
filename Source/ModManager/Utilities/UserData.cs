@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.RegularExpressions;
 using Verse;
 using Verse.AI;
 
@@ -20,6 +21,8 @@ namespace ModManager
     {
         public static Dictionary<ModMetaData, ModAttributes>    ModAttributes    = new Dictionary<ModMetaData, ModAttributes>();
         public static Dictionary<ModButton, ButtonAttributes> ButtonAttributes = new Dictionary<ModButton, ButtonAttributes>();
+
+        public static readonly Regex InvalidPathCharacters = new Regex(string.Format("[{0}]", Regex.Escape(new string(Path.GetInvalidFileNameChars()))));
 
         public const string UserDataFolder = "ModManager_UserData";
         public const string ModsFolder     = "Mods";
@@ -70,8 +73,9 @@ namespace ModManager
 
         public static string GetButtonAttributesPath( ModButton button )
         {
-            return Path.Combine( GenFilePaths.SaveDataFolderPath, UserDataFolder, ButtonFolder,
-                          $"{button.Name}.xml" );
+            var buttonName = InvalidPathCharacters.Replace(button.Name, "");
+            return Path.Combine(GenFilePaths.SaveDataFolderPath, UserDataFolder, ButtonFolder,
+                          $"{buttonName}.xml");
         }
 
         public static void Write( IUserData data )
