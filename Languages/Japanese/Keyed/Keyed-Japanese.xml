@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+  <!-- cancel button on confirmation(s) -->
+  <Cancel>中止</Cancel>
+
   <Fluffy.ModManager.AvailableMods>利用可能</Fluffy.ModManager.AvailableMods>
   <Fluffy.ModManager.ActiveMods>有効</Fluffy.ModManager.ActiveMods>
   <Fluffy.ModManager.Preview>プレビュー</Fluffy.ModManager.Preview>
@@ -166,4 +169,11 @@
   <Fluffy.ModManager.AddExpansionsToNewModListTip>Coreに加えて,公式DLCを新しいModリストに追加します.</Fluffy.ModManager.AddExpansionsToNewModListTip>
   <Fluffy.ModManager.ShowVersionChecksForSteamMods>SteamModのバージョン確認を表示</Fluffy.ModManager.ShowVersionChecksForSteamMods>
   <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>バージョン確認は手動インストールされたMODに最適で、デフォルトではSteamMODの確認は無効になっています。これはMod作成者がこの機能を明示的にサポートしている場合か、手動でインストールされた新しいMODについてだけ通知されることに注意してください。新しいSteamModのバージョンが出ても通知しません。</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
+
+  <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>OSシステムの一時(TMP)フォルダをMod宣伝キャッシュに使用</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
+  <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>有効にすると、Mod宣伝キャッシュは一時(TMP)フォルダーに保存されます。これにより、Mod宣伝画像の取得が遅くなる可能性がありますが、システム側は定期的にキャッシュを消去可能になります。</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
+  <Fluffy.ModManager.CrossPromotionCacheFolderSize>宣伝キャッシュサイズ：{0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
+  <Fluffy.ModManager.DeleteCrossPromotionCache>宣伝キャッシュを掃除</Fluffy.ModManager.DeleteCrossPromotionCache>
+  <Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>キャッシュを掃除してもよろしいですか？\n\nその結果{0}内の{1}ファイルすべてが完全に削除されて、{2}が解放されます。</Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>
+
 </LanguageData>
