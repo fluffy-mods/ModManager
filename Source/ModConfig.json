@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 3,
-        "minor": 3,
-        "build": 962
+        "minor": 4,
+        "build": 966
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -32,14 +32,6 @@
         "1.2"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "848ac10c2eee3b02596b8887be3ef04a26006567",
-            "date": "2020-08-16 23:08",
-            "author": "Fluffy",
-            "message": "update contributors [nolog]"
-        }
-    ],
+    "changenotes": [],
     "packageId": "fluffy.modmanager"
 }
