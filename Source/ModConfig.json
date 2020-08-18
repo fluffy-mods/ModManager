@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 4,
-        "build": 985
+        "build": 987
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -25,7 +25,7 @@
         "shadowtouch": "better filename sanitizing code",
         "Mohas": "fix nullref in online manifests"
     },
-    "changenote": "2020-08-18 22:08 :: Fluffy :: check if userdata exists before trying to copy it\n2020-08-18 21:08 :: Fluffy :: fix key error in auto-sort\n2020-08-18 21:08 :: Fluffy :: fix possible nullref in Incompatible.get_Resolvers\n2020-08-18 20:08 :: Proxyer :: Update Japanese Translation for v3.4.966 (#123)",
+    "changenote": "2020-08-19 00:08 :: Fluffy :: re-implement updating local copies from steam source\n2020-08-18 22:08 :: Fluffy :: check if userdata exists before trying to copy it\n2020-08-18 21:08 :: Fluffy :: fix key error in auto-sort\n2020-08-18 21:08 :: Fluffy :: fix possible nullref in Incompatible.get_Resolvers\n2020-08-18 20:08 :: Proxyer :: Update Japanese Translation for v3.4.966 (#123)",
     "tags": [
         "1.0",
         "1.1",
@@ -33,6 +33,13 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "4f4a04b543d3e45452f2e81ffa46e0e3895afab1",
+            "date": "2020-08-19 00:08",
+            "author": "Fluffy",
+            "message": "re-implement updating local copies from steam source"
+        },
         {
             "repo": "ModManager",
             "hash": "f410514175227e5a9fdf7c28f6dea91ea102f267",

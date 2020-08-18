@@ -390,10 +390,19 @@ namespace ModManager
                     }
                     if ( Selected?.Source == ContentSource.SteamWorkshop )
                     {
-                        var publishedFileId = Selected.GetWorkshopItemHook().PublishedFileId;
+                        var publishedFileId = Selected.GetPublishedFileId();
                         _titleLinkOptions.Add(
                             new FloatMenuOption( I18n.WorkshopPage( Selected.Name ),
                             () => SteamUtility.OpenWorkshopPage( publishedFileId ) ) );
+                    }
+
+                    var source = Selected?.UserData()?.Source;
+                    if ( Selected?.Source == ContentSource.ModsFolder && source != null )
+                    {
+                        var publishedFileId = source.GetPublishedFileId();
+                        _titleLinkOptions.Add(
+                            new FloatMenuOption( I18n.WorkshopPage( source.Name ),
+                                                 () => SteamUtility.OpenWorkshopPage( publishedFileId ) ) );
                     }
                 }
                 return _titleLinkOptions;
@@ -486,13 +495,26 @@ namespace ModManager
                 GUI.color = Color.white;
                 authorRect.xMin += labelWidth + SmallMargin;
                 Widgets.Label(authorRect, mod.Author.Truncate(authorRect.width));
-                if ( mod.Source == ContentSource.SteamWorkshop )
+                ModMetaData steamMod;
+                switch ( mod.Source )
                 {
-                    var authorId = Traverse.Create( mod.GetWorkshopItemHook() )
+                    case ContentSource.ModsFolder:
+                        steamMod = mod;
+                        break;
+                    case ContentSource.SteamWorkshop:
+                        steamMod = mod.UserData()?.Source;
+                        break;
+                    default:
+                        steamMod = null;
+                        break;
+                }
+                if (steamMod != null)
+                {
+                    var authorId = Traverse.Create( steamMod.GetWorkshopItemHook() )
                         .Field( "steamAuthor" )
                         .GetValue<CSteamID>();
                     ActionButton( authorRect,
-                        () => SteamUtility.OpenUrl( $"https://steamcommunity.com/profiles/{authorId}/myworkshopfiles/" ) );
+                        () => SteamUtility.OpenUrl( $"https://steamcommunity.com/profiles/{authorId.GetAccountID().m_AccountID}/myworkshopfiles/" ) );
                 }
             }
 
