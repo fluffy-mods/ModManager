@@ -18,7 +18,7 @@ namespace ModManager
         private bool downloading;
         private Exception exception;
 
-        public VersionCheck( Manifest parent ) : base( parent, parent.Mod.PackageId, false )
+        public VersionCheck( Manifest parent ) : base( parent, parent.Mod.PackageId )
         {
             // start crunching those downloads
             FetchManifest( parent.manifestUri );

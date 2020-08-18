@@ -128,5 +128,7 @@ namespace ModManager
             var num   = Math.Round( bytes / Math.Pow( 1024, place ), 1 );
             return ( Math.Sign( bytes ) * num ) + suf[place];
         }
+
+        public static ModAttributes UserData( this ModMetaData mod ) => ModManager.UserData[mod];
     }
 }

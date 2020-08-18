@@ -47,13 +47,13 @@ namespace ModManager
             var updateResult = TryCopyMod( source, out var updated, local.RootDir.FullName, false );
             if ( !updateResult )
                 return false;
-
-            // rename settings file
-            TryCopySettings( local, updated, true );
-            TryCopyUserData( local, updated, true );
-
+            
             // update version 
-            ModButton_Installed.For( source ).Notify_VersionUpdated( local );
+            var button = ModButton_Installed.For( updated );
+            button.Notify_VersionRemoved( local );
+            button.Notify_VersionAdded( updated, true );
+
+
             return true;
         }
 
@@ -65,6 +65,9 @@ namespace ModManager
                 mod.RootDir.Copy( targetDir, true );
                 copy = new ModMetaData( targetDir );
                 SetUniquePackageId( copy );
+                ModManager.UserData[copy].Source = mod;
+                var manifest = copy.GetManifest();
+                manifest.sourceSync = new SourceSync( manifest, mod.PackageId );
 
                 ( ModLister.AllInstalledMods as List<ModMetaData> )?.Add( copy );
 
@@ -94,7 +97,8 @@ namespace ModManager
             {
                 var sourcePath = UserData.GetModAttributesPath( source );
                 if ( !File.Exists(sourcePath ) ) return true;
-                File.Copy( sourcePath, UserData.GetModAttributesPath( target ) );
+                
+                File.Copy( sourcePath, UserData.GetModAttributesPath( target ), true );
                 if ( deleteOld )
                     File.Delete(sourcePath );
                 return true;
@@ -197,6 +201,7 @@ namespace ModManager
             try
             {
                 mod.RootDir.Delete( true );
+                TryRemoveUserData( mod );
                 ( ModLister.AllInstalledMods as List<ModMetaData> )?.TryRemove( mod );
                 return true;
             }
@@ -206,6 +211,31 @@ namespace ModManager
                 Log.Warning( "Deleting failed. Retrying may help." );
                 return false;
             }
+        }
+
+        private static void TryRemoveUserData( ModMetaData mod )
+        {
+            var path = mod.UserData()?.FilePath;
+            if ( path == null ) return;
+            try
+            {
+                if ( File.Exists( path ) )
+                    File.Delete( path );
+            }
+            catch (Exception err)
+            {
+                Debug.Error( $"failed to delete {path}:\n{err}");
+            }
+        }
+
+        private static void TryRemoveSettings( ModMetaData mod )
+        {
+            // find any settings files that belong to the source mod
+            var mask = SettingsMask( mod.FolderName );
+            var settings = Directory.GetFiles( GenFilePaths.ConfigFolderPath )
+                                    .Where( f => mask.IsMatch( f ) );
+            foreach ( var file in settings )
+                File.Delete( file );
         }
 
         public static string GetLocalCopyFolder( this ModMetaData mod )

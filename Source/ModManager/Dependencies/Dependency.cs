@@ -15,10 +15,10 @@ namespace ModManager
 {
     public abstract class Dependency : ModDependency
     {
-        public  Manifest    parent;
-        private ModMetaData _target;
-        private bool        _targetResolved;
-        public ModMetaData Target
+        public    Manifest    parent;
+        protected ModMetaData _target;
+        protected bool        _targetResolved;
+        public virtual ModMetaData Target
         {
             get
             {
@@ -32,12 +32,10 @@ namespace ModManager
                 _targetResolved = true;
                 return _target;
             }
-            set => _target = value;
         }
 
-
-        
-        public virtual int Severity => 1;
+        // todo: add enum for severity
+        public virtual int Severity => IsSatisfied ? 0 : 1;
 
         public virtual Color Color => Color.white;
 
@@ -95,11 +93,10 @@ namespace ModManager
             return false;
         }
 
-        public Dependency( Manifest parent, string packageId, bool ignorePostfix = true )
+        public Dependency( Manifest parent, string packageId )
         {
             this.parent    = parent;
             this.packageId = packageId;
-            Target         = ModLister.GetModWithIdentifier( packageId, ignorePostfix );
         }
 
         public Dependency( Manifest parent, ModDependency depend ): this( parent, depend.packageId )
@@ -131,8 +128,6 @@ namespace ModManager
                 {
                     packageId = text;
                 }
-
-                Target = ModLister.GetModWithIdentifier( packageId, true );
             }
             catch ( Exception ex )
             {

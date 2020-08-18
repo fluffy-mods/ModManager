@@ -306,12 +306,6 @@ namespace ModManager
             return Key( "MoveAfter" ).Translate( TrimModName( from.Name ), TrimModName( to.Name ) );
         }
 
-        public static string SourceModChanged = Key( "SourceModChanged" ).Translate();
-
-        public static string UpdateLocalCopy( string name )
-        {
-            return Key( "UpdateLocalCopy" ).Translate( name );
-        }
 
         public static string ChangeColour = Key( "ChangeColour" ).Translate();
         public static string ChangeModColour( string name )    => Key( "ChangeModColour" ).Translate( name );
@@ -413,5 +407,21 @@ namespace ModManager
             Key( "OpenDownloadUri" ).Translate( downloadUri ).Resolve();
 
         public static string NoDownloadUri = Key( "NoDownloadUri" ).Translate();
+
+        public static string XIsUpToDate( ModMetaData mod )
+        {
+            return Key("XIsUpToDate").Translate( mod.Name );
+        }
+
+        public static string YHasUpdated( ModMetaData target )
+        {
+            return Key("YHasUpdated").Translate( target.Name );
+        }
+
+        public static string UpdateLocalCopy( ModMetaData mod )
+        {
+            return Key( "UpdateLocalCopy" ).Translate( mod.Name );
+        }
+
     }
 }

@@ -32,28 +32,16 @@ namespace ModManager
             }
         }
 
-        private PublishedFileId_t _source = PublishedFileId_t.Invalid;
+        private string _source = string.Empty;
         private string _sourceHash;
         public ModMetaData Source
         {
-            get
-            {
-                if ( _source == PublishedFileId_t.Invalid )
-                    return null;
-                return ModLister.GetModWithIdentifier( _source.ToString() );
-            }
+            get => ModLister.GetModWithIdentifier( _source );
             set
             {
-                if ( ulong.TryParse( value.PackageId, out ulong id ) )
-                {
-                    _source = new PublishedFileId_t( id );
-                    _sourceHash = value.RootDir.GetFolderHash();
-                    Write();
-                }
-                else
-                {
-                    Log.Warning( $"Could not parse {value.PackageId} as PublishedFileID" );
-                }
+                _source = value.PackageId;
+                _sourceHash = value.RootDir.GetFolderHash();
+                Write();
             }
         }
 
@@ -65,9 +53,10 @@ namespace ModManager
         public void ExposeData()
         {
             Scribe_Values.Look( ref _color, "Color", Color.white );
-            Scribe_Values.Look( ref _source, "SourceMod", PublishedFileId_t.Invalid );
+            Scribe_Values.Look( ref _source, "SourceMod", string.Empty );
             Scribe_Values.Look( ref _sourceHash, "SourceHash" );
         }
+
         public string FilePath => UserData.GetModAttributesPath( Mod );
         public void Write()
         {

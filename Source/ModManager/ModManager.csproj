@@ -92,6 +92,7 @@
     <Compile Include="Dependencies\Dependency.cs" />
     <Compile Include="Dependencies\Incompatible.cs" />
     <Compile Include="Dependencies\LoadOrder.cs" />
+    <Compile Include="Dependencies\SourceSync.cs" />
     <Compile Include="Dependencies\VersionCheck.cs" />
     <Compile Include="Dependencies\VersionedDependency.cs" />
     <Compile Include="ModButton\ButtonAttributes.cs" />

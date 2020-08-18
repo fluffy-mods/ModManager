@@ -63,11 +63,14 @@ namespace ModManager
         internal string manifestUri;
 #pragma warning restore 649
         public string downloadUri;
-        public VersionCheck VersionCheck;
+        public VersionCheck versionCheck;
 
         // suggestions
         public List<string> suggests            = new List<string>();
         public bool         showCrossPromotions = true;
+
+        // source mod
+        public SourceSync sourceSync;
 
 
         [Obsolete( "Multiple target versions have been implemented in RW since 1.0" )]
@@ -129,8 +132,10 @@ namespace ModManager
                     manifest.LoadAfter.AddRange( manifest.loadAfter );
 #pragma warning restore 618
 
+
                     if ( !manifest.manifestUri.NullOrEmpty() )
-                        manifest.VersionCheck = new VersionCheck( manifest );
+                        manifest.versionCheck = new VersionCheck( manifest );
+
                 }
                 catch ( Exception e )
                 {
@@ -153,11 +158,16 @@ namespace ModManager
                 if ( !manifest.Dependencies.Any( d => d.packageId == depend.packageId ) )
                     manifest.Dependencies.Add( new VersionedDependency( manifest, depend ) );
 
+            // implicit dependencies from user data
+            if ( mod.UserData().Source != null )
+                manifest.sourceSync = new SourceSync( manifest, mod.UserData().Source.PackageId );
+
             foreach ( var dependency in manifest.Dependencies
                                                 .Concat( manifest.Incompatibilities )
                                                 .Concat( manifest.LoadBefore )
                                                 .Concat( manifest.LoadAfter )
-                                                .Concat( manifest.VersionCheck )
+                                                .Concat( manifest.versionCheck )
+                                                .Concat( manifest.sourceSync )
                                                 .Where( d => d != null ) )
             {
                 dependency.parent = manifest;
@@ -182,7 +192,8 @@ namespace ModManager
                                    .Concat( Incompatibilities )
                                    .Concat( LoadBefore )
                                    .Concat( LoadAfter )
-                                   .Concat( VersionCheck )
+                                   .Concat( versionCheck )
+                                   .Concat( sourceSync )
                                    .Where( d => d != null )
                                    .ToList();
                 return _requirements.Where( r => r.IsApplicable );

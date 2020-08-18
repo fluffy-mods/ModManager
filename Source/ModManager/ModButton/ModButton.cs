@@ -135,7 +135,7 @@ namespace ModManager
         {
             var severityThreshold = ModManager.Settings.ShowSatisfiedRequirements ? 0 : 1;
             var relevantIssues = Requirements.Where( i => i.Severity >= severityThreshold );
-            if ( !Requirements.Any( i => i.Severity >= severityThreshold ) )
+            if ( !relevantIssues.Any() )
                 return;
 
             Utilities.DoLabel(ref canvas, I18n.Dependencies );

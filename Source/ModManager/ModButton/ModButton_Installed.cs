@@ -563,12 +563,5 @@ namespace ModManager
                 _selected = null;
             Selected.Active = version.Active;   
         }
-
-        public void Notify_VersionUpdated( ModMetaData local )
-        {
-            var old = Versions.FirstOrDefault( m => m.PackageId == local.PackageId );
-            if ( Versions.TryRemove( old ) )
-                Notify_VersionAdded( local, true );
-        }
     }
 }
