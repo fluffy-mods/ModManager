@@ -92,9 +92,11 @@ namespace ModManager
         {
             try
             {
-                File.Copy( UserData.GetModAttributesPath( source ), UserData.GetModAttributesPath( target ) );
+                var sourcePath = UserData.GetModAttributesPath( source );
+                if ( !File.Exists(sourcePath ) ) return true;
+                File.Copy( sourcePath, UserData.GetModAttributesPath( target ) );
                 if ( deleteOld )
-                    File.Delete( UserData.GetModAttributesPath( source ) );
+                    File.Delete(sourcePath );
                 return true;
             }
             catch ( Exception err )

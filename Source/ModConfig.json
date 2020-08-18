@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 4,
-        "build": 969
+        "build": 970
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -25,7 +25,7 @@
         "shadowtouch": "better filename sanitizing code",
         "Mohas": "fix nullref in online manifests"
     },
-    "changenote": "2020-08-18 21:08 :: Fluffy :: fix possible nullref in Incompatible.get_Resolvers\n2020-08-18 20:08 :: Proxyer :: Update Japanese Translation for v3.4.966 (#123)",
+    "changenote": "2020-08-18 21:08 :: Fluffy :: fix key error in auto-sort\n2020-08-18 21:08 :: Fluffy :: fix possible nullref in Incompatible.get_Resolvers\n2020-08-18 20:08 :: Proxyer :: Update Japanese Translation for v3.4.966 (#123)",
     "tags": [
         "1.0",
         "1.1",
@@ -33,6 +33,13 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "a4347c90f205101628a66840c6746da5977c99b5",
+            "date": "2020-08-18 21:08",
+            "author": "Fluffy",
+            "message": "fix key error in auto-sort"
+        },
         {
             "repo": "ModManager",
             "hash": "097646da380ec6619ad6663dc05207728c7f714d",
