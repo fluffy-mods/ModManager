@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Defs>
+  <HugsLib.UpdateFeatureDef>
+    <modNameReadable>Mod Manager</modNameReadable>
+    <modIdentifier>fluffy.modmanager</modIdentifier>
+    <defName>Mod_Manager_3_3_962</defName>
+    <assemblyVersion>3.4.962</assemblyVersion>
+    <content>Mod Manager was updated for RimWorld 1.2, with a number of improvements and bugfixes;
+      - user data (e.g. mod colours) should no longer randomly reset
+      - Mod Manager should be much more response for large mod lists
+      - You can again create multiple local copies for backups
+      - CrossPromotion preview images can now be cached in the system temp dir
+      - CrossPromotion cache can be cleared by the user (see the mod settings)
+
+      |Some issues still remain;
+      - Importing pre-1.1 modlists works unreliably (will likely not be fixed anymore).
+      - (Mass) subscribing to missing steam mods is not yet hooked up.
+      - The auto-sort button does not work correctly. 
+      - And a variety of other small issues. 
+
+      |I'm working on getting all the pre-1.1 features back up and running, and some generous volunteers and I are working on what will be the next stage for Mod Manager. You'll hear more about where Mod Manager is going, and how you can have a say in the process, soon™.
+
+    </content>
+  </HugsLib.UpdateFeatureDef>
+</Defs>
