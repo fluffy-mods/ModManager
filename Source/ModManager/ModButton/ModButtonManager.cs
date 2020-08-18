@@ -254,6 +254,7 @@ namespace ModManager
 
         public static void Sort()
         {
+            // ReSharper disable once InvalidXmlDocComment
             /**
              * Topological sort.
              * Depth first, because it's the easiest to understand.
@@ -309,6 +310,8 @@ namespace ModManager
                 {
                     var targetButton = ModButton_Installed.For( target );
                     graph[activeButton].Add( targetButton );
+                    if ( !graph.ContainsKey( targetButton ) )
+                        graph[targetButton] = new HashSet<ModButton>();
                 }
             }
 

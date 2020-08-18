@@ -214,8 +214,8 @@ namespace ModManager
         public static string DateStamp => $"-{DateTime.Now.Day}-{DateTime.Now.Month}";
         public static string LocalCopyPrefix => "__LocalCopy";
 
-        private static Regex _identifiersRegex = new Regex( $@"(?:{ModMetaData.SteamModPostfix}|{LocalCopyPostfix}(?:_\d+)?)$" );
-        public static string StripIdentifiers( this string packageId ) => _identifiersRegex.Replace( packageId.Trim(), "" );
+        private static Regex _postfixRegex = new Regex( $@"(?:{ModMetaData.SteamModPostfix}|{LocalCopyPostfix}(?:_\d+)?)$" );
+        public static string StripPostfixes( this string packageId ) => _postfixRegex.Replace( packageId.Trim(), "" );
 
         public static string SanitizeFileName( this string str)
         {

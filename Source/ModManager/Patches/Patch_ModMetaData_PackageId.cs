@@ -13,7 +13,7 @@ namespace ModManager
             if ( ___packageIdLowerCase == null )
                 __result = false;
             else if ( ignorePostfix )
-                __result = ___packageIdLowerCase.StripIdentifiers().Equals( otherPackageId, StringComparison.CurrentCultureIgnoreCase );
+                __result = ___packageIdLowerCase.StripPostfixes().Equals( otherPackageId, StringComparison.CurrentCultureIgnoreCase );
             else
                 __result = __instance.PackageId.Equals( otherPackageId, StringComparison.CurrentCultureIgnoreCase );
             return false;

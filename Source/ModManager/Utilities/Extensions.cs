@@ -53,7 +53,7 @@ namespace ModManager
             if ( _modClassWithSettingsCache.TryGetValue( mod, out var modClass ) )
                 return modClass;
             modClass = LoadedModManager.ModHandles.FirstOrDefault( m => 
-                m.Content.PackageId == mod.PackageId &&
+                mod.SamePackageId( m.Content.PackageId ) && 
                 !m.SettingsCategory().NullOrEmpty() );
             _modClassWithSettingsCache.Add( mod, modClass );
             return modClass;

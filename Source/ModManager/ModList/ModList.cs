@@ -180,7 +180,7 @@ namespace ModManager
             {
                 var id   = _modIds[i];
                 var name = _modNames[i];
-                var mod = ModLister.GetModWithIdentifier( id.StripIdentifiers(), true );
+                var mod = ModLister.GetModWithIdentifier( id.StripPostfixes(), true );
                 if ( mod != null )
                 {
                     var button = ModButton_Installed.For( mod );

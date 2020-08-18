@@ -81,13 +81,13 @@ namespace ModManager
             var modByFolder = allMods.Find( m => m.FolderName.StripSpaces() == identifier );
             if ( modByFolder != null )
             {
-                packageId = modByFolder.PackageId;
+                packageId = modByFolder.PackageId.StripPostfixes();
                 return true;
             }
             var modByName = allMods.Find( m => m.Name.StripSpaces() == identifier );
             if ( modByName != null )
             {
-                packageId = modByName.PackageId;
+                packageId = modByName.PackageId.StripPostfixes();
                 return true;
             }
 

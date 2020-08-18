@@ -1,16 +1,11 @@
 ﻿// VersionedDependency.cs
 // Copyright Karel Kroeze, 2020-2020
 
-using System;
+using SemVer;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
-using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
-using RimWorld;
-using SemVer;
-using Steamworks;
 using UnityEngine;
 using Verse;
 

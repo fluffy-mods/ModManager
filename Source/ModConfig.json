@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 4,
-        "build": 966
+        "build": 969
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -25,13 +25,28 @@
         "shadowtouch": "better filename sanitizing code",
         "Mohas": "fix nullref in online manifests"
     },
-    "changenote": "",
+    "changenote": "2020-08-18 21:08 :: Fluffy :: fix possible nullref in Incompatible.get_Resolvers\n2020-08-18 20:08 :: Proxyer :: Update Japanese Translation for v3.4.966 (#123)",
     "tags": [
         "1.0",
         "1.1",
         "1.2"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "097646da380ec6619ad6663dc05207728c7f714d",
+            "date": "2020-08-18 21:08",
+            "author": "Fluffy",
+            "message": "fix possible nullref in Incompatible.get_Resolvers"
+        },
+        {
+            "repo": "ModManager",
+            "hash": "1ad46a0b5a50493e2b695eb9eee08c7feb5d5167",
+            "date": "2020-08-18 20:08",
+            "author": "Proxyer",
+            "message": "Update Japanese Translation for v3.4.966 (#123)"
+        }
+    ],
     "packageId": "fluffy.modmanager"
 }
