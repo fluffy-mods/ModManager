@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 3,
-        "minor": 4,
-        "build": 995
+        "minor": 5,
+        "build": 996
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -33,6 +33,13 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "de9ad0d21db95e45988f85c6dc77ac97c8109b5a",
+            "date": "2020-08-24 22:08",
+            "author": "Fluffy",
+            "message": "add survey notification [nolog]"
+        },
         {
             "repo": "ModManager",
             "hash": "2ee14025cf53c0f499a44efd71e87fa71e33f486",
