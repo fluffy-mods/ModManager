@@ -56,7 +56,14 @@ namespace ModManager
         public static Page_BetterModConfig Instance => _instance;
 
         public override Vector2 InitialSize => StandardSize;
+        
         public static Vector2 MinimumSize => StandardSize * 2 / 3f;
+
+        public override void PostOpen()
+        {
+            base.PostOpen();
+            SurveyNotification.HandleNotification();
+        }
 
         public ModButton Selected
         {

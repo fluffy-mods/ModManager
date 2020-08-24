@@ -18,6 +18,8 @@ namespace ModManager
         public bool AddHugsLibToNewModLists         = false;
         public bool UseTempFolderForCrossPromotions = false;
 
+        public bool SurveyNotificationShown = false;
+
         public override void ExposeData()
         {
             base.ExposeData();
@@ -32,6 +34,7 @@ namespace ModManager
             Scribe_Values.Look( ref ShowSatisfiedRequirements, "ShowSatisfiedRequirements", false );
             Scribe_Values.Look( ref ShowVersionChecksOnSteamMods, "ShowVersionChecksOnSteamMods", false );
             Scribe_Values.Look( ref UseTempFolderForCrossPromotions, "UseTempFolderForCrossPromotions", false  );
+            Scribe_Values.Look( ref SurveyNotificationShown, "SurveyNotificationShown", false  );
         }
 
 

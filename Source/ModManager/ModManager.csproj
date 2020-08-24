@@ -123,6 +123,7 @@
     <Compile Include="Page_BetterModConfig.cs" />
     <Compile Include="ModList\ModListManager.cs" />
     <Compile Include="Utilities\Resources.cs" />
+    <Compile Include="Utilities\SurveyNotification.cs" />
     <Compile Include="Utilities\UserData.cs" />
     <Compile Include="Utilities\Utilities.cs" />
     <Compile Include="Utilities\Workshop.cs" />
