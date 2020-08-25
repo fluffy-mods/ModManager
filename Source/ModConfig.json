@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 3,
-        "minor": 5,
-        "build": 996
+        "minor": 6,
+        "build": 999
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -25,63 +25,13 @@
         "shadowtouch": "better filename sanitizing code",
         "Mohas": "fix nullref in online manifests"
     },
-    "changenote": "2020-08-19 00:08 :: Fluffy :: add steam links for original mod & author to local copies\n2020-08-19 00:08 :: Fluffy :: re-implement updating local copies from steam source\n2020-08-18 22:08 :: Fluffy :: check if userdata exists before trying to copy it\n2020-08-18 21:08 :: Fluffy :: fix key error in auto-sort\n2020-08-18 21:08 :: Fluffy :: fix possible nullref in Incompatible.get_Resolvers\n2020-08-18 20:08 :: Proxyer :: Update Japanese Translation for v3.4.966 (#123)",
+    "changenote": "",
     "tags": [
         "1.0",
         "1.1",
         "1.2"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "de9ad0d21db95e45988f85c6dc77ac97c8109b5a",
-            "date": "2020-08-24 22:08",
-            "author": "Fluffy",
-            "message": "add survey notification [nolog]"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "2ee14025cf53c0f499a44efd71e87fa71e33f486",
-            "date": "2020-08-19 00:08",
-            "author": "Fluffy",
-            "message": "add steam links for original mod & author to local copies"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "4f4a04b543d3e45452f2e81ffa46e0e3895afab1",
-            "date": "2020-08-19 00:08",
-            "author": "Fluffy",
-            "message": "re-implement updating local copies from steam source"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "f410514175227e5a9fdf7c28f6dea91ea102f267",
-            "date": "2020-08-18 22:08",
-            "author": "Fluffy",
-            "message": "check if userdata exists before trying to copy it"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "a4347c90f205101628a66840c6746da5977c99b5",
-            "date": "2020-08-18 21:08",
-            "author": "Fluffy",
-            "message": "fix key error in auto-sort"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "097646da380ec6619ad6663dc05207728c7f714d",
-            "date": "2020-08-18 21:08",
-            "author": "Fluffy",
-            "message": "fix possible nullref in Incompatible.get_Resolvers"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "1ad46a0b5a50493e2b695eb9eee08c7feb5d5167",
-            "date": "2020-08-18 20:08",
-            "author": "Proxyer",
-            "message": "Update Japanese Translation for v3.4.966 (#123)"
-        }
-    ],
+    "changenotes": [],
     "packageId": "fluffy.modmanager"
 }

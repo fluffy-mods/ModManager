@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using ColourPicker;
 using HarmonyLib;
 using RimWorld;
 using Steamworks;
@@ -223,8 +224,7 @@ namespace ModManager
         {
             if ( mod.VersionCompatible )
                 return I18n.CurrentVersion;
-            else
-                return I18n.DifferentVersion( mod );
+            return I18n.DifferentVersion( mod );
         }
 
         internal virtual void DoSourceButtons(Rect canvas)
@@ -304,12 +304,12 @@ namespace ModManager
             {
                 var options = NewOptionsList;
                 options.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color, color =>
-                        ModManager.UserData[Selected].Color = color
+                    new Dialog_ColourPicker( Color, color =>
+                                                 ModManager.UserData[Selected].Color = color
                      ) ) ) );
                 options.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color, color =>
-                     ModManager.UserData[this].Color = color
+                    new Dialog_ColourPicker( Color, color =>
+                                                 ModManager.UserData[this].Color = color
                      ) ) ) );
                 FloatMenu( options );
             }
@@ -353,14 +353,14 @@ namespace ModManager
             {
                 var options2 = NewOptionsList;
                 options2.Add( new FloatMenuOption( I18n.ChangeModColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color,
-                        color =>
+                    new Dialog_ColourPicker( Color,
+                                             color =>
                         
-                            ModManager.UserData[Selected].Color = color
+                                                 ModManager.UserData[Selected].Color = color
                          ) ) ) );
                 options2.Add( new FloatMenuOption( I18n.ChangeButtonColour( Name ), () => Find.WindowStack.Add(
-                    new ColourPicker.Dialog_ColourPicker( Color,
-                        color => ModManager.UserData[this].Color = color
+                    new Dialog_ColourPicker( Color,
+                                             color => ModManager.UserData[this].Color = color
                          ) ) ) );
                 FloatMenu(options2);
             } ) );
@@ -499,16 +499,16 @@ namespace ModManager
                 switch ( mod.Source )
                 {
                     case ContentSource.ModsFolder:
-                        steamMod = mod;
+                        steamMod = mod.UserData()?.Source;
                         break;
                     case ContentSource.SteamWorkshop:
-                        steamMod = mod.UserData()?.Source;
+                        steamMod = mod;
                         break;
                     default:
                         steamMod = null;
                         break;
                 }
-                if (steamMod != null)
+                if (steamMod != null && SteamManager.Initialized )
                 {
                     var authorId = Traverse.Create( steamMod.GetWorkshopItemHook() )
                         .Field( "steamAuthor" )
