@@ -249,18 +249,20 @@ namespace ModManager
         private static Regex _postfixRegex = new Regex( $@"(?:{ModMetaData.SteamModPostfix}|{LocalCopyPostfix}(?:_\d+)?)$" );
         public static string StripPostfixes( this string packageId ) => _postfixRegex.Replace( packageId.Trim(), "" );
 
+        public static readonly char[] invalidChars = Path.GetInvalidPathChars().Concat( Path.GetInvalidFileNameChars() ).ToArray();
+        public static readonly Regex invalidFileNameCharsRegex =
+            new Regex( string.Format( "[{0}]", Regex.Escape( new string( invalidChars ) ) ), RegexOptions.Compiled & RegexOptions.CultureInvariant );
+
+        public static readonly string[] reservedWords = new[]
+        {
+            "CON", "PRN", "AUX", "CLOCK$", "NUL", "COM0", "COM1", "COM2", "COM3", "COM4",
+            "COM5", "COM6", "COM7", "COM8", "COM9", "LPT0", "LPT1", "LPT2", "LPT3", "LPT4",
+            "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
+        };
+
         public static string SanitizeFileName( this string str)
         {
-            var invalidReStr = new Regex( string.Format( "[{0}]", Regex.Escape( new string( Path.GetInvalidFileNameChars() ) ) ) );
-            
-            var reservedWords = new[]
-            {
-                "CON", "PRN", "AUX", "CLOCK$", "NUL", "COM0", "COM1", "COM2", "COM3", "COM4",
-                "COM5", "COM6", "COM7", "COM8", "COM9", "LPT0", "LPT1", "LPT2", "LPT3", "LPT4",
-                "LPT5", "LPT6", "LPT7", "LPT8", "LPT9"
-            };
-
-            var fileSystemSanitized = invalidReStr.Replace(str, "_" );
+            var fileSystemSanitized = invalidFileNameCharsRegex.Replace(str, "_" );
             return reservedWords
                   .Select( reservedWord => $@"^{reservedWord}\." )
                   .Aggregate( fileSystemSanitized, ( current, reservedWordPattern ) => Regex.Replace( current, reservedWordPattern, "_", RegexOptions.IgnoreCase ) );

@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using Verse;
 using Verse.AI;
 
@@ -70,8 +71,19 @@ namespace ModManager
 
         public static string GetButtonAttributesPath( ModButton button )
         {
-            return Path.Combine( GenFilePaths.SaveDataFolderPath, UserDataFolder, ButtonFolder,
-                          $"{button.Name.SanitizeFileName()}.xml" );
+            try
+            {
+
+                return Path.Combine( GenFilePaths.SaveDataFolderPath, UserDataFolder, ButtonFolder,
+                                     $"{button.Name.SanitizeFileName()}.xml" );
+            }
+            catch ( ArgumentException err )
+            {
+                Debug.Error( $"Error getting path for {button.Name}:" +
+                             $"\n\tSystem: {Environment.OSVersion} :: {RuntimeInformation.OSDescription}" + // why is this not easier?
+                             $"\n\tException: {err}"  );
+                throw err;
+            }
         }
 
         public static void Write( IUserData data )
