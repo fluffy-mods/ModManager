@@ -3,8 +3,8 @@
     "version": {
         "alpha": 18,
         "major": 3,
-        "minor": 6,
-        "build": 1003
+        "minor": 7,
+        "build": 1004
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -25,13 +25,21 @@
         "shadowtouch": "better filename sanitizing code",
         "Mohas": "fix nullref in online manifests"
     },
-    "changenote": "",
+    "changenote": "2020-08-30 11:08 :: Fluffy :: minor refactor of filename sanitizing, add more debug info",
     "tags": [
         "1.0",
         "1.1",
         "1.2"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [],
+    "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "26c4d31e2ea3ba9596e8f9c8d66b94b5a138c0b2",
+            "date": "2020-08-30 11:08",
+            "author": "Fluffy",
+            "message": "minor refactor of filename sanitizing, add more debug info"
+        }
+    ],
     "packageId": "fluffy.modmanager"
 }
