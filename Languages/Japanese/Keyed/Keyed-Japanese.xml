@@ -36,7 +36,6 @@
   <Fluffy.ModManager.ShouldBeLoadedBefore>{0}の上に置く必要があります.</Fluffy.ModManager.ShouldBeLoadedBefore>
   <Fluffy.ModManager.LoadedAfter>{0}よりも下に読み込まれています.</Fluffy.ModManager.LoadedAfter>
   <Fluffy.ModManager.ShouldBeLoadedAfter>{0}の下に置く必要があります.</Fluffy.ModManager.ShouldBeLoadedAfter>
-  <Fluffy.ModManager.SourceModChanged>Steam-Workshop-modの内容が更新されました.</Fluffy.ModManager.SourceModChanged>
 
   <Fluffy.ModManager.GetMoreMods_SteamWorkshop>Steam-WorkshopからもっとModを入手する</Fluffy.ModManager.GetMoreMods_SteamWorkshop>
   <Fluffy.ModManager.GetMoreMods_LudeonForums>Ludeon公式フォーラムからもっとModを入手する</Fluffy.ModManager.GetMoreMods_LudeonForums>
@@ -108,9 +107,11 @@
   <Fluffy.ModManager.DeactivateMod>{0}を無効にする.</Fluffy.ModManager.DeactivateMod>
   <Fluffy.ModManager.MoveBefore>リストの順番で{1}の上に{0}を移動してください.</Fluffy.ModManager.MoveBefore>
   <Fluffy.ModManager.MoveAfter>リストの順番で{1}の下に{0}を移動してください.</Fluffy.ModManager.MoveAfter>
-  <Fluffy.ModManager.UpdateLocalCopy>現在のSteamのWorkshopで公開されているバージョンに{0}を更新してください.</Fluffy.ModManager.UpdateLocalCopy>
   <Fluffy.ModManager.OpenDownloadUri>ダウンロード先に移動\n&lt;i&gt;{0}&lt;/i&gt;</Fluffy.ModManager.OpenDownloadUri>
   <Fluffy.ModManager.NoDownloadUri>ダウンロード先が未指定</Fluffy.ModManager.NoDownloadUri>
+  <Fluffy.ModManager.XIsUpToDate>{0}はSteam版で最新です.</Fluffy.ModManager.XIsUpToDate>
+  <Fluffy.ModManager.YHasUpdated>{0}のSteam版が更新されました.</Fluffy.ModManager.YHasUpdated>
+  <Fluffy.ModManager.UpdateLocalCopy>現在のSteamのWorkshopで公開されているバージョンに{0}を更新してください.</Fluffy.ModManager.UpdateLocalCopy>
 
   <!-- Content source -->
   <Fluffy.ModManager.ContentSource.Undefined>未定義</Fluffy.ModManager.ContentSource.Undefined>
