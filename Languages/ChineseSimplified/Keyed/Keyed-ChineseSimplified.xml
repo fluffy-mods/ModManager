@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
+  <!-- cancel button on confirmation(s) -->
+  <Cancel>取消</Cancel>
+
   <Fluffy.ModManager.AvailableMods>未激活</Fluffy.ModManager.AvailableMods>
   <Fluffy.ModManager.ActiveMods>已激活</Fluffy.ModManager.ActiveMods>
   <Fluffy.ModManager.Preview>预览</Fluffy.ModManager.Preview>
@@ -33,7 +36,6 @@
   <Fluffy.ModManager.ShouldBeLoadedBefore>应该在{0}前加载。</Fluffy.ModManager.ShouldBeLoadedBefore>
   <Fluffy.ModManager.LoadedAfter>在{0}后加载。</Fluffy.ModManager.LoadedAfter>
   <Fluffy.ModManager.ShouldBeLoadedAfter>应该在{0}后加载。</Fluffy.ModManager.ShouldBeLoadedAfter>
-  <Fluffy.ModManager.SourceModChanged>Steam Workshop 的 Mod 已经更新。</Fluffy.ModManager.SourceModChanged>
 
   <Fluffy.ModManager.GetMoreMods_SteamWorkshop>从 Steam Workshop 获取更多 Mod</Fluffy.ModManager.GetMoreMods_SteamWorkshop>
   <Fluffy.ModManager.GetMoreMods_LudeonForums>从 Ludeon Forums 获取更多 Mod</Fluffy.ModManager.GetMoreMods_LudeonForums>
@@ -62,7 +64,7 @@
   <Fluffy.ModManager.ResetMods>将已激活 Mod 重置为仅激活 Core</Fluffy.ModManager.ResetMods>
   <Fluffy.ModManager.ConfirmResetMods>您确定吗？\n\n这会重置您的整个 Mod 列表。如果您想保存已激活的 Mod 顺序，请先导出。</Fluffy.ModManager.ConfirmResetMods>
   <Fluffy.ModManager.SortMods>自动排序 Mod 列表</Fluffy.ModManager.SortMods>
-  <Fluffy.ModManager.SortFailed.CyclicDependency>Cannot auto-sort mod list; {0} and {1} depend on eachother.</Fluffy.ModManager.SortFailed.CyclicDependency>
+  <Fluffy.ModManager.SortFailed.CyclicDependency>无法启动排序列表；{0}和{1}相互依赖。</Fluffy.ModManager.SortFailed.CyclicDependency>
 
   <Fluffy.ModManager.InvalidName>{0}不是有效名称。名称不得包含以下任何字符：{1}。</Fluffy.ModManager.InvalidName>
   <Fluffy.ModManager.ModListExists>{0}已存在。 请使用其他名称、删除或重命名现有的 Mod 列表。</Fluffy.ModManager.ModListExists>
@@ -105,9 +107,11 @@
   <Fluffy.ModManager.DeactivateMod>停用{0}。</Fluffy.ModManager.DeactivateMod>
   <Fluffy.ModManager.MoveBefore>将{0}移至{1}之前加载。</Fluffy.ModManager.MoveBefore>
   <Fluffy.ModManager.MoveAfter>将{0}移至{1}之后加载。</Fluffy.ModManager.MoveAfter>
-  <Fluffy.ModManager.UpdateLocalCopy>将{0}更新至当前的 Steam Workshop 版本。</Fluffy.ModManager.UpdateLocalCopy>
   <Fluffy.ModManager.OpenDownloadUri>前往下载地址\n&lt;i&gt;{0}&lt;/i&gt;</Fluffy.ModManager.OpenDownloadUri>
   <Fluffy.ModManager.NoDownloadUri>没有提供下载地址。</Fluffy.ModManager.NoDownloadUri>
+  <Fluffy.ModManager.XIsUpToDate>{0}已与 Steam 版本同步。</Fluffy.ModManager.XIsUpToDate>
+  <Fluffy.ModManager.YHasUpdated> {0}的 Steam 版本已更新。</Fluffy.ModManager.YHasUpdated>
+  <Fluffy.ModManager.UpdateLocalCopy>更新{0}的 Steam 版本。</Fluffy.ModManager.UpdateLocalCopy>
 
   <!-- Content source -->
   <Fluffy.ModManager.ContentSource.Undefined>未定义</Fluffy.ModManager.ContentSource.Undefined>
@@ -166,4 +170,10 @@
   <Fluffy.ModManager.AddExpansionsToNewModListTip>当列表重置时，总将官方拓展包加入新 Mod 列表。</Fluffy.ModManager.AddExpansionsToNewModListTip>
   <Fluffy.ModManager.ShowVersionChecksForSteamMods>显示 Steam Mod 版本检查。</Fluffy.ModManager.ShowVersionChecksForSteamMods>
   <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>版本检查主要针对手动添加的 Mod，因此对 Steam Mod 默认关闭。注意，本功能只有在新手动添加 Mod，并且 Mod 作者明确支持本功能时有效。新添加的 Steam Mod 将不会被通知。</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
+  <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>使用系统临时文件夹储存缓存</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
+  <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>如果开启，跨平台缓存将会被储存在一个临时文件夹内。这有可能会减慢加载图片的速度，但系统可以周期性清除缓存。</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
+  <Fluffy.ModManager.CrossPromotionCacheFolderSize>缓存大小：{0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
+  <Fluffy.ModManager.DeleteCrossPromotionCache>清除缓存</Fluffy.ModManager.DeleteCrossPromotionCache>
+  <Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>您确定清楚缓存吗？\n\n这将会不可逆转地移除所有{0}中的{1}文件，释放{2}。</Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>
+
 </LanguageData>
