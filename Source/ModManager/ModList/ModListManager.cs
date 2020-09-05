@@ -91,7 +91,7 @@ namespace ModManager
                     return _modLists;
 
                 _modLists = new List<ModList>();
-                foreach ( var path in Directory.GetFiles( BasePath ) )
+                foreach ( var path in Directory.GetFiles( BasePath, "*.xml" ) )
                 {
                     try
                     {

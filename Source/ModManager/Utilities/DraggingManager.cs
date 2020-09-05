@@ -1,15 +1,12 @@
 ﻿// DraggingManager.cs
 // Copyright Karel Kroeze, 2018-2018
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using RimWorld;
 using UnityEngine;
 using Verse;
 using Verse.Sound;
-using Verse.Steam;
 using static ModManager.Constants;
 
 namespace ModManager
@@ -37,8 +34,7 @@ namespace ModManager
 
         public static bool ContainerUpdate<T>( IEnumerable<T> mods, Rect rect ) where T: ModButton
         {
-            int temp;
-            return ContainerUpdate( mods, rect, out temp );
+            return ContainerUpdate( mods, rect, out _ );
         }
 
         public static bool ContainerUpdate<T>( IEnumerable<T> mods, Rect rect, out int index ) where T: ModButton
