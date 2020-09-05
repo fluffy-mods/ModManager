@@ -132,10 +132,15 @@ namespace ModManager
             foreach ( var button in AllButtons )
                 button.Notify_RecacheIssues();
         }
-        
-        public static void Notify_ModListChanged()
+
+        public static void Notify_RecacheModMetaData()
         {
             _activeMods = null;
+        }
+
+        public static void Notify_ModListChanged()
+        {
+            Notify_RecacheModMetaData();
             ModsConfig.SetActiveToList( ActiveMods.Select( m => m.PackageId ).ToList() );
             Notify_RecacheIssues();
         }

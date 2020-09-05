@@ -879,7 +879,8 @@ namespace ModManager
             base.PreOpen();
             _activeModsHash = ModLister.InstalledModsListHash( true );
             ModButtonManager.InitializeModButtons();
-            ModButtonManager.Notify_ModListChanged();
+            ModButtonManager.Notify_RecacheModMetaData();
+            ModButtonManager.Notify_RecacheIssues();
             Selected = ModButtonManager.AvailableButtons.FirstOrDefault() ?? ModButtonManager.ActiveButtons.FirstOrDefault();
         }
 
