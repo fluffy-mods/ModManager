@@ -59,11 +59,6 @@ namespace ModManager
         
         public static Vector2 MinimumSize => StandardSize * 2 / 3f;
 
-        public override void PostOpen()
-        {
-            base.PostOpen();
-        }
-
         public ModButton Selected
         {
             get => _selected;
@@ -878,12 +873,13 @@ namespace ModManager
                 }
             }
         }
-
+        
         public override void PreOpen()
         {
             base.PreOpen();
             _activeModsHash = ModLister.InstalledModsListHash( true );
-            ModButtonManager.RecacheModButtons();
+            ModButtonManager.InitializeModButtons();
+            ModButtonManager.Notify_ModListChanged();
             Selected = ModButtonManager.AvailableButtons.FirstOrDefault() ?? ModButtonManager.ActiveButtons.FirstOrDefault();
         }
 

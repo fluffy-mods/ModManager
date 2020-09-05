@@ -113,7 +113,7 @@ namespace ModManager
             }
         }
 
-        public virtual void Notify_ModListChanged()
+        public virtual void Notify_RecacheIssues()
         {
             _relevantIssues       = null;
             _relevantIssuesString = null;

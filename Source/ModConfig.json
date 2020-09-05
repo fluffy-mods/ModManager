@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 7,
-        "build": 1022
+        "build": 1034
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -25,7 +25,7 @@
         "shadowtouch": "better filename sanitizing code",
         "Mohas": "fix nullref in online manifests"
     },
-    "changenote": "2020-09-05 21:09 :: Fluffy :: fix error on non-xml files in modlist dir\n2020-08-31 09:08 :: Han Yaodong :: Update Chinese translation for v3.7.1004 (1.2.2723) (#128)\n2020-08-30 23:08 :: Proxyer :: Update Japanese Translation for v3.5.996 (#127)",
+    "changenote": "2020-09-05 21:09 :: Fluffy :: remove survey popup\n2020-09-05 21:09 :: Fluffy :: fix error on non-xml files in modlist dir\n2020-08-31 09:08 :: Han Yaodong :: Update Chinese translation for v3.7.1004 (1.2.2723) (#128)\n2020-08-30 23:08 :: Proxyer :: Update Japanese Translation for v3.5.996 (#127)",
     "tags": [
         "1.0",
         "1.1",
@@ -33,6 +33,13 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "1d2d0ac18cbe5e5aebcb9870d543ec829af92d43",
+            "date": "2020-09-05 21:09",
+            "author": "Fluffy",
+            "message": "remove survey popup"
+        },
         {
             "repo": "ModManager",
             "hash": "c760399d658143983cb89759935abd7ce2db3e9a",

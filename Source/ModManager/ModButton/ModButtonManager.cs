@@ -24,7 +24,7 @@ namespace ModManager
             get
             {
                 if ( _allButtons == null )
-                    RecacheModButtons();
+                    InitializeModButtons();
                 return _allButtons;
             }
         }
@@ -34,7 +34,7 @@ namespace ModManager
             get
             {
                 if ( _activeButtons == null )
-                    RecacheModButtons();
+                    InitializeModButtons();
                 return _activeButtons;
             }
         }
@@ -44,7 +44,7 @@ namespace ModManager
             get
             {
                 if ( _availableButtons == null )
-                    RecacheModButtons();
+                    InitializeModButtons();
                 return _availableButtons;
             }
         }
@@ -58,9 +58,7 @@ namespace ModManager
         {
             get
             {
-                if ( _activeMods == null )
-                    _activeMods = ActiveButtons.OfType<ModButton_Installed>().Select( b => b.Selected ).ToList();
-                return _activeMods;
+                return _activeMods ??= ActiveButtons.OfType<ModButton_Installed>().Select( b => b.Selected ).ToList();
             }
         }
 
@@ -93,7 +91,7 @@ namespace ModManager
             _availableButtons.TryRemove( mod );
         }
 
-        internal static void RecacheModButtons()
+        internal static void InitializeModButtons()
         {
             Debug.Log( "Recaching ModButtons" );
             _allButtons       = new List<ModButton>();
@@ -132,14 +130,18 @@ namespace ModManager
         private static void Notify_RecacheAllModButtons()
         {
             foreach ( var button in AllButtons )
-                button.Notify_ModListChanged();
+                button.Notify_RecacheIssues();
         }
         
         public static void Notify_ModListChanged()
         {
             _activeMods = null;
             ModsConfig.SetActiveToList( ActiveMods.Select( m => m.PackageId ).ToList() );
+            Notify_RecacheIssues();
+        }
 
+        public static void Notify_RecacheIssues()
+        {
             Notify_RecacheIssuesList();
             Notify_RecacheAllManifests();
             Notify_RecacheAllModButtons();
@@ -233,7 +235,7 @@ namespace ModManager
             TryRemove(downloading);
             TryRemove(missing);
 
-            Page_BetterModConfig.Instance.Notify_ModsListChanged();
+            // Page_BetterModConfig.Instance.Notify_ModsListChanged();
         }
 
         public static void Notify_RecacheIssuesList()
