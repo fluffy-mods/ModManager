@@ -62,7 +62,6 @@ namespace ModManager
         public override void PostOpen()
         {
             base.PostOpen();
-            SurveyNotification.HandleNotification();
         }
 
         public ModButton Selected
