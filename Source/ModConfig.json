@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 7,
-        "build": 1035
+        "build": 1037
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -33,6 +33,13 @@
     ],
     "publishedfileid": "1507748539",
     "changenotes": [
+        {
+            "repo": "ModManager",
+            "hash": "aee82d9c33f663e8ee45acb092b02b6b6e9c25a9",
+            "date": "2020-09-05 22:09",
+            "author": "Fluffy",
+            "message": "figured out why recaching modmetadata was necessary! [nolog]"
+        },
         {
             "repo": "ModManager",
             "hash": "67b2a3e375095e4f29906f887b23fdc937a52a6f",
