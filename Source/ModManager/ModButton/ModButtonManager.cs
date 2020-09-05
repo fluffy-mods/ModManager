@@ -93,7 +93,6 @@ namespace ModManager
 
         internal static void InitializeModButtons()
         {
-            Debug.Log( "Recaching ModButtons" );
             _allButtons       = new List<ModButton>();
             _activeButtons    = new List<ModButton>();
             _availableButtons = new List<ModButton>();

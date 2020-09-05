@@ -1,6 +1,5 @@
 ﻿// Debug.cs
 // Copyright Karel Kroeze, 2018-2018
-
 using System.Diagnostics;
 
 namespace ModManager
