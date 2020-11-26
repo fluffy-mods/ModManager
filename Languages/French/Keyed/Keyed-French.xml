@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
+    <!-- cancel button on confirmation(s) -->
+    <Cancel>Annuler</Cancel>
+
     <Fluffy.ModManager.AvailableMods>Disponible</Fluffy.ModManager.AvailableMods>
     <Fluffy.ModManager.ActiveMods>Actif</Fluffy.ModManager.ActiveMods>
     <Fluffy.ModManager.Preview>Aperçu</Fluffy.ModManager.Preview>
@@ -9,9 +12,9 @@
 
     <Fluffy.ModManager.NoModSelected>Aucun mod sélectionné</Fluffy.ModManager.NoModSelected>
     <Fluffy.ModManager.TargetVersions>Ce mod est compatible avec les version(s) de RimWorld {0}</Fluffy.ModManager.TargetVersions>
-    <Fluffy.ModManager.Version>Version</Fluffy.ModManager.Version>
     <Fluffy.ModManager.Unknown>Inconnue</Fluffy.ModManager.Unknown>
     <Fluffy.ModManager.Later>Plus tard</Fluffy.ModManager.Later>
+    <Fluffy.ModManager.Cancel>Annuler</Fluffy.ModManager.Cancel>
 
     <Fluffy.ModManager.PressXtoCopyToClipboard>Utiliser 'Control + C' pour copier la liste dans le presse papier.</Fluffy.ModManager.PressXtoCopyToClipboard>
 
@@ -60,6 +63,9 @@
     <Fluffy.ModManager.ExportModList>Exporter la liste en une chaîne de caractères</Fluffy.ModManager.ExportModList>
     <Fluffy.ModManager.LoadModListFromSave>Charger la liste de mods des sauvegardes</Fluffy.ModManager.LoadModListFromSave>
     <Fluffy.ModManager.ResetMods>Reinitialiser et vider la liste des mods actifs</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.ConfirmResetMods>Êtes-vous sûr?\n\nCeci désactivera la liste entière de vos mods. Exportez d'abord la liste si vous voulez sauvegardez l'ordre des mods.</Fluffy.ModManager.ConfirmResetMods>
+    <Fluffy.ModManager.SortMods>Réordonner la liste des mods automatiquement</Fluffy.ModManager.SortMods>
+    <Fluffy.ModManager.SortFailed.CyclicDependency>Ne peut pas réordonner les mods; {0} et {1} dépendent l'un de l'autre.</Fluffy.ModManager.SortFailed.CyclicDependency>
 
     <Fluffy.ModManager.InvalidName>{0} n'est pas un nom valide. Le nom ne doit pas contenir les caractères suivants : {1}.</Fluffy.ModManager.InvalidName>
     <Fluffy.ModManager.ModListExists>{0} existe déjà. Veuillez utiliser un nom différent, sinon supprimez ou renommez la liste de mods existante.</Fluffy.ModManager.ModListExists>
@@ -102,9 +108,11 @@
     <Fluffy.ModManager.DeactivateMod>Désactiver {0}.</Fluffy.ModManager.DeactivateMod>
     <Fluffy.ModManager.MoveBefore>Déplacer {0} pour se charger avant {1}.</Fluffy.ModManager.MoveBefore>
     <Fluffy.ModManager.MoveAfter>Déplacer {0} pour se charger après {1}.</Fluffy.ModManager.MoveAfter>
-    <Fluffy.ModManager.UpdateLocalCopy>Mettre à jour {0} à la version courante de Steam Workshop.</Fluffy.ModManager.UpdateLocalCopy>
     <Fluffy.ModManager.OpenDownloadUri>Aller à la page de téléchargement\n&lt;i&gt;{0}&lt;/i&gt;</Fluffy.ModManager.OpenDownloadUri>
     <Fluffy.ModManager.NoDownloadUri>Aucun lien de téléchargement indiqué.</Fluffy.ModManager.NoDownloadUri>
+    <Fluffy.ModManager.XIsUpToDate>{0} est à jour avec la version de Steam.</Fluffy.ModManager.XIsUpToDate>
+    <Fluffy.ModManager.YHasUpdated>La version de Steam de {0} a été mise à jour.</Fluffy.ModManager.YHasUpdated>
+    <Fluffy.ModManager.UpdateLocalCopy>Mettre à jour {0} à la version courante de Steam Workshop.</Fluffy.ModManager.UpdateLocalCopy>
 
     <!-- Content source -->
     <Fluffy.ModManager.ContentSource.Undefined>Indéfinie</Fluffy.ModManager.ContentSource.Undefined>
@@ -157,8 +165,19 @@
     <Fluffy.ModManager.ShowAllRequirementsTip>Afficher les dépendances satisfaite et non satisfaites dans la description du mod</Fluffy.ModManager.ShowAllRequirementsTip>
     <Fluffy.ModManager.AddModManagerToNewModList>Ajouter Mod Manager aux nouvelles listes de mods</Fluffy.ModManager.AddModManagerToNewModList>
     <Fluffy.ModManager.AddModManagerToNewModListTip>Ajoute Mod Manager aux nouvelles listes de mods en plus du module Core.</Fluffy.ModManager.AddModManagerToNewModListTip>
+    <Fluffy.ModManager.AddHugsLibToNewModList>Ajouter HugsLib aux nouvelles listes de mods</Fluffy.ModManager.AddHugsLibToNewModList>
+    <Fluffy.ModManager.AddHugsLibToNewModListTip>Ajoute HugsLib aux nouvelles listes de mods en plus du module Core.</Fluffy.ModManager.AddHugsLibToNewModListTip>
     <Fluffy.ModManager.AddExpansionsToNewModList>Ajouter les expansions officielles aux nouvelles lists de mods</Fluffy.ModManager.AddExpansionsToNewModList>
     <Fluffy.ModManager.AddExpansionsToNewModListTip>Ajoute les expansions officielles aux nouvelles lists de mods en plus du module Core.</Fluffy.ModManager.AddExpansionsToNewModListTip>
     <Fluffy.ModManager.ShowVersionChecksForSteamMods>Afficher la vérification de version pour les modules steam.</Fluffy.ModManager.ShowVersionChecksForSteamMods>
     <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>La vérification de version et surtout utile pour les modules installés manuellement checks are most useful for manually installed mods, et est donc désactivée par défaut pour les modules steam. Noter que cette fonctionnalité affichera une notification seulement pour les nouveaux mods installés manuellement dont la fonctionnalité est explicitement supportée par les auteurs. Cela ne concerne pas les nouveaux mods steam.</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>Utiliser le répertoire temporaire système pour le cache de cross promotion</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>Si activé, le cache de cross promotion sera stocké dans un répertoire temporaire. Cela peut ralentir le chargement des images de cross promotion, mais permet au système de nettoyer périodiquement le cache.</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
+    <Fluffy.ModManager.CrossPromotionCacheFolderSize>Taille du cache: {0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
+    <Fluffy.ModManager.DeleteCrossPromotionCache>Nettoyer le cache</Fluffy.ModManager.DeleteCrossPromotionCache>
+    <Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>Êtes-vous sûr de nettoyer le cache ?\n\nCela supprimera irrevocablement tous les fichiers {1} dans {0}, libérant {2}.</Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>
+
+    
+    
+    
 </LanguageData>
