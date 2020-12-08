@@ -4,7 +4,7 @@
         "alpha": 18,
         "major": 3,
         "minor": 8,
-        "build": 1038
+        "build": 1062
     },
     "visibility": 0,
     "git_repo": "ModManager",
@@ -25,63 +25,13 @@
         "shadowtouch": "better filename sanitizing code",
         "Mohas": "fix nullref in online manifests"
     },
-    "changenote": "2020-09-05 22:09 :: Fluffy :: fix warning about static texture loading in FluffyUI\n2020-09-05 22:09 :: Fluffy :: fix requirements showing as unment when mod manager was closed and re-opened\n2020-09-05 21:09 :: Fluffy :: remove survey popup\n2020-09-05 21:09 :: Fluffy :: fix error on non-xml files in modlist dir\n2020-08-31 09:08 :: Han Yaodong :: Update Chinese translation for v3.7.1004 (1.2.2723) (#128)\n2020-08-30 23:08 :: Proxyer :: Update Japanese Translation for v3.5.996 (#127)",
+    "changenote": "",
     "tags": [
         "1.0",
         "1.1",
         "1.2"
     ],
     "publishedfileid": "1507748539",
-    "changenotes": [
-        {
-            "repo": "ModManager",
-            "hash": "567fd0887383fdc3a28f8be4e2344c7fd025a430",
-            "date": "2020-09-05 22:09",
-            "author": "Fluffy",
-            "message": "fix warning about static texture loading in FluffyUI"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "aee82d9c33f663e8ee45acb092b02b6b6e9c25a9",
-            "date": "2020-09-05 22:09",
-            "author": "Fluffy",
-            "message": "figured out why recaching modmetadata was necessary! [nolog]"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "67b2a3e375095e4f29906f887b23fdc937a52a6f",
-            "date": "2020-09-05 22:09",
-            "author": "Fluffy",
-            "message": "fix requirements showing as unment when mod manager was closed and re-opened"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "1d2d0ac18cbe5e5aebcb9870d543ec829af92d43",
-            "date": "2020-09-05 21:09",
-            "author": "Fluffy",
-            "message": "remove survey popup"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "c760399d658143983cb89759935abd7ce2db3e9a",
-            "date": "2020-09-05 21:09",
-            "author": "Fluffy",
-            "message": "fix error on non-xml files in modlist dir"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "d530e4be5a24d62a8d43dd394e0c320b09b88e06",
-            "date": "2020-08-31 09:08",
-            "author": "Han Yaodong",
-            "message": "Update Chinese translation for v3.7.1004 (1.2.2723) (#128)"
-        },
-        {
-            "repo": "ModManager",
-            "hash": "eb20a5c73cffc8d077d1f2f5c94aebd3ca5e33ff",
-            "date": "2020-08-30 23:08",
-            "author": "Proxyer",
-            "message": "Update Japanese Translation for v3.5.996 (#127)"
-        }
-    ],
+    "changenotes": [],
     "packageId": "fluffy.modmanager"
 }
