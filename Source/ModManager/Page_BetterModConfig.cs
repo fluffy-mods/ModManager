@@ -124,16 +124,32 @@ namespace ModManager
         public override void WindowUpdate()
         {
             base.WindowUpdate();
+
+
             DraggingManager.Update();
             CrossPromotionManager.Update();
         }
 
         public override void DoWindowContents( Rect canvas )
         {
-
             CheckResized();
             HandleKeyboardNavigation();
-            
+
+
+            var labelRect = new Rect(
+                canvas.xMin,
+                canvas.yMin,
+                canvas.width,
+                LabelHeight*2);
+            //canvas.yMin += LabelHeight - LabelOffset;
+            GUI.color = Color.grey;
+            Text.Font = GameFont.Medium;
+            Widgets.Label(labelRect, "Mod Manager");
+            GUI.color = Color.white;
+            Text.Font = GameFont.Small;
+
+            canvas.yMin += LabelHeight * 2;
+
             var iconBarHeight = IconSize + SmallMargin;
             var colWidth = Mathf.FloorToInt( canvas.width / 5 );
 
@@ -168,8 +184,12 @@ namespace ModManager
                 detailRect.width,
                 iconBarHeight );
 
-            // if ( !DraggingManager.Dragging && !( Mouse.IsOver( availableRect ) || Mouse.IsOver( activeRect ) ) )
-            //     GUI.DragWindow();
+            //FIXME: This should work for now. You can't drag the window too fast but it doesn't collide with the mod dragging as much
+            if (!DraggingManager.Dragging && Mouse.IsOver(labelRect))
+            {
+                GUI.DragWindow();
+            }
+
             DoAvailableMods(availableRect);
             DoActiveMods(activeRect);
             DoDetails( detailRect );
@@ -189,6 +209,7 @@ namespace ModManager
             }
         }
 
+        //Bottom Button bar for available mods
         private void DoAvailableModButtons( Rect canvas )
         {
             Widgets.DrawBoxSolid( canvas, SlightlyDarkBackground );
@@ -214,6 +235,8 @@ namespace ModManager
         }
 
         private int _issueIndex = 0;
+
+        //Bottom Button bar for active mods
         private void DoActiveModButtons( Rect canvas )
         {
             Widgets.DrawBoxSolid(canvas, SlightlyDarkBackground);
@@ -224,11 +247,17 @@ namespace ModManager
                 canvas.yMin,
                 IconSize,
                 IconSize);
+
+            //Mod Lists menu
             if ( Utilities.ButtonIcon( ref iconRect, File, I18n.ModListsTip ) )
                 DoModListFloatMenu();
+
+            //Create local copies menu
             if ( ModButtonManager.ActiveMods.Any( mod => mod.Source == ContentSource.SteamWorkshop ) )
                 if ( Utilities.ButtonIcon( ref iconRect, Folder, I18n.CreateLocalCopies, Status_Plus ) )
                     IO.CreateLocalCopies( ModButtonManager.ActiveMods );
+
+            //Subscribe Missing mods
             if ( ModButtonManager.ActiveButtons.OfType<ModButton_Missing>()
                 .Any( b => b.Identifier.IsSteamWorkshopIdentifier() ) )
                 if ( Utilities.ButtonIcon( ref iconRect, Steam, I18n.SubscribeAllMissing, Status_Plus, Direction8Way.NorthWest ) )
@@ -236,6 +265,8 @@ namespace ModManager
                         .Where( b => b.Identifier.IsSteamWorkshopIdentifier() ).Select( b => b.Identifier ) );
 
             iconRect.x = canvas.xMin + SmallMargin;
+
+            //Issues icon/menu
             var severityThreshold = 2;
             var relevantIssues = ModButtonManager.Issues.Where( i => i.Severity >= severityThreshold );
             if ( relevantIssues.Any() )
@@ -261,11 +292,15 @@ namespace ModManager
                 }
                 iconRect.x += IconSize + SmallMargin;
             }
+
+            //Reset mods 
             if ( ModButtonManager.ActiveButtons.Count > 0)
                 if ( Utilities.ButtonIcon( ref iconRect, Spinner[0], I18n.ResetMods, mouseOverColor: Color.red, direction: UIDirection.RightThenDown ) )
                     Find.WindowStack.Add( new Dialog_MessageBox( I18n.ConfirmResetMods, I18n.Yes,
                                                                  () => ModButtonManager.Reset(), I18n.Cancel,
                                                                  buttonADestructive: true ) );
+
+            //Auto sort
             if (ModButtonManager.ActiveButtons.Count > 1 && ModButtonManager.AnyIssue ) 
                 if (Utilities.ButtonIcon( ref iconRect, Wand, I18n.SortMods ) )
                     ModButtonManager.Sort();
