@@ -113,7 +113,8 @@ namespace ModManager
             get
             {
                 var v = Target?.GetManifest().Version;
-                return v != null && Range.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true );
+                var build = v.Build < 0 ? 0 : v.Build;
+                return v != null && Range.IsSatisfied($"{v.Major}.{v.Minor}.{build}", true );
             }
         }
 
