@@ -1,42 +1,48 @@
-Managing mods should be easy!
+Juggle your mods like a pro!
 
 ![Features](https://banners.karel-kroeze.nl/title/Features.png)  
+
 A cleaner, better Mod management screen.
- - separate lists for available and active mods
- - create and delete local copies of steam mods
- - create and load mod list backups
- - load mod list from save games
- - (mass) subscribe to steam mods
- - proper search filtering
- - drag and drop activation and reordering
- - keyboard navigation
- - mod and mod list colouring
- - discover other mods by your favourite author(s)
+
+- separate lists for available and active mods
+- create and delete local copies of steam mods
+- create and load mod list backups
+- load mod list from save games
+- (mass) subscribe to steam mods
+- proper search filtering
+- drag and drop activation and reordering
+- keyboard navigation
+- mod and mod list colouring
+- discover other mods by your favourite author(s)
 
  And, if supported by the mod author;
- - version checking
- - dependency checks
- - incompatibility checks
- - load order hints
+
+- version checking
+- dependency checks
+- incompatibility checks
+- load order hints
 
 ![For Modders](https://banners.karel-kroeze.nl/title/For%20Modders.png)  
+
 Allows modders to create a Manifest.xml file, enabling a bunch of features that should have been in vanilla;
- - version checking
- - dependency checking
- - incompatibility checking
- - load order hints
+
+- version checking
+- dependency checking
+- incompatibility checking
+- load order hints
 
  See [the documentation](https://github.com/FluffierThanThou/ModManager/blob/master/ForModders.md) for details on how to implement this. It's easy!
 
 ![Details](https://banners.karel-kroeze.nl/title/Details.png)  
+
 **local mod copies**  
 You can make a local copy of any steam mods (or all active steam mods at once) by clicking the corresponding button underneath the mod details (or active mods list). Doing this will make sure any updates to the steam version will not break your game in progress. Local mods are created in the RimWorld/Mods folder, and can be manually deleted, or deleted by clicking the corresponding button underneath the mod details.
 
 *Note: You may want to occasionally delete obsolete local copies, as having many mods in the mod folder will make RimWorld take longer to start, and the Mod Manager window take longer to open.*
 
 **mod list backups**  
-You can create mod lists by clicking the mod list button underneath your active mods, and selecting 'save current list'. You will have to choose a unique name, and the mod list will be stored in a folder next to your save games. 
-To load a modlist, click the mod list button, then select the save game or mod list you want to load mods from. Any mods that couldn't be matched to your current list of mods will be greyed out. 
+You can create mod lists by clicking the mod list button underneath your active mods, and selecting 'save current list'. You will have to choose a unique name, and the mod list will be stored in a folder next to your save games.
+To load a modlist, click the mod list button, then select the save game or mod list you want to load mods from. Any mods that couldn't be matched to your current list of mods will be greyed out.
 To delete a mod list (only the list, not the actual mods), click the mod list button, select the list to be deleted, and then choose the delete option.
 
 **steam subscribing**
@@ -47,34 +53,38 @@ You can set colours for individual mods by clicking the palette icon underneath 
 
 **keyboard navigation**  
 Sometimes, it's easier to navigate large lists with the keyboard.
- - Tab: cycles focus between search inputs and lists of mods.
- - Up/Down: selects the previous/next mod in the list.
- - Page Up/Down: selects the top/bottom mod in the list.
- - Left/Right: switch focus between active and available lists. 
+
+- Tab: cycles focus between search inputs and lists of mods.
+- Up/Down: selects the previous/next mod in the list.
+- Page Up/Down: selects the top/bottom mod in the list.
+- Left/Right: switch focus between active and available lists.
 
  You can also manipulate the lists;
- - Enter: activates/deactivates a mod, and selects the next mod in the list.
- - Shift+left: deactivates a mod, keeping it selected, and switching focus to the available list.
- - Shift+right: activates a mod, keeping it selected, and switching focus to the active list.
- - Shift+up/Shift+down: move an active mod up/down in the load order.
- - Shift+Page Up/Down: move an active mod to the top/bottom of the load order.
+
+- Enter: activates/deactivates a mod, and selects the next mod in the list.
+- Shift+left: deactivates a mod, keeping it selected, and switching focus to the available list.
+- Shift+right: activates a mod, keeping it selected, and switching focus to the active list.
+- Shift+up/Shift+down: move an active mod up/down in the load order.
+- Shift+Page Up/Down: move an active mod to the top/bottom of the load order.
 
  **mod promotions**
  When a Steam Workshop mod is selected (or a local copy of a steam workshop mod), Mod Manager will automatically look for other mods by the same author, and show you a promotion for any mods you don't already have. These promotions let you easily discover other (new) mods by your favourite author(s), and even quickly subscribe to them!
 
  *This function can be turned off in Mod Managers' settings*
+
 ![Contributors](https://banners.karel-kroeze.nl/title/Contributors.png)  
-Han Yaodong: [Update Chinese translation for v3.7.1004 (1.2.2723) (#128)](https://github.com/fluffy-mods/ModManager/commit/d530e4b), [Update Chinese Translation for v2.11.893 (#91)](https://github.com/fluffy-mods/ModManager/commit/ee75c29), [Update Chinese translation for v2.6.886 (#82)](https://github.com/fluffy-mods/ModManager/commit/6612448)
-Proxyer: [Update Japanese Translation for v3.5.996 (#127)](https://github.com/fluffy-mods/ModManager/commit/eb20a5c), [Update Japanese Translation for v3.4.966 (#123)](https://github.com/fluffy-mods/ModManager/commit/1ad46a0), [Update Japanese Translation for v2.8.888 (#83)](https://github.com/fluffy-mods/ModManager/commit/473b3f7), [Pull request: Update Japanese Translation for 2.6.886 v2 (#81)](https://github.com/fluffy-mods/ModManager/commit/ef58b60), [Update Japanese Translation for v2.3.883 (#73)](https://github.com/fluffy-mods/ModManager/commit/ab15042), [Pull request: Update Japanese Translation for v1.35.876 (#67)](https://github.com/fluffy-mods/ModManager/commit/9244f49), [Update Japanese Translation for v1.21.825 (#47)](https://github.com/fluffy-mods/ModManager/commit/10530c7), [Japanese Translation for 1.13.743 (#26)](https://github.com/fluffy-mods/ModManager/commit/48869de), [update japanese translation](https://github.com/fluffy-mods/ModManager/commit/bc730a6), [Japanese Translation for 1.4.646 (#13)](https://github.com/fluffy-mods/ModManager/commit/cfa2fad)
-Mohas: [added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don&#x27;t throw exception when something goes wrong in FetchManifest (#89)](https://github.com/fluffy-mods/ModManager/commit/b49f6d6)
+Han Yaodong: [Update Chinese translations](https://github.com/fluffy-mods/ModManager/commit/d530e4b)
+Proxyer: [Japanese translation](https://github.com/fluffy-mods/ModManager/commit/eb20a5c)
+Mohas: [Stop errors in onlineManifest blocking version checks](https://github.com/fluffy-mods/ModManager/commit/b49f6d6)
 Michaël Marinetti: [Update French translations](https://github.com/fluffy-mods/ModManager/commit/091edf1)
 Patrick Schmitt: [Added German translation (#62)](https://github.com/fluffy-mods/ModManager/commit/ab79af3)
 Torq: [Add russian translation. (#64)](https://github.com/fluffy-mods/ModManager/commit/10cf121)
 enescaglayan: [Turkish translation. (#48)](https://github.com/fluffy-mods/ModManager/commit/749d041)
 Zetrith: [Fix blurry mod descriptions (#35)](https://github.com/fluffy-mods/ModManager/commit/36ba847)
 奔跑的梅洛斯: [Translate to Simplified Chinese (#29)](https://github.com/fluffy-mods/ModManager/commit/664fb38)
-b606: [Update french translation (#30)](https://github.com/fluffy-mods/ModManager/commit/b2a39b7), [Update french translation (#24)](https://github.com/fluffy-mods/ModManager/commit/99ff195), [French language for ModManager (#10)](https://github.com/fluffy-mods/ModManager/commit/c683db7)
 Brrainz: [Add &lt;tags&gt;&lt;/tags&gt; to manifest (#1)](https://github.com/fluffy-mods/ModManager/commit/7df59d4)
+Lucas559-noob: [Brazilian Portuguese translation](https://github.com/fluffy-mods/ModManager/commit/3cbb3d2)
+b606: [French translation](https://github.com/fluffy-mods/ModManager/commit/9df1352)
 
 
 ![Think you found a bug?](https://banners.karel-kroeze.nl/title/Think%20you%20found%20a%20bug%3F.png)  
@@ -93,6 +103,9 @@ All original content (e.g. text, imagery, sounds) in this mod is licensed under 
 
 Parts of the code in this mod, and some of the content may be licensed by their original authors. If this is the case, the original author & license will either be given in the source code, or be in a LICENSE file next to the content. Please do not decompile my mods, but use the original source code available on [GitHub](https://github.com/fluffy-mods/ModManager/), so license information in the source code is preserved.
 
+Parts of this mod were created by, or derived from works created by;
+- Freepik: heart, lightbulb, fire, sword and top hat preview icon ([BY-NC](https://www.freepik.com/))
+- Pixel perfect: bug preview icon ([NC-BY](https://icon54.com/))
 
 
 ![Are you enjoying my mods?](https://banners.karel-kroeze.nl/title/Are%20you%20enjoying%20my%20mods%3F.png)  

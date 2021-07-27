@@ -5,8 +5,8 @@
     "url": "https://github.com/fluffy-mods/ModManager",
     "version": {
         "major": 4,
-        "minor": 0,
-        "build": 1076
+        "minor": 1,
+        "build": 1082
     },
     "author": {
         "name": "Fluffy",
@@ -18,47 +18,107 @@
         "repo": "ModManager",
         "url": "https://github.com/fluffy-mods/ModManager"
     },
-    "changelog": [],
+    "changelog": [
+        {
+            "date": "2021-07-27T19:42:41.000Z",
+            "message": "Merge branch 'pr/b606/141' into 1.3",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "26979eaf307f72ad5120c36bd3e13b6c61f71c4f"
+        },
+        {
+            "date": "2021-07-27T19:39:39.000Z",
+            "message": "Merge branch '1.2' of https://github.com/lucas559-noob/modmanager into pr/Lucas559-noob/145",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "fc2c05e5213375d278deb625c827602948aec32d"
+        },
+        {
+            "date": "2021-07-27T19:34:41.000Z",
+            "message": "fix squiglies, update refs, sdk project style",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "16c79cee2030f4e520ffcc8b3d7931c4a07724fb"
+        },
+        {
+            "date": "2021-02-03T23:38:57.000Z",
+            "message": "Add files via upload",
+            "author": {
+                "name": "Lucas559-noob",
+                "email": "54007604+Lucas559-noob@users.noreply.github.com"
+            },
+            "hash": "3cbb3d2ab019240d07970ecca0ea8459efae70a9"
+        },
+        {
+            "date": "2021-02-03T23:38:57.000Z",
+            "message": "Add files via upload",
+            "author": {
+                "name": "Lucas559-noob",
+                "email": "54007604+Lucas559-noob@users.noreply.github.com"
+            },
+            "hash": "767e13db44b6552b2ce7ba783564d0213a17d56a"
+        },
+        {
+            "date": "2020-11-26T13:04:09.000Z",
+            "message": "Update Languages/French/Keyed/Keyed-French.xml",
+            "author": {
+                "name": "b606",
+                "email": "7627533+b606@users.noreply.github.com"
+            },
+            "hash": "9df135251481a2f23667be4efeea398c4f8cbddf"
+        }
+    ],
     "contributions": [
         {
             "hash": "d530e4be5a24d62a8d43dd394e0c320b09b88e06",
             "author": "Han Yaodong",
-            "description": "Update Chinese translation for v3.7.1004 (1.2.2723) (#128)"
+            "description": "Update Chinese translations"
         },
         {
             "hash": "eb20a5c73cffc8d077d1f2f5c94aebd3ca5e33ff",
             "author": "Proxyer",
-            "description": "Update Japanese Translation for v3.5.996 (#127)"
+            "description": "Japanese translation"
         },
         {
             "hash": "1ad46a0b5a50493e2b695eb9eee08c7feb5d5167",
             "author": "Proxyer",
-            "description": "Update Japanese Translation for v3.4.966 (#123)"
+            "description": "Update Japanese Translation for v3.4.966 (#123)",
+            "suppressed": true
         },
         {
             "hash": "ee75c29839e3dcc05e8d12005ee33351ea36b5ee",
             "author": "Han Yaodong",
-            "description": "Update Chinese Translation for v2.11.893 (#91)"
+            "description": "Update Chinese Translation for v2.11.893 (#91)",
+            "suppressed": true
         },
         {
             "hash": "b49f6d62a558d4b5a3b6ec5650df23a895be0954",
             "author": "Mohas",
-            "description": "added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don't throw exception when something goes wrong in FetchManifest (#89)"
+            "description": "Stop errors in onlineManifest blocking version checks"
         },
         {
             "hash": "473b3f780c1e6620ebe7497be49da0b5a69fafee",
             "author": "Proxyer",
-            "description": "Update Japanese Translation for v2.8.888 (#83)"
+            "description": "Update Japanese Translation for v2.8.888 (#83)",
+            "suppressed": true
         },
         {
             "hash": "ef58b607eb85bc6e4fb26d0e755dd69d321c2a71",
             "author": "Proxyer",
-            "description": "Pull request: Update Japanese Translation for 2.6.886 v2 (#81)"
+            "description": "Pull request: Update Japanese Translation for 2.6.886 v2 (#81)",
+            "suppressed": true
         },
         {
             "hash": "66124489b1a67474f78bc788b139055ae4d9072b",
             "author": "Han Yaodong",
-            "description": "Update Chinese translation for v2.6.886 (#82)"
+            "description": "Update Chinese translation for v2.6.886 (#82)",
+            "suppressed": true
         },
         {
             "hash": "091edf1a2310c7762f382ab2ed65b300bda075cc",
@@ -68,12 +128,14 @@
         {
             "hash": "ab15042c2cac8670915f329bbc3fb02444ea3751",
             "author": "Proxyer",
-            "description": "Update Japanese Translation for v2.3.883 (#73)"
+            "description": "Update Japanese Translation for v2.3.883 (#73)",
+            "suppressed": true
         },
         {
             "hash": "9244f4900d86ba727fd0be0bd2e829e6e05b9f95",
             "author": "Proxyer",
-            "description": "Pull request: Update Japanese Translation for v1.35.876 (#67)"
+            "description": "Pull request: Update Japanese Translation for v1.35.876 (#67)",
+            "suppressed": true
         },
         {
             "hash": "ab79af33c332604bfe680011a683b679a46d9cc4",
@@ -93,7 +155,8 @@
         {
             "hash": "10530c70339cb81100db4e9042673026e3c4bdd7",
             "author": "Proxyer",
-            "description": "Update Japanese Translation for v1.21.825 (#47)"
+            "description": "Update Japanese Translation for v1.21.825 (#47)",
+            "suppressed": true
         },
         {
             "hash": "36ba847ea9d695d00a69b8929f2635e934ebc732",
@@ -103,7 +166,8 @@
         {
             "hash": "48869def191babba62b6e9861331629cea4e0008",
             "author": "Proxyer",
-            "description": "Japanese Translation for 1.13.743 (#26)"
+            "description": "Japanese Translation for 1.13.743 (#26)",
+            "suppressed": true
         },
         {
             "hash": "664fb38a07acd417566766c9b9ec2dd0d3f0d585",
@@ -113,32 +177,53 @@
         {
             "hash": "b2a39b799bf18828e9cc699787efa628a7a754b5",
             "author": "b606",
-            "description": "Update french translation (#30)"
+            "description": "Update french translation (#30)",
+            "suppressed": true
         },
         {
             "hash": "99ff19508bf00eeba2f4f7b7ea0a2da7b41d3cd5",
             "author": "b606",
-            "description": "Update french translation (#24)"
+            "description": "Update french translation (#24)",
+            "suppressed": true
         },
         {
             "hash": "bc730a68d6f5143a59b611674ad0ae9cf09f8766",
             "author": "Proxyer",
-            "description": "update japanese translation"
+            "description": "update japanese translation",
+            "suppressed": true
         },
         {
             "hash": "cfa2fad3dddc5ae89007bc5c29c33e7550dd1256",
             "author": "Proxyer",
-            "description": "Japanese Translation for 1.4.646 (#13)"
+            "description": "Japanese Translation for 1.4.646 (#13)",
+            "suppressed": true
         },
         {
             "hash": "c683db72e74576510bf43142eaf24a7adae5ac45",
             "author": "b606",
-            "description": "French language for ModManager (#10)"
+            "description": "French language for ModManager (#10)",
+            "suppressed": true
         },
         {
             "hash": "7df59d411904b8697455d7b18dc66f76be67fcec",
             "author": "Brrainz",
             "description": "Add <tags></tags> to manifest (#1)"
+        },
+        {
+            "hash": "3cbb3d2ab019240d07970ecca0ea8459efae70a9",
+            "author": "Lucas559-noob",
+            "description": "Brazilian Portuguese translation"
+        },
+        {
+            "hash": "767e13db44b6552b2ce7ba783564d0213a17d56a",
+            "author": "Lucas559-noob",
+            "description": "Add files via upload",
+            "suppressed": true
+        },
+        {
+            "hash": "9df135251481a2f23667be4efeea398c4f8cbddf",
+            "author": "b606",
+            "description": "French translation"
         }
     ],
     "contributors": {
@@ -146,76 +231,21 @@
             {
                 "hash": "d530e4b",
                 "author": "Han Yaodong",
-                "description": "Update Chinese translation for v3.7.1004 (1.2.2723) (#128)"
-            },
-            {
-                "hash": "ee75c29",
-                "author": "Han Yaodong",
-                "description": "Update Chinese Translation for v2.11.893 (#91)"
-            },
-            {
-                "hash": "6612448",
-                "author": "Han Yaodong",
-                "description": "Update Chinese translation for v2.6.886 (#82)"
+                "description": "Update Chinese translations"
             }
         ],
         "Proxyer": [
             {
                 "hash": "eb20a5c",
                 "author": "Proxyer",
-                "description": "Update Japanese Translation for v3.5.996 (#127)"
-            },
-            {
-                "hash": "1ad46a0",
-                "author": "Proxyer",
-                "description": "Update Japanese Translation for v3.4.966 (#123)"
-            },
-            {
-                "hash": "473b3f7",
-                "author": "Proxyer",
-                "description": "Update Japanese Translation for v2.8.888 (#83)"
-            },
-            {
-                "hash": "ef58b60",
-                "author": "Proxyer",
-                "description": "Pull request: Update Japanese Translation for 2.6.886 v2 (#81)"
-            },
-            {
-                "hash": "ab15042",
-                "author": "Proxyer",
-                "description": "Update Japanese Translation for v2.3.883 (#73)"
-            },
-            {
-                "hash": "9244f49",
-                "author": "Proxyer",
-                "description": "Pull request: Update Japanese Translation for v1.35.876 (#67)"
-            },
-            {
-                "hash": "10530c7",
-                "author": "Proxyer",
-                "description": "Update Japanese Translation for v1.21.825 (#47)"
-            },
-            {
-                "hash": "48869de",
-                "author": "Proxyer",
-                "description": "Japanese Translation for 1.13.743 (#26)"
-            },
-            {
-                "hash": "bc730a6",
-                "author": "Proxyer",
-                "description": "update japanese translation"
-            },
-            {
-                "hash": "cfa2fad",
-                "author": "Proxyer",
-                "description": "Japanese Translation for 1.4.646 (#13)"
+                "description": "Japanese translation"
             }
         ],
         "Mohas": [
             {
                 "hash": "b49f6d6",
                 "author": "Mohas",
-                "description": "added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don't throw exception when something goes wrong in FetchManifest (#89)"
+                "description": "Stop errors in onlineManifest blocking version checks"
             }
         ],
         "Michaël Marinetti": [
@@ -260,29 +290,40 @@
                 "description": "Translate to Simplified Chinese (#29)"
             }
         ],
-        "b606": [
-            {
-                "hash": "b2a39b7",
-                "author": "b606",
-                "description": "Update french translation (#30)"
-            },
-            {
-                "hash": "99ff195",
-                "author": "b606",
-                "description": "Update french translation (#24)"
-            },
-            {
-                "hash": "c683db7",
-                "author": "b606",
-                "description": "French language for ModManager (#10)"
-            }
-        ],
         "Brrainz": [
             {
                 "hash": "7df59d4",
                 "author": "Brrainz",
                 "description": "Add <tags></tags> to manifest (#1)"
             }
+        ],
+        "Lucas559-noob": [
+            {
+                "hash": "3cbb3d2",
+                "author": "Lucas559-noob",
+                "description": "Brazilian Portuguese translation"
+            }
+        ],
+        "b606": [
+            {
+                "hash": "9df1352",
+                "author": "b606",
+                "description": "French translation"
+            }
         ]
-    }
+    },
+    "attributions": [
+        {
+            "description": "heart, lightbulb, fire, sword and top hat preview icon",
+            "author": "Freepik",
+            "license": "BY-NC",
+            "url": "https://www.freepik.com/"
+        },
+        {
+            "description": "bug preview icon",
+            "author": "Pixel perfect",
+            "license": "NC-BY",
+            "url": "https://icon54.com/"
+        }
+    ]
 }
