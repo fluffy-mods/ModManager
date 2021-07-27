@@ -1,7 +1,7 @@
 ﻿// VersionedDependency.cs
 // Copyright Karel Kroeze, 2020-2020
 
-using SemVer;
+using SemanticVersioning;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -11,9 +11,9 @@ using Verse;
 
 namespace ModManager
 {
-    public class VersionedDependency: Dependency
+    public class VersionedDependency : Dependency
     {
-        private Range _range = new Range( ">= 0.0.0" );
+        private Range _range = new Range(">= 0.0.0");
         protected bool versioned = false;
 
         public Range Range
@@ -30,9 +30,9 @@ namespace ModManager
         {
             get
             {
-                if ( IsSatisfied )
+                if (IsSatisfied)
                     return 0;
-                if ( IsActive && !IsInRange )
+                if (IsActive && !IsInRange)
                     return 2;
                 return 3;
             }
@@ -40,13 +40,13 @@ namespace ModManager
 
         public override Color Color => IsSatisfied ? Color.white : Color.red;
 
-        public VersionedDependency() : base( null, string.Empty ){}
+        public VersionedDependency() : base(null, string.Empty) { }
 
-        public VersionedDependency( Manifest parent, ModDependency depend ) : base( parent, depend ){}
+        public VersionedDependency(Manifest parent, ModDependency depend) : base(parent, depend) { }
 
-        public VersionedDependency( Manifest parent, string packageId ): base( parent, packageId) {}
+        public VersionedDependency(Manifest parent, string packageId) : base(parent, packageId) { }
 
-        protected static Regex SteamIdRegex = new Regex( @"(\d*)$" );
+        protected static Regex SteamIdRegex = new Regex(@"(\d*)$");
         public override List<FloatMenuOption> Resolvers
         {
             get
@@ -60,29 +60,29 @@ namespace ModManager
                 // search forum
                 // search steam
 
-                if ( IsAvailable && IsInRange )
+                if (IsAvailable && IsInRange)
                 {
-                    options.Add( new FloatMenuOption( I18n.ActivateMod( Target ), () => Target.GetManifest().Button.Active = true ) );
+                    options.Add(new FloatMenuOption(I18n.ActivateMod(Target), () => Target.GetManifest().Button.Active = true));
                 }
-                else if ( !downloadUrl.NullOrEmpty() || !steamWorkshopUrl.NullOrEmpty() )
+                else if (!downloadUrl.NullOrEmpty() || !steamWorkshopUrl.NullOrEmpty())
                 {
-                    if ( !downloadUrl.NullOrEmpty() )
+                    if (!downloadUrl.NullOrEmpty())
                     {
-                        options.Add( new FloatMenuOption( I18n.OpenDownloadUri( downloadUrl ), () => SteamUtility.OpenUrl( downloadUrl ) ) );
+                        options.Add(new FloatMenuOption(I18n.OpenDownloadUri(downloadUrl), () => SteamUtility.OpenUrl(downloadUrl)));
                     }
 
-                    if ( !steamWorkshopUrl.NullOrEmpty() )
+                    if (!steamWorkshopUrl.NullOrEmpty())
                     {
-                        var steamId = SteamIdRegex.Match( steamWorkshopUrl ).Groups[1].Value;
-                        Debug.Log( $"steamUrl: {steamWorkshopUrl}, id: {steamId}" );
-                        options.Add( new FloatMenuOption( I18n.WorkshopPage( displayName ?? packageId ), () => SteamUtility.OpenUrl( downloadUrl ) ) );
-                        options.Add( new FloatMenuOption( I18n.Subscribe( displayName ?? packageId ), () => Workshop.Subscribe( steamId ) ) );
+                        var steamId = SteamIdRegex.Match(steamWorkshopUrl).Groups[1].Value;
+                        Debug.Log($"steamUrl: {steamWorkshopUrl}, id: {steamId}");
+                        options.Add(new FloatMenuOption(I18n.WorkshopPage(displayName ?? packageId), () => SteamUtility.OpenUrl(downloadUrl)));
+                        options.Add(new FloatMenuOption(I18n.Subscribe(displayName ?? packageId), () => Workshop.Subscribe(steamId)));
                     }
                 }
                 else
                 {
-                    options.Add( new FloatMenuOption( I18n.SearchForum( displayName ?? packageId ), () => SteamUtility.OpenUrl( "http://rimworldgame.com/getmods" ) ) );
-                    options.Add( new FloatMenuOption( I18n.SearchSteamWorkshop( displayName ?? packageId ), () => SteamUtility.OpenUrl( $"https://steamcommunity.com/workshop/browse/?appid=294100&searchtext={displayName ?? packageId}"))  );
+                    options.Add(new FloatMenuOption(I18n.SearchForum(displayName ?? packageId), () => SteamUtility.OpenUrl("http://rimworldgame.com/getmods")));
+                    options.Add(new FloatMenuOption(I18n.SearchSteamWorkshop(displayName ?? packageId), () => SteamUtility.OpenUrl($"https://steamcommunity.com/workshop/browse/?appid=294100&searchtext={displayName ?? packageId}")));
                 }
 
                 return options;
@@ -93,14 +93,14 @@ namespace ModManager
         {
             get
             {
-                if ( !IsAvailable )
-                    return I18n.DependencyNotFound( displayName ?? packageId );
-                if ( !IsActive )
-                    return I18n.DependencyNotActive( Target );
-                if ( !IsInRange )
-                    return I18n.DependencyWrongVersion( Target, this );
-                if ( IsSatisfied )
-                    return I18n.DependencyMet( Target );
+                if (!IsAvailable)
+                    return I18n.DependencyNotFound(displayName ?? packageId);
+                if (!IsActive)
+                    return I18n.DependencyNotActive(Target);
+                if (!IsInRange)
+                    return I18n.DependencyWrongVersion(Target, this);
+                if (IsSatisfied)
+                    return I18n.DependencyMet(Target);
                 return "Something weird happened.";
             }
         }
@@ -113,7 +113,7 @@ namespace ModManager
             get
             {
                 var v = Target?.GetManifest().Version;
-                return v != null && Range.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true );
+                return v != null && Range.IsSatisfied($"{v.Major}.{v.Minor}.{v.Build}", true);
             }
         }
 
@@ -121,36 +121,36 @@ namespace ModManager
 
         public override string RequirementTypeLabel => "dependsOn".Translate();
 
-        public void LoadDataFromXmlCustom( XmlNode root )
+        public void LoadDataFromXmlCustom(XmlNode root)
         {
-            var parts      = root.InnerText.Split( ' ' );
+            var parts = root.InnerText.Split(' ');
             string _packageId;
 
-            Debug.TraceDependencies( $"Trying to parse '{root.OuterXml}'");
+            Debug.TraceDependencies($"Trying to parse '{root.OuterXml}'");
 
             // can have 1, 2 or 3 parts
             // 1 part: packageId only.
             // 2 parts: packageId op:version     || where version is attached to the op, e.g. >1.0.0
             // 3 parts: packageId op version
-            switch ( parts.Length )
+            switch (parts.Length)
             {
                 case 1:
                     _packageId = parts[0];
                     break;
                 case 2:
                     _packageId = parts[0];
-                    Range      = new Range( parts[1], true );
+                    Range = new Range(parts[1], true);
                     break;
                 case 3:
                     _packageId = parts[0];
-                    Range      = new Range( parts.Skip( 1 ).StringJoin( "" ) );
+                    Range = new Range(parts.Skip(1).StringJoin(""));
                     break;
                 default:
                     _packageId = root.InnerText;
                     break;
             }
 
-            TryParseIdentifier( _packageId, root );
+            TryParseIdentifier(_packageId, root);
         }
     }
 }

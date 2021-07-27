@@ -1,26 +1,33 @@
-﻿// Debug.cs
-// Copyright Karel Kroeze, 2018-2018
+﻿// Copyright Karel Kroeze, 2020-2021.
+// ModManager/ModManager/Debug.cs
+
 using System.Diagnostics;
 
 namespace ModManager
 {
     public static class Debug
     {
-        [Conditional("DEBUG")]
-        public static void Log( string message)
+        public static void Error(string msg)
         {
-            Verse.Log.Message( "Mod Manager :: " + message, true );
+            Verse.Log.Error("Mod Manager :: " + msg);
         }
 
-        [Conditional( "TRACE_PROMOTIONS" )]
-        public static void TracePromotions( string message ) =>
-            Verse.Log.Message( "Mod Manager :: Promotions :: " + message, true );
+        [Conditional("DEBUG")]
+        public static void Log(string message)
+        {
+            Verse.Log.Message("Mod Manager :: " + message);
+        }
 
-        [Conditional( "TRACE_DEPENDENCIES" )]
-        public static void TraceDependencies( string message ) =>
-            Verse.Log.Message( "Mod Manager :: Dependencies :: " + message, true );
+        [Conditional("TRACE_DEPENDENCIES")]
+        public static void TraceDependencies(string message)
+        {
+            Verse.Log.Message("Mod Manager :: Dependencies :: " + message);
+        }
 
-        public static void Error( string msg ) => Verse.Log.Error( "Mod Manager :: " + msg );
-
+        [Conditional("TRACE_PROMOTIONS")]
+        public static void TracePromotions(string message)
+        {
+            Verse.Log.Message("Mod Manager :: Promotions :: " + message);
+        }
     }
 }

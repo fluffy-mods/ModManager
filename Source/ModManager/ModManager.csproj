@@ -1,153 +1,28 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{91BEE201-EEF4-40C6-BC0A-AEA0A2F011F0}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ModManager</RootNamespace>
-    <AssemblyName>ModManager</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>false</DebugSymbols>
-    <DebugType>none</DebugType>
-    <Optimize>false</Optimize>
+    <TargetFramework>net472</TargetFramework>
+    <TargetRuntime>win</TargetRuntime>
+    <AssemblyTitle>ModManager</AssemblyTitle>
+    <Product>ModManager</Product>
+    <Copyright>Copyright © 2018-2021</Copyright>
+    <DebugType>portable</DebugType>
     <OutputPath>../../Assemblies</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>8</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>none</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>../../Assemblies</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>8</LangVersion>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
+    <PostBuildEvent>mod update</PostBuildEvent>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="0ColourPicker, Version=2.0.0.34093, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\TOOLS\ColourPicker\obj\Release\0ColourPicker.dll</HintPath>
-    </Reference>
-    <Reference Include="0Harmony, Version=2.0.0.8, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Lib.Harmony.2.0.0.8\lib\net472\0Harmony.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp">
-      <HintPath>E:\Games\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-      <HintPath>E:\Games\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="SemVer, Version=1.2.2.0, Culture=neutral, PublicKeyToken=a89bb7dc6f7a145c, processorArchitecture=MSIL">
-      <HintPath>..\packages\SemanticVersioning.1.2.2\lib\net45\SemVer.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
-    <Reference Include="System.Xml" />
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>E:\Games\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.ImageConversionModule">
-      <HintPath>E:\Games\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>E:\Games\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.InputLegacyModule">
-      <HintPath>E:\Games\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>E:\Games\steamapps\common\RimWorld\RimWorldWin64_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="YamlDotNet, Version=8.0.0.0, Culture=neutral, PublicKeyToken=ec19458f3c15af5e, processorArchitecture=MSIL">
-      <HintPath>..\packages\YamlDotNet.8.1.0\lib\net45\YamlDotNet.dll</HintPath>
-    </Reference>
+    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3072" />
+    <PackageReference Include="Lib.Harmony" Version="2.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <ExcludeAssets>runtime</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="SemanticVersioning" Version="2.0.0" />
+    <PackageReference Include="YamlDotNet" Version="11.2.1" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrossPromotion\CrossPromotion.cs" />
-    <Compile Include="CrossPromotion\CrossPromotionManager.cs" />
-    <Compile Include="Dependencies\Dependency.cs" />
-    <Compile Include="Dependencies\Incompatible.cs" />
-    <Compile Include="Dependencies\LoadOrder.cs" />
-    <Compile Include="Dependencies\SourceSync.cs" />
-    <Compile Include="Dependencies\VersionCheck.cs" />
-    <Compile Include="Dependencies\VersionedDependency.cs" />
-    <Compile Include="ModButton\ButtonAttributes.cs" />
-    <Compile Include="ModButton\ModAttributes.cs" />
-    <Compile Include="ModButton\ModButton_Downloading.cs" />
-    <Compile Include="ModList\ModIdentifier.cs" />
-    <Compile Include="ModManagerSettings.cs" />
-    <Compile Include="Patches\Patch_ModMetaData_PackageId.cs" />
-    <Compile Include="Patches\Patch_ScribeMetaHeaderUtility_TryCreateDialogsForVersionMismatchWarnings.cs" />
-    <Compile Include="Patches\Patch_WindowResizer_DoResizeControl.cs" />
-    <Compile Include="Patches\Patch_WorkshopItems_Events.cs" />
-    <Compile Include="ModList\Dialog_Rename_ModList.cs" />
-    <Compile Include="ModButton\ModButton.cs" />
-    <Compile Include="ModButton\ModButtonManager.cs" />
-    <Compile Include="ModButton\ModButton_Missing.cs" />
-    <Compile Include="Manifest\Manifest.cs" />
-    <Compile Include="ModList\ModList.cs" />
-    <Compile Include="Utilities\Constants.cs" />
-    <Compile Include="Utilities\Debug.cs" />
-    <Compile Include="Utilities\DraggingManager.cs" />
-    <Compile Include="Utilities\Extensions.cs" />
-    <Compile Include="Utilities\I18n.cs" />
-    <Compile Include="Utilities\IO.cs" />
-    <Compile Include="ModButton\ModButton_Installed.cs" />
-    <Compile Include="ModManager.cs" />
-    <Compile Include="Patches\Patch_Replace_Page_ModsConfig.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Page_BetterModConfig.cs" />
-    <Compile Include="ModList\ModListManager.cs" />
-    <Compile Include="Utilities\Resources.cs" />
-    <Compile Include="Utilities\UserData.cs" />
-    <Compile Include="Utilities\Utilities.cs" />
-    <Compile Include="Utilities\Workshop.cs" />
+    <ProjectReference Include="..\..\..\..\TOOLS\ColourPicker\ColourPicker.csproj" />
+    <ProjectReference Include="..\..\..\..\TOOLS\FluffyUI\FluffyUI\FluffyUI.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\TOOLS\FluffyUI\FluffyUI\FluffyUI.csproj">
-      <Project>{3e905175-2540-4c06-b4c6-f955836c0451}</Project>
-      <Name>FluffyUI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <PropertyGroup>
-    <PostBuildEvent>mod update -x -n "Mod Manager"</PostBuildEvent>
-  </PropertyGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-         Other similar extension points exist, see Microsoft.Common.targets.
-    <Target Name="BeforeBuild">
-    </Target>
-    <Target Name="AfterBuild">
-    </Target>
-    -->
 </Project>

@@ -1,0 +1,288 @@
+{
+    "name": "Mod Manager",
+    "sourceDir": ".",
+    "targetDir": "ModManager",
+    "url": "https://github.com/fluffy-mods/ModManager",
+    "version": {
+        "major": 4,
+        "minor": 0,
+        "build": 1076
+    },
+    "author": {
+        "name": "Fluffy",
+        "url": "https://github.com/fluffy-mods/",
+        "email": "fluffy.l2032@gmail.com"
+    },
+    "git": {
+        "owner": "fluffy-mods",
+        "repo": "ModManager",
+        "url": "https://github.com/fluffy-mods/ModManager"
+    },
+    "changelog": [],
+    "contributions": [
+        {
+            "hash": "d530e4be5a24d62a8d43dd394e0c320b09b88e06",
+            "author": "Han Yaodong",
+            "description": "Update Chinese translation for v3.7.1004 (1.2.2723) (#128)"
+        },
+        {
+            "hash": "eb20a5c73cffc8d077d1f2f5c94aebd3ca5e33ff",
+            "author": "Proxyer",
+            "description": "Update Japanese Translation for v3.5.996 (#127)"
+        },
+        {
+            "hash": "1ad46a0b5a50493e2b695eb9eee08c7feb5d5167",
+            "author": "Proxyer",
+            "description": "Update Japanese Translation for v3.4.966 (#123)"
+        },
+        {
+            "hash": "ee75c29839e3dcc05e8d12005ee33351ea36b5ee",
+            "author": "Han Yaodong",
+            "description": "Update Chinese Translation for v2.11.893 (#91)"
+        },
+        {
+            "hash": "b49f6d62a558d4b5a3b6ec5650df23a895be0954",
+            "author": "Mohas",
+            "description": "added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don't throw exception when something goes wrong in FetchManifest (#89)"
+        },
+        {
+            "hash": "473b3f780c1e6620ebe7497be49da0b5a69fafee",
+            "author": "Proxyer",
+            "description": "Update Japanese Translation for v2.8.888 (#83)"
+        },
+        {
+            "hash": "ef58b607eb85bc6e4fb26d0e755dd69d321c2a71",
+            "author": "Proxyer",
+            "description": "Pull request: Update Japanese Translation for 2.6.886 v2 (#81)"
+        },
+        {
+            "hash": "66124489b1a67474f78bc788b139055ae4d9072b",
+            "author": "Han Yaodong",
+            "description": "Update Chinese translation for v2.6.886 (#82)"
+        },
+        {
+            "hash": "091edf1a2310c7762f382ab2ed65b300bda075cc",
+            "author": "Michaël Marinetti",
+            "description": "Update French translations"
+        },
+        {
+            "hash": "ab15042c2cac8670915f329bbc3fb02444ea3751",
+            "author": "Proxyer",
+            "description": "Update Japanese Translation for v2.3.883 (#73)"
+        },
+        {
+            "hash": "9244f4900d86ba727fd0be0bd2e829e6e05b9f95",
+            "author": "Proxyer",
+            "description": "Pull request: Update Japanese Translation for v1.35.876 (#67)"
+        },
+        {
+            "hash": "ab79af33c332604bfe680011a683b679a46d9cc4",
+            "author": "Patrick Schmitt",
+            "description": "Added German translation (#62)"
+        },
+        {
+            "hash": "10cf1216376db8657cb67982bf15ae4cbe4c4cba",
+            "author": "Torq",
+            "description": "Add russian translation. (#64)"
+        },
+        {
+            "hash": "749d04164f72384e9e73c6deeea64a614b6b6769",
+            "author": "enescaglayan",
+            "description": "Turkish translation. (#48)"
+        },
+        {
+            "hash": "10530c70339cb81100db4e9042673026e3c4bdd7",
+            "author": "Proxyer",
+            "description": "Update Japanese Translation for v1.21.825 (#47)"
+        },
+        {
+            "hash": "36ba847ea9d695d00a69b8929f2635e934ebc732",
+            "author": "Zetrith",
+            "description": "Fix blurry mod descriptions (#35)"
+        },
+        {
+            "hash": "48869def191babba62b6e9861331629cea4e0008",
+            "author": "Proxyer",
+            "description": "Japanese Translation for 1.13.743 (#26)"
+        },
+        {
+            "hash": "664fb38a07acd417566766c9b9ec2dd0d3f0d585",
+            "author": "奔跑的梅洛斯",
+            "description": "Translate to Simplified Chinese (#29)"
+        },
+        {
+            "hash": "b2a39b799bf18828e9cc699787efa628a7a754b5",
+            "author": "b606",
+            "description": "Update french translation (#30)"
+        },
+        {
+            "hash": "99ff19508bf00eeba2f4f7b7ea0a2da7b41d3cd5",
+            "author": "b606",
+            "description": "Update french translation (#24)"
+        },
+        {
+            "hash": "bc730a68d6f5143a59b611674ad0ae9cf09f8766",
+            "author": "Proxyer",
+            "description": "update japanese translation"
+        },
+        {
+            "hash": "cfa2fad3dddc5ae89007bc5c29c33e7550dd1256",
+            "author": "Proxyer",
+            "description": "Japanese Translation for 1.4.646 (#13)"
+        },
+        {
+            "hash": "c683db72e74576510bf43142eaf24a7adae5ac45",
+            "author": "b606",
+            "description": "French language for ModManager (#10)"
+        },
+        {
+            "hash": "7df59d411904b8697455d7b18dc66f76be67fcec",
+            "author": "Brrainz",
+            "description": "Add <tags></tags> to manifest (#1)"
+        }
+    ],
+    "contributors": {
+        "Han Yaodong": [
+            {
+                "hash": "d530e4b",
+                "author": "Han Yaodong",
+                "description": "Update Chinese translation for v3.7.1004 (1.2.2723) (#128)"
+            },
+            {
+                "hash": "ee75c29",
+                "author": "Han Yaodong",
+                "description": "Update Chinese Translation for v2.11.893 (#91)"
+            },
+            {
+                "hash": "6612448",
+                "author": "Han Yaodong",
+                "description": "Update Chinese translation for v2.6.886 (#82)"
+            }
+        ],
+        "Proxyer": [
+            {
+                "hash": "eb20a5c",
+                "author": "Proxyer",
+                "description": "Update Japanese Translation for v3.5.996 (#127)"
+            },
+            {
+                "hash": "1ad46a0",
+                "author": "Proxyer",
+                "description": "Update Japanese Translation for v3.4.966 (#123)"
+            },
+            {
+                "hash": "473b3f7",
+                "author": "Proxyer",
+                "description": "Update Japanese Translation for v2.8.888 (#83)"
+            },
+            {
+                "hash": "ef58b60",
+                "author": "Proxyer",
+                "description": "Pull request: Update Japanese Translation for 2.6.886 v2 (#81)"
+            },
+            {
+                "hash": "ab15042",
+                "author": "Proxyer",
+                "description": "Update Japanese Translation for v2.3.883 (#73)"
+            },
+            {
+                "hash": "9244f49",
+                "author": "Proxyer",
+                "description": "Pull request: Update Japanese Translation for v1.35.876 (#67)"
+            },
+            {
+                "hash": "10530c7",
+                "author": "Proxyer",
+                "description": "Update Japanese Translation for v1.21.825 (#47)"
+            },
+            {
+                "hash": "48869de",
+                "author": "Proxyer",
+                "description": "Japanese Translation for 1.13.743 (#26)"
+            },
+            {
+                "hash": "bc730a6",
+                "author": "Proxyer",
+                "description": "update japanese translation"
+            },
+            {
+                "hash": "cfa2fad",
+                "author": "Proxyer",
+                "description": "Japanese Translation for 1.4.646 (#13)"
+            }
+        ],
+        "Mohas": [
+            {
+                "hash": "b49f6d6",
+                "author": "Mohas",
+                "description": "added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don't throw exception when something goes wrong in FetchManifest (#89)"
+            }
+        ],
+        "Michaël Marinetti": [
+            {
+                "hash": "091edf1",
+                "author": "Michaël Marinetti",
+                "description": "Update French translations"
+            }
+        ],
+        "Patrick Schmitt": [
+            {
+                "hash": "ab79af3",
+                "author": "Patrick Schmitt",
+                "description": "Added German translation (#62)"
+            }
+        ],
+        "Torq": [
+            {
+                "hash": "10cf121",
+                "author": "Torq",
+                "description": "Add russian translation. (#64)"
+            }
+        ],
+        "enescaglayan": [
+            {
+                "hash": "749d041",
+                "author": "enescaglayan",
+                "description": "Turkish translation. (#48)"
+            }
+        ],
+        "Zetrith": [
+            {
+                "hash": "36ba847",
+                "author": "Zetrith",
+                "description": "Fix blurry mod descriptions (#35)"
+            }
+        ],
+        "奔跑的梅洛斯": [
+            {
+                "hash": "664fb38",
+                "author": "奔跑的梅洛斯",
+                "description": "Translate to Simplified Chinese (#29)"
+            }
+        ],
+        "b606": [
+            {
+                "hash": "b2a39b7",
+                "author": "b606",
+                "description": "Update french translation (#30)"
+            },
+            {
+                "hash": "99ff195",
+                "author": "b606",
+                "description": "Update french translation (#24)"
+            },
+            {
+                "hash": "c683db7",
+                "author": "b606",
+                "description": "French language for ModManager (#10)"
+            }
+        ],
+        "Brrainz": [
+            {
+                "hash": "7df59d4",
+                "author": "Brrainz",
+                "description": "Add <tags></tags> to manifest (#1)"
+            }
+        ]
+    }
+}

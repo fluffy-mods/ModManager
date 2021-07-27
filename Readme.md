@@ -1,5 +1,3 @@
-[![RimWorld 1.2](https://img.shields.io/badge/RimWorld-1.2-brightgreen.svg)](http://rimworldgame.com/)
-
 Managing mods should be easy!
 
 ![Features](https://banners.karel-kroeze.nl/title/Features.png)  
@@ -65,45 +63,44 @@ Sometimes, it's easier to navigate large lists with the keyboard.
  When a Steam Workshop mod is selected (or a local copy of a steam workshop mod), Mod Manager will automatically look for other mods by the same author, and show you a promotion for any mods you don't already have. These promotions let you easily discover other (new) mods by your favourite author(s), and even quickly subscribe to them!
 
  *This function can be turned off in Mod Managers' settings*
+![Contributors](https://banners.karel-kroeze.nl/title/Contributors.png)  
+Han Yaodong: [Update Chinese translation for v3.7.1004 (1.2.2723) (#128)](https://github.com/fluffy-mods/ModManager/commit/d530e4b), [Update Chinese Translation for v2.11.893 (#91)](https://github.com/fluffy-mods/ModManager/commit/ee75c29), [Update Chinese translation for v2.6.886 (#82)](https://github.com/fluffy-mods/ModManager/commit/6612448)
+Proxyer: [Update Japanese Translation for v3.5.996 (#127)](https://github.com/fluffy-mods/ModManager/commit/eb20a5c), [Update Japanese Translation for v3.4.966 (#123)](https://github.com/fluffy-mods/ModManager/commit/1ad46a0), [Update Japanese Translation for v2.8.888 (#83)](https://github.com/fluffy-mods/ModManager/commit/473b3f7), [Pull request: Update Japanese Translation for 2.6.886 v2 (#81)](https://github.com/fluffy-mods/ModManager/commit/ef58b60), [Update Japanese Translation for v2.3.883 (#73)](https://github.com/fluffy-mods/ModManager/commit/ab15042), [Pull request: Update Japanese Translation for v1.35.876 (#67)](https://github.com/fluffy-mods/ModManager/commit/9244f49), [Update Japanese Translation for v1.21.825 (#47)](https://github.com/fluffy-mods/ModManager/commit/10530c7), [Japanese Translation for 1.13.743 (#26)](https://github.com/fluffy-mods/ModManager/commit/48869de), [update japanese translation](https://github.com/fluffy-mods/ModManager/commit/bc730a6), [Japanese Translation for 1.4.646 (#13)](https://github.com/fluffy-mods/ModManager/commit/cfa2fad)
+Mohas: [added a null check to onlineManifest in VersionCheck.Resolvers so Resolvers don&#x27;t throw exception when something goes wrong in FetchManifest (#89)](https://github.com/fluffy-mods/ModManager/commit/b49f6d6)
+Michaël Marinetti: [Update French translations](https://github.com/fluffy-mods/ModManager/commit/091edf1)
+Patrick Schmitt: [Added German translation (#62)](https://github.com/fluffy-mods/ModManager/commit/ab79af3)
+Torq: [Add russian translation. (#64)](https://github.com/fluffy-mods/ModManager/commit/10cf121)
+enescaglayan: [Turkish translation. (#48)](https://github.com/fluffy-mods/ModManager/commit/749d041)
+Zetrith: [Fix blurry mod descriptions (#35)](https://github.com/fluffy-mods/ModManager/commit/36ba847)
+奔跑的梅洛斯: [Translate to Simplified Chinese (#29)](https://github.com/fluffy-mods/ModManager/commit/664fb38)
+b606: [Update french translation (#30)](https://github.com/fluffy-mods/ModManager/commit/b2a39b7), [Update french translation (#24)](https://github.com/fluffy-mods/ModManager/commit/99ff195), [French language for ModManager (#10)](https://github.com/fluffy-mods/ModManager/commit/c683db7)
+Brrainz: [Add &lt;tags&gt;&lt;/tags&gt; to manifest (#1)](https://github.com/fluffy-mods/ModManager/commit/7df59d4)
 
-![Contributors](https://banners.karel-kroeze.nl/title/Contributors.png)
- - erdelf:	invaluable help with Harmony transpilers
- - Brrainz:	multi-version targetting, inspiration for mod promotions
- - b606:	French translation
- - Proxyer:	Japanese translation, with frequent updates
- - 奔跑的梅洛斯:	Simplified Chinese translation
- - Zetrith:	Fix blurry mod descriptions
- - enescaglayan:	Turkish translation
- - Lex1975:	Russian translation
- - Torq:	Russian translation
- - Patrick Schmitt:	German translation
- - Han Yaodong:	Updates to Chinese translations
- - Michaël Marinetti:	Updates to French translation
- - shadowtouch:	better filename sanitizing code
- - Mohas:	fix nullref in online manifests
 
 ![Think you found a bug?](https://banners.karel-kroeze.nl/title/Think%20you%20found%20a%20bug%3F.png)  
+
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
 and then create a bug report [here](https://github.com/fluffy-mods/ModManager/issues)
 
 ![Older versions](https://banners.karel-kroeze.nl/title/Older%20versions.png)  
+
 All current and past versions of this mod can be downloaded from [GitHub](https://github.com/fluffy-mods/ModManager/releases).
 
 ![License](https://banners.karel-kroeze.nl/title/License.png)  
+
 All original code in this mod is licensed under the [MIT license](https://opensource.org/licenses/MIT). Do what you want, but give me credit.
 All original content (e.g. text, imagery, sounds) in this mod is licensed under the [CC-BY-SA 4.0 license](http://creativecommons.org/licenses/by-sa/4.0/).
 
-Parts of the code in this mod, and some content may be licensed by their original authors. If this is the case, the original author & license will either be given in the source code, or be in a LICENSE file next to the content. Please do not decompile my mods, but use the original source code available on [GitHub](https://github.com/fluffy-mods/ModManager/), so license information in the source code is preserved.
+Parts of the code in this mod, and some of the content may be licensed by their original authors. If this is the case, the original author & license will either be given in the source code, or be in a LICENSE file next to the content. Please do not decompile my mods, but use the original source code available on [GitHub](https://github.com/fluffy-mods/ModManager/), so license information in the source code is preserved.
+
+
+
+![Are you enjoying my mods?](https://banners.karel-kroeze.nl/title/Are%20you%20enjoying%20my%20mods%3F.png)  
+
+Become a supporter and show your appreciation by buying me a coffee (or contribute towards a nice single malt).
 
 [![Supporters](https://banners.karel-kroeze.nl/donations.png)](https://ko-fi.com/fluffymods)
 
-![Are you enjoying my mods?](https://banners.karel-kroeze.nl/title/Are%20you%20enjoying%20my%20mods%3F.png)  
-Become a supporter and show your appreciation by buying me a coffee (or contribute towards a nice single malt).
-
-[![Buy Me a Coffee](http://i.imgur.com/EjWiUwx.gif)](https://ko-fi.com/fluffymods)
+[![Buy Me a Coffee](https://i.imgur.com/6P7Ap79.gif)](https://ko-fi.com/fluffymods)
 
 [![I Have a Black Dog](https://i.ibb.co/ss59Rwy/New-Project-2.png)](https://www.youtube.com/watch?v=XiCrniLQGYc)
-
-
-![Version](https://banners.karel-kroeze.nl/title/Version.png)  
-This is version 3.8.1062, for RimWorld 1.2.2753.
