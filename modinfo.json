@@ -325,5 +325,14 @@
             "license": "NC-BY",
             "url": "https://icon54.com/"
         }
+    ],
+    "dependencies": [
+        {
+            "type": "required",
+            "id": "brrainz.harmony",
+            "name": "Harmony",
+            "steamId": 2009463077,
+            "download": "https://github.com/pardeike/HarmonyRimWorld/releases/latest"
+        }
     ]
 }
