@@ -5,8 +5,8 @@
     "url": "https://github.com/fluffy-mods/ModManager",
     "version": {
         "major": 4,
-        "minor": 1,
-        "build": 1082
+        "minor": 2,
+        "build": 1084
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,15 @@
         "url": "https://github.com/fluffy-mods/ModManager"
     },
     "changelog": [
+        {
+            "date": "2021-08-06T21:35:09.000Z",
+            "message": "add harmony requirement to mod config",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "19fa57bc13ed4c5da3aef02be200e0b706e4b262"
+        },
         {
             "date": "2021-07-27T19:42:41.000Z",
             "message": "Merge branch 'pr/b606/141' into 1.3",

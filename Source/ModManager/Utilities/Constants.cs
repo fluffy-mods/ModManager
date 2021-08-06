@@ -1,12 +1,8 @@
-﻿// Constants.cs
+// Constants.cs
 // Copyright Karel Kroeze, 2018-2018
 
-using UnityEngine;
-
-namespace ModManager
-{
-    public static class Constants
-    {
+namespace ModManager {
+    public static class Constants {
         public const int ScrollSpeed = 10;
         public const int PromotionsHeight = 100;
         public const int SmallMargin = 6;

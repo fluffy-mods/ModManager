@@ -1,10 +1,8 @@
 using UnityEngine;
 using Verse;
 
-namespace ModManager
-{
-    public class ModManagerSettings : ModSettings
-    {
+namespace ModManager {
+    public class ModManagerSettings: ModSettings {
 
         public bool ShowPromotions                  = true;
         public bool ShowPromotions_NotSubscribed    = true;
@@ -20,28 +18,27 @@ namespace ModManager
 
         public bool SurveyNotificationShown = false;
 
-        public override void ExposeData()
-        {
+        public override void ExposeData() {
             base.ExposeData();
-            Scribe_Values.Look( ref ShowPromotions, "ShowPromotions", true );
-            Scribe_Values.Look( ref ShowPromotions_NotSubscribed, "ShowPromotions_NotSubscribed", true );
-            Scribe_Values.Look( ref ShowPromotions_NotActive, "ShowPromotions_NotActive", false );
-            Scribe_Values.Look( ref TrimTags, "TrimTags", true );
-            Scribe_Values.Look( ref TrimVersionStrings, "TrimVersionStrings", false );
-            Scribe_Values.Look( ref AddHugsLibToNewModLists, "AddHugsLibToNewModLists", true );
-            Scribe_Values.Look( ref AddModManagerToNewModLists, "AddModManagerToNewModLists", true );
-            Scribe_Values.Look( ref AddExpansionsToNewModLists, "AddExpansionsToNewModLists", true );
-            Scribe_Values.Look( ref ShowSatisfiedRequirements, "ShowSatisfiedRequirements", false );
-            Scribe_Values.Look( ref ShowVersionChecksOnSteamMods, "ShowVersionChecksOnSteamMods", false );
-            Scribe_Values.Look( ref UseTempFolderForCrossPromotions, "UseTempFolderForCrossPromotions", false  );
-            Scribe_Values.Look( ref SurveyNotificationShown, "SurveyNotificationShown", false  );
+            Scribe_Values.Look(ref ShowPromotions, "ShowPromotions", true);
+            Scribe_Values.Look(ref ShowPromotions_NotSubscribed, "ShowPromotions_NotSubscribed", true);
+            Scribe_Values.Look(ref ShowPromotions_NotActive, "ShowPromotions_NotActive", false);
+            Scribe_Values.Look(ref TrimTags, "TrimTags", true);
+            Scribe_Values.Look(ref TrimVersionStrings, "TrimVersionStrings", false);
+            Scribe_Values.Look(ref AddHugsLibToNewModLists, "AddHugsLibToNewModLists", true);
+            Scribe_Values.Look(ref AddModManagerToNewModLists, "AddModManagerToNewModLists", true);
+            Scribe_Values.Look(ref AddExpansionsToNewModLists, "AddExpansionsToNewModLists", true);
+            Scribe_Values.Look(ref ShowSatisfiedRequirements, "ShowSatisfiedRequirements", false);
+            Scribe_Values.Look(ref ShowVersionChecksOnSteamMods, "ShowVersionChecksOnSteamMods", false);
+            Scribe_Values.Look(ref UseTempFolderForCrossPromotions, "UseTempFolderForCrossPromotions", false);
+            Scribe_Values.Look(ref SurveyNotificationShown, "SurveyNotificationShown", false);
         }
 
 
-        public void DoWindowContents(Rect canvas)
-        {
-            var listing = new Listing_Standard();
-            listing.ColumnWidth = canvas.width;
+        public void DoWindowContents(Rect canvas) {
+            Listing_Standard listing = new Listing_Standard {
+                ColumnWidth = canvas.width
+            };
             listing.Begin(canvas);
             listing.CheckboxLabeled(I18n.ShowAllRequirements, ref ShowSatisfiedRequirements,
                                      I18n.ShowAllRequirementsTip);
@@ -51,37 +48,42 @@ namespace ModManager
             listing.Gap();
             listing.CheckboxLabeled(I18n.ShowPromotions, ref ShowPromotions, I18n.ShowPromotionsTip);
 
-            if (!ShowPromotions)
+            if (!ShowPromotions) {
                 GUI.color = Color.grey;
+            }
 
             listing.CheckboxLabeled(I18n.ShowPromotions_NotSubscribed, ref ShowPromotions_NotSubscribed);
             listing.CheckboxLabeled(I18n.ShowPromotions_NotActive, ref ShowPromotions_NotActive);
-            var before                                                = UseTempFolderForCrossPromotions;
-            if ( CrossPromotionManager.cachePathOverriden ) GUI.color = Color.grey;
-            listing.CheckboxLabeled( I18n.UseTempFolderForCrossPromotionCache, ref UseTempFolderForCrossPromotions,
-                                     I18n.UseTempFolderForCrossPromotionCacheTip );
-            if ( before != UseTempFolderForCrossPromotions ) CrossPromotionManager.Notify_CrossPromotionPathChanged();
-            if ( CrossPromotionManager.CacheCount > 0 )
-            {
+            bool before                                                = UseTempFolderForCrossPromotions;
+            if (CrossPromotionManager.cachePathOverriden) {
+                GUI.color = Color.grey;
+            }
+
+            listing.CheckboxLabeled(I18n.UseTempFolderForCrossPromotionCache, ref UseTempFolderForCrossPromotions,
+                                     I18n.UseTempFolderForCrossPromotionCacheTip);
+            if (before != UseTempFolderForCrossPromotions) {
+                CrossPromotionManager.Notify_CrossPromotionPathChanged();
+            }
+
+            if (CrossPromotionManager.CacheCount > 0) {
                 GUI.color = Color.white;
-                if ( listing.ButtonTextLabeled( I18n.CrossPromotionCacheFolderSize( CrossPromotionManager.CacheSize ),
-                                                I18n.DeleteCrossPromotionCache ) )
-                {
+                if (listing.ButtonTextLabeled(I18n.CrossPromotionCacheFolderSize(CrossPromotionManager.CacheSize),
+                                                I18n.DeleteCrossPromotionCache)) {
                     CrossPromotionManager.DeleteCache();
                 }
-            }
-            else
-            {
+            } else {
                 GUI.color = Color.grey;
-                listing.Label( I18n.CrossPromotionCacheFolderSize( CrossPromotionManager.CacheSize ) );
+                listing.Label(I18n.CrossPromotionCacheFolderSize(CrossPromotionManager.CacheSize));
             }
 
             GUI.color = Color.white;
             listing.Gap();
 
             listing.CheckboxLabeled(I18n.TrimTags, ref TrimTags, I18n.TrimTagsTip);
-            if (!TrimTags)
+            if (!TrimTags) {
                 GUI.color = Color.grey;
+            }
+
             listing.CheckboxLabeled(I18n.TrimVersionStrings, ref TrimVersionStrings,
                                      I18n.TrimVersionStringsTip);
 

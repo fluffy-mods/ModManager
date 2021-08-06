@@ -1,21 +1,18 @@
-﻿//#define DEBUG_PROFILE
+//#define DEBUG_PROFILE
 
 using System.Reflection;
 using HarmonyLib;
 using UnityEngine;
 using Verse;
 
-namespace ModManager
-{
-    public class ModManager : Mod
-    {
-        public ModManager(ModContentPack content) : base(content)
-        {
+namespace ModManager {
+    public class ModManager: Mod {
+        public ModManager(ModContentPack content) : base(content) {
             Instance = this;
             UserData = new UserData();
             Settings = GetSettings<ModManagerSettings>();
 
-            var harmonyInstance = new Harmony("fluffy.modmanager");
+            Harmony harmonyInstance = new Harmony("fluffy.modmanager");
 
 #if DEBUG
             Harmony.DEBUG = true;
@@ -31,24 +28,21 @@ namespace ModManager
 
         public static ModManager Instance { get; private set; }
 
-        public static UserData           UserData { get; private set; }
+        public static UserData UserData { get; private set; }
         public static ModManagerSettings Settings { get; private set; }
 
-        public override string SettingsCategory()
-        {
+        public override string SettingsCategory() {
             return I18n.SettingsCategory;
         }
 
 
-        public override void WriteSettings()
-        {
+        public override void WriteSettings() {
             base.WriteSettings();
             CrossPromotionManager.Notify_UpdateRelevantMods();
             CrossPromotionManager.Notify_CrossPromotionPathChanged();
         }
 
-        public override void DoSettingsWindowContents(Rect canvas)
-        {
+        public override void DoSettingsWindowContents(Rect canvas) {
             base.DoSettingsWindowContents(canvas);
             Settings.DoWindowContents(canvas);
         }

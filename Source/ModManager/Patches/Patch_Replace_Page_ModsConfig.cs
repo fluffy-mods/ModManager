@@ -1,21 +1,17 @@
-﻿// Patch_Replace_Page_ModsConfig.cs
+// Patch_Replace_Page_ModsConfig.cs
 // Copyright Karel Kroeze, 2018-2018
 
-using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using HarmonyLib;
 using RimWorld;
 using Verse;
 
-namespace ModManager
-{
-    [HarmonyPatch( typeof( MainMenuDrawer ) )]
-    [HarmonyPatch( "DoMainMenuControls" )]
-    public static class Patch_Replace_Page_ModsConfig
-    {
-        public static IEnumerable<CodeInstruction> Transpiler( IEnumerable<CodeInstruction> instructions )
-        {
+namespace ModManager {
+    [HarmonyPatch(typeof(MainMenuDrawer))]
+    [HarmonyPatch("DoMainMenuControls")]
+    public static class Patch_Replace_Page_ModsConfig {
+        public static IEnumerable<CodeInstruction> Transpiler(IEnumerable<CodeInstruction> instructions) {
             /**
              * DoMainMenuControls builds a List of ListableOptions for the main menu buttons.
              * The problem with this is that they are called with a delegate, which is compiled
@@ -30,19 +26,16 @@ namespace ModManager
              * gets cached instead of the compiler generated delegate.
              */
 
-            var modsFound = false;
-            var done = false;
+            bool modsFound = false;
+            bool done = false;
 
-            foreach ( var instruction in instructions )
-            {
-                if ( instruction.opcode == OpCodes.Ldstr && (string) instruction.operand == "Mods" )
-                {
+            foreach (CodeInstruction instruction in instructions) {
+                if (instruction.opcode == OpCodes.Ldstr && (string) instruction.operand == "Mods") {
                     modsFound = true;
                 }
 
-                if ( modsFound && !done && instruction.opcode == OpCodes.Ldftn )
-                {
-                    instruction.operand = AccessTools.Method( typeof( Patch_Replace_Page_ModsConfig ), "OpenModsConfig" );
+                if (modsFound && !done && instruction.opcode == OpCodes.Ldftn) {
+                    instruction.operand = AccessTools.Method(typeof(Patch_Replace_Page_ModsConfig), "OpenModsConfig");
                     done = true;
                 }
 
@@ -50,9 +43,8 @@ namespace ModManager
             }
         }
 
-        public static void OpenModsConfig()
-        {
-            Find.WindowStack.Add( new Page_BetterModConfig() );
+        public static void OpenModsConfig() {
+            Find.WindowStack.Add(new Page_BetterModConfig());
         }
     }
 }

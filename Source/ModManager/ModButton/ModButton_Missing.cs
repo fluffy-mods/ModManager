@@ -1,4 +1,4 @@
-﻿// ModButton_Missing.cs
+// ModButton_Missing.cs
 // Copyright Karel Kroeze, 2018-2018
 
 using System;
@@ -6,18 +6,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Verse;
 using static ModManager.Constants;
-using static ModManager.Resources;
 
-namespace ModManager
-{
-    public class ModButton_Missing: ModButton
-    {
-        private string _name;
+namespace ModManager {
+    public class ModButton_Missing: ModButton {
+        private readonly string _name;
         public override string Name => _name;
-        private string _identifier;
+        private readonly string _identifier;
 
-        public ModButton_Missing(string id, string name)
-        {
+        public ModButton_Missing(string id, string name) {
             _identifier = id;
             _name = name;
         }
@@ -25,39 +21,36 @@ namespace ModManager
         public override string Identifier => _identifier;
 
 
-        public override bool SamePackageId( string packageId )
-        {
+        public override bool SamePackageId(string packageId) {
             return false;
         }
 
-        public override bool Active
-        {
+        public override bool Active {
             get => true;
-            set
-            {
-                if ( value == false )
-                    ModButtonManager.TryRemove( this );
+            set {
+                if (value == false) {
+                    ModButtonManager.TryRemove(this);
+                }
             }
         }
 
         public override Color Color => Color.gray;
 
-        public override void DoModButton( Rect canvas, bool alternate = false, Action clickAction = null, Action doubleClickAction = null,
-            bool deemphasizeFiltered = false, string filter = null )
-        {
+        public override void DoModButton(Rect canvas, bool alternate = false, Action clickAction = null, Action doubleClickAction = null,
+            bool deemphasizeFiltered = false, string filter = null) {
             base.DoModButton(canvas, alternate, clickAction, doubleClickAction, deemphasizeFiltered, filter);
-            canvas = canvas.ContractedBy( SmallMargin / 2f);
+            canvas = canvas.ContractedBy(SmallMargin / 2f);
 
             /**
              * NAME                   
              */
-            var nameRect = new Rect(
+            Rect nameRect = new Rect(
                 canvas.xMin,
                 canvas.yMin,
-                canvas.width - SmallIconSize * 2 - SmallMargin,
+                canvas.width - (SmallIconSize * 2) - SmallMargin,
                 canvas.height * 2 / 3f);
 
-            var deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && MatchesFilter(filter) <= 0;
+            bool deemphasized = deemphasizeFiltered && !filter.NullOrEmpty() && MatchesFilter(filter) <= 0;
 
             Text.Anchor = TextAnchor.MiddleLeft;
             Text.Font = GameFont.Small;
@@ -67,28 +60,28 @@ namespace ModManager
             Text.Anchor = TextAnchor.UpperLeft;
             Text.Font = GameFont.Small;
 
-            if (Mouse.IsOver(nameRect) && Name != Name.Truncate(nameRect.width, _modNameTruncationCache))
+            if (Mouse.IsOver(nameRect) && Name != Name.Truncate(nameRect.width, _modNameTruncationCache)) {
                 TooltipHandler.TipRegion(nameRect, Name);
+            }
         }
 
-        internal override void DoModActionButtons( Rect canvas ){}
+        internal override void DoModActionButtons(Rect canvas) { }
 
-        internal override void DoModDetails( Rect canvas )
-        {
-            DrawRequirements( ref canvas );
+        internal override void DoModDetails(Rect canvas) {
+            DrawRequirements(ref canvas);
         }
 
         public override IEnumerable<Dependency> Requirements => Manifest.EmptyRequirementList;
-//        {
-//            get
-//            {
-//                if ( _issues == null )
-//                {
-//                    _issues = new List<ModRequirement>();
-//                    _issues.Add( ModRequirement.MissingMod( this ) );
-//                }
-//                return _issues;
-//            }
-//        }
+        //        {
+        //            get
+        //            {
+        //                if ( _issues == null )
+        //                {
+        //                    _issues = new List<ModRequirement>();
+        //                    _issues.Add( ModRequirement.MissingMod( this ) );
+        //                }
+        //                return _issues;
+        //            }
+        //        }
     }
 }
