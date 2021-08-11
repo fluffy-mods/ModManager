@@ -1,28 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
-    <TargetRuntime>win</TargetRuntime>
-    <AssemblyTitle>ModManager</AssemblyTitle>
-    <Product>ModManager</Product>
-    <Copyright>Copyright © 2018-2021</Copyright>
-    <DebugType>portable</DebugType>
-    <OutputPath>../../Assemblies</OutputPath>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
-    <PostBuildEvent>mod update</PostBuildEvent>
-    <LangVersion>8.0</LangVersion>
-  </PropertyGroup>
-  <ItemGroup>
-    <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3080" />
-    <PackageReference Include="Lib.Harmony" Version="2.1.1">
-      <PrivateAssets>all</PrivateAssets>
-      <ExcludeAssets>runtime</ExcludeAssets>
-    </PackageReference>
-    <PackageReference Include="SemanticVersioning" Version="2.0.0" />
-    <PackageReference Include="YamlDotNet" Version="11.2.1" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\TOOLS\ColourPicker\ColourPicker.csproj" />
-    <ProjectReference Include="..\..\..\..\TOOLS\FluffyUI\FluffyUI\FluffyUI.csproj" />
-  </ItemGroup>
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <AssemblyTitle>ModManager</AssemblyTitle>
+        <Product>ModManager</Product>
+        <Copyright>Copyright © 2018-2021</Copyright>
+        <DebugType>portable</DebugType>
+        <OutputPath>../../Assemblies</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <PostBuildEvent>mod update</PostBuildEvent>
+        <LangVersion>8</LangVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Krafs.Rimworld.Ref" Version="1.3.3087" />
+        <PackageReference Include="Lib.Harmony" Version="2.1.1" ExcludeAssets="runtime" />
+        <PackageReference Include="SemanticVersioning" Version="2.0.0" />
+        <PackageReference Include="YamlDotNet" Version="11.2.1" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\..\TOOLS\ColourPicker\ColourPicker.csproj" />
+        <ProjectReference Include="..\..\..\..\TOOLS\FluffyUI\FluffyUI\FluffyUI.csproj" />
+    </ItemGroup>
 </Project>
