@@ -112,8 +112,20 @@ namespace ModManager {
             Scribe.loader.FinalizeLoading();
             Debug.Log(list.ToString());
 
-            if (list._modIds.NullOrEmpty() || list._modNames.NullOrEmpty()) {
+            if (list._modIds.NullOrEmpty()) {
                 throw new InvalidDataException("ModList contains no mods.");
+            }
+
+            if (list._modNames.NullOrEmpty()) {
+                list._modNames = new List<string>();
+                foreach (var id in list._modIds)
+                {
+                    ModMetaData mod = ModLister.GetModWithIdentifier(id.StripPostfixes(), true);
+                    if (mod == null) {
+                        throw new InvalidDataException($"Mod {id} not found.");
+                    }
+                    list._modNames.Add(mod.Name);
+                }
             }
 
             if (list._modIds.Count != list._modNames.Count) {
