@@ -1,6 +1,6 @@
 Juggle your mods like a pro!
 
-![Features](https://banners.karel-kroeze.nl/title/Features.png)  
+![Features](https://headers.karel-kroeze.nl/title/Features.png)  
 A cleaner, better Mod management screen.
 
 - separate lists for available and active mods
@@ -21,7 +21,7 @@ A cleaner, better Mod management screen.
 - incompatibility checks
 - load order hints
 
-![For Modders](https://banners.karel-kroeze.nl/title/For%20Modders.png)  
+![For Modders](https://headers.karel-kroeze.nl/title/For%20Modders.png)  
 Allows modders to create a Manifest.xml file, enabling a bunch of features that should have been in vanilla;
 
 - version checking
@@ -31,7 +31,7 @@ Allows modders to create a Manifest.xml file, enabling a bunch of features that 
 
  See [the documentation](https://github.com/FluffierThanThou/ModManager/blob/master/ForModders.md) for details on how to implement this. It's easy!
 
-![Details](https://banners.karel-kroeze.nl/title/Details.png)  
+![Details](https://headers.karel-kroeze.nl/title/Details.png)  
 **local mod copies**  
 You can make a local copy of any steam mods (or all active steam mods at once) by clicking the corresponding button underneath the mod details (or active mods list). Doing this will make sure any updates to the steam version will not break your game in progress. Local mods are created in the RimWorld/Mods folder, and can be manually deleted, or deleted by clicking the corresponding button underneath the mod details.
 
@@ -69,31 +69,16 @@ Sometimes, it's easier to navigate large lists with the keyboard.
 
  *This function can be turned off in Mod Managers' settings*
 
-![Contributors](https://banners.karel-kroeze.nl/title/Contributors.png)  
-Han Yaodong: [Update Chinese translations](https://github.com/fluffy-mods/ModManager/commit/d530e4b)
-Proxyer: [Japanese translation](https://github.com/fluffy-mods/ModManager/commit/eb20a5c)
-Mohas: [Stop errors in onlineManifest blocking version checks](https://github.com/fluffy-mods/ModManager/commit/b49f6d6)
-Michaël Marinetti: [Update French translations](https://github.com/fluffy-mods/ModManager/commit/091edf1)
-Patrick Schmitt: [Added German translation (#62)](https://github.com/fluffy-mods/ModManager/commit/ab79af3)
-Torq: [Add russian translation. (#64)](https://github.com/fluffy-mods/ModManager/commit/10cf121)
-enescaglayan: [Turkish translation. (#48)](https://github.com/fluffy-mods/ModManager/commit/749d041)
-Zetrith: [Fix blurry mod descriptions (#35)](https://github.com/fluffy-mods/ModManager/commit/36ba847)
-奔跑的梅洛斯: [Translate to Simplified Chinese (#29)](https://github.com/fluffy-mods/ModManager/commit/664fb38)
-Brrainz: [Add &lt;tags&gt;&lt;/tags&gt; to manifest (#1)](https://github.com/fluffy-mods/ModManager/commit/7df59d4)
-Lucas559-noob: [Brazilian Portuguese translation](https://github.com/fluffy-mods/ModManager/commit/3cbb3d2)
-b606: [French translation](https://github.com/fluffy-mods/ModManager/commit/9df1352)
-
-
-![Think you found a bug?](https://banners.karel-kroeze.nl/title/Think%20you%20found%20a%20bug%3F.png)  
+![Think you found a bug?](https://headers.karel-kroeze.nl/title/Think%20you%20found%20a%20bug%3F.png)  
 
 Please read [this guide](http://steamcommunity.com/sharedfiles/filedetails/?id=725234314) before creating a bug report,
 and then create a bug report [here](https://github.com/fluffy-mods/ModManager/issues)
 
-![Older versions](https://banners.karel-kroeze.nl/title/Older%20versions.png)  
+![Older versions](https://headers.karel-kroeze.nl/title/Older%20versions.png)  
 
 All current and past versions of this mod can be downloaded from [GitHub](https://github.com/fluffy-mods/ModManager/releases).
 
-![License](https://banners.karel-kroeze.nl/title/License.png)  
+![License](https://headers.karel-kroeze.nl/title/License.png)  
 
 All original code in this mod is licensed under the [MIT license](https://opensource.org/licenses/MIT). Do what you want, but give me credit.
 All original content (e.g. text, imagery, sounds) in this mod is licensed under the [CC-BY-SA 4.0 license](http://creativecommons.org/licenses/by-sa/4.0/).
@@ -105,12 +90,26 @@ Parts of this mod were created by, or derived from works created by;
 - Pixel perfect: bug preview icon ([NC-BY](https://icon54.com/))
 
 
-![Are you enjoying my mods?](https://banners.karel-kroeze.nl/title/Are%20you%20enjoying%20my%20mods%3F.png)  
+![Are you enjoying my mods?](https://headers.karel-kroeze.nl/title/Are%20you%20enjoying%20my%20mods%3F.png)  
 
-Become a supporter and show your appreciation by buying me a coffee (or contribute towards a nice single malt).
+Normally, this is where I ask you to show you appreciation by buying me a coffee.
 
-[![Supporters](https://banners.karel-kroeze.nl/donations.png)](https://ko-fi.com/fluffymods)
+These are not normal times. Ukraine is being invaded by Russia, at the whim of a ruthless dictator. Innocent people are loosing their lives, and fighting for their continued freedom.
 
-[![Buy Me a Coffee](https://i.imgur.com/6P7Ap79.gif)](https://ko-fi.com/fluffymods)
+This is not a matter of politics. This is not a debate. Putins' bloody campaign in Ukraine is illegal, and he will stop at nothing to get what he wants, when he wants it, no matter the cost. The Russian army is invading a country without provocation, bombing civilians and murdering innocents.
 
-[![I Have a Black Dog](https://i.ibb.co/ss59Rwy/New-Project-2.png)](https://www.youtube.com/watch?v=XiCrniLQGYc)
+The prospect of waking up to see my country at war is alien to me, as it must have seemed to most Ukrainians. I can do little to influence the outcome of current affairs, but I will do whatever I can.
+
+**I ask you to join me in supporting the people of Ukraine**
+
+![Humanitarian Aid](https://headers.karel-kroeze.nl/title/Humanitarian%20Aid.png)  
+
+If you can, donate to the various charities providing humanitarian aid. If you don't know where to donate, Global Citizen maintains a list of charitable organizations active in the region.
+
+<https://www.globalcitizen.org/en/content/ways-to-help-ukraine-conflict/>
+
+![Speak up](https://headers.karel-kroeze.nl/title/Speak%20up.png)  
+
+Leaders around the world are deciding on how to respond to Putins' aggression. They are balancing their conscience, and their desire to be re-elected. Many are afraid to impose heavy sanctions because the economic repercussions might loose them votes. The Dutch government, my government, has hinted that they are unwilling to accept Ukranian refugees, and has played a part in allowing Russia to have continued access to international finance. I am ashamed of these actions, taken in my name.
+
+Whereever your live, please let your government know you care more about supporting the people of Ukraine than you do about the price of gas. Join a protest, write letters, call your representatives, and show them that you care about justice!
