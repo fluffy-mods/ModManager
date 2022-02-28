@@ -6,7 +6,7 @@
     "version": {
         "major": 4,
         "minor": 4,
-        "build": 1092
+        "build": 1093
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,15 @@
         "url": "https://github.com/fluffy-mods/ModManager"
     },
     "changelog": [
+        {
+            "date": "2022-02-26T16:25:32.000Z",
+            "message": "Update description",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "ed784fd5ec1320ef67f977748be036dd7e227b0c"
+        },
         {
             "date": "2021-08-11T09:48:05.000Z",
             "message": "update dependencies, sanitize ColourPicker build steps",

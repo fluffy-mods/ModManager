@@ -1,6 +1,7 @@
 Juggle your mods like a pro!
 
 ![Features](https://headers.karel-kroeze.nl/title/Features.png)  
+
 A cleaner, better Mod management screen.
 
 - separate lists for available and active mods
@@ -22,6 +23,7 @@ A cleaner, better Mod management screen.
 - load order hints
 
 ![For Modders](https://headers.karel-kroeze.nl/title/For%20Modders.png)  
+
 Allows modders to create a Manifest.xml file, enabling a bunch of features that should have been in vanilla;
 
 - version checking
@@ -32,6 +34,7 @@ Allows modders to create a Manifest.xml file, enabling a bunch of features that 
  See [the documentation](https://github.com/FluffierThanThou/ModManager/blob/master/ForModders.md) for details on how to implement this. It's easy!
 
 ![Details](https://headers.karel-kroeze.nl/title/Details.png)  
+
 **local mod copies**  
 You can make a local copy of any steam mods (or all active steam mods at once) by clicking the corresponding button underneath the mod details (or active mods list). Doing this will make sure any updates to the steam version will not break your game in progress. Local mods are created in the RimWorld/Mods folder, and can be manually deleted, or deleted by clicking the corresponding button underneath the mod details.
 
