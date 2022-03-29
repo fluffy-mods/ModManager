@@ -5,7 +5,7 @@
     "url": "https://github.com/fluffy-mods/ModManager",
     "version": {
         "major": 4,
-        "minor": 4,
+        "minor": 5,
         "build": 1096
     },
     "author": {
@@ -27,6 +27,15 @@
                 "email": "fluffy.l2032@gmail.com"
             },
             "hash": "781d009ff509eaafa4a5e9ba787108a4a489eb18"
+        },
+        {
+            "date": "2022-03-29T20:59:46.000Z",
+            "message": "steamworks update fix v1",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "e80805e9d61fac14c74a50d4bc193f35f9896a26"
         },
         {
             "date": "2022-02-26T16:25:32.000Z",
