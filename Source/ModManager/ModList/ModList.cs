@@ -105,11 +105,7 @@ namespace ModManager {
             Scribe_Values.Look(ref _color, "Color", Color.white);
             Scribe_Collections.Look(ref _modIds, "modIds");
             Scribe_Collections.Look(ref _modNames, "modNames");
-            Debug.Log("looking...");
             Scribe_Collections.Look(ref _modSteamWorkshopIds, "modSteamWorkshopIds");
-
-            Debug.Log($"_modSteamWorkshopIds: {{{string.Join(", ", _modSteamWorkshopIds)}}}");
-            Debug.Log($"actual stored Ids: {{{string.Join(", ", ModButtonManager.ActiveButtons.Select(x => x.SteamWorkshopId))}}}");
         }
 
         public static ModList FromFile(string path) {
@@ -121,6 +117,8 @@ namespace ModManager {
             list.ExposeData();
             Scribe.loader.FinalizeLoading();
             Debug.Log(list.ToString());
+
+            list._modSteamWorkshopIds ??= Enumerable.Repeat("0", list._modIds.Count).ToList(); // provided for backwards compatibility
 
             if (list._modIds.NullOrEmpty() || list._modNames.NullOrEmpty()) {
                 throw new InvalidDataException("ModList contains no mods.");
