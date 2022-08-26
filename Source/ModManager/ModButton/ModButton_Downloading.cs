@@ -20,7 +20,8 @@ namespace ModManager {
         private PublishedFileId_t _identifier;
         public override string Name => $"Workshop mod {Identifier}";
         public override string Identifier => _identifier.ToString();
-        public override int SortOrder => 9;
+        public override ulong SteamWorkshopId => 0;
+		public override int SortOrder => 9;
 
         public override bool SamePackageId(string packageId) {
             return Identifier == packageId;

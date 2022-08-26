@@ -15,6 +15,7 @@ namespace ModManager {
         private Color        _color    = Color.white;
         private List<string> _modIds   = new List<string>();
         private List<string> _modNames = new List<string>();
+        private List<string> _modSteamWorkshopIds = new List<string>();
         private string       _name;
 
         [Obsolete("This constructor should not be used directly.")]
@@ -26,11 +27,13 @@ namespace ModManager {
         public ModList(IEnumerable<ModButton> mods) {
             _modIds = new List<string>();
             _modNames = new List<string>();
+            _modSteamWorkshopIds = new List<string>();
             Debug.Log("Creating modlist...");
             foreach (ModButton button in mods.Where(m => m.Active)) {
-                Debug.Log($"\tAdding {button.Name} ({button.Identifier})");
+                Debug.Log($"\tAdding {button.Name} ({button.Identifier}, {button.SteamWorkshopId})");
                 _modIds.Add(button.Identifier);
                 _modNames.Add(button.Name);
+                _modSteamWorkshopIds.Add(button.SteamWorkshopId.ToString());
             }
 
             Find.WindowStack.Add(new Dialog_Rename_ModList(this));
@@ -80,7 +83,7 @@ namespace ModManager {
             get {
                 List<ModIdentifier> mods = new List<ModIdentifier>();
                 for (int i = 0; i < _modIds.Count; i++) {
-                    mods.Add(new ModIdentifier(_modIds[i], _modNames[i]));
+                    mods.Add(new ModIdentifier(_modIds[i], _modNames[i], _modSteamWorkshopIds[i]));
                 }
 
                 return mods;
@@ -88,9 +91,11 @@ namespace ModManager {
             set {
                 _modIds.Clear();
                 _modNames.Clear();
+                _modSteamWorkshopIds.Clear();
                 foreach (ModIdentifier mod in value) {
                     _modIds.Add(mod.Id);
                     _modNames.Add(mod.Name);
+                    _modSteamWorkshopIds.Add(mod.SteamWorkshopId);
                 }
             }
         }
@@ -100,6 +105,11 @@ namespace ModManager {
             Scribe_Values.Look(ref _color, "Color", Color.white);
             Scribe_Collections.Look(ref _modIds, "modIds");
             Scribe_Collections.Look(ref _modNames, "modNames");
+            Debug.Log("looking...");
+            Scribe_Collections.Look(ref _modSteamWorkshopIds, "modSteamWorkshopIds");
+
+            Debug.Log($"_modSteamWorkshopIds: {{{string.Join(", ", _modSteamWorkshopIds)}}}");
+            Debug.Log($"actual stored Ids: {{{string.Join(", ", ModButtonManager.ActiveButtons.Select(x => x.SteamWorkshopId))}}}");
         }
 
         public static ModList FromFile(string path) {
@@ -120,6 +130,10 @@ namespace ModManager {
                 throw new InvalidDataException("ids and names unbalanced.");
             }
 
+            if (list._modIds.Count != list._modSteamWorkshopIds.Count) {
+                throw new InvalidDataException("ids and steam workshop ids unbalanced.");
+            }
+
             return list;
         }
 
@@ -131,6 +145,7 @@ namespace ModManager {
             ScribeMetaHeaderUtility.LoadGameDataHeader(ScribeMetaHeaderUtility.ScribeHeaderMode.None, false);
             list._modIds = ScribeMetaHeaderUtility.loadedModIdsList;
             list._modNames = ScribeMetaHeaderUtility.loadedModNamesList;
+            list._modSteamWorkshopIds = ScribeMetaHeaderUtility.loadedModSteamIdsList.Select(x => x.ToString()).ToList();
             list._name = name;
             Scribe.loader.FinalizeLoading();
             Debug.Log(list.ToString());
@@ -161,6 +176,7 @@ namespace ModManager {
             for (int i = 0; i < _modIds.Count; i++) {
                 string id   = _modIds[i];
                 string name = _modNames[i];
+                ulong steamWorkshopId = ulong.TryParse(_modSteamWorkshopIds[i], out ulong result) ? result : 0;
                 ModMetaData mod = ModLister.GetModWithIdentifier( id.StripPostfixes(), true );
                 if (mod != null) {
                     ModButton_Installed button = ModButton_Installed.For( mod );
@@ -168,7 +184,7 @@ namespace ModManager {
                     mod.Active = true;
                     ModButtonManager.TryAdd(button, false);
                 } else {
-                    ModButtonManager.TryAdd(new ModButton_Missing(id, name));
+                    ModButtonManager.TryAdd(new ModButton_Missing(id, name, steamWorkshopId));
                 }
             }
 
@@ -193,6 +209,19 @@ namespace ModManager {
             } else {
                 foreach (string name in _modNames) {
                     str += "\t" + name + "\n";
+                }
+            }
+
+            str += "steamWorkshopIds:\n";
+            if (_modSteamWorkshopIds == null)
+            {
+                str += "\tNULL\n";
+            }
+            else
+            {
+                foreach (string steamWorkshopId in _modSteamWorkshopIds)
+                {
+                    str += "\t" + steamWorkshopId + "\n";
                 }
             }
 
@@ -237,6 +266,7 @@ namespace ModManager {
         public void Add(ModMetaData mod) {
             _modIds.Add(mod.PackageId);
             _modNames.Add(mod.Name);
+            _modSteamWorkshopIds.Add(mod.GetPublishedFileId().m_PublishedFileId.ToString());
 
             Save(true);
             ModListManager.Notify_ModListChanged();
@@ -257,6 +287,7 @@ namespace ModManager {
 
             _modIds.RemoveAt(index);
             _modNames.RemoveAt(index);
+            _modSteamWorkshopIds.RemoveAt(index);
 
             Save(true);
             ModListManager.Notify_ModListChanged();

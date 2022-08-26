@@ -74,7 +74,9 @@ namespace ModManager {
             .ThenBy(mod => mod.Source);
 
         public override string Name => Selected?.Name;
-        public override string Identifier => Selected?.PackageId;
+        public override string Identifier => Selected?.PackageId.ToString();
+        public override ulong SteamWorkshopId => Selected?.GetPublishedFileId().m_PublishedFileId ?? 0;
+
         public override bool SamePackageId(string packageId) {
             return Selected?.SamePackageId(packageId) ?? false;
         }

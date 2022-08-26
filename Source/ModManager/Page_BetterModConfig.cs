@@ -233,10 +233,10 @@ namespace ModManager {
             }
 
             if (ModButtonManager.ActiveButtons.OfType<ModButton_Missing>()
-                .Any(b => b.Identifier.IsSteamWorkshopIdentifier())) {
+                .Any(b => b.SteamWorkshopId.IsValidSteamWorkshopIdentifier())) {
                 if (Utilities.ButtonIcon(ref iconRect, Steam, I18n.SubscribeAllMissing, Status_Plus, Direction8Way.NorthWest)) {
                     Workshop.Subscribe(ModButtonManager.ActiveButtons.OfType<ModButton_Missing>()
-                        .Where(b => b.Identifier.IsSteamWorkshopIdentifier()).Select(b => b.Identifier));
+                        .Where(b => b.SteamWorkshopId.IsValidSteamWorkshopIdentifier()).Select(b => b.SteamWorkshopId.ToString()));
                 }
             }
 
