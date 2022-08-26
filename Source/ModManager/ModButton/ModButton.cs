@@ -23,6 +23,7 @@ namespace ModManager {
         }
         public abstract string Name { get; }
         public abstract string Identifier { get; }
+        public abstract ulong SteamWorkshopId { get; }
         public abstract bool SamePackageId(string packageId);
         public abstract bool Active { get; set; }
         public virtual Color Color { get; set; }

@@ -12,16 +12,19 @@ namespace ModManager {
         private readonly string _name;
         public override string Name => _name;
         private readonly string _identifier;
+        private readonly ulong _steamWorkshopId;
 
-        public ModButton_Missing(string id, string name) {
+        public ModButton_Missing(string id, string name, ulong steamWorkshopId) {
             _identifier = id;
             _name = name;
+            _steamWorkshopId = steamWorkshopId;
         }
 
         public override string Identifier => _identifier;
+        public override ulong SteamWorkshopId => _steamWorkshopId;
 
 
-        public override bool SamePackageId(string packageId) {
+		public override bool SamePackageId(string packageId) {
             return false;
         }
 

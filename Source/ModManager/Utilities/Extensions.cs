@@ -105,11 +105,9 @@ namespace ModManager {
 
             return str.Replace(" ", "");
         }
-
-        public static bool IsSteamWorkshopIdentifier(this string identifier) {
-            return ulong.TryParse(identifier, out _);
+        public static bool IsValidSteamWorkshopIdentifier(this ulong identifier) {
+            return identifier != 0;
         }
-
 
         // https://stackoverflow.com/a/4975942/2604271
         public static string ToStringSize(this long bytes) {
