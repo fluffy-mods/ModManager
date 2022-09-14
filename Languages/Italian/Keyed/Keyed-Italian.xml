@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LanguageData>
+    <!-- cancel button on confirmation(s) -->
+    <Cancel>Annulla</Cancel>
+
+    <Fluffy.ModManager.AvailableMods>Disponibile</Fluffy.ModManager.AvailableMods>
+    <Fluffy.ModManager.ActiveMods>Attiva</Fluffy.ModManager.ActiveMods>
+    <Fluffy.ModManager.Preview>Anteprima</Fluffy.ModManager.Preview>
+    <Fluffy.ModManager.Dependencies>Dipendenze</Fluffy.ModManager.Dependencies>
+    <Fluffy.ModManager.Problems>Problemi</Fluffy.ModManager.Problems>
+    <Fluffy.ModManager.Details>Dettagli</Fluffy.ModManager.Details>
+
+    <Fluffy.ModManager.NoModSelected>Nessuna mod selezionata</Fluffy.ModManager.NoModSelected>
+    <Fluffy.ModManager.TargetVersions>Questa mod supporta la versione {0} di RimWorld</Fluffy.ModManager.TargetVersions>
+    <Fluffy.ModManager.Unknown>Sconosciuto</Fluffy.ModManager.Unknown>
+    <Fluffy.ModManager.Later>Dopo</Fluffy.ModManager.Later>
+    <Fluffy.ModManager.Cancel>Annulla</Fluffy.ModManager.Cancel>
+
+    <Fluffy.ModManager.PressXtoCopyToClipboard>Premi 'Control + C' per copiare la ModList negli appunti.</Fluffy.ModManager.PressXtoCopyToClipboard>
+
+    <!-- issues -->
+    <Fluffy.ModManager.InvalidVersion>Stringa malformata: "{0}".</Fluffy.ModManager.InvalidVersion>
+    <Fluffy.ModManager.DifferentVersion>Versione di gioco errata. La versione corrente è {2}, ma {0} è per la versione {1}.</Fluffy.ModManager.DifferentVersion>
+    <Fluffy.ModManager.DifferentBuild>Diversa build del gioco. La build corrente è {2}, ma {0} specifica {1} come build utilizzabile.</Fluffy.ModManager.DifferentBuild>
+    <Fluffy.ModManager.CurrentVersion>Le versioni corrispondono</Fluffy.ModManager.CurrentVersion>
+    <Fluffy.ModManager.UpdateAvailable>Un aggiornamento è disponibile. Nuova: {1} - Corrente: {0}.</Fluffy.ModManager.UpdateAvailable>
+    <Fluffy.ModManager.MissingMod>{0} (id: {1}) non è installato, e verrà ignorato.</Fluffy.ModManager.MissingMod>
+    <Fluffy.ModManager.CoreNotFirst>'Core' dev'essere la prima mod caricata.</Fluffy.ModManager.CoreNotFirst>
+    <Fluffy.ModManager.DependencyUnknownVersion>Dipende da {0}, ma la versione è sconosciuta.</Fluffy.ModManager.DependencyUnknownVersion>
+    <Fluffy.ModManager.DependencyNotFound>Dipende da {0}, che non è caricato.</Fluffy.ModManager.DependencyNotFound>
+    <Fluffy.ModManager.DependencyWrongVersion>Dipende da {0}, versione {1}, mentre la versione {2} è stata caricata.</Fluffy.ModManager.DependencyWrongVersion>
+    <Fluffy.ModManager.DependencyNotActive>Dipende da {0}, che non è attivo.</Fluffy.ModManager.DependencyNotActive>
+    <Fluffy.ModManager.DependencyMet>{0} - versione {1} caricato.</Fluffy.ModManager.DependencyMet>
+    <Fluffy.ModManager.IncompatibleMod>Non compatibile con {0}.</Fluffy.ModManager.IncompatibleMod>
+    <Fluffy.ModManager.LoadedBefore>Viene caricato prima di {0}.</Fluffy.ModManager.LoadedBefore>
+    <Fluffy.ModManager.ShouldBeLoadedBefore>Dev'essere caricato prima di {0}.</Fluffy.ModManager.ShouldBeLoadedBefore>
+    <Fluffy.ModManager.LoadedAfter>Viene caricato dopo di {0}.</Fluffy.ModManager.LoadedAfter>
+    <Fluffy.ModManager.ShouldBeLoadedAfter>Dev'essere caricato dopo di {0}.</Fluffy.ModManager.ShouldBeLoadedAfter>
+
+    <Fluffy.ModManager.GetMoreMods_SteamWorkshop>Ottieni più mod sul Workshop di Steam</Fluffy.ModManager.GetMoreMods_SteamWorkshop>
+    <Fluffy.ModManager.GetMoreMods_LudeonForums>Ottieni più mod da Ludeon Forums</Fluffy.ModManager.GetMoreMods_LudeonForums>
+    <Fluffy.ModManager.SteamWorkshop.UnSubscribe>Disiscrivi questa mod dallo Workshop di Steam</Fluffy.ModManager.SteamWorkshop.UnSubscribe>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>Disiscrivi massivamente le mod inattive/datate/tutte dal Workshop di Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>Disiscrivi tutte le mod di Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>Disiscrivi tutte le mod inattive di Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>Disiscrivi tutte le mod datate di Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>Stai per disiscrivere {0} mod. Sei sicuro di voler continuare?\n\nMod che verranno cancellate:\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
+    <Fluffy.ModManager.IO.MassRemoveLocal>Rimuovi massivamente le copie locali delle mod inattive, datate o tutte</Fluffy.ModManager.IO.MassRemoveLocal>
+    <Fluffy.ModManager.IO.MassRemoveLocalAll>Rimuovi tutte le copie locali delle mod</Fluffy.ModManager.IO.MassRemoveLocalAll>
+    <Fluffy.ModManager.IO.MassRemoveLocalInactive>Rimuovi tutte le copie locali delle mod inattive</Fluffy.ModManager.IO.MassRemoveLocalInactive>
+    <Fluffy.ModManager.IO.MassRemoveLocalOutdated>Rimuovi tutte le copie locali delle mod datate</Fluffy.ModManager.IO.MassRemoveLocalOutdated>
+    <Fluffy.ModManager.IO.MassRemoveLocalConfirm>Stai per cancellare definitivamente {0} copie locali delle mod. Sei sicuro di voler continuare?\n\nMod che verranno cancellate:\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
+    <Fluffy.ModManager.ModSettings>Apri impostazioni mod</Fluffy.ModManager.ModSettings>    
+
+    <Fluffy.ModManager.ModListsTip>Crea, applica e gestisci le modlist.\n\nLe modlist permettono di cambiare\nfacilmente set di mod da usare.</Fluffy.ModManager.ModListsTip>
+    <Fluffy.ModManager.LoadModList>Carica modlist</Fluffy.ModManager.LoadModList>
+    <Fluffy.ModManager.AddModList>Aggiungi alla modlist corrente</Fluffy.ModManager.AddModList>
+    <Fluffy.ModManager.SaveModList>Salva la modlist corrente</Fluffy.ModManager.SaveModList>
+    <Fluffy.ModManager.DeleteModList>Cancella la modlist salvata</Fluffy.ModManager.DeleteModList>
+    <Fluffy.ModManager.RenameModList>Rinomina la modlist</Fluffy.ModManager.RenameModList>
+    <Fluffy.ModManager.ImportModList>Importa la modlist da una stringa</Fluffy.ModManager.ImportModList>
+    <Fluffy.ModManager.ExportModList>Esporta la modlist in una stringa</Fluffy.ModManager.ExportModList>
+    <Fluffy.ModManager.LoadModListFromSave>Carica una lista delle mod da un salvataggio</Fluffy.ModManager.LoadModListFromSave>
+    <Fluffy.ModManager.ResetMods>Resetta la modlist attiva ad una vuota</Fluffy.ModManager.ResetMods>
+    <Fluffy.ModManager.ConfirmResetMods>Sei sicuro?\n\nQuesto disattiverà la tua modlist. Controlla di aver esportato la modlist per mantenerne l'ordine di caricamento.</Fluffy.ModManager.ConfirmResetMods>
+    <Fluffy.ModManager.SortMods>Riorganizza automaticamente la modlist</Fluffy.ModManager.SortMods>
+    <Fluffy.ModManager.SortFailed.CyclicDependency>Non è possibile riorganizzare automaticamente la modlist; {0} e {1} dipendono l'un l'altra.</Fluffy.ModManager.SortFailed.CyclicDependency>
+
+    <Fluffy.ModManager.InvalidName>{0} non è un nome valido. Il nome non deve contenere nessuno di questi caratteri: {1}.</Fluffy.ModManager.InvalidName>
+    <Fluffy.ModManager.ModListExists>{0} esiste già. Utilizza un nome differente, o rinomina/cancella la modlist esistente.</Fluffy.ModManager.ModListExists>
+    <Fluffy.ModManager.NameTooShort>La modlist deve avere un nome.</Fluffy.ModManager.NameTooShort>
+    <Fluffy.ModManager.ModListRenamed>Modlist {0} rinominata in {1}.</Fluffy.ModManager.ModListRenamed>
+    <Fluffy.ModManager.ModListCreated>Modlist {0} creata.</Fluffy.ModManager.ModListCreated>
+    <Fluffy.ModManager.ModListLoaded>Modlist {0} caricata.</Fluffy.ModManager.ModListLoaded>
+    <Fluffy.ModManager.ModListDeleted>Modlist {0} cancellata.</Fluffy.ModManager.ModListDeleted>
+    <Fluffy.ModManager.RebuildingModList>Ricostruzione modlist</Fluffy.ModManager.RebuildingModList>
+    <Fluffy.ModManager.ConfirmOverwriteModList>Una Modlist nominata '{0}' già esiste. Vuoi sovrascriverla?</Fluffy.ModManager.ConfirmOverwriteModList>
+    <Fluffy.ModManager.ModListCopiedToClipboard>Modlist {0} copiata negli appunti.</Fluffy.ModManager.ModListCopiedToClipboard>
+    <Fluffy.ModManager.ModListCreatedFromClipboard>Modlist {0} importata dagli appunti.</Fluffy.ModManager.ModListCreatedFromClipboard>
+    <Fluffy.ModManager.FailedToCreateModListFromClipboard>Errore durante l'importazione della modlist dagli appunti: {0}.</Fluffy.ModManager.FailedToCreateModListFromClipboard>
+
+    <Fluffy.ModManager.AddToModList>Aggiungi mod alla modlist</Fluffy.ModManager.AddToModList>
+    <Fluffy.ModManager.RemoveFromModList>Rimuovi mod dalla modlist</Fluffy.ModManager.RemoveFromModList>
+    <Fluffy.ModManager.AddToModListX>Aggiungi ad '{0}'</Fluffy.ModManager.AddToModListX>
+    <Fluffy.ModManager.RemoveFromModListX>Rimuovi da '{0}'</Fluffy.ModManager.RemoveFromModListX>
+
+    <Fluffy.ModManager.CreateLocalCopies>Crea una copia locale di tutte le mod di Steam tra quelle attive nella modlist\n\nLe copie locali verranno salvate nella cartella 'mods', e non verranno aggiornate.</Fluffy.ModManager.CreateLocalCopies>
+    <Fluffy.ModManager.CreateLocalCopiesConfirmation>Stai per creare una copia locale di {0} mod. Potrebbero volerci diversi minuti. Vuoi continuare?</Fluffy.ModManager.CreateLocalCopiesConfirmation>
+    <Fluffy.ModManager.CreateLocalCopy>Crea una copia locale di {0}\n\nLe copie locali verranno salvate nella cartella 'mods', e non verranno aggiornate.</Fluffy.ModManager.CreateLocalCopy>
+    <Fluffy.ModManager.CreateLocalSucceeded>Copia locale di {0} creata con successo.</Fluffy.ModManager.CreateLocalSucceeded>
+    <Fluffy.ModManager.CreateLocalFailed>Impossibile creare una copia locale di {0}. Controlla il log degli errori per il dettaglio. Potresti dover cancellare manualmente dalla cartella 'mods' le mod cancellate parzialmente.</Fluffy.ModManager.CreateLocalFailed>
+    <Fluffy.ModManager.CreatingLocal>Creazione di una copia locale di {0}</Fluffy.ModManager.CreatingLocal>
+    
+    <Fluffy.ModManager.DeleteLocalCopy>Cancella la versione attualmente selezionata di {0}\n\nAVVISO: È irreversibile!</Fluffy.ModManager.DeleteLocalCopy>
+    <Fluffy.ModManager.ConfirmRemoveLocal>Vuoi veramente cancellare permanentemente questa versione di {0}?</Fluffy.ModManager.ConfirmRemoveLocal>
+    <Fluffy.ModManager.RemoveLocalSucceeded>Rimozione copia locale di {0} effettuata con successo.</Fluffy.ModManager.RemoveLocalSucceeded>
+    <Fluffy.ModManager.RemoveLocalFailed>Errore durante la rimozione della copia locale di {0}. Controlla il log degli errori per il dettaglio. Potresti dover cancellare manualmente dalla cartella 'mods' le mod cancellate parzialmente.</Fluffy.ModManager.RemoveLocalFailed>
+    <Fluffy.ModManager.RemovingLocal>Rimozione della copia locale di {0}</Fluffy.ModManager.RemovingLocal>
+
+    <!-- Resolvers -->
+    <Fluffy.ModManager.MoveCoreToFirst>Imposta 'Core' in prima posizione nell'ordine di caricamento.</Fluffy.ModManager.MoveCoreToFirst>
+    <Fluffy.ModManager.SearchSteamWorkshop>Cerca nel Workshop per "{0}".</Fluffy.ModManager.SearchSteamWorkshop>
+    <Fluffy.ModManager.SearchForum>Cerca su Ludeon Forums per "{0}".</Fluffy.ModManager.SearchForum>
+    <Fluffy.ModManager.ActivateMod>Attiva {0} {1} ({2}).</Fluffy.ModManager.ActivateMod>
+    <Fluffy.ModManager.NoMatchingModInstalled>Nessuna mod installata trovata che combacia "{0}" per la versione {1} del gioco.</Fluffy.ModManager.NoMatchingModInstalled>
+    <Fluffy.ModManager.NoMatchingModInstalled_Version>Nessuna mod installata trovata che combacia "{0} {3} {2}" per la versione {1} del gioco.</Fluffy.ModManager.NoMatchingModInstalled_Version>
+    <Fluffy.ModManager.DeactivateMod>Disattiva {0}.</Fluffy.ModManager.DeactivateMod>
+    <Fluffy.ModManager.MoveBefore>Sposta {0} per essere caricata prima di {1}.</Fluffy.ModManager.MoveBefore>
+    <Fluffy.ModManager.MoveAfter>Sposta {0} per essere caricata dopo di {1}.</Fluffy.ModManager.MoveAfter>
+    <Fluffy.ModManager.OpenDownloadUri>Vai al download\n&lt;i&gt;{0}&lt;/i&gt;</Fluffy.ModManager.OpenDownloadUri>
+    <Fluffy.ModManager.NoDownloadUri>Nessun link per il download disponibile.</Fluffy.ModManager.NoDownloadUri>
+    <Fluffy.ModManager.XIsUpToDate>{0} è aggiornato con la versione di Steam.</Fluffy.ModManager.XIsUpToDate>
+    <Fluffy.ModManager.YHasUpdated>La versione di Steam di {0} è stata aggiornata.</Fluffy.ModManager.YHasUpdated>
+    <Fluffy.ModManager.UpdateLocalCopy>Aggiorna {0} alla versione corrente di Steam.</Fluffy.ModManager.UpdateLocalCopy>
+
+    <!-- Content source -->
+    <Fluffy.ModManager.ContentSource.Undefined>Non definito</Fluffy.ModManager.ContentSource.Undefined>
+    <Fluffy.ModManager.ContentSource.ModsFolder>Locale</Fluffy.ModManager.ContentSource.ModsFolder>
+    <Fluffy.ModManager.ContentSource.SteamWorkshop>Steam</Fluffy.ModManager.ContentSource.SteamWorkshop>
+
+    <!-- Links -->
+    <Fluffy.ModManager.ModHomePage>Home page ({0})</Fluffy.ModManager.ModHomePage>
+    <Fluffy.ModManager.WorkshopPage>Apri la pagina Workshop di {0}</Fluffy.ModManager.WorkshopPage>
+
+    <!-- confirmation dialog 0: issue count, 1: issue list -->
+    <Fluffy.ModManager.DialogConfirmIssues>Dovresti risolvere questi problemi prima di caricare/iniziare una nuova partita.\n\n{1}</Fluffy.ModManager.DialogConfirmIssues>
+    <Fluffy.ModManager.DialogConfirmIssuesCritital>&lt;b&gt;\n\nAVVISO: L'uso di questa modlist causerà sicuramente errori, e far chiudere il gioco!&lt;/b&gt;</Fluffy.ModManager.DialogConfirmIssuesCritital>
+    <Fluffy.ModManager.DialogConfirmIssuesTitle>La modlist ha {0} problemi!</Fluffy.ModManager.DialogConfirmIssuesTitle>
+
+    <!-- online manifest -->
+    <Fluffy.ModManager.ManifestNotImplemented>Questa mod non ha manifest, o non implementa il controllo di versione.\n\nDovresti dire all'autore che è davvero molto facile da fare!</Fluffy.ModManager.ManifestNotImplemented>
+    <Fluffy.ModManager.FetchingOnlineManifest>Controllo ultima versione...</Fluffy.ModManager.FetchingOnlineManifest>
+    <Fluffy.ModManager.FetchingOnlineManifestFailed>Controllo ultima versione fallito: {0}.</Fluffy.ModManager.FetchingOnlineManifestFailed>
+    <Fluffy.ModManager.NewVersionAvailable>Nuova versione disponibile! Corrente: {0}, ultima: {1}.</Fluffy.ModManager.NewVersionAvailable>
+    <Fluffy.ModManager.LatestVersion>Questa è già l'ultima versione.</Fluffy.ModManager.LatestVersion>
+
+    <!-- workshop -->
+    <Fluffy.ModManager.DownloadPending>Download in corso...</Fluffy.ModManager.DownloadPending>
+    <Fluffy.ModManager.ModInstalled>{0} - Installazione completata.</Fluffy.ModManager.ModInstalled>
+    <Fluffy.ModManager.Subscribe>Sottoscrivi a {0}.</Fluffy.ModManager.Subscribe>
+    <Fluffy.ModManager.SubscribeAllMissing>Sottoscrivi tutte le mod del Workshop mancanti.</Fluffy.ModManager.SubscribeAllMissing>
+
+    <!-- colours -->
+    <Fluffy.ModManager.ChangeColour>Cambia colore mod</Fluffy.ModManager.ChangeColour>
+    <Fluffy.ModManager.ChangeModColour>Cambia colore solo per questa versione di {0}</Fluffy.ModManager.ChangeModColour>
+    <Fluffy.ModManager.ChangeButtonColour>Cambia colore a tutte le versioni di {0}</Fluffy.ModManager.ChangeButtonColour>
+    <Fluffy.ModManager.ChangeListColour>Cambia colore alla lista</Fluffy.ModManager.ChangeListColour>
+
+    <!-- promotions -->
+    <Fluffy.ModManager.PromotionsFor>Altre mod di {0}</Fluffy.ModManager.PromotionsFor>
+
+    <!-- options -->
+    <Fluffy.ModManager.SettingsCategory>Gestore Mod</Fluffy.ModManager.SettingsCategory>
+    <Fluffy.ModManager.ShowPromotions>Mostra Promozione</Fluffy.ModManager.ShowPromotions>
+    <Fluffy.ModManager.ShowPromotions_NotActive>Mostra promozioni per mod inattive.</Fluffy.ModManager.ShowPromotions_NotActive>
+    <Fluffy.ModManager.ShowPromotions_NotSubscribed>Mostra promozioni per mod non sottoscritte.</Fluffy.ModManager.ShowPromotions_NotSubscribed>
+    <Fluffy.ModManager.ShowPromotionsTip>Se abilitate, qualunque mod selezionata dello Steam Workshop, il Gestore Mod mostrerà promozioni di altre mod dello stesso autore.</Fluffy.ModManager.ShowPromotionsTip>
+    <Fluffy.ModManager.TrimTags>Rimuovi i tag dal nome delle mod</Fluffy.ModManager.TrimTags>
+    <Fluffy.ModManager.TrimTagsTip>Se abilitato, i tag dell'autore e versione verranno rimosse dal nome delle mod (es. [KV], [B19])</Fluffy.ModManager.TrimTagsTip>
+    <Fluffy.ModManager.TrimVersionStrings>Rimuovi i numeri di versioni dal nome delle mod</Fluffy.ModManager.TrimVersionStrings>
+    <Fluffy.ModManager.TrimVersionStringsTip>Se abilitato, il Gestore Mod cercherà di rimuovere la versione dal nome della mod (es. 1.0, 0.19)\n\nAVVISO: Potrebbe rimuovere più informazioni del dovuto!</Fluffy.ModManager.TrimVersionStringsTip>
+    
+    <Fluffy.ModManager.ShowAllRequirements>Mostra tutti i requisiti della mod</Fluffy.ModManager.ShowAllRequirements>
+    <Fluffy.ModManager.ShowAllRequirementsTip>Mostra tutti i requisiti soddisfatti e non nel dettaglio della mod</Fluffy.ModManager.ShowAllRequirementsTip>
+    <Fluffy.ModManager.AddModManagerToNewModList>Aggiungi Gestore Mod a nuove modlist</Fluffy.ModManager.AddModManagerToNewModList>
+    <Fluffy.ModManager.AddModManagerToNewModListTip>Aggiungi Gestore Mod a nuove modlist, anche se resettata.</Fluffy.ModManager.AddModManagerToNewModListTip>
+    <Fluffy.ModManager.AddHugsLibToNewModList>Aggiungi HugsLib alle nuove modlist</Fluffy.ModManager.AddHugsLibToNewModList>
+    <Fluffy.ModManager.AddHugsLibToNewModListTip>Aggiungi HugsLib a tutte le nuove modlist, anche se resettate.</Fluffy.ModManager.AddHugsLibToNewModListTip>
+    <Fluffy.ModManager.AddExpansionsToNewModList>Aggiungi le espansioni ufficiali alle nuove modlist</Fluffy.ModManager.AddExpansionsToNewModList>
+    <Fluffy.ModManager.AddExpansionsToNewModListTip>Aggiungi le espansioni ufficiali alle nuove modlist, anche se resettate.</Fluffy.ModManager.AddExpansionsToNewModListTip>
+    <Fluffy.ModManager.ShowVersionChecksForSteamMods>Mostra i controlli di versione alle mod Steam.</Fluffy.ModManager.ShowVersionChecksForSteamMods>
+    <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>I controlli di versione sono più utili per le mod installate manualmente, quindi sono disabilitate per le mod Steam di default. Nota che riceverai notifiche solo riguardo mod installate manualmente più di recente dove l'autore ha esplicitato il supporto a questa funzionalità. Non ci saranno notifiche su nuove mod di Steam.</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>Utilizza la cartella temporanea di sistema per la cache delle promozioni incrociate</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>Se abilitate, la cache delle promozioni incrociate verranno salvate in una cartella temporanea. Potrebbe rallentare il reperimento di immagini delle promozioni incrociate, ma permette al sistema di pulire periodicamente la cache.</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
+    <Fluffy.ModManager.CrossPromotionCacheFolderSize>Dimensione cache: {0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
+    <Fluffy.ModManager.DeleteCrossPromotionCache>Pulisci cache</Fluffy.ModManager.DeleteCrossPromotionCache>
+    <Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>Sei sicuro di voler pulire la cache?\n\nQuesto rimuoverà irrevocabilmente {1} file in {0}, liberando {2}.</Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>
+
+
+
+
+</LanguageData>
