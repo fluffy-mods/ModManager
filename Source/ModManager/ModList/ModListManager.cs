@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using ColourPicker;
 using RimWorld;
-using UnityEngine;
 using Verse;
 
 namespace ModManager {
@@ -94,25 +93,15 @@ namespace ModManager {
             }
         }
 
-        public static List<FloatMenuOption> SavedModListsOptions => ModLists.Select(SavedModListOption).ToList();
-
-        public static FloatMenuOption SavedModListOption(ModList list) {
+        public static FloatMenuOption GetEditSubMenuFor(ModList list) {
             List<FloatMenuOption> options = Utilities.NewOptionsList;
-            options.Add(new FloatMenuOption(I18n.ExportModList, () => { GUIUtility.systemCopyBuffer = list.ToYaml(); Messages.Message(I18n.ModListCopiedToClipboard(list.Name), MessageTypeDefOf.TaskCompletion, false); }));
-            options.Add(new FloatMenuOption(I18n.LoadModList, () => list.Apply(false)));
-            options.Add(new FloatMenuOption(I18n.AddModList, () => list.Apply(true)));
+
             options.Add(new FloatMenuOption(I18n.RenameModList, () => Find.WindowStack.Add(new Dialog_Rename_ModList(list))));
             options.Add(new FloatMenuOption(I18n.ChangeListColour, () => Find.WindowStack.Add(new Dialog_ColourPicker(list.Color, color => list.Color = color))));
             options.Add(new FloatMenuOption(I18n.DeleteModList, () => TryDelete(list)));
+
             return new FloatMenuOption(list.Name, () => Utilities.FloatMenu(options));
         }
-
-        public static List<FloatMenuOption> SaveFileOptions => GenFilePaths.AllSavedGameFiles.Select(fi => {
-            string name = Path.GetFileNameWithoutExtension( fi.Name );
-            return new FloatMenuOption(name, () => {
-                ModList.FromSave(name, fi.FullName).Apply(Event.current.shift);
-            });
-        }).ToList();
 
         public const string RootElement = "ModList";
 

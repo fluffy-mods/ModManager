@@ -1,0 +1,6 @@
+[*.cs]
+
+# I used to like explicit types, apparently.
+# Let's ignore that for now...
+dotnet_diagnostic.IDE0007.severity = none
+dotnet_diagnostic.IDE0130.severity = none

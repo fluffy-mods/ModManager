@@ -6,7 +6,7 @@
     "version": {
         "major": 4,
         "minor": 5,
-        "build": 1096
+        "build": 1100
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,24 @@
         "url": "https://github.com/fluffy-mods/ModManager"
     },
     "changelog": [
+        {
+            "date": "2022-08-26T21:34:01.000Z",
+            "message": "clean up debugs, add backwards compatibility",
+            "author": {
+                "name": "Benjamin E. Iserman",
+                "email": "winggar1228@gmail.com"
+            },
+            "hash": "75c1acaea0a8db9cf451be13742e7e4d70b7a678"
+        },
+        {
+            "date": "2022-08-26T20:31:59.000Z",
+            "message": "resolve https://github.com/fluffy-mods/ModManager/issues/167",
+            "author": {
+                "name": "Benjamin E. Iserman",
+                "email": "winggar1228@gmail.com"
+            },
+            "hash": "32ae79758169e80538ecc6f56cfee045954d3d06"
+        },
         {
             "date": "2022-03-29T20:59:46.000Z",
             "message": "steamworks update fix v1",
@@ -269,6 +287,17 @@
             "hash": "9df135251481a2f23667be4efeea398c4f8cbddf",
             "author": "b606",
             "description": "French translation"
+        },
+        {
+            "hash": "75c1acaea0a8db9cf451be13742e7e4d70b7a678",
+            "author": "Benjamin E. Iserman",
+            "description": "clean up debugs, add backwards compatibility",
+            "suppressed": true
+        },
+        {
+            "hash": "32ae79758169e80538ecc6f56cfee045954d3d06",
+            "author": "Benjamin E. Iserman",
+            "description": "Fix (mass) subscribing to missing steam mods from modlists"
         }
     ],
     "contributors": {
@@ -354,6 +383,13 @@
                 "hash": "9df1352",
                 "author": "b606",
                 "description": "French translation"
+            }
+        ],
+        "Benjamin E. Iserman": [
+            {
+                "hash": "32ae797",
+                "author": "Benjamin E. Iserman",
+                "description": "Fix (mass) subscribing to missing steam mods from modlists"
             }
         ]
     },

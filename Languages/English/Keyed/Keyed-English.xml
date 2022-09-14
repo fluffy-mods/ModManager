@@ -50,7 +50,7 @@
     <Fluffy.ModManager.IO.MassRemoveLocalInactive>Remove all inactive local copies</Fluffy.ModManager.IO.MassRemoveLocalInactive>
     <Fluffy.ModManager.IO.MassRemoveLocalOutdated>Remove all outdated local copies</Fluffy.ModManager.IO.MassRemoveLocalOutdated>
     <Fluffy.ModManager.IO.MassRemoveLocalConfirm>You are about to permanently delete {0} local copies of mods. Are you certain you want to continue?\n\nAffected mods:\n{1}</Fluffy.ModManager.IO.MassRemoveLocalConfirm>
-    <Fluffy.ModManager.ModSettings>Open mod settings</Fluffy.ModManager.ModSettings>    
+    <Fluffy.ModManager.ModSettings>Open mod settings</Fluffy.ModManager.ModSettings>
 
     <Fluffy.ModManager.ModListsTip>Create, apply and manage mod lists.\n\nMod Lists allow you to quickly switch sets of mods.</Fluffy.ModManager.ModListsTip>
     <Fluffy.ModManager.LoadModList>Load mod list</Fluffy.ModManager.LoadModList>
@@ -58,9 +58,26 @@
     <Fluffy.ModManager.SaveModList>Save current list</Fluffy.ModManager.SaveModList>
     <Fluffy.ModManager.DeleteModList>Delete saved list</Fluffy.ModManager.DeleteModList>
     <Fluffy.ModManager.RenameModList>Rename list</Fluffy.ModManager.RenameModList>
+
+    <!-- DEPRECATED: Terminology was changed to be more consistent -->
     <Fluffy.ModManager.ImportModList>Import mod list from string</Fluffy.ModManager.ImportModList>
     <Fluffy.ModManager.ExportModList>Export mod list to string</Fluffy.ModManager.ExportModList>
     <Fluffy.ModManager.LoadModListFromSave>Load mod list from save</Fluffy.ModManager.LoadModListFromSave>
+    <!-- End deprecated -->
+
+    <!-- Start replacement strings for import/export -->
+    <Fluffy.ModManager.Import>Import mod list...</Fluffy.ModManager.Import>
+    <Fluffy.ModManager.Import.FromModList>From mod list...</Fluffy.ModManager.Import.FromModList>
+    <Fluffy.ModManager.Import.FromString>From string</Fluffy.ModManager.Import.FromString>
+    <Fluffy.ModManager.Import.FromSaveGame>From save game...</Fluffy.ModManager.Import.FromSaveGame>
+
+    <Fluffy.ModManager.Export>Export active mods...</Fluffy.ModManager.Export>
+    <Fluffy.ModManager.Export.ToModList>As mod list</Fluffy.ModManager.Export.ToModList>
+    <Fluffy.ModManager.Export.ToString>As shareable string</Fluffy.ModManager.Export.ToString>
+
+    <Fluffy.ModManager.Edit>Edit existing mod list...</Fluffy.ModManager.Edit>
+    <!-- End replacement strings -->
+
     <Fluffy.ModManager.ResetMods>Reset active modlist to a blank modlist</Fluffy.ModManager.ResetMods>
     <Fluffy.ModManager.ConfirmResetMods>Are you sure?\n\nThis will de-activate your entire modlist. Make sure to export it first if you want to save your mod order.</Fluffy.ModManager.ConfirmResetMods>
     <Fluffy.ModManager.SortMods>Auto-sort mod list</Fluffy.ModManager.SortMods>
@@ -90,7 +107,7 @@
     <Fluffy.ModManager.CreateLocalSucceeded>Succesfully created a local copy of {0}</Fluffy.ModManager.CreateLocalSucceeded>
     <Fluffy.ModManager.CreateLocalFailed>Failed to create a local copy of {0}. See the error log for details. You may want to inspect your mods folder to delete partially copied mods.</Fluffy.ModManager.CreateLocalFailed>
     <Fluffy.ModManager.CreatingLocal>Creating local copy of {0}</Fluffy.ModManager.CreatingLocal>
-    
+
     <Fluffy.ModManager.DeleteLocalCopy>Delete the currently selected version of {0}\n\nWARNING: This is irreversible!</Fluffy.ModManager.DeleteLocalCopy>
     <Fluffy.ModManager.ConfirmRemoveLocal>Are you sure you want to permanently delete this version of {0}?</Fluffy.ModManager.ConfirmRemoveLocal>
     <Fluffy.ModManager.RemoveLocalSucceeded>Succesfully removed local copy of {0}</Fluffy.ModManager.RemoveLocalSucceeded>
@@ -159,7 +176,7 @@
     <Fluffy.ModManager.TrimTagsTip>If enabled, author and version tags will be removed from mod names (e.g. [KV], [B19])</Fluffy.ModManager.TrimTagsTip>
     <Fluffy.ModManager.TrimVersionStrings>Remove version numbers from mod names</Fluffy.ModManager.TrimVersionStrings>
     <Fluffy.ModManager.TrimVersionStringsTip>If enabled, Mod Manager will attempt to remove version string from mod names (e.g. 1.0, 0.19)\n\nWARNING: This may remove too much information!</Fluffy.ModManager.TrimVersionStringsTip>
-    
+
     <Fluffy.ModManager.ShowAllRequirements>Show all mod requirements</Fluffy.ModManager.ShowAllRequirements>
     <Fluffy.ModManager.ShowAllRequirementsTip>Show all met and unmet mod requirements in the mod details</Fluffy.ModManager.ShowAllRequirementsTip>
     <Fluffy.ModManager.AddModManagerToNewModList>Add Mod Manager to new modlists</Fluffy.ModManager.AddModManagerToNewModList>
@@ -175,8 +192,6 @@
     <Fluffy.ModManager.CrossPromotionCacheFolderSize>Cache size: {0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
     <Fluffy.ModManager.DeleteCrossPromotionCache>Clear cache</Fluffy.ModManager.DeleteCrossPromotionCache>
     <Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>Are you sure you want to clear the cache?\n\nThis will irrevocably remove all {1} file(s) in {0}, freeing {2}.</Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>
-
-
 
 
 </LanguageData>
