@@ -5,8 +5,8 @@
     "url": "https://github.com/fluffy-mods/ModManager",
     "version": {
         "major": 4,
-        "minor": 6,
-        "build": 1116
+        "minor": 7,
+        "build": 1117
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,15 @@
         "url": "https://github.com/fluffy-mods/ModManager"
     },
     "changelog": [
+        {
+            "date": "2022-09-18T21:02:06.000Z",
+            "message": "Update Japanese Translation for v4.6.1116 (#169)",
+            "author": {
+                "name": "Proxyer",
+                "email": "proxyer666@gmail.com"
+            },
+            "hash": "81246e477368dd80fdce76ae672ce8eb7c812d69"
+        },
         {
             "date": "2022-09-18T18:00:35.000Z",
             "message": "clean up import/export procedures",
@@ -325,6 +334,11 @@
             "hash": "32ae79758169e80538ecc6f56cfee045954d3d06",
             "author": "Benjamin E. Iserman",
             "description": "Fix (mass) subscribing to missing steam mods from modlists"
+        },
+        {
+            "hash": "81246e477368dd80fdce76ae672ce8eb7c812d69",
+            "author": "Proxyer",
+            "description": "Update Japanese Translation for v4.6.1116 (#169)"
         }
     ],
     "contributors": {
@@ -340,6 +354,11 @@
                 "hash": "eb20a5c",
                 "author": "Proxyer",
                 "description": "Japanese translation"
+            },
+            {
+                "hash": "81246e4",
+                "author": "Proxyer",
+                "description": "Update Japanese Translation for v4.6.1116 (#169)"
             }
         ],
         "Mohas": [
