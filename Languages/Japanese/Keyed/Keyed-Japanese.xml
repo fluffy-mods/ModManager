@@ -58,9 +58,30 @@
   <Fluffy.ModManager.SaveModList>現在のリストを保存</Fluffy.ModManager.SaveModList>
   <Fluffy.ModManager.DeleteModList>保存したリストを削除</Fluffy.ModManager.DeleteModList>
   <Fluffy.ModManager.RenameModList>リストの名前を変更</Fluffy.ModManager.RenameModList>
+
+  <!-- DEPRECATED: Terminology was changed to be more consistent -->
   <Fluffy.ModManager.ImportModList>文字列からMODリストを読み込む</Fluffy.ModManager.ImportModList>
   <Fluffy.ModManager.ExportModList>MODリストを文字列に書き出す</Fluffy.ModManager.ExportModList>
   <Fluffy.ModManager.LoadModListFromSave>セーブからMODリストを読み込む</Fluffy.ModManager.LoadModListFromSave>
+  <!-- End deprecated -->
+
+  <!-- Start replacement strings for import/export -->
+  <Fluffy.ModManager.Import>Modリストをインポート</Fluffy.ModManager.Import>
+  <Fluffy.ModManager.Import.FromModList>MODリストから</Fluffy.ModManager.Import.FromModList>
+  <Fluffy.ModManager.Import.FromString>文字列から</Fluffy.ModManager.Import.FromString>
+  <Fluffy.ModManager.Import.FromSaveGame>セーブデータから</Fluffy.ModManager.Import.FromSaveGame>
+
+  <Fluffy.ModManager.Export>有効なModをエクスポート</Fluffy.ModManager.Export>
+  <Fluffy.ModManager.Export.ToModList>Modリストとして</Fluffy.ModManager.Export.ToModList>
+  <Fluffy.ModManager.Export.ToString>共有可能な文字列として</Fluffy.ModManager.Export.ToString>
+
+  <Fluffy.ModManager.Edit>既存のModリストを編集</Fluffy.ModManager.Edit>
+
+  <Fluffy.ModManager.CopyToClipboard>クリップボードにコピー</Fluffy.ModManager.CopyToClipboard>
+  <Fluffy.ModManager.XModsExportedToString>{0}個のModがクリップボードにエクスポートされた</Fluffy.ModManager.XModsExportedToString>
+  <Fluffy.ModManager.XModsImportedFromString>文字列から{0}個のModがインポートされた</Fluffy.ModManager.XModsImportedFromString>
+  <!-- End replacement strings -->
+
   <Fluffy.ModManager.ResetMods>有効なMODをCoreだけにリセットする</Fluffy.ModManager.ResetMods>
   <Fluffy.ModManager.ConfirmResetMods>本当に？\n\nこれにより,ModリストのModが全て選択解除されます.現在のMODリストを残したい場合は,まず初めに「MODリストを文字列に書き出」してください.</Fluffy.ModManager.ConfirmResetMods>
   <Fluffy.ModManager.SortMods>Modリストを自動ソート</Fluffy.ModManager.SortMods>
@@ -170,7 +191,6 @@
   <Fluffy.ModManager.AddExpansionsToNewModListTip>Coreに加えて,公式DLCを新しいModリストに追加します.</Fluffy.ModManager.AddExpansionsToNewModListTip>
   <Fluffy.ModManager.ShowVersionChecksForSteamMods>SteamModのバージョン確認を表示</Fluffy.ModManager.ShowVersionChecksForSteamMods>
   <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>バージョン確認は手動インストールされたMODに最適で、デフォルトではSteamMODの確認は無効になっています。これはMod作成者がこの機能を明示的にサポートしている場合か、手動でインストールされた新しいMODについてだけ通知されることに注意してください。新しいSteamModのバージョンが出ても通知しません。</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
-
   <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>OSシステムの一時(TMP)フォルダをMod宣伝キャッシュに使用</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
   <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>有効にすると、Mod宣伝キャッシュは一時(TMP)フォルダーに保存されます。これにより、Mod宣伝画像の取得が遅くなる可能性がありますが、システム側は定期的にキャッシュを消去可能になります。</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
   <Fluffy.ModManager.CrossPromotionCacheFolderSize>宣伝キャッシュサイズ：{0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
