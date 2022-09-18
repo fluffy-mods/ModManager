@@ -5,7 +5,7 @@
     "url": "https://github.com/fluffy-mods/ModManager",
     "version": {
         "major": 4,
-        "minor": 5,
+        "minor": 6,
         "build": 1116
     },
     "author": {
@@ -19,6 +19,15 @@
         "url": "https://github.com/fluffy-mods/ModManager"
     },
     "changelog": [
+        {
+            "date": "2022-09-18T18:00:35.000Z",
+            "message": "clean up import/export procedures",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "54b2501bacb3b08c11d3dfdb7aa0837936433b2d"
+        },
         {
             "date": "2022-09-14T21:42:08.000Z",
             "message": "wip on some import/export improvements",
