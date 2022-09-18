@@ -28,7 +28,6 @@ namespace ModManager {
         [HarmonyPatch(typeof(WorkshopItems), "Notify_Subscribed")]
         public class WorkshopItems_Notify_Subscribed {
             public static bool Prefix(PublishedFileId_t pfid) {
-                // TODO: display some sort of in-progress indicator
                 Debug.Log("Notify_Subscribed");
 
                 // check if item was already present.

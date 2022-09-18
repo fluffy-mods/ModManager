@@ -43,12 +43,19 @@ namespace ModManager {
 
         public int Version { get; set; }
 
+
+        [YamlMember(DefaultValuesHandling = DefaultValuesHandling.OmitDefaults)]
         public string Name {
             get => _name;
             set {
                 // _oldName is only cleared upon the _end_ of the task, to prevent callbacks setting _oldName to the new _name.
                 string oldName = _name;
                 _name = value;
+
+                if (oldName.NullOrEmpty() && _name.NullOrEmpty()) {
+                    // going from null to null, likely after an import.
+                    return;
+                }
 
                 // create or rename
                 if (oldName.NullOrEmpty()) {
@@ -143,35 +150,35 @@ namespace ModManager {
             ModList list = new ModList();
 #pragma warning restore CS0618 // Type or member is obsolete
 
-            // TODO: figure out why scribe appears to be in invalid mode here.
-            // Did we do that?
-            Debug.Log($"scribe mode: {Scribe.mode}");
+            try {
+                Scribe.loader.InitLoadingMetaHeaderOnly(path);
+                ScribeMetaHeaderUtility.LoadGameDataHeader(ScribeMetaHeaderUtility.ScribeHeaderMode.None, false);
 
-            Scribe.loader.InitLoadingMetaHeaderOnly(path);
-            ScribeMetaHeaderUtility.LoadGameDataHeader(ScribeMetaHeaderUtility.ScribeHeaderMode.None, false);
-            list._modIds = ScribeMetaHeaderUtility.loadedModIdsList;
-            list._modNames = ScribeMetaHeaderUtility.loadedModNamesList;
-            list._modSteamWorkshopIds =
-                ScribeMetaHeaderUtility.loadedModSteamIdsList.Select(x => x.ToString()).ToList();
-            list._name = name;
-            Scribe.loader.FinalizeLoading();
-            Debug.Log(list.ToString());
+                list._name = name;
+                list._modIds = ScribeMetaHeaderUtility.loadedModIdsList;
+                list._modNames = ScribeMetaHeaderUtility.loadedModNamesList;
+
+                // steam ids _should_ exist, but sometimes they don't. 
+                list._modSteamWorkshopIds =
+                    ScribeMetaHeaderUtility.loadedModSteamIdsList?.Select(x => x.ToString()).ToList() ??
+                    Enumerable.Repeat("0", list._modIds.Count).ToList();
+
+            } finally {
+                // clean up after ourselves if something bungs up
+                Scribe.loader.FinalizeLoading();
+                Debug.Log(list.ToString());
+            }
+
             return list;
         }
 
+        // TODO: figure out if/how we can ignore unknown fields in the deserializer
+        public static IDeserializer Deserializer = new DeserializerBuilder().Build();
+
         public static ModList FromYaml(string source) {
-            // TODO: figure out why/how the ModList(mods) constructor (and therefore the rename window) is called when importing
-            // from yaml without mod list name
             try {
-                DeserializerBuilder deserializerBuilder = new DeserializerBuilder();
-                IDeserializer deserializer = deserializerBuilder.Build();
-                ModList list = deserializer.Deserialize<ModList>(source);
-                Messages.Message(I18n.ModListCreatedFromClipboard(list.Name), MessageTypeDefOf.PositiveEvent,
-                    false);
-                return list;
+                return Deserializer.Deserialize<ModList>(source);
             } catch (Exception err) {
-                Messages.Message(I18n.FailedToCreateModListFromClipboard(err.Message),
-                    MessageTypeDefOf.NegativeEvent, false);
                 ModListManager.Notify_ModListsChanged();
                 throw err;
             }
@@ -265,17 +272,6 @@ namespace ModManager {
             ISerializer serializer = serializerBuilder.Build();
             string yaml = serializer.Serialize(this);
             return yaml;
-        }
-
-        public void ToClipboard() {
-            // TODO: Add a window with textarea to see the export, extra button to copy to clipboard.
-            GUIUtility.systemCopyBuffer = ToYaml();
-            Messages.Message(I18n.ModListCopiedToClipboard(Name), MessageTypeDefOf.TaskCompletion, false);
-        }
-
-        public static void ExportToClipboard(IEnumerable<ModButton> mods) {
-            var list = new ModList(mods, true);
-            list.ToClipboard();
         }
 
         public void Add(ModMetaData mod) {

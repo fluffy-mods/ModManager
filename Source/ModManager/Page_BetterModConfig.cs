@@ -304,8 +304,12 @@ namespace ModManager {
         private void DoExportModListFloatMenu() {
             var options = Utilities.NewOptionsList;
             options.Add(new FloatMenuOption(I18n.Export_ToModList, () => new ModList(ModButtonManager.ActiveButtons)));
-            options.Add(new FloatMenuOption(I18n.Export_ToString,
-                () => ModList.ExportToClipboard(ModButtonManager.ActiveButtons)));
+            options.Add(new FloatMenuOption(I18n.Export_ToString, delegate {
+                var modlist = new ModList(ModButtonManager.ActiveButtons, true);
+                var dialog = new Dialog_Export_ToString(modlist);
+
+                Find.WindowStack.Add(dialog);
+            }));
 
             Utilities.FloatMenu(options);
         }
@@ -315,7 +319,7 @@ namespace ModManager {
             options.Add(new FloatMenuOption(I18n.Import_FromModList, DoImportFromModListFloatMenu));
             options.Add(new FloatMenuOption(I18n.Import_FromSaveGame, DoImportFromSaveFloatMenu));
             options.Add(
-                new FloatMenuOption(I18n.Import_FromString, () => ModList.FromYaml(GUIUtility.systemCopyBuffer).Import(Event.current.shift)));
+                new FloatMenuOption(I18n.Import_FromString, () => Find.WindowStack.Add(new Dialog_Import_FromString())));
 
             Utilities.FloatMenu(options);
         }
@@ -348,7 +352,13 @@ namespace ModManager {
         private int _lastControlID = 0;
 
         public void HandleKeyboardNavigation() {
+            // note that this depends on pop-over windows setting absorbInputAroundWindow
             if (!Find.WindowStack.CurrentWindowGetsInput) {
+                return;
+            }
+
+            // only use our custom logic if we are the top window
+            if (Find.WindowStack.Windows.Last() != this) {
                 return;
             }
 
@@ -417,10 +427,7 @@ namespace ModManager {
                             break;
                         case KeyCode.Return:
                         case KeyCode.KeypadEnter:
-                            Log.Message($"{Selected.Name} active?: {Selected.Active}");
                             Selected.Active = true;
-                            Log.Message($"{Selected.Name} active?: {Selected.Active}");
-
                             if (FilteredAvailableButtons.Any()) {
                                 int index = Math.Min(_focusElement, FilteredAvailableButtons.Count - 1);
                                 Selected = FilteredAvailableButtons.ElementAt(index);

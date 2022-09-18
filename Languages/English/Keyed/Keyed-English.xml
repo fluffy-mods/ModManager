@@ -76,6 +76,10 @@
     <Fluffy.ModManager.Export.ToString>As shareable string</Fluffy.ModManager.Export.ToString>
 
     <Fluffy.ModManager.Edit>Edit existing mod list...</Fluffy.ModManager.Edit>
+
+    <Fluffy.ModManager.CopyToClipboard>Copy to clipboard</Fluffy.ModManager.CopyToClipboard>
+    <Fluffy.ModManager.XModsExportedToString>{0} mods exported to clipboard</Fluffy.ModManager.XModsExportedToString>
+    <Fluffy.ModManager.XModsImportedFromString>{0} mods imported from string</Fluffy.ModManager.XModsImportedFromString>
     <!-- End replacement strings -->
 
     <Fluffy.ModManager.ResetMods>Reset active modlist to a blank modlist</Fluffy.ModManager.ResetMods>

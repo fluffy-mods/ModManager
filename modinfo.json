@@ -6,7 +6,7 @@
     "version": {
         "major": 4,
         "minor": 5,
-        "build": 1100
+        "build": 1116
     },
     "author": {
         "name": "Fluffy",
@@ -19,6 +19,24 @@
         "url": "https://github.com/fluffy-mods/ModManager"
     },
     "changelog": [
+        {
+            "date": "2022-09-14T21:42:08.000Z",
+            "message": "wip on some import/export improvements",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "341cbad5141bdaf6a406713d9420761dade36439"
+        },
+        {
+            "date": "2022-09-14T21:42:08.000Z",
+            "message": "wip on some import/export improvements",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "9c0e9469d41dc5e7d57798194a8032a91cb554fb"
+        },
         {
             "date": "2022-08-26T21:34:01.000Z",
             "message": "clean up debugs, add backwards compatibility",

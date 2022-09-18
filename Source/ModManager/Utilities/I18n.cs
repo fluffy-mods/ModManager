@@ -208,6 +208,7 @@ namespace ModManager {
         public static string Import_FromSaveGame = Key("Import.FromSaveGame").Translate();
         public static string Export_ToModList = Key("Export.ToModList").Translate();
         public static string Export_ToString = Key("Export.ToString").Translate();
+        public static string CopyToClipboard = Key("CopyToClipboard").Translate();
 
         public static string NameTooShort = Key("NameTooShort").Translate();
         public static string ImportModListFromSave = Key("LoadModListFromSave").Translate();
@@ -418,6 +419,13 @@ namespace ModManager {
 
         public static string UpdateLocalCopy(ModMetaData mod) {
             return Key("UpdateLocalCopy").Translate(mod.Name);
+        }
+
+        public static string XModsImportedFromString(int count) {
+            return Key("XModsImportedFromString").Translate(count);
+        }
+        public static string XModsExportedToString(int count) {
+            return Key("XModsExportedToString").Translate(count);
         }
     }
 }
