@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+
+  <Mod_Manager_3_3_962.modNameReadable>Mod Manager</Mod_Manager_3_3_962.modNameReadable>
+  <Mod_Manager_3_3_962.content>ModManagerはRimWorld1.2用に更新され、多くの改善とバグ修正が行われました;
+　　・ユーザーデータ（例：modの色）がランダムにリセットされなくなりました
+　　・Mod Managerは、大規模なModリストに対してはるかに多くの応答時間が必要です
+　　・バックアップ用に複数のローカルコピーを再度作成できます
+　　・CrossPromotionプレビュー画像をシステムの一時ディレクトリにキャッシュするように
+　　・CrossPromotionキャッシュはユーザーがクリアできます（mod設定を参照）
+
+      |いくつかの問題はまだ残っています;
+　　・1.1より前のModリストのインポートは、信頼性が低いまま機能します（修正されない可能性あり）。
+　　・(大量)不足しているSteamModのサブスクライブは未接続です。
+　　・自動ソートボタンが正しく機能しません。
+　　・そして、他のさまざまな小さな問題。
+
+      |私は1.1より前のすべての機能を復旧して実行することに取り組んでおり、何人かの寛大なボランティアと私はModManagerの次の段階になるものに取り組んでいます。 Mod Managerがどこに向かっているのか、そしてその過程でどのように発言権を持つことができるのかについて、soon™で詳しく知ることができます。
+
+    </Mod_Manager_3_3_962.content>
+
+</LanguageData>
