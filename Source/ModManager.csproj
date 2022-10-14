@@ -14,7 +14,7 @@
         <PackageReference Include="Krafs.Rimworld.Ref" Version="1.4.3517-beta" />
         <PackageReference Include="Lib.Harmony" Version="2.2.2" ExcludeAssets="runtime" />
         <PackageReference Include="SemanticVersioning" Version="2.0.2" />
-        <PackageReference Include="YamlDotNet" Version="12.0.1" />
+        <PackageReference Include="YamlDotNet" Version="12.0.2" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\..\..\TOOLS\ColourPicker\ColourPicker.csproj" />

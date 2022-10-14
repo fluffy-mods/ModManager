@@ -5,7 +5,7 @@
     "url": "https://github.com/fluffy-mods/ModManager",
     "version": {
         "major": 4,
-        "minor": 7,
+        "minor": 8,
         "build": 1119
     },
     "author": {
@@ -19,6 +19,15 @@
         "url": "https://github.com/fluffy-mods/ModManager"
     },
     "changelog": [
+        {
+            "date": "2022-10-14T22:28:54.000Z",
+            "message": "initial 1.4 build, project org refactor",
+            "author": {
+                "name": "FluffierThanThou",
+                "email": "fluffy.l2032@gmail.com"
+            },
+            "hash": "4d9926fe9ac8ab2013375eb1cb9119e112e2b91d"
+        },
         {
             "date": "2022-09-18T21:02:06.000Z",
             "message": "Update Japanese Translation for v4.6.1116 (#169)",
