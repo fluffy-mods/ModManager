@@ -150,9 +150,7 @@ namespace ModManager {
                 return;
             }
 
-            Dialog_ModSettings dialog = new Dialog_ModSettings();
-            Traverse.Create(dialog).Field<Mod>("selMod").Value = mod;
-            Find.WindowStack.Add(dialog);
+            Find.WindowStack.Add(new Dialog_ModSettings(mod));
         }
     }
 }
