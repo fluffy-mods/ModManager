@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LanguageData>
     <!-- cancel button on confirmation(s) -->
-    <Cancel>Cancel</Cancel>
+    <Cancel>Cancelar</Cancel>
 
     <Fluffy.ModManager.AvailableMods>Disponible</Fluffy.ModManager.AvailableMods>
     <Fluffy.ModManager.ActiveMods>Activos</Fluffy.ModManager.ActiveMods>
@@ -19,7 +19,7 @@
     <Fluffy.ModManager.PressXtoCopyToClipboard>Presiona 'Control + C' para copiar la lista de mods al portapapeles.</Fluffy.ModManager.PressXtoCopyToClipboard>
 
     <!-- issues --> 
-    <Fluffy.ModManager.InvalidVersion>String de versión malformada: "{0}".</Fluffy.ModManager.InvalidVersion>
+    <Fluffy.ModManager.InvalidVersion>Cadena de texto de la versión malformada: "{0}".</Fluffy.ModManager.InvalidVersion>
     <Fluffy.ModManager.DifferentVersion>La versión del juego es errónea, la versión actual es {2} pero {0} está hecho para la versión {1}.</Fluffy.ModManager.DifferentVersion>
     <Fluffy.ModManager.DifferentBuild>La compilación del juego es diferente, la versión actual es {2} pero {0} especifíca {1} como la versión utilizable.</Fluffy.ModManager.DifferentBuild>
     <Fluffy.ModManager.CurrentVersion>Las versiones coinciden</Fluffy.ModManager.CurrentVersion>
@@ -40,8 +40,8 @@
     <Fluffy.ModManager.GetMoreMods_SteamWorkshop>Obtén más mods desde Steam Workshop</Fluffy.ModManager.GetMoreMods_SteamWorkshop>
     <Fluffy.ModManager.GetMoreMods_LudeonForums>Obtén más mods desde Ludeon Forums</Fluffy.ModManager.GetMoreMods_LudeonForums>
     <Fluffy.ModManager.SteamWorkshop.UnSubscribe>Steam Workshop</Fluffy.ModManager.SteamWorkshop.UnSubscribe>
-    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>Desuscribir en masa los mods inactivos/desactualizados/todos los mods de Steam Workshop</Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>
-    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>Desuscribir todos los mods en Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>Desuscribir en masa los mods inactivos, desactualizados o de todos los mods de Steam Workshop</Fluffy.ModManager.SteamWorkshop.MassUnSubscribe>
+    <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>Desuscribir de todos los mods en Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeAll>
     <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>Desuscribir todos los mods inactivos en Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeInactive>
     <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>Desuscribir todos los mods desactualizados de Steam</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeOutdated>
     <Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>Estás a punto de desuscribirte de {0} mods. ¿Quieres continuar?\n\nMods afectados:\n{1}</Fluffy.ModManager.SteamWorkshop.MassUnSubscribeConfirm>
@@ -171,7 +171,7 @@
     <Fluffy.ModManager.PromotionsFor>Otros mods de {0}</Fluffy.ModManager.PromotionsFor>
 
     <!-- options -->
-    <Fluffy.ModManager.SettingsCategory>Administrador de mods</Fluffy.ModManager.SettingsCategory>
+    <Fluffy.ModManager.SettingsCategory>Mod Manager</Fluffy.ModManager.SettingsCategory>
     <Fluffy.ModManager.ShowPromotions>Mostrar publicidad</Fluffy.ModManager.ShowPromotions>
     <Fluffy.ModManager.ShowPromotions_NotActive>Mostrar publicidad de mods inactivos</Fluffy.ModManager.ShowPromotions_NotActive>
     <Fluffy.ModManager.ShowPromotions_NotSubscribed>Mostrar publicidad de mods a los que no estás suscrito</Fluffy.ModManager.ShowPromotions_NotSubscribed>
@@ -191,8 +191,8 @@
     <Fluffy.ModManager.AddExpansionsToNewModListTip>Añadir expansiones oficiales a nuevas listas cada ver que una lista es restablecida.</Fluffy.ModManager.AddExpansionsToNewModListTip>
     <Fluffy.ModManager.ShowVersionChecksForSteamMods>Mostrar comprobación de versiones en mods de Steam.</Fluffy.ModManager.ShowVersionChecksForSteamMods>
     <Fluffy.ModManager.ShowVersionChecksForSteamModsTip>La comprobación de versiones es más útil para mods instalados manualmente, así que por defecto está deshabilitado para mods de Steam. Esto solo notificará sobre mods manualmente instalados en donde el autor explícitamente añade el soporte para esta funcionalidad. No notificará sobre mods nuevos de Steam.</Fluffy.ModManager.ShowVersionChecksForSteamModsTip>
-    <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>Usar la carpeta temporal del sistema para "cross promotion cache"</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
-    <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>Si está activado, la "cross promotion cache" será almacenada en una carpeta temporal. Esto puede ralentizar la obtención de "cross promotion images", pero permite al sistema limpiar periódicamente la caché.</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCache>Usar la carpeta temporal del sistema para cross promotion cache</Fluffy.ModManager.UseTempFolderForCrossPromotionCache>
+    <Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>Si está activado, "cross promotion cache" será almacenada en una carpeta temporal. Esto puede ralentizar la obtención de cross promotion images, pero permite al sistema limpiar periódicamente la caché.</Fluffy.ModManager.UseTempFolderForCrossPromotionCacheTip>
     <Fluffy.ModManager.CrossPromotionCacheFolderSize>Tamaño de la caché: {0}</Fluffy.ModManager.CrossPromotionCacheFolderSize>
     <Fluffy.ModManager.DeleteCrossPromotionCache>Limpiar caché</Fluffy.ModManager.DeleteCrossPromotionCache>
     <Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>¿Estás seguro de que quieres limpiar la caché?\n\nEsto eliminará sin posibilidad de deshacer {1} archivos en {0}, liberando {2}.</Fluffy.ModManager.ConfirmDeletingCrossPromotionCache>
